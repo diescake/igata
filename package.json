@@ -2,6 +2,7 @@
   "name": "igata",
   "version": "0.1.0",
   "private": false,
+  "description": "igata is my boilerplate for Web Frontend",
   "repository": "git@github.com:diescake/igata.git",
   "author": "diescake",
   "license": "MIT",
