@@ -1,16 +1,16 @@
+const webpack = require('webpack')
 const path = require('path')
 
-const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const param = {
   distPath: './public',
   faviconPath: './src/assets/images/favicon.ico',
+  dotEnvPath: './src/envs',
   title: 'igata',
 }
 
-module.exports = {
+const common = {
   entry: './src/main.tsx',
   output: {
     filename: '[name].bundle.js',
@@ -27,17 +27,18 @@ module.exports = {
     rules: [
       { test: /\.(ts|tsx)$/, use: 'ts-loader', exclude: /node_modules/ },
       { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] },
+      { test: /\.json$/, use: 'json-loader' },
       { test: /\.(png|svg|jpg|gif)$/, use: 'file-loader' },
       { test: /\.(woff|woff2|eot|ttf|otf)$/, use: 'file-loader' },
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(param.distPath),
     new HtmlWebpackPlugin({
       favicon: param.faviconPath,
-      templateParameters: { title: param.title },
+      templateParameters: { title: param.title},
       template: './src/assets/html/template.html',
     }),
-    new webpack.HotModuleReplacementPlugin(),
   ],
 }
+
+module.exports = { param, common }
