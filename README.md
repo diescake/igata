@@ -1,2 +1,3 @@
 # igata
-igata is my boilerplate for Web Frontend
+
+igata is my boilerplate for Web Frontend.
