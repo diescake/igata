@@ -1,6 +1,7 @@
 # igata
 
 [![CircleCI](https://circleci.com/gh/diescake/igata.svg?style=svg)](https://circleci.com/gh/diescake/igata)
+[![Dependabot Status][dependabot-status]][dependabot]
 
 `igata` is my boilerplate for Web Frontend.
 
