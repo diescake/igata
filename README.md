@@ -26,10 +26,16 @@
 $ yarn
 ```
 
-## Running
+## Development
 
 ```sh
 $ yarn start
+```
+
+## Production
+
+```sh
+$ yarn build
 ```
 
 ## License
