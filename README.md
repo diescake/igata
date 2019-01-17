@@ -15,6 +15,18 @@
 - CircleCI
 - VSCode recommended
 
+## Installation
+
+```sh
+$ yarn
+```
+
+## Running
+
+```sh
+$ yarn start
+```
+
 ## License
 
 [MIT License](https://github.com/diescake/norzan/blob/master/LICENSE)
