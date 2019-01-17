@@ -1,8 +1,10 @@
 const path = require('path')
 
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
+const distPath = './public'
 const faviconPath = './src/assets/images/favicon.ico'
 const title = 'igata'
 
@@ -10,7 +12,12 @@ const developmentConfig = {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './public',
+    hot: false,
+    host: '0.0.0.0',
+    contentBase: distPath,
+    historyApiFallback: {
+      disableDotRule: true,
+    },
   },
 }
 
@@ -22,7 +29,7 @@ const commonConfig = (env, argv) => ({
   entry: './src/main.tsx',
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, distPath),
   },
   resolve: {
     alias: {
@@ -37,7 +44,7 @@ const commonConfig = (env, argv) => ({
     ],
   },
   plugins: [
-    new CleanWebpackPlugin('public'),
+    new CleanWebpackPlugin(distPath),
     new HtmlWebpackPlugin({
       favicon: faviconPath,
       templateParameters: { title: argv.mode === 'development' ? 'DEVELOPMENT' : title },
