@@ -14,6 +14,7 @@ module.exports = {
   entry: './src/main.tsx',
   output: {
     filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
     path: path.resolve(__dirname, param.distPath),
   },
   resolve: {
