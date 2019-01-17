@@ -11,6 +11,10 @@
     "build": "echo 'not implemented'",
     "lint": "echo 'not implemented'",
     "test": "echo 'not implemented'",
-    "deploy": "echo 'not implemented'"
+    "deploy": "echo 'not implemented'",
+    "license": "license-checker --production --summary"
+  },
+  "devDependencies": {
+    "license-checker": "^25.0.1"
   }
 }

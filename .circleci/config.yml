@@ -26,14 +26,17 @@ jobs:
           name: Install dependencies
           command: yarn
       - run:
-          name: Lint
+          name: Run lint
           command: yarn lint
       - run:
-          name: Test
+          name: Run test
           command: yarn test
       - run:
           name: Build
           command: yarn build
+      - run:
+          name: Check OSS licenses
+          command: yarn license
       - deploy:
           name: Deploy
           command: yarn deploy
