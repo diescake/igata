@@ -1,5 +1,7 @@
 # igata
 
+[![CircleCI](https://circleci.com/gh/diescake/igata.svg?style=svg)](https://circleci.com/gh/diescake/igata)
+
 `igata` is my boilerplate for Web Frontend.
 
 ## Technology keywords
