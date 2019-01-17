@@ -13,7 +13,12 @@
 - Jest
 - yarn
 - CircleCI
-- VSCode recommended
+- VSCode (recommended)
+
+## Requirement
+
+- Node.js v8.xx
+  - Latest minor revision is recommended
 
 ## Installation
 
