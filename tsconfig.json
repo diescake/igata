@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": false,
+    "noImplicitReturns": true,
+    "outDir": "./public/",
+    "module": "es6",
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "declaration": false,
+    "removeComments": true,
+    "noUnusedLocals": true,
+    "strict": true,
+    "lib": [
+      "es6",
+      "es7",
+      "dom"
+    ],
+    "baseUrl": "./src/",
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
