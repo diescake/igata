@@ -19,6 +19,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "lint": "not implemented",
+    "deploy": "not implemented",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

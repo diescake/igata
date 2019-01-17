@@ -2,12 +2,14 @@
 
 `igata` is my boilerplate for Web Frontend.
 
-## Technology stacks
+## Technology keywords
 
 - TypeScript
 - React + Redux
 - TSLint
+- Jest
 - yarn
+- CircleCI
 - VSCode recommended
 
 ## License
