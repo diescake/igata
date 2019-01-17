@@ -7,7 +7,7 @@
   "author": "diescake",
   "license": "MIT",
   "scripts": {
-    "start": "webpack --mode development --config webpack.config.js",
+    "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production --config webpack.config.js",
     "lint": "echo 'not implemented'",
     "test": "echo 'not implemented'",
@@ -22,6 +22,7 @@
     "license-checker": "^25.0.1",
     "style-loader": "^0.23.1",
     "webpack": "^4.28.4",
-    "webpack-cli": "^3.2.1"
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
   }
 }
