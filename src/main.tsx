@@ -1,5 +1,5 @@
 import image from '@/assets/images/diescake.png'
-import '@/assets/css/common.css'
+import '@/assets/css/common.scss'
 
 if (process.env.NODE_ENV !== 'production') {
   console.warn('Build with development mode')
