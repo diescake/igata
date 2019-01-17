@@ -4,7 +4,7 @@
 /coverage
 
 # Production
-/build
+/public
 
 # Miscs
 .DS_Store

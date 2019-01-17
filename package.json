@@ -7,14 +7,16 @@
   "author": "diescake",
   "license": "MIT",
   "scripts": {
-    "start": "echo 'not implemented'",
-    "build": "echo 'not implemented'",
+    "start": "webpack --mode development --config webpack.config.js",
+    "build": "webpack --mode production --config webpack.config.js",
     "lint": "echo 'not implemented'",
     "test": "echo 'not implemented'",
     "deploy": "echo 'not implemented'",
     "license": "license-checker --production --summary"
   },
   "devDependencies": {
-    "license-checker": "^25.0.1"
+    "license-checker": "^25.0.1",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1"
   }
 }
