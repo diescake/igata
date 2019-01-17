@@ -7,8 +7,8 @@
   "author": "diescake",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production --config webpack.config.js",
+    "start": "webpack-dev-server --config webpack.dev.js --open",
+    "build": "webpack --config webpack.prod.js",
     "lint": "echo 'not implemented'",
     "test": "echo 'not implemented'",
     "deploy": "echo 'not implemented'",
