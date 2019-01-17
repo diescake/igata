@@ -12,7 +12,7 @@ const developmentConfig = {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    hot: false,
+    hot: true,
     host: '0.0.0.0',
     contentBase: distPath,
     historyApiFallback: {
@@ -49,7 +49,8 @@ const commonConfig = (env, argv) => ({
       favicon: faviconPath,
       templateParameters: { title: argv.mode === 'development' ? 'DEVELOPMENT' : title },
       template: './src/assets/html/template.html',
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin(),
   ]
 })
 
