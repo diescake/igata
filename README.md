@@ -9,9 +9,11 @@
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [React](https://reactjs.org/) + [Redux](https://redux.js.org/)
+- [Sass](https://sass-lang.com/)
 - [TSLint](https://palantir.github.io/tslint/) + [Prettier](https://prettier.io/)
 - [Jest](https://jestjs.io/)
 - [yarn](https://yarnpkg.com)
+- [webpack](https://webpack.js.org/)
 - [CircleCI](https://circleci.com/)
 - [Visual Studio Code](https://code.visualstudio.com/) (Recommended)
 
