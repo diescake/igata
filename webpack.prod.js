@@ -19,8 +19,5 @@ const extPlugins = [
 module.exports = {
   ...common,
   ...extConfig,
-  plugins: [
-    ...common.plugins,
-    ...extPlugins,
-  ],
+  plugins: [...common.plugins, ...extPlugins],
 }

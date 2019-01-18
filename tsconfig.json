@@ -18,14 +18,8 @@
     "removeComments": true,
     "noUnusedLocals": true,
     "strict": true,
-    "lib": [
-      "es6",
-      "es7",
-      "dom"
-    ],
-    "baseUrl": "./src/",
+    "lib": ["es6", "es7", "dom"],
+    "baseUrl": "./src/"
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

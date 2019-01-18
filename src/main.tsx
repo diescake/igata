@@ -10,7 +10,7 @@ const multiply = (num: number): number => {
 }
 
 const imageElem = document.createElement('img')
-imageElem.setAttribute('src', image);
+imageElem.setAttribute('src', image)
 
 document.body.appendChild(imageElem)
 
