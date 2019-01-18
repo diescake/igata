@@ -7,40 +7,35 @@
 
 ## Technology keywords
 
-- TypeScript
-- React + Redux
-- TSLint
-- Jest
-- yarn
-- CircleCI
-- VSCode (recommended)
+- [TypeScript](https://www.typescriptlang.org/)
+- [React](https://reactjs.org/) + [Redux](https://redux.js.org/)
+- [TSLint](https://palantir.github.io/tslint/) + [Prettier](https://prettier.io/)
+- [Jest](https://jestjs.io/)
+- [yarn](https://yarnpkg.com)
+- [CircleCI](https://circleci.com/)
+- [Visual Studio Code](https://code.visualstudio.com/) (Recommended)
 
 ## Requirement
 
 - Node.js v8.xx
   - Latest minor revision is recommended
 
-## Installation
+## Npm scripts
 
 ```sh
-$ yarn
-```
-
-## Development
-
-```sh
-$ yarn start
-```
-
-## Production
-
-```sh
-$ yarn build
+$ yarn          # install dependencies
+$ yarn start    # build and launch development server
+$ yarn build    # build and generate production codes
+$ yarn format   # format and save any codes with prettier
+$ yarn lint     # lint source codes after format automatically
+$ yarn test     # run test code using Jest framework
+$ yarn deploy   # deploy production codes to GitHub.io
+$ yarn license  # display OSS license summary of bundled as production codes
 ```
 
 ## License
 
-[MIT License](https://github.com/diescake/norzan/blob/master/LICENSE)
+[MIT License](https://github.com/diescake/igata/blob/master/LICENSE)
 
 ## Author
 

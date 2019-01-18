@@ -1,0 +1,23 @@
+extends:
+  # TSLint recommended rules
+  # https://github.com/palantir/tslint/blob/master/src/configs/recommended.ts
+  - tslint:recommended
+
+  - tslint-react
+
+  # Disable specific TSLint rules to avoid conflict with Prettier functions.
+  # If you find some problems, following command shows conflicting rules and helps you to solve them.
+  # $ yarn run tslint-config-prettier-check ./tslint.yaml
+  - tslint-config-prettier
+
+rulesDirectory:
+  # Format with prettier before running TSLint automatically.
+  - tslint-plugin-prettier
+
+rules:
+  prettier: true
+
+  no-console: false
+  prefer-template: true
+  max-line-length:
+    options: [120]
