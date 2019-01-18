@@ -9,6 +9,7 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js --open",
     "build": "webpack --config webpack.prod.js",
+    "format": "prettier --write './**/*.{md,js,jsx,ts,tsx,json,yaml,css,sass,scss,html}'",
     "lint": "echo 'not implemented'",
     "test": "echo 'not implemented'",
     "deploy": "echo 'not implemented'",
@@ -24,6 +25,7 @@
     "json-loader": "^0.5.7",
     "license-checker": "^25.0.1",
     "node-sass": "^4.11.0",
+    "prettier": "1.15.3",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "ts-loader": "^5.3.3",
