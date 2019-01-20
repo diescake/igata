@@ -1,25 +1,42 @@
+// TypeScript: tsconfig.json
+// https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
+
 {
+  "compileOnSave": true,
   "compilerOptions": {
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": false,
-    "strictPropertyInitialization": false,
-    "noImplicitThis": false,
-    "noImplicitReturns": true,
-    "outDir": "./public/",
-    "module": "es6",
-    "target": "es5",
-    "jsx": "react",
-    "allowJs": true,
-    "sourceMap": true,
+    "module": "es2015",
+    "target": "es2015",
     "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "declaration": false,
-    "removeComments": true,
-    "noUnusedLocals": true,
-    "strict": true,
+
     "lib": ["es6", "es7", "dom"],
-    "baseUrl": "./src/"
+
+    "baseUrl": "./src/",
+    "outDir": "./public/",
+
+    "allowJs": true,
+    "checkJs": true,
+
+    "jsx": "react",
+    "jsxFactory": "React.createElement",
+
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "sourceMap": true,
+
+    "strict": true, // If enable this option, following 7 options are enable.
+    // "noImplicitAny": true,
+    // "noImplicitThis": true,
+    // "alwaysStrict": true,
+    // "strictBindCallReply": true,
+    // "strictNullChecks": true,
+    // "strictFunctionTypes": true,
+    // "strictPropertyInitialization": true,
+
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+
+    "typeRoots": ["node_modules/@types", "types"]
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "./webpack.*.js"]
 }

@@ -1,3 +1,6 @@
+# TSLint rules
+# https://palantir.github.io/tslint/rules/
+
 extends:
   # TSLint recommended rules
   # https://github.com/palantir/tslint/blob/master/src/configs/recommended.ts
@@ -21,3 +24,9 @@ rules:
   prefer-template: true
   max-line-length:
     options: [120]
+
+  object-literal-sort-keys: false
+
+# FIXME: Can I extend the rules of TSLint ?
+jsRules:
+  object-literal-sort-keys: false
