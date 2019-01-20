@@ -9,11 +9,13 @@ const extConfig = {
   devtool: 'inline-source-map',
   devServer: {
     hot: true,
+    open: true,
+    https: false,
     host: '0.0.0.0',
+    port: 8080,
+    watchContentBase: false,
     contentBase: param.distPath,
-    historyApiFallback: {
-      disableDotRule: true,
-    },
+    historyApiFallback: true,
   },
 }
 

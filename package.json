@@ -7,14 +7,18 @@
   "author": "diescake",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js --open",
+    "start": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "format": "prettier --write './**/*.{md,js,jsx,ts,tsx,json,yml,yaml,css,sass,scss,html}'",
     "lint": "tslint --format verbose --fix --project tsconfig.json './src/**/*.{js,jsx,ts,tsx}'",
     "test": "echo 'not implemented'",
     "deploy": "echo 'not implemented'",
-    "license": "license-checker --production --summary",
-    "precommit": "lint-staged"
+    "license": "license-checker --production --summary"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
