@@ -43,7 +43,7 @@
     "license-checker": "^25.0.1",
     "lint-staged": "^8.1.0",
     "node-sass": "^4.11.0",
-    "prettier": "1.15.3",
+    "prettier": "1.16.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "ts-loader": "^5.3.3",
