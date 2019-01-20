@@ -41,6 +41,10 @@ $ yarn license  # display OSS license summary of bundled as production codes
 
 Some tasks are kicked before committing by the combination of `husky` and `lint-staged`, but unfortunately they are **NOT** always called and some developers will skip this check process as a result. As far as I know, some GUI git clients can penetrate it.
 
+### [vscode-tslint](https://github.com/Microsoft/vscode-tslint) plugin problems
+
+Currently, vscode-tslint plugin does not support several rules in tslint.yaml because it can not fetch type information in `tsconfig.json`. Unfortunately, it seems that maintainers have no plans to add support it. Therefore, even if your VSCode readies for running vscode-tslint in real-time, you should sometimes run `yarn lint` manually and confirm result. For more information, see [README.md#faq](https://github.com/Microsoft/vscode-tslint/blob/master/tslint/README.md#faq)
+
 ## License
 
 [MIT License](https://github.com/diescake/igata/blob/master/LICENSE)
