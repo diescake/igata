@@ -40,5 +40,5 @@
 
     "typeRoots": ["node_modules/@types", "types"]
   },
-  "exclude": ["node_modules", "./webpack.*.js"]
+  "exclude": ["node_modules"]
 }
