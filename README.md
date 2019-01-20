@@ -37,7 +37,7 @@ $ yarn license  # display OSS license summary of bundled as production codes
 
 ## Note
 
-## Pre-commit tasks
+### Pre-commit tasks
 
 Some tasks are kicked before committing by the combination of `husky` and `lint-staged`, but unfortunately they are **NOT** always called and some developers will skip this check process as a result. As far as I know, some GUI git clients can penetrate it.
 
