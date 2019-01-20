@@ -14,7 +14,9 @@
     "outDir": "./public/",
 
     "allowJs": true,
-    "checkJs": true,
+
+    // FIXME: If enable this option, webpack-dev-server gets error in `yarn start`
+    "checkJs": false,
 
     "jsx": "react",
     "jsxFactory": "React.createElement",
