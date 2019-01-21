@@ -19,7 +19,7 @@
     "checkJs": false,
 
     "jsx": "react",
-    "jsxFactory": "React.createElement",
+    // "jsxFactory": "React.createElement",
 
     "experimentalDecorators": true,
     "removeComments": true,
