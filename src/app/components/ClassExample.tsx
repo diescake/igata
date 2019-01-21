@@ -1,3 +1,4 @@
+import { Footer } from '@/app/components/Footer'
 import * as React from 'react'
 
 export namespace ClassExample {
@@ -36,6 +37,7 @@ export class ClassExample extends React.Component<ClassExample.Props, ClassExamp
       <div>
         <button onClick={this.handleClick}>Multiply</button>
         <span>{this.state.value}</span>
+        <Footer />
       </div>
     )
   }

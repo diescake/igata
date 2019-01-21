@@ -15,10 +15,8 @@ const root = document.getElementById('root')
 ReactDOM.render(
   <>
     <SFCExample />
-    <ClassExample defaultValue={123} mag={2} />
-    <ClassExample />
-    <br />
     <img src={diescakePng} />
+    <ClassExample />
   </>,
   root
 )
