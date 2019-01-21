@@ -61,7 +61,7 @@ rules:
   no-import-side-effect: false
   no-inferrable-types: false
   no-internal-module: true
-  no-magic-numbers: true
+  no-magic-numbers: false
   no-namespace: false
   no-non-null-assertion: false
   no-parameter-reassignment: true
