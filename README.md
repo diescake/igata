@@ -3,7 +3,7 @@
 [![CircleCI](https://circleci.com/gh/diescake/igata.svg?style=svg)](https://circleci.com/gh/diescake/igata)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&identifier=165770216)](https://dependabot.com)
 
-`igata` is my boilerplate for Web Frontend.
+`igata(鋳型)` is my boilerplate for Web Frontend. `鋳型` in Japanese means a boilerplate or casting mold.
 
 ## Technology keywords
 
@@ -15,6 +15,7 @@
 - [yarn](https://yarnpkg.com)
 - [webpack](https://webpack.js.org/)
 - [CircleCI](https://circleci.com/)
+- [DEPENDABOT](https://dependabot.com/)
 - [Visual Studio Code](https://code.visualstudio.com/) (Recommended)
 
 ## Requirement
@@ -22,7 +23,7 @@
 - Node.js v8.xx
   - Latest minor revision is recommended
 
-## Npm scripts
+## Npm script
 
 ```sh
 $ yarn          # install dependencies
