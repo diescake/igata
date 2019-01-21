@@ -33,7 +33,7 @@ rulesDirectory:
   - tslint-plugin-prettier
 
 # Override my kind of rules.
-# Note that comment-outed rules are using for formating code and Prettier handles.
+# Note that comment-outed rules are classified into formating code and Prettier handles.
 rules:
   prettier: true
 
