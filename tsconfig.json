@@ -12,6 +12,9 @@
 
     "baseUrl": "./src/",
     "outDir": "./public/",
+    "paths": {
+      "@/*": ["./*"]
+    },
 
     "allowJs": true,
 
