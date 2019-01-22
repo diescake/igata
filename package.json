@@ -33,6 +33,8 @@
   },
   "devDependencies": {
     "@types/node": "^10.12.18",
+    "@types/react": "^16.7.20",
+    "@types/react-dom": "^16.0.11",
     "clean-webpack-plugin": "^1.0.0",
     "css-loader": "^2.1.0",
     "dotenv-webpack": "^1.7.0",
@@ -59,9 +61,8 @@
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
-    "@types/react": "^16.7.20",
-    "@types/react-dom": "^16.0.11",
     "axios": "^0.18.0",
+    "moment": "^2.24.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"
   }
