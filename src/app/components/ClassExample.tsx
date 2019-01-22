@@ -1,4 +1,5 @@
 import { Footer } from '@/app/components/Footer'
+import { ListWrapper } from '@/app/components/ListWrapper'
 import * as React from 'react'
 
 export namespace ClassExample {
@@ -44,6 +45,11 @@ export class ClassExample extends React.Component<ClassExample.Props, ClassExamp
     return (
       <div>
         <button onClick={this.handleClick}>Multiply</button>
+        <ListWrapper>
+          <li>Child 1</li>
+          <li>Child 2</li>
+          <li>Child 3</li>
+        </ListWrapper>
         <span>{this.state.value}</span>
         <Footer />
       </div>
