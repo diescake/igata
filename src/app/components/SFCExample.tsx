@@ -5,6 +5,4 @@ export namespace SFCExample {
   export interface State {}
 }
 
-export class SFCExample extends React.Component<SFCExample.Props, SFCExample.State> {
-  render = () => <h1>Hello from TypeScript and framework!!!</h1>
-}
+export const SFCExample = () => <h1>Hello from TypeScript and framework!!!</h1>

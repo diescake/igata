@@ -1,11 +1,12 @@
+import { EnhanceFooter } from '@/app/helpers/EnhanceFooter'
 import * as React from 'react'
 
-export namespace Footer {
+namespace FooterHOC {
   export interface Props {}
   export interface State {}
 }
 
-export class Footer extends React.Component<Footer.Props, Footer.State> {
+class FooterHOC extends React.Component<FooterHOC.Props, FooterHOC.State> {
   handleBackClick = () => {
     alert('back')
   }
@@ -13,13 +14,14 @@ export class Footer extends React.Component<Footer.Props, Footer.State> {
   handleForwardClick = () => {
     alert('forward')
   }
-
   render() {
     return (
-      <div>
+      <>
         <button onClick={this.handleBackClick}>Back</button>
         <button onClick={this.handleForwardClick}>Forward</button>
-      </div>
+      </>
     )
   }
 }
+
+export const Footer = EnhanceFooter(FooterHOC)

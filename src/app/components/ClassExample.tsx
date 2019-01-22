@@ -30,6 +30,14 @@ export class ClassExample extends React.Component<ClassExample.Props, ClassExamp
     })
   }
 
+  handleBackClick = () => {
+    alert('back')
+  }
+
+  handleForwardClick = () => {
+    alert('forward')
+  }
+
   multiply = (mag: number) => this.state.value * mag
 
   render() {
