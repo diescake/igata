@@ -9,7 +9,11 @@
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [React](https://reactjs.org/) + [Redux](https://redux.js.org/)
-- [Sass](https://sass-lang.com/)
+- [react-router](https://reacttraining.com/react-router/) + [connected-react-router](https://github.com/supasate/connected-react-router)
+- [axios](https://github.com/axios/axios)
+- [moment](https://momentjs.com/)
+- [Sass](https://sass-lang.com/) as CSS Modules
+- [Reboot.css](https://raw.githubusercontent.com/twbs/bootstrap/v4-dev/dist/css/bootstrap-reboot.css)
 - [TSLint](https://palantir.github.io/tslint/) + [Prettier](https://prettier.io/)
 - [Jest](https://jestjs.io/)
 - [yarn](https://yarnpkg.com)
