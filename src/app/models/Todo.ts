@@ -13,5 +13,5 @@ export interface TodoState {
 }
 
 export interface RootState {
-  todos: TodoState
+  todo: TodoState
 }

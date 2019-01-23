@@ -1,18 +1,31 @@
+import { addTodo, AddTodo } from '@/app/actions/todo'
 import { Footer } from '@/app/components/Footer'
 import { ListWrapper } from '@/app/components/ListWrapper'
+import { RootState, TodoState } from '@/app/models/Todo'
 import * as React from 'react'
+import { connect } from 'react-redux'
 
-export namespace ClassExample {
+namespace ClassExample {
   export interface Props {
     defaultValue: number
     mag: number
+    todo: TodoState
+    addTodo: AddTodo
   }
   export interface State {
     value: number
   }
 }
 
-export class ClassExample extends React.Component<ClassExample.Props, ClassExample.State> {
+const mapStateToProps = (state: RootState) => ({
+  todo: state.todo,
+})
+
+const mapDispatchToProps = {
+  addTodo,
+}
+
+class ClassExample extends React.Component<ClassExample.Props, ClassExample.State> {
   constructor(props: ClassExample.Props) {
     super(props)
     this.state = {
@@ -29,6 +42,7 @@ export class ClassExample extends React.Component<ClassExample.Props, ClassExamp
     this.setState({
       value: this.state.value * this.props.mag,
     })
+    this.props.addTodo('hoge') // FIXME: bug
   }
 
   handleBackClick = () => {
@@ -46,9 +60,9 @@ export class ClassExample extends React.Component<ClassExample.Props, ClassExamp
       <div>
         <button onClick={this.handleClick}>Multiply</button>
         <ListWrapper>
-          <li>Child 1</li>
-          <li>Child 2</li>
-          <li>Child 3</li>
+          {this.props.todo.texts.map((text: string) => (
+            <li key={text}>{text}</li>
+          ))}
         </ListWrapper>
         <span>{this.state.value}</span>
         <Footer />
@@ -56,3 +70,8 @@ export class ClassExample extends React.Component<ClassExample.Props, ClassExamp
     )
   }
 }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ClassExample)

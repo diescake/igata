@@ -1,5 +1,5 @@
 import { SFCExample } from '@/app/components/SFCExample'
-import { ClassExample } from '@/app/containers/ClassExample'
+import ClassExample from '@/app/containers/ClassExample'
 import { configureStore } from '@/app/store'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
