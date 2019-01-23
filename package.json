@@ -45,7 +45,7 @@
     "license-checker": "^25.0.1",
     "lint-staged": "^8.1.0",
     "node-sass": "^4.11.0",
-    "prettier": "1.16.0",
+    "prettier": "1.16.1",
     "sass-loader": "^7.1.0",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
