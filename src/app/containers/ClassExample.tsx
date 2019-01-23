@@ -46,17 +46,9 @@ class ClassExample extends React.Component<ClassExample.Props, ClassExample.Stat
     this.props.addTodo(`My Todo (${Math.random()})`)
   }
 
-  handleBackClick = () => {
-    alert('back')
-  }
-
-  handleForwardClick = () => {
-    alert('forward')
-  }
-
   multiply = (mag: number) => this.state.value * mag
 
-  render() {
+  render = () => {
     return (
       <div>
         <button onClick={this.handleClick}>Multiply</button>

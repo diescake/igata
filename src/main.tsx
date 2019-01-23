@@ -9,7 +9,6 @@ import { Provider } from 'react-redux'
 import { Redirect, Route, Switch } from 'react-router'
 
 import '@/assets/css/common.scss'
-import diescakePng from '@/assets/images/diescake.png'
 
 if (process.env.NODE_ENV !== 'production') {
   console.info('Build with development mode')
@@ -20,7 +19,6 @@ const store = configureStore(history)
 
 ReactDOM.render(
   <Provider store={store}>
-    <img src={diescakePng} />
     <ConnectedRouter history={history}>
       <Switch>
         <Route exact path="/" component={ClassExample} />

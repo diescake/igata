@@ -14,7 +14,8 @@ class FooterHOC extends React.Component<FooterHOC.Props, FooterHOC.State> {
   handleForwardClick = () => {
     alert('forward')
   }
-  render() {
+
+  render = () => {
     return (
       <>
         <button onClick={this.handleBackClick}>Back</button>
