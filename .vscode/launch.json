@@ -1,0 +1,24 @@
+// Launch configurations
+// https://go.microsoft.com/fwlink/?linkid=830387
+
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Chrome (http://0.0.0.0:8080)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://0.0.0.0:8080",
+      "sourceMaps": true,
+      "trace": true,
+      "sourceMapPathOverrides": {
+        "webpack:///./*": "${webRoot}/*",
+        "webpack:///src/*": "${webRoot}/*",
+        "webpack:///*": "*",
+        "webpack:///./~/*": "${webRoot}/node_modules/*",
+        "meteor://💻app/*": "${webRoot}/*"
+      },
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}

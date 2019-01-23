@@ -4,6 +4,7 @@
 
   // List of extensions which should be recommended for users of this workspace.
   "recommendations": [
+    "msjsdiag.debugger-for-chrome", // Debugger for Chrome
     "mikestead.dotenv", // DotEnv
     "esbenp.prettier-vscode", // Prettier
     "eg2.tslint", // TSLint
