@@ -1,5 +1,5 @@
 import SFCExample from '@/app/components/SFCExample'
-import ClassExample from '@/app/containers/ClassExample'
+import Example from '@/app/containers/Example'
 import { configureStore } from '@/app/store'
 import { ConnectedRouter } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
@@ -23,7 +23,7 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/" component={ClassExample} />
+        <Route exact path="/" component={Example} />
         <Route exact path="/sfc" component={SFCExample} />
         <Redirect to="/" />
       </Switch>

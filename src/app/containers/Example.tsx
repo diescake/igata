@@ -6,7 +6,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import * as key from 'weak-key'
 
-namespace ClassExample {
+namespace Example {
   export interface Props {
     defaultValue: number
     mag: number
@@ -26,15 +26,15 @@ const mapDispatchToProps = {
   addTodo,
 }
 
-class ClassExample extends React.Component<ClassExample.Props, ClassExample.State> {
-  constructor(props: ClassExample.Props) {
+class Example extends React.Component<Example.Props, Example.State> {
+  constructor(props: Example.Props) {
     super(props)
     this.state = {
       value: props.defaultValue,
     }
   }
 
-  static defaultProps: Pick<ClassExample.Props, 'mag' | 'defaultValue'> = {
+  static defaultProps: Pick<Example.Props, 'mag' | 'defaultValue'> = {
     mag: 10,
     defaultValue: 1,
   }
@@ -67,4 +67,4 @@ class ClassExample extends React.Component<ClassExample.Props, ClassExample.Stat
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ClassExample)
+)(Example)
