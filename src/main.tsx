@@ -8,6 +8,8 @@ import * as ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { Redirect, Route, Switch } from 'react-router'
 
+import '@/assets/css/reboot.css'
+
 import '@/assets/css/common.scss'
 
 if (process.env.NODE_ENV !== 'production') {
