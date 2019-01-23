@@ -18,11 +18,9 @@ namespace ClassExample {
   }
 }
 
-const mapStateToProps = (state: RootState) => {
-  return {
-    todos: state.todos,
-  }
-}
+const mapStateToProps = (state: RootState) => ({
+  todos: state.todos,
+})
 
 const mapDispatchToProps = {
   addTodo,
