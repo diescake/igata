@@ -39,6 +39,7 @@ rules:
 
   ### tslint-react ###
   jsx-no-lambda: false
+  jsx-boolean-value: false
 
   ### tslint-config-airbnb ###
   object-shorthand-properties-first: false

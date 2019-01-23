@@ -1,5 +1,7 @@
 import { ADD_TODO } from '@/app/actions/todo'
 import { Todo, TodoAction } from '@/app/models/Todo'
+import { connectRouter } from 'connected-react-router'
+import { History } from 'history'
 import { combineReducers } from 'redux'
 
 const initialState: Todo[] = []
@@ -18,6 +20,8 @@ const todos = (state: Todo[] = initialState, action: TodoAction): Todo[] => {
   }
 }
 
-export const rootReducer = combineReducers({
-  todos,
-})
+export default (history: History) =>
+  combineReducers({
+    router: connectRouter(history),
+    todos,
+  })

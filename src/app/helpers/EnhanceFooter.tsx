@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 
 export namespace Footer {
   export interface Props {}
@@ -13,9 +14,8 @@ export const EnhanceFooter = (ComposedComponent: React.ComponentType<Footer.Prop
 
     render = () => (
       <div>
-        [HOC]
         <ComposedComponent />
-        [HOC]
+        <Link to="/">TOP</Link> | <Link to="/sfc">sfc</Link>
       </div>
     )
   }
