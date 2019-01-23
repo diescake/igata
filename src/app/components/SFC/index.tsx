@@ -1,8 +1,8 @@
+import { Footer } from '@/app/components/Footer'
 import diescakePng from '@/assets/images/diescake.png'
 import * as React from 'react'
-import { Footer } from './Footer'
 
-export namespace SFCExample {
+export namespace SFC {
   export interface Props {}
   export interface State {}
 }
