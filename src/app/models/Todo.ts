@@ -8,10 +8,11 @@ export interface TodoAction {
 }
 
 // States
-export interface TodoState {
-  texts: string[]
+export interface Todo {
+  done: boolean
+  text: string
 }
 
 export interface RootState {
-  todo: TodoState
+  todos: Todo[]
 }

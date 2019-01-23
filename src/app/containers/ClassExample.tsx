@@ -1,15 +1,16 @@
 import { addTodo, AddTodo } from '@/app/actions/todo'
 import { Footer } from '@/app/components/Footer'
 import { ListWrapper } from '@/app/components/ListWrapper'
-import { RootState, TodoState } from '@/app/models/Todo'
+import { RootState, Todo } from '@/app/models/Todo'
 import * as React from 'react'
 import { connect } from 'react-redux'
+import * as key from 'weak-key'
 
 namespace ClassExample {
   export interface Props {
     defaultValue: number
     mag: number
-    todo: TodoState
+    todos: Todo[]
     addTodo: AddTodo
   }
   export interface State {
@@ -17,9 +18,11 @@ namespace ClassExample {
   }
 }
 
-const mapStateToProps = (state: RootState) => ({
-  todo: state.todo,
-})
+const mapStateToProps = (state: RootState) => {
+  return {
+    todos: state.todos,
+  }
+}
 
 const mapDispatchToProps = {
   addTodo,
@@ -42,7 +45,7 @@ class ClassExample extends React.Component<ClassExample.Props, ClassExample.Stat
     this.setState({
       value: this.state.value * this.props.mag,
     })
-    this.props.addTodo('hoge') // FIXME: bug
+    this.props.addTodo(`My Todo (${Math.random()})`)
   }
 
   handleBackClick = () => {
@@ -60,8 +63,8 @@ class ClassExample extends React.Component<ClassExample.Props, ClassExample.Stat
       <div>
         <button onClick={this.handleClick}>Multiply</button>
         <ListWrapper>
-          {this.props.todo.texts.map((text: string) => (
-            <li key={text}>{text}</li>
+          {this.props.todos.map((todo: Todo) => (
+            <li key={key(todo)}>{todo.text}</li>
           ))}
         </ListWrapper>
         <span>{this.state.value}</span>

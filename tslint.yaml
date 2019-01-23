@@ -42,7 +42,7 @@ rules:
 
   ### tslint-config-airbnb ###
   object-shorthand-properties-first: false
-  import-name: true
+  import-name: false
 
   ### TypeScript specific ###
   adjacent-overload-signatures: false

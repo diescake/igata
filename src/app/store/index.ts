@@ -1,9 +1,9 @@
-import { todoReducer } from '@/app/reducers/todo'
+import { rootReducer } from '@/app/reducers/todo'
 import { createStore } from 'redux'
 
 export const configureStore = () => {
   // TODO: apply middleware here
-  const store = createStore(todoReducer)
+  const store = createStore(rootReducer)
 
   return store
 }

@@ -1091,6 +1091,11 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
+core-js@^2.4.0:
+  version "2.6.3"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.3.tgz#4b70938bdffdaf64931e66e2db158f0892289c49"
+  integrity sha512-l00tmFFZOBHtYhN4Cz7k32VM7vTn3rE2ANjQDxdEN6zmXZ/xq1jQuutnmHvMG1ZJ7xd72+TA5YpUK8wz3rWsfQ==
+
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
@@ -5839,6 +5844,13 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   integrity sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==
   dependencies:
     minimalistic-assert "^1.0.0"
+
+weak-key@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/weak-key/-/weak-key-1.0.1.tgz#a8f8faa4ba211ceb1e34dbd198da942245213f2b"
+  integrity sha512-HgISuSXCBGIDQf4Hzm7wkVoW6BPLzi1sJPoiiDSxERsbA0Ut8TJVDMbho+Q3RVGyCmW0MHKdcCnNVcPh0iJ0gA==
+  dependencies:
+    core-js "^2.4.0"
 
 webpack-cli@^3.2.1:
   version "3.2.1"
