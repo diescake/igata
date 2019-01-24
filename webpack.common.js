@@ -20,7 +20,7 @@ const common = {
     alias: {
       '@': path.resolve(__dirname, 'src'),
     },
-    extensions: ['.tsx', '.ts', '.jsx', '.js'],
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.scss', '.sass', '.css'],
   },
   module: {
     rules: [
