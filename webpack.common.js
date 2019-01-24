@@ -25,11 +25,26 @@ const common = {
   module: {
     rules: [
       { test: /\.(ts|tsx)$/, use: 'ts-loader', exclude: /node_modules/ },
-      { test: /\.(css|scss|sass)$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
       { test: /\.(json)$/, use: 'json-loader' },
       { test: /\.(png|svg|jpg|gif)$/, use: 'file-loader' },
       { test: /\.(woff|woff2|eot|ttf|otf)$/, use: 'file-loader' },
       { test: /\.(js)$/, use: 'source-map-loader', enforce: 'pre' },
+      {
+        test: /\.(css|scss|sass)$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[local]__[hash:base64:5]',
+              sourceMap: true, // FIXME: Enable on building production only
+            },
+          },
+          'sass-loader',
+        ],
+      },
     ],
   },
   plugins: [

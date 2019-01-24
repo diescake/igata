@@ -17,3 +17,13 @@ declare module '*.txt' {
   const content: string
   export default content
 }
+
+declare module '*.css' {
+  const style: any
+  export default style
+}
+
+declare module '*.scss' {
+  const style: any
+  export default style
+}

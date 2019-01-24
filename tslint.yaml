@@ -131,7 +131,9 @@ rules:
       - ignore-static
 
   no-unnecessary-class: true
-  no-unsafe-any: true
+
+  # NOTE: Disabled no-unsafe-any because imported CSS modules have no type.
+  no-unsafe-any: false
   no-unsafe-finally: true
   no-unused-expression:
     options:
