@@ -5,6 +5,7 @@ import { RootState, Todo } from '@/app/models/Todo'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import * as key from 'weak-key'
+import style from './style.scss'
 
 namespace Example {
   export interface Props {
@@ -51,10 +52,12 @@ class Example extends React.Component<Example.Props, Example.State> {
   render = () => {
     return (
       <div>
-        <button onClick={this.handleClick}>Multiply</button>
+        <button onClick={this.handleClick}>Add Todo</button>
         <ListWrapper>
           {this.props.todos.map((todo: Todo) => (
-            <li key={key(todo)}>{todo.text}</li>
+            <li className={style.list} key={key(todo)}>
+              {todo.text}
+            </li>
           ))}
         </ListWrapper>
         <span>{this.state.value}</span>
