@@ -11,10 +11,18 @@ const loggerOption = {
   diff: true,
 }
 
+const createReduxImmutableStateInvariant = () =>
+  // tslint:disable: no-require-imports
+  process.env.NODE_ENV !== 'production' ? require('redux-immutable-state-invariant').default() : null
+
+const gracefulApplyMiddleware = (...args: any) => {
+  return compose(applyMiddleware(...args.filter((v: any) => v)))
+}
+
 export const configureStore = (history: History) => {
   const store = createStore(
     createRootReducer(history),
-    compose(applyMiddleware(routerMiddleware(history), createLogger(loggerOption)))
+    gracefulApplyMiddleware(createReduxImmutableStateInvariant(), routerMiddleware(history), createLogger(loggerOption))
   )
 
   return store
