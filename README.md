@@ -10,6 +10,7 @@
 - [TypeScript](https://www.typescriptlang.org/)
 - [React](https://reactjs.org/) + [Redux](https://redux.js.org/)
 - [react-router](https://reacttraining.com/react-router/) + [connected-react-router](https://github.com/supasate/connected-react-router)
+- [redux-saga](https://github.com/redux-saga/redux-saga)
 - [axios](https://github.com/axios/axios)
 - [moment](https://momentjs.com/)
 - [Sass](https://sass-lang.com/) as CSS Modules
