@@ -1,28 +1,17 @@
 import { FETCH_TODOS, fetchTodosFailure, fetchTodosSuccess } from '@/app/actions/todo'
-import { put, takeLatest } from 'redux-saga/effects'
+import { RootState } from '@/app/models/Todo'
+import axios, { AxiosResponse } from 'axios'
+import { call, put, takeLatest } from 'redux-saga/effects'
+
+const TODOS_JSON_URL = 'https://raw.githubusercontent.com/diescake/igata/master/data/todos.json'
 
 function* fetchTodos() {
-  // TODO: fetch todos from dummy server.
-  const ok = true
-  const todos = [
-    {
-      done: false,
-      text: 'sleep for 15 hours',
-    },
-    {
-      done: false,
-      text: 'eat nice fried rice',
-    },
-    {
-      done: false,
-      text: 'watch nice animation movie',
-    },
-  ]
+  const res: AxiosResponse<RootState> = yield call(axios.get, TODOS_JSON_URL)
 
-  if (ok) {
-    yield put(fetchTodosSuccess(todos))
+  if (res.data) {
+    yield put(fetchTodosSuccess(res.data.todos))
   } else {
-    yield put(fetchTodosFailure('Generic error'))
+    yield put(fetchTodosFailure(res.statusText))
   }
 }
 

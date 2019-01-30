@@ -126,10 +126,7 @@ rules:
   no-submodule-imports: false
   no-switch-case-fall-through: true
   no-this-assignment: true
-  no-unbound-method:
-    options:
-      - ignore-static
-
+  no-unbound-method: false
   no-unnecessary-class: true
 
   # NOTE: Disabled no-unsafe-any because imported CSS modules have no type.
