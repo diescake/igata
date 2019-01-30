@@ -1,4 +1,4 @@
-import { addTodo, AddTodo } from '@/app/actions/todo'
+import { addTodo, AddTodo, fetchTodos, FetchTodos } from '@/app/actions/todo'
 import { Footer } from '@/app/components/Footer'
 import { ListWrapper } from '@/app/components/ListWrapper'
 import { RootState, Todo } from '@/app/models/Todo'
@@ -13,6 +13,7 @@ namespace Example {
     mag: number
     todos: Todo[]
     addTodo: AddTodo
+    fetchTodos: FetchTodos
   }
   export interface State {
     value: number
@@ -25,6 +26,7 @@ const mapStateToProps = (state: RootState) => ({
 
 const mapDispatchToProps = {
   addTodo,
+  fetchTodos,
 }
 
 class Example extends React.Component<Example.Props, Example.State> {
@@ -40,19 +42,23 @@ class Example extends React.Component<Example.Props, Example.State> {
     defaultValue: 1,
   }
 
-  handleClick = () => {
+  handleAddTodo = () => {
     this.setState({
       value: this.state.value * this.props.mag,
     })
     this.props.addTodo(`My Todo (${Math.random()})`)
   }
 
+  handleFetchTodos = () => {
+    this.props.fetchTodos()
+  }
   multiply = (mag: number) => this.state.value * mag
 
   render = () => {
     return (
       <div>
-        <button onClick={this.handleClick}>Add Todo</button>
+        <button onClick={this.handleAddTodo}>Add Todo</button>
+        <button onClick={this.handleFetchTodos}>Fetch Todos</button>
         <ListWrapper>
           {this.props.todos.map((todo: Todo) => (
             <li className={style.list} key={key(todo)}>

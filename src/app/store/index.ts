@@ -1,8 +1,10 @@
 import createRootReducer from '@/app/reducers/todo'
+import mySaga from '@/app/sagas'
 import { routerMiddleware } from 'connected-react-router'
 import { History } from 'history'
 import { applyMiddleware, compose, createStore } from 'redux'
 import { createLogger } from 'redux-logger'
+import createSagaMiddleware from 'redux-saga'
 
 declare global {
   interface Window {
@@ -27,8 +29,20 @@ const gracefulApplyMiddleware = (...args: any) => {
   return composeEnhancers(applyMiddleware(...args.filter((v: any) => v)))
 }
 
-export const configureStore = (history: History) =>
-  createStore(
+export const configureStore = (history: History) => {
+  const sagaMiddleware = createSagaMiddleware()
+
+  const store = createStore(
     createRootReducer(history),
-    gracefulApplyMiddleware(createReduxImmutableStateInvariant(), routerMiddleware(history), createLogger(loggerOption))
+    gracefulApplyMiddleware(
+      sagaMiddleware,
+      createReduxImmutableStateInvariant(),
+      routerMiddleware(history),
+      createLogger(loggerOption)
+    )
   )
+
+  sagaMiddleware.run(mySaga)
+
+  return store
+}

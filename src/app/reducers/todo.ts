@@ -1,11 +1,13 @@
-import { ADD_TODO } from '@/app/actions/todo'
-import { Todo, TodoAction } from '@/app/models/Todo'
+import { ADD_TODO, FETCH_TODOS, FETCH_TODOS_FAILURE, FETCH_TODOS_SUCCESS } from '@/app/actions/todo'
+import { Todo } from '@/app/models/Todo'
 import { connectRouter } from 'connected-react-router'
 import { History } from 'history'
 import { combineReducers } from 'redux'
 
 const initialState: Todo[] = []
-const todos = (state: Todo[] = initialState, action: TodoAction): Todo[] => {
+
+// HACK: Eliminate this any
+const todos = (state: Todo[] = initialState, action: any): Todo[] => {
   switch (action.type) {
     case ADD_TODO:
       return [
@@ -15,6 +17,14 @@ const todos = (state: Todo[] = initialState, action: TodoAction): Todo[] => {
           text: action.text,
         },
       ]
+    case FETCH_TODOS:
+      // TODO: set fetching status
+      return state
+    case FETCH_TODOS_SUCCESS:
+      return action.todos
+    case FETCH_TODOS_FAILURE:
+      // TODO: set error status
+      return state
     default:
       return state
   }
