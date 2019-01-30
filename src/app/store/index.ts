@@ -27,11 +27,8 @@ const gracefulApplyMiddleware = (...args: any) => {
   return composeEnhancers(applyMiddleware(...args.filter((v: any) => v)))
 }
 
-export const configureStore = (history: History) => {
-  const store = createStore(
+export const configureStore = (history: History) =>
+  createStore(
     createRootReducer(history),
     gracefulApplyMiddleware(createReduxImmutableStateInvariant(), routerMiddleware(history), createLogger(loggerOption))
   )
-
-  return store
-}
