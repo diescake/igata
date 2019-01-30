@@ -1,0 +1,16 @@
+{
+  "todos": [
+    {
+      "done": false,
+      "text": "sleep for 15 hours"
+    },
+    {
+      "done": false,
+      "text": "eat nice fried rice"
+    },
+    {
+      "done": false,
+      "text": "watch nice animation movie"
+    }
+  ]
+}
