@@ -52,7 +52,7 @@
     "license-checker": "^25.0.1",
     "lint-staged": "^8.1.1",
     "node-sass": "^4.11.0",
-    "prettier": "1.16.1",
+    "prettier": "1.16.2",
     "redux-devtools": "^3.5.0",
     "redux-immutable-state-invariant": "^2.1.0",
     "sass-loader": "^7.1.0",
