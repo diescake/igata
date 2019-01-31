@@ -20,12 +20,13 @@ const common = {
     alias: {
       '@': path.resolve(__dirname, 'src'),
     },
-    extensions: ['.tsx', '.ts', '.jsx', '.js', '.scss', '.sass', '.css'],
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.scss', '.sass', '.css', '.yaml', '.yml'],
   },
   module: {
     rules: [
       { test: /\.(ts|tsx)$/, use: 'ts-loader', exclude: /node_modules/ },
       { test: /\.(json)$/, use: 'json-loader' },
+      { test: /\.(yaml|yml)$/, use: ['json-loader', 'yaml-loader'] },
       { test: /\.(png|svg|jpg|gif)$/, use: 'file-loader' },
       { test: /\.(woff|woff2|eot|ttf|otf)$/, use: 'file-loader' },
       { test: /\.(js)$/, use: 'source-map-loader', enforce: 'pre' },

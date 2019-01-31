@@ -2,6 +2,7 @@ import { addTodo, AddTodo, fetchTodos, FetchTodos } from '@/app/actions/todo'
 import { Footer } from '@/app/components/Footer'
 import { ListWrapper } from '@/app/components/ListWrapper'
 import { RootState, Todo } from '@/app/models/Todo'
+import words from '@/assets/strings'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import * as key from 'weak-key'
@@ -57,8 +58,8 @@ class Example extends React.Component<Example.Props, Example.State> {
   render = () => {
     return (
       <div>
-        <button onClick={this.handleAddTodo}>Add Todo</button>
-        <button onClick={this.handleFetchTodos}>Fetch Todos</button>
+        <button onClick={this.handleAddTodo}>{words.example.addTodo}</button>
+        <button onClick={this.handleFetchTodos}>{words.example.fetchTodos}</button>
         <ListWrapper>
           {this.props.todos.map((todo: Todo) => (
             <li className={style.list} key={key(todo)}>

@@ -1,0 +1,10 @@
+example:
+  name: TOP
+  addTodo: TODO を追加
+  fetchTodos: TODO を取得
+sfc:
+  name: sfc
+  hello: こんにちは TypeScript の世界 !!!
+footer:
+  back: 戻る
+  forward: 進む

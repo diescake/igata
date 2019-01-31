@@ -1,0 +1,10 @@
+example:
+  name: TOP
+  addTodo: Add Todo
+  fetchTodos: Fetch Todos
+sfc:
+  name: sfc
+  hello: Hello from TypeScript and framework!!!
+footer:
+  back: Back
+  forward: Forward

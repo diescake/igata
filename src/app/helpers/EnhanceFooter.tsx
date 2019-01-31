@@ -1,3 +1,4 @@
+import words from '@/assets/strings'
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -15,7 +16,7 @@ export const EnhanceFooter = (ComposedComponent: React.ComponentType<Footer.Prop
     render = () => (
       <div>
         <ComposedComponent />
-        <Link to="/">TOP</Link> | <Link to="/sfc">sfc</Link>
+        <Link to="/">{words.example.name}</Link> | <Link to="/sfc">{words.sfc.name}</Link>
       </div>
     )
   }
