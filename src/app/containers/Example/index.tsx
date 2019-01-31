@@ -55,23 +55,21 @@ class Example extends React.Component<Example.Props, Example.State> {
   }
   multiply = (mag: number) => this.state.value * mag
 
-  render = () => {
-    return (
-      <div>
-        <button onClick={this.handleAddTodo}>{words.example.addTodo}</button>
-        <button onClick={this.handleFetchTodos}>{words.example.fetchTodos}</button>
-        <ListWrapper>
-          {this.props.todos.map((todo: Todo) => (
-            <li className={style.list} key={key(todo)}>
-              {todo.text}
-            </li>
-          ))}
-        </ListWrapper>
-        <span>{this.state.value}</span>
-        <Footer />
-      </div>
-    )
-  }
+  render = () => (
+    <div>
+      <button onClick={this.handleAddTodo}>{words.example.addTodo}</button>
+      <button onClick={this.handleFetchTodos}>{words.example.fetchTodos}</button>
+      <ListWrapper>
+        {this.props.todos.map((todo: Todo) => (
+          <li className={style.list} key={key(todo)}>
+            {todo.text}
+          </li>
+        ))}
+      </ListWrapper>
+      <span>{this.state.value}</span>
+      <Footer />
+    </div>
+  )
 }
 
 export default connect(
