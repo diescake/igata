@@ -36,7 +36,7 @@
     "@types/history": "^4.7.2",
     "@types/node": "^10.12.21",
     "@types/react": "^16.8.1",
-    "@types/react-dom": "^16.0.11",
+    "@types/react-dom": "^16.8.0",
     "@types/react-redux": "^7.0.1",
     "@types/react-router": "^4.4.3",
     "@types/react-router-dom": "^4.3.1",
