@@ -75,7 +75,7 @@
     "connected-react-router": "^6.2.2",
     "history": "^4.7.2",
     "moment": "^2.24.0",
-    "react": "^16.8.0",
+    "react": "^16.8.1",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
