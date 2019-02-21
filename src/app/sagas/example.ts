@@ -1,4 +1,4 @@
-import { FETCH_TODOS, fetchTodosFailure, fetchTodosSuccess } from '@/app/actions/todo'
+import { fetchTodosFailure, fetchTodosSuccess, Type } from '@/app/actions/todo'
 import { RootState } from '@/app/models/Todo'
 import axios, { AxiosResponse } from 'axios'
 import { call, put, takeLatest } from 'redux-saga/effects'
@@ -16,5 +16,5 @@ function* fetchTodos() {
 }
 
 export default function*() {
-  yield takeLatest(FETCH_TODOS, fetchTodos)
+  yield takeLatest(Type.FETCH_TODOS, fetchTodos)
 }
