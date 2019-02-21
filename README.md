@@ -3,7 +3,7 @@
 [![CircleCI](https://circleci.com/gh/diescake/igata.svg?style=svg)](https://circleci.com/gh/diescake/igata)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&identifier=165770216)](https://dependabot.com)
 
-`igata(鋳型)` is my boilerplate for Web Frontend. `鋳型` in Japanese means a boilerplate or casting mold.
+`igata(鋳型)` is my boilerplate for Web Frontend. I and my reliable dependabot will continue to maintain it's freshness so far. Then, `鋳型` is a Japanese keyword and that means a boilerplate or casting mold.
 
 ## Technology keywords
 
@@ -26,7 +26,7 @@
 ## Requirement
 
 - Node.js v8.xx
-  - Latest minor revision is recommended
+  - Possibly the latest version is also fine.
 
 ## Npm script
 
