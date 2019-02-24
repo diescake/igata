@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import * as key from 'weak-key'
 import style from './style.scss'
 
-namespace Example {
+namespace TodoApp {
   export interface Props {
     defaultValue: number
     mag: number
@@ -31,15 +31,15 @@ const mapDispatchToProps = {
   fetchTodos,
 }
 
-class Example extends React.Component<Example.Props, Example.State> {
-  constructor(props: Example.Props) {
+class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
+  constructor(props: TodoApp.Props) {
     super(props)
     this.state = {
       value: props.defaultValue,
     }
   }
 
-  static defaultProps: Pick<Example.Props, 'mag' | 'defaultValue'> = {
+  static defaultProps: Pick<TodoApp.Props, 'mag' | 'defaultValue'> = {
     mag: 10,
     defaultValue: 1,
   }
@@ -76,4 +76,4 @@ class Example extends React.Component<Example.Props, Example.State> {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Example)
+)(TodoApp)
