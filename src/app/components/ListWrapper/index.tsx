@@ -8,5 +8,17 @@ export namespace ListWrapper {
 }
 
 export class ListWrapper extends React.Component<ListWrapper.Props, ListWrapper.State> {
-  render = () => <ul>{this.props.children}</ul>
+  render = () => {
+    if (!this.props.children || !React.Children.count(this.props.children)) {
+      return (
+        <ul>
+          <li>
+            <p>No data</p>
+          </li>
+        </ul>
+      )
+    }
+
+    return <ul>{this.props.children}</ul>
+  }
 }

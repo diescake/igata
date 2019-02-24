@@ -139,7 +139,7 @@ rules:
 
   no-use-before-declare: true
   no-var-keyword: true
-  no-void-expression: true
+  no-void-expression: false
   prefer-conditional-expression: true
   prefer-object-spread: false
   radix: true

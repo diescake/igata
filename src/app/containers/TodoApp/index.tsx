@@ -11,8 +11,7 @@ import style from './style.scss'
 
 namespace TodoApp {
   export interface Props {
-    defaultValue: number
-    mag: number
+    exampleValue: number
     todos: Todo[]
     addTodo: AddTodo
     fetchTodos: FetchTodos
@@ -35,31 +34,20 @@ class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
   constructor(props: TodoApp.Props) {
     super(props)
     this.state = {
-      value: props.defaultValue,
+      value: props.exampleValue,
     }
   }
 
-  static defaultProps: Pick<TodoApp.Props, 'mag' | 'defaultValue'> = {
-    mag: 10,
-    defaultValue: 1,
+  static defaultProps: Pick<TodoApp.Props, 'exampleValue'> = {
+    exampleValue: 1,
   }
 
-  handleAddTodo = () => {
-    this.setState({
-      value: this.state.value * this.props.mag,
-    })
-    this.props.addTodo(`My Todo (${Math.random()})`)
-  }
-
-  handleFetchTodos = () => {
-    this.props.fetchTodos()
-  }
-  multiply = (mag: number) => this.state.value * mag
+  handleAddTodo = () => this.props.addTodo(`My Todo (${Math.random()})`)
+  handleFetchTodos = () => this.props.fetchTodos()
 
   render = () => (
     <div>
-      <button onClick={this.handleAddTodo}>{words.todoApp.addTodo}</button>
-      <button onClick={this.handleFetchTodos}>{words.todoApp.fetchTodos}</button>
+      <h1>Todo Application</h1>
       <ListWrapper>
         {this.props.todos.map((todo: Todo) => (
           <li className={style.list} key={key(todo)}>
@@ -67,7 +55,8 @@ class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
           </li>
         ))}
       </ListWrapper>
-      <span>{this.state.value}</span>
+      <button onClick={this.handleFetchTodos}>{words.todoApp.fetchTodos}</button>
+      <button onClick={this.handleAddTodo}>{words.todoApp.addTodo}</button>
       <Footer />
     </div>
   )
