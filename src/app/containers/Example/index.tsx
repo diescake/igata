@@ -1,7 +1,8 @@
 import { addTodo, AddTodo, fetchTodos, FetchTodos } from '@/app/actions/todo'
 import { Footer } from '@/app/components/Footer'
 import { ListWrapper } from '@/app/components/ListWrapper'
-import { RootState, Todo } from '@/app/models/Todo'
+import { RootState } from '@/app/models'
+import { Todo } from '@/app/models/Todo'
 import words from '@/assets/strings'
 import * as React from 'react'
 import { connect } from 'react-redux'
@@ -22,7 +23,7 @@ namespace Example {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  todos: state.todos,
+  todos: state.todoState.todos,
 })
 
 const mapDispatchToProps = {

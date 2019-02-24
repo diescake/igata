@@ -13,6 +13,6 @@ export interface Todo {
   text: string
 }
 
-export interface RootState {
+export interface TodoState {
   todos: Todo[]
 }

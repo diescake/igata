@@ -1,4 +1,4 @@
-import createRootReducer from '@/app/reducers/todo'
+import { createRootReducer } from '@/app/reducers'
 import mySaga from '@/app/sagas'
 import { routerMiddleware } from 'connected-react-router'
 import { History } from 'history'
