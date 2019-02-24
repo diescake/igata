@@ -1,4 +1,4 @@
-example:
+todoApp:
   name: TOP
   addTodo: TODO を追加
   fetchTodos: TODO を取得

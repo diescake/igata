@@ -1,6 +1,6 @@
 import { all, fork } from 'redux-saga/effects'
-import example from './example'
+import todoApp from './todoApp'
 
 export default function* rootSaga() {
-  yield all([fork(example)])
+  yield all([fork(todoApp)])
 }

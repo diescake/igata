@@ -1,4 +1,4 @@
-example:
+todoApp:
   name: TOP
   addTodo: Add Todo
   fetchTodos: Fetch Todos

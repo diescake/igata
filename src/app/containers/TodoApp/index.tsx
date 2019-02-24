@@ -58,8 +58,8 @@ class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
 
   render = () => (
     <div>
-      <button onClick={this.handleAddTodo}>{words.example.addTodo}</button>
-      <button onClick={this.handleFetchTodos}>{words.example.fetchTodos}</button>
+      <button onClick={this.handleAddTodo}>{words.todoApp.addTodo}</button>
+      <button onClick={this.handleFetchTodos}>{words.todoApp.fetchTodos}</button>
       <ListWrapper>
         {this.props.todos.map((todo: Todo) => (
           <li className={style.list} key={key(todo)}>

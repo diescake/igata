@@ -1,4 +1,3 @@
-import SFC from '@/app/components/SFC'
 import TodoApp from '@/app/containers/TodoApp'
 import { configureStore } from '@/app/store'
 import { ConnectedRouter } from 'connected-react-router'
@@ -24,7 +23,6 @@ ReactDOM.render(
     <ConnectedRouter history={history}>
       <Switch>
         <Route exact path="/" component={TodoApp} />
-        <Route exact path="/sfc" component={SFC} />
         <Redirect to="/" />
       </Switch>
     </ConnectedRouter>
