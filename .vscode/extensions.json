@@ -8,6 +8,7 @@
     "mikestead.dotenv", // DotEnv
     "esbenp.prettier-vscode", // Prettier
     "eg2.tslint", // TSLint
+    "shinnn.stylelint", // StyleLint
     "ms-vsliveshare.vsliveshare", // VS Live Share (Server)
     "ms-vsliveshare.vsliveshare-pack" // VS Live Share Extension Pack (Client)
   ],

@@ -11,6 +11,7 @@
     "build": "webpack --config webpack.prod.js",
     "format": "prettier --write './**/*.{md,js,jsx,ts,tsx,json,yml,yaml,css,sass,scss,html}'",
     "lint": "tslint --format verbose --fix --project tsconfig.json './src/**/*.{js,jsx,ts,tsx}'",
+    "style": "stylelint --fix './src/**/*.{scss}'",
     "test": "echo 'not implemented'",
     "deploy": "echo 'not implemented'",
     "license": "license-checker --production --summary"
@@ -24,6 +25,10 @@
     "*.{js,jsx,ts,tsx}": [
       "yarn lint",
       "yarn test",
+      "git add"
+    ],
+    "*.{scss}": [
+      "yarn style",
       "git add"
     ],
     "*.{md,json,yml,yaml,css,sass,scss,html}": [
@@ -59,6 +64,9 @@
     "sass-loader": "^7.1.0",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
+    "stylelint": "^9.10.1",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-scss": "^3.5.4",
     "ts-loader": "^5.3.3",
     "tslint": "^5.13.0",
     "tslint-config-airbnb": "^5.11.1",
