@@ -1,6 +1,4 @@
-import words from '@/assets/strings'
 import * as React from 'react'
-import { Link } from 'react-router-dom'
 
 export namespace Footer {
   export interface Props {}
@@ -16,7 +14,6 @@ export const EnhanceFooter = (ComposedComponent: React.ComponentType<Footer.Prop
     render = () => (
       <div>
         <ComposedComponent />
-        <Link to="/">{words.todoApp.name}</Link>
       </div>
     )
   }

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import style from './style.scss'
 
 export namespace ListWrapper {
   export interface Props {
@@ -12,7 +13,7 @@ export class ListWrapper extends React.Component<ListWrapper.Props, ListWrapper.
     if (!this.props.children || !React.Children.count(this.props.children)) {
       return (
         <ul>
-          <li>
+          <li className={style.list}>
             <p>No data</p>
           </li>
         </ul>
