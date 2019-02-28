@@ -3,7 +3,7 @@
 [![CircleCI](https://circleci.com/gh/diescake/igata.svg?style=svg)](https://circleci.com/gh/diescake/igata)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&identifier=165770216)](https://dependabot.com)
 
-`igata(鋳型)` is my boilerplate for Web Frontend. I and my lovely dependabot will continue to maintain it's freshness as much as possible. Then, `鋳型` is a Japanese keyword and that means a boilerplate or casting mold.
+`igata(鋳型)` is my boilerplate for Web Frontend. I and my lovely dependabot will continue to maintain its freshness as much as possible. Then, `鋳型` is a Japanese keyword and that means a boilerplate or casting mold.
 
 ## Technology keywords
 
