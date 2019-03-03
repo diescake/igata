@@ -16,7 +16,7 @@ namespace TodoApp {
     fetchTodos: FetchTodos
   }
   export interface State {
-    value: number
+    currentText: string
   }
 }
 
@@ -33,7 +33,7 @@ class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
   constructor(props: TodoApp.Props) {
     super(props)
     this.state = {
-      value: 2,
+      currentText: '',
     }
   }
 
@@ -41,8 +41,31 @@ class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
     title: 'Todo Application',
   }
 
-  handleAddTodo = () => this.props.addTodo(`My Todo (${Math.random()})`)
+  addTodo = () => {
+    if (!this.state.currentText) {
+      return
+    }
+    this.props.addTodo(this.state.currentText)
+    this.setState({
+      currentText: '',
+    })
+  }
+
   handleFetchTodos = () => this.props.fetchTodos()
+
+  handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    this.setState({
+      currentText: e.target.value,
+    })
+
+  handleAddTodoClick = () => this.addTodo()
+
+  handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key !== 'Enter') {
+      return
+    }
+    this.addTodo()
+  }
 
   render = () => (
     <div className={style.container}>
@@ -51,8 +74,14 @@ class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
         <button onClick={this.handleFetchTodos}>{words.todoApp.fetchTodos}</button>
       </div>
       <div>
-        <input type="text" />
-        <button onClick={this.handleAddTodo}>{words.todoApp.addTodo}</button>
+        <input
+          type="text"
+          onChange={this.handleInputChange}
+          onKeyPress={this.handleKeyPress}
+          placeholder="Enter your todo"
+          value={this.state.currentText}
+        />
+        <button onClick={this.handleAddTodoClick}>{words.todoApp.addTodo}</button>
       </div>
       <ListWrapper>
         {this.props.todos.map((todo: Todo) => (
