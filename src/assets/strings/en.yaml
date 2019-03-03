@@ -1,6 +1,7 @@
 todoApp:
   name: TOP
   addTodo: ⇧
+  placeholder: Enter your todo
   fetchTodos: Fetch Todos
   login: login
   logout: logout

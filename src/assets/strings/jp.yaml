@@ -1,6 +1,7 @@
 todoApp:
   name: TOP
   addTodo: ⇧
+  placeholder: TODO を入力してください
   fetchTodos: TODO を取得
   login: ログイン
   logout: ログアウト

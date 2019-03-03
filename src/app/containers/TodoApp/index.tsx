@@ -114,7 +114,7 @@ class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
             type="text"
             onChange={this.handleInputChange}
             onKeyPress={this.handleKeyPress}
-            placeholder="Enter your todo"
+            placeholder={words.todoApp.placeholder}
             value={this.state.currentText}
           />
           <button className={style.addButton} onClick={this.handleAddTodoClick}>
