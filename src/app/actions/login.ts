@@ -1,5 +1,9 @@
 import { createAction } from 'redux-actions'
 
+export interface LoginResponse {
+  token: string
+}
+
 // action types
 export enum Type {
   LOGIN = 'LOGIN',
@@ -16,6 +20,6 @@ export type Logout = () => void
 
 // action creators
 export const login = createAction(Type.LOGIN)
-export const loginSuccess = createAction(Type.LOGIN_SUCCESS)
-export const loginFailure = createAction(Type.LOGIN_FAILURE)
+export const loginSuccess = createAction<LoginResponse>(Type.LOGIN_SUCCESS)
+export const loginFailure = createAction<string>(Type.LOGIN_FAILURE)
 export const logout = createAction(Type.LOGOUT)
