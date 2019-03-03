@@ -1,4 +1,5 @@
 import * as React from 'react'
+import style from './style.scss'
 
 export namespace ListWrapper {
   export interface Props {
@@ -13,6 +14,6 @@ export class ListWrapper extends React.Component<ListWrapper.Props, ListWrapper.
       return null
     }
 
-    return <ul>{this.props.children}</ul>
+    return <ul className={style.listWrapperUl}>{this.props.children}</ul>
   }
 }

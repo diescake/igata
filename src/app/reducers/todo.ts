@@ -3,7 +3,16 @@ import { TodoState } from '@/app/models/Todo'
 import { handleActions } from 'redux-actions'
 
 const defaultState: TodoState = {
-  todos: [],
+  todos: [
+    {
+      text: 'Cook and eat my graceful fried rice',
+      done: false,
+    },
+    {
+      text: 'Sleep for 15 hours',
+      done: true,
+    },
+  ],
 }
 
 // TODO: Can we eliminate any ?

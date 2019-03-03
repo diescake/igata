@@ -67,6 +67,11 @@ class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
     this.addTodo()
   }
 
+  handleCheckBoxClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // TODO: update the checked state to store
+    console.log(e.target.value)
+  }
+
   render = () => (
     <div className={style.container}>
       <h1 className={style.header}>{this.props.title}</h1>
@@ -91,7 +96,8 @@ class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
       <ListWrapper>
         {this.props.todos.map((todo: Todo) => (
           <li className={style.list} key={key(todo)}>
-            {todo.text}
+            <input className={style.checkbox} type="checkbox" onChange={this.handleCheckBoxClick} checked={todo.done} />
+            <label className={style.todoText}>{todo.text}</label>
           </li>
         ))}
       </ListWrapper>
