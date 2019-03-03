@@ -15,7 +15,7 @@ const defaultState: TodoState = {
   ],
 }
 
-// TODO: Can we eliminate any ?
+// TODO: Can we eliminate "any"s ?
 export const todoReducer = handleActions(
   {
     [Type.ADD_TODO]: (state: TodoState, action: any) => ({

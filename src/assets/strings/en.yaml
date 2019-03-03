@@ -2,6 +2,9 @@ todoApp:
   name: TOP
   addTodo: ⇧
   fetchTodos: Fetch Todos
+  login: login
+  logout: logout
+  loginMessage: Already logged-in
 sfc:
   name: sfc
   hello: Hello from TypeScript and framework!!!

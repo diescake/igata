@@ -2,6 +2,9 @@ todoApp:
   name: TOP
   addTodo: ⇧
   fetchTodos: TODO を取得
+  login: ログイン
+  logout: ログアウト
+  loginMessage: ログイン中です
 sfc:
   name: sfc
   hello: こんにちは TypeScript の世界 !!!
