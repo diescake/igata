@@ -20,7 +20,7 @@
 - [yarn](https://yarnpkg.com)
 - [webpack](https://webpack.js.org/)
 - [CircleCI](https://circleci.com/)
-- [DEPENDABOT](https://dependabot.com/)
+- [Dependabot](https://dependabot.com/)
 - [Visual Studio Code](https://code.visualstudio.com/) (Recommended)
 
 ## Requirement
