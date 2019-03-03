@@ -11,6 +11,7 @@ import { Redirect, Route, Switch } from 'react-router'
 import '@/assets/css/reboot.css'
 
 import '@/assets/css/common.scss'
+import { Authenticated } from './app/helpers/Authenticated'
 
 if (process.env.NODE_ENV !== 'production') {
   console.info('Build with development mode')
@@ -23,8 +24,10 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/" component={TodoApp} />
         <Route exact path="/login" component={Login} />
+        <Authenticated>
+          <Route exact path="/" component={TodoApp} />
+        </Authenticated>
         <Redirect to="/" />
       </Switch>
     </ConnectedRouter>

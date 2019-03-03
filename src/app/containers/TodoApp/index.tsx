@@ -1,4 +1,4 @@
-import { login, Login, logout, Logout } from '@/app/actions/login'
+import { logout, Logout } from '@/app/actions/login'
 import { addTodo, AddTodo, fetchTodos, FetchTodos } from '@/app/actions/todo'
 import { ListWrapper } from '@/app/components/ListWrapper'
 import { RootState } from '@/app/models'
@@ -16,7 +16,6 @@ namespace TodoApp {
     token: string
     addTodo: AddTodo
     fetchTodos: FetchTodos
-    login: Login
     logout: Logout
   }
   export interface State {
@@ -32,7 +31,6 @@ const mapStateToProps = (state: RootState) => ({
 const mapDispatchToProps = {
   addTodo,
   fetchTodos,
-  login,
   logout,
 }
 
@@ -59,7 +57,6 @@ class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
   }
 
   handleFetchTodos = () => this.props.fetchTodos()
-  handleLogin = () => this.props.login('example_id', 'example_password')
   handleLogout = () => this.props.logout()
 
   handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -100,9 +97,6 @@ class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
           {tokenHeader(this.props.token)}
           <button className={style.fetchButton} onClick={this.handleFetchTodos}>
             {words.todoApp.fetchTodos}
-          </button>
-          <button className={style.loginButton} onClick={this.handleLogin}>
-            {words.todoApp.login}
           </button>
           <button className={style.logoutButton} onClick={this.handleLogout}>
             {words.todoApp.logout}

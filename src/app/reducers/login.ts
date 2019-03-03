@@ -19,6 +19,7 @@ export const loginReducer = handleActions(
     [Type.LOGIN_FAILURE]: (state: LoginState, action: any) => state,
     [Type.LOGOUT]: (state: LoginState, action: any) => {
       localStorage.removeItem('token')
+      location.href = '/login'
 
       return {
         token: '',
