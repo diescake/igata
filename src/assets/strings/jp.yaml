@@ -1,6 +1,6 @@
 todoApp:
   name: TOP
-  addTodo: 追加
+  addTodo: ⇧
   fetchTodos: TODO を取得
 sfc:
   name: sfc

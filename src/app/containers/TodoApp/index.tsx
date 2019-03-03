@@ -71,17 +71,22 @@ class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
     <div className={style.container}>
       <h1 className={style.header}>{this.props.title}</h1>
       <div>
-        <button onClick={this.handleFetchTodos}>{words.todoApp.fetchTodos}</button>
+        <button className={style.fetchButton} onClick={this.handleFetchTodos}>
+          {words.todoApp.fetchTodos}
+        </button>
       </div>
       <div>
         <input
+          className={style.inputTodo}
           type="text"
           onChange={this.handleInputChange}
           onKeyPress={this.handleKeyPress}
           placeholder="Enter your todo"
           value={this.state.currentText}
         />
-        <button onClick={this.handleAddTodoClick}>{words.todoApp.addTodo}</button>
+        <button className={style.addButton} onClick={this.handleAddTodoClick}>
+          {words.todoApp.addTodo}
+        </button>
       </div>
       <ListWrapper>
         {this.props.todos.map((todo: Todo) => (
