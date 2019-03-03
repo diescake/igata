@@ -1,5 +1,4 @@
 import { addTodo, AddTodo, fetchTodos, FetchTodos } from '@/app/actions/todo'
-import { Footer } from '@/app/components/Footer'
 import { ListWrapper } from '@/app/components/ListWrapper'
 import { RootState } from '@/app/models'
 import { Todo } from '@/app/models/Todo'
@@ -11,7 +10,7 @@ import style from './style.scss'
 
 namespace TodoApp {
   export interface Props {
-    exampleValue: number
+    title: string
     todos: Todo[]
     addTodo: AddTodo
     fetchTodos: FetchTodos
@@ -34,12 +33,12 @@ class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
   constructor(props: TodoApp.Props) {
     super(props)
     this.state = {
-      value: props.exampleValue,
+      value: 2,
     }
   }
 
-  static defaultProps: Pick<TodoApp.Props, 'exampleValue'> = {
-    exampleValue: 1,
+  static defaultProps: Pick<TodoApp.Props, 'title'> = {
+    title: 'Todo Application',
   }
 
   handleAddTodo = () => this.props.addTodo(`My Todo (${Math.random()})`)
@@ -47,9 +46,14 @@ class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
 
   render = () => (
     <div className={style.container}>
-      <h1 className={style.header}>Todo Application</h1>
-      <button onClick={this.handleFetchTodos}>{words.todoApp.fetchTodos}</button>
-      <button onClick={this.handleAddTodo}>{words.todoApp.addTodo}</button>
+      <h1 className={style.header}>{this.props.title}</h1>
+      <div>
+        <button onClick={this.handleFetchTodos}>{words.todoApp.fetchTodos}</button>
+      </div>
+      <div>
+        <input type="text" />
+        <button onClick={this.handleAddTodo}>{words.todoApp.addTodo}</button>
+      </div>
       <ListWrapper>
         {this.props.todos.map((todo: Todo) => (
           <li className={style.list} key={key(todo)}>
@@ -57,7 +61,6 @@ class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
           </li>
         ))}
       </ListWrapper>
-      <Footer />
     </div>
   )
 }

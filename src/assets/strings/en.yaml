@@ -1,6 +1,6 @@
 todoApp:
   name: TOP
-  addTodo: Add Todo
+  addTodo: Add
   fetchTodos: Fetch Todos
 sfc:
   name: sfc
