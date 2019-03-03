@@ -1,3 +1,8 @@
+login:
+  title: ログイン
+  login: ログイン
+  idPlaceholder: ID
+  passwordPlaceholder: パスワード
 todoApp:
   name: TOP
   addTodo: ⇧
