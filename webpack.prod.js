@@ -9,7 +9,7 @@ const extConfig = {
 }
 
 const extPlugins = [
-  new CleanWebpackPlugin(param.distPath),
+  new CleanWebpackPlugin({ verbose: true }),
   new DotEnv({
     path: path.resolve(__dirname, `${param.dotEnvPath}/production.env`),
     safe: false,
