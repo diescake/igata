@@ -5,23 +5,46 @@
 
 `igata(鋳型)` is my boilerplate for Web Frontend. I and my lovely dependabot will continue to maintain its freshness as much as possible. Then, `鋳型` is a Japanese keyword and that means a boilerplate or casting mold.
 
-## Technology keywords
+## Technology stacks
+
+### Languages
 
 - [TypeScript](https://www.typescriptlang.org/)
+
+### Single page applications
+
 - [React](https://reactjs.org/) + [Redux](https://redux.js.org/)
 - [react-router](https://reacttraining.com/react-router/) + [connected-react-router](https://github.com/supasate/connected-react-router)
+- [redux-actions](https://github.com/redux-utilities/redux-actions)
 - [redux-saga](https://github.com/redux-saga/redux-saga)
-- [axios](https://github.com/axios/axios)
-- [moment](https://momentjs.com/)
+
+### Styles
+
 - [Sass](https://sass-lang.com/) as CSS Modules
 - [Reboot.css](https://raw.githubusercontent.com/twbs/bootstrap/v4-dev/dist/css/bootstrap-reboot.css)
+
+### Tests
+
 - [TSLint](https://palantir.github.io/tslint/) + [Prettier](https://prettier.io/)
-- [Jest](https://jestjs.io/)
+- [stylelint](https://stylelint.io/)
+- [Jest](https://jestjs.io/) **(not yet)**
+
+### Buildings
+
 - [yarn](https://yarnpkg.com)
 - [webpack](https://webpack.js.org/)
+
+### DevOps
+
+- [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
 - [CircleCI](https://circleci.com/)
 - [Dependabot](https://dependabot.com/)
 - [Visual Studio Code](https://code.visualstudio.com/) (Recommended)
+
+### Libraries
+
+- [axios](https://github.com/axios/axios)
+- [moment](https://momentjs.com/)
 
 ## Requirement
 
@@ -32,13 +55,14 @@
 
 ```sh
 $ yarn          # install dependencies
-$ yarn start    # build and launch development server
-$ yarn build    # build and generate production codes
+$ yarn start    # build and launch the development server
+$ yarn build    # build and generate the production codes
 $ yarn format   # format and save any codes with prettier
 $ yarn lint     # lint source codes after format automatically
-$ yarn test     # run test code using Jest framework
-$ yarn deploy   # deploy production codes to GitHub.io
-$ yarn license  # display OSS license summary of bundled as production codes
+$ yarn style    # lint css and alt-css after format automatically
+$ yarn test     # run the test code using Jest framework
+$ yarn deploy   # deploy the production codes to GitHub.io
+$ yarn license  # display OSS licenses summary of bundled as production codes
 ```
 
 ## Note
