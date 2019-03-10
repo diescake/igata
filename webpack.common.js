@@ -55,7 +55,9 @@ const common = {
       templateParameters: { title: param.title },
       template: './src/assets/html/template.html',
     }),
-    new ForkTsCheckerWebpackPlugin(),
+    new ForkTsCheckerWebpackPlugin({
+      tslint: true,
+    }),
   ],
 }
 
