@@ -41,7 +41,7 @@
 - [Dependabot](https://dependabot.com/)
 - [Visual Studio Code](https://code.visualstudio.com/) (Recommended)
 
-### Libraries
+### Others
 
 - [axios](https://github.com/axios/axios)
 - [moment](https://momentjs.com/)
