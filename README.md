@@ -1,3 +1,5 @@
+<img src="./data/logo.png">
+
 # igata
 
 [![CircleCI](https://circleci.com/gh/diescake/igata.svg?style=svg)](https://circleci.com/gh/diescake/igata)
