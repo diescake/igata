@@ -1,6 +1,8 @@
-<img src="./data/logo.png">
-
 # igata
+
+<p align="left">
+  <img src="./data/logo.png" alt="logo" width="400">
+</p>
 
 [![CircleCI](https://circleci.com/gh/diescake/igata.svg?style=svg)](https://circleci.com/gh/diescake/igata)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&identifier=165770216)](https://dependabot.com)
