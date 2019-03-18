@@ -84,7 +84,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "connected-react-router": "^6.3.1",
-    "history": "^4.7.2",
+    "history": "^4.9.0",
     "moment": "^2.24.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
