@@ -45,7 +45,7 @@
     "@types/react-redux": "7.0.5",
     "@types/react-router": "^4.4.5",
     "@types/react-router-dom": "^4.3.1",
-    "@types/redux-actions": "^2.3.2",
+    "@types/redux-actions": "^2.6.0",
     "@types/redux-logger": "^3.0.7",
     "@types/redux-saga": "^0.10.5",
     "@types/webpack": "^4.4.26",
