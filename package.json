@@ -83,7 +83,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "connected-react-router": "^6.3.1",
+    "connected-react-router": "^6.4.0",
     "history": "^4.9.0",
     "moment": "^2.24.0",
     "react": "^16.8.6",
