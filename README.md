@@ -9,6 +9,10 @@
 
 `igata(鋳型)` is my boilerplate for Web Frontend. I and my lovely dependabot will continue to maintain its freshness as much as possible. Then, `鋳型` is a Japanese keyword and that means a boilerplate or casting mold.
 
+## DEMO
+
+- https://igata-diescake.netlify.com
+
 ## How to use
 
 Just fork me.😊
