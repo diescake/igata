@@ -59,7 +59,7 @@
     "json-loader": "^0.5.7",
     "license-checker": "^25.0.1",
     "lint-staged": "^8.1.5",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.12.0",
     "prettier": "1.17.0",
     "redux-devtools": "^3.5.0",
     "redux-immutable-state-invariant": "^2.1.0",
