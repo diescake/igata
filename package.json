@@ -48,7 +48,7 @@
     "@types/redux-actions": "^2.6.0",
     "@types/redux-logger": "^3.0.7",
     "@types/redux-saga": "^0.10.5",
-    "@types/webpack": "^4.4.30",
+    "@types/webpack": "^4.4.31",
     "clean-webpack-plugin": "^2.0.1",
     "css-loader": "^2.1.1",
     "dotenv-webpack": "^1.7.0",
