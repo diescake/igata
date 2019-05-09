@@ -13,6 +13,7 @@
     "lint": "tslint --format verbose --fix --project tsconfig.json './src/**/*.{js,jsx,ts,tsx}'",
     "style": "stylelint --fix './src/**/*.{scss}'",
     "test": "echo 'not implemented'",
+    "deploy": "echo 'Not necessary for Netlify'",
     "license": "license-checker --production --summary"
   },
   "husky": {
