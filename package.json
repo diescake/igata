@@ -59,7 +59,7 @@
     "husky": "^2.3.0",
     "json-loader": "^0.5.7",
     "license-checker": "^25.0.1",
-    "lint-staged": "^8.1.6",
+    "lint-staged": "^8.1.7",
     "node-sass": "^4.12.0",
     "prettier": "1.17.1",
     "redux-devtools": "^3.5.0",
