@@ -1,30 +1,30 @@
-import { Type } from '@/app/actions/login'
+import { LoginAction, Type } from '@/app/actions/login'
 import { LoginState } from '@/app/models/Login'
-import { handleActions } from 'redux-actions'
+import { Reducer } from 'redux'
 
 const defaultState: LoginState = {
   token: localStorage.getItem('token') || '',
 }
 
-// TODO: Can we eliminate "any"s ?
-export const loginReducer = handleActions(
-  {
-    [Type.LOGIN]: (state: LoginState, action: any) => state,
-    [Type.LOGIN_SUCCESS]: (state: LoginState, action: any) => {
+export const loginReducer: Reducer<LoginState, LoginAction> = (state: LoginState = defaultState, action: LoginAction) => {
+  switch (action.type) {
+    case Type.LOGIN:
+      return state
+
+    case Type.LOGIN_SUCCESS:
       const { token } = action.payload
       localStorage.setItem('token', token)
-
       return { token }
-    },
-    [Type.LOGIN_FAILURE]: (state: LoginState, action: any) => state,
-    [Type.LOGOUT]: (state: LoginState, action: any) => {
+
+    case Type.LOGIN_FAILURE:
+      return state
+
+    case Type.LOGOUT:
       localStorage.removeItem('token')
       location.href = '/login'
+      return { token: '' }
 
-      return {
-        token: '',
-      }
-    },
-  },
-  defaultState
-)
+    default:
+      return state
+  }
+}

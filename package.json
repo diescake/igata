@@ -45,7 +45,6 @@
     "@types/react-redux": "7.0.9",
     "@types/react-router": "^5.0.1",
     "@types/react-router-dom": "^4.3.3",
-    "@types/redux-actions": "^2.6.0",
     "@types/redux-logger": "^3.0.7",
     "@types/redux-saga": "^0.10.5",
     "@types/webpack": "^4.4.32",
@@ -93,7 +92,6 @@
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "redux": "^4.0.1",
-    "redux-actions": "^2.6.5",
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.0.2",
     "weak-key": "^1.0.1"

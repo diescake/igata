@@ -1,6 +1,6 @@
-import { Type } from '@/app/actions/todo'
+import { TodoAction, Type } from '@/app/actions/todo'
 import { TodoState } from '@/app/models/Todo'
-import { handleActions } from 'redux-actions'
+import { Reducer } from 'redux'
 
 const defaultState: TodoState = {
   todos: [
@@ -15,21 +15,29 @@ const defaultState: TodoState = {
   ],
 }
 
-// TODO: Can we eliminate "any"s ?
-export const todoReducer = handleActions(
-  {
-    [Type.ADD_TODO]: (state: TodoState, action: any) => ({
-      todos: [
-        ...state.todos,
-        {
-          done: false,
-          text: action.payload,
-        },
-      ],
-    }),
-    [Type.FETCH_TODOS]: (state: TodoState, action: any) => state,
-    [Type.FETCH_TODOS_SUCCESS]: (state: TodoState, action: any) => ({ todos: action.payload }),
-    [Type.FETCH_TODOS_FAILURE]: (state: TodoState, action: any) => state,
-  },
-  defaultState
-)
+export const todoReducer: Reducer<TodoState, TodoAction> = (state: TodoState = defaultState, action: TodoAction): TodoState => {
+  switch (action.type) {
+    case Type.ADD_TODO:
+      return {
+        todos: [
+          ...state.todos,
+          {
+            done: false,
+            text: action.payload.text,
+          },
+        ],
+      }
+
+    case Type.FETCH_TODOS:
+      return state
+
+    case Type.FETCH_TODOS_SUCCESS:
+      return { todos: action.payload.todos }
+
+    case Type.FETCH_TODOS_FAILURE:
+      return state
+
+    default:
+      return state
+  }
+}
