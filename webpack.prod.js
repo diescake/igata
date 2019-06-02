@@ -1,6 +1,6 @@
 const path = require('path')
 
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const DotEnv = require('dotenv-webpack')
 const { param, common } = require('./webpack.common.js')
