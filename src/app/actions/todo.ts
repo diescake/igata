@@ -1,5 +1,4 @@
 import { Todo } from '@/app/models/Todo'
-import { createAction } from 'redux-actions'
 
 // action types
 export const Type = {
@@ -16,7 +15,21 @@ export type fetchTodosSuccess = (todos: Todo[]) => void
 export type fetchTodosFailure = (errorCode: string) => void
 
 // action creators
-export const addTodo = createAction<string>(Type.ADD_TODO)
-export const fetchTodos = createAction(Type.FETCH_TODOS)
-export const fetchTodosSuccess = createAction<Todo[]>(Type.FETCH_TODOS_SUCCESS)
-export const fetchTodosFailure = createAction<string>(Type.FETCH_TODOS_FAILURE)
+export const addTodo = (text: string) => ({
+  type: Type.ADD_TODO,
+  payload: { text },
+})
+
+export const fetchTodos = () => ({
+  type: Type.FETCH_TODOS,
+})
+
+export const fetchTodosSuccess = (todos: Todo[]) => ({
+  type: Type.FETCH_TODOS_SUCCESS,
+  payload: { todos },
+})
+
+export const fetchTodosFailure = (errorText: string) => ({
+  type: Type.FETCH_TODOS_FAILURE,
+  payload: { errorText },
+})
