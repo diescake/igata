@@ -198,7 +198,7 @@ rules:
   interface-over-type-literal: false
   jsdoc-format: false
   match-default-export-name: false
-  newline-before-return: true
+  newline-before-return: false
   new-parens: false
   no-angle-bracket-type-assertion: false
   no-boolean-literal-compare: true
