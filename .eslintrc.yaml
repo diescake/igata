@@ -1,3 +1,6 @@
+# ESLint rules
+# https://eslint.org/docs/rules/
+
 env:
   browser: true
   es6: true
@@ -5,7 +8,10 @@ env:
   jest/globals: true
 
 extends:
+  # eslint-config-airbnb
+  # https://github.com/airbnb/javascript
   - airbnb
+
   - plugin:@typescript-eslint/recommended
   - plugin:import/errors
   - plugin:import/warnings
@@ -15,17 +21,14 @@ extends:
   - prettier/react
 
 globals:
-  Atomics: readonly
-  SharedArrayBuffer: readonly
-  '__DEV__': true
+  __DEV__: true
 
 parser: '@typescript-eslint/parser'
-
 parserOptions:
   ecmaFeatures:
     jsx: true
-  project: './tsconfig.json'
-  sourceType: 'module'
+  project: ./tsconfig.json
+  sourceType: module
 
 plugins:
   - '@typescript-eslint'
@@ -41,12 +44,12 @@ settings:
   import/resolver:
     node:
       extensions:
-        - '.js'
-        - '.jsx'
-        - '.ts'
-        - '.tsx'
+        - .js
+        - .jsx
+        - .ts
+        - .tsx
   react:
-    version: 'detect'
+    version: detect
 
 rules:
   # eslint official
@@ -57,7 +60,6 @@ rules:
   # @typescript-eslint
   '@typescript-eslint/explicit-function-return-type': off
   '@typescript-eslint/explicit-member-accessibility': off
-  indent: off
   '@typescript-eslint/indent': off
   '@typescript-eslint/no-unnecessary-type-assertion': error
   '@typescript-eslint/no-unused-vars':
@@ -98,12 +100,20 @@ rules:
 
   import/prefer-default-export: off
 
-  # prettier
+  # Prettier Options
+  # https://prettier.io/docs/en/options.html
+
   prettier/prettier:
     - error
-    - bracketSpacing: true
-      printWidth: 80
-      semi: true
+    - printWidth: 130
+      tabWidth: 2
+      semi: false
       singleQuote: true
-      trailingComma: all
-      useTabs: false
+      jsxSingleQuote: false
+      trailingComma: es5
+      bracketSpacing: true
+      jsxBracketSameLine: false
+      arrowParens: avoid
+      proseWrap: preserve
+      htmlWhitespaceSensitivity: css
+      endOfLine: auto
