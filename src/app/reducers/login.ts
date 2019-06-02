@@ -1,12 +1,12 @@
-import { Type } from '@/app/actions/login'
+import { LoginAction, Type } from '@/app/actions/login'
 import { LoginState } from '@/app/models/Login'
+import { Reducer } from 'redux'
 
 const defaultState: LoginState = {
   token: localStorage.getItem('token') || '',
 }
 
-// TODO: Can we eliminate "any"s ?
-export const loginReducer = (state: LoginState = defaultState, action: any) => {
+export const loginReducer: Reducer<LoginState, LoginAction> = (state: LoginState = defaultState, action: LoginAction) => {
   switch (action.type) {
     case Type.LOGIN:
       return state

@@ -1,5 +1,6 @@
-import { Type } from '@/app/actions/todo'
+import { TodoAction, Type } from '@/app/actions/todo'
 import { TodoState } from '@/app/models/Todo'
+import { Reducer } from 'redux'
 
 const defaultState: TodoState = {
   todos: [
@@ -14,8 +15,7 @@ const defaultState: TodoState = {
   ],
 }
 
-// TODO: Can we eliminate "any"s ?
-export const todoReducer = (state: TodoState = defaultState, action: any) => {
+export const todoReducer: Reducer<TodoState, TodoAction> = (state: TodoState = defaultState, action: TodoAction): TodoState => {
   switch (action.type) {
     case Type.ADD_TODO:
       return {
