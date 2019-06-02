@@ -2,11 +2,11 @@ import { Todo } from '@/app/models/Todo'
 import { createAction } from 'redux-actions'
 
 // action types
-export enum Type {
-  ADD_TODO = 'ADD_TODO',
-  FETCH_TODOS = 'FETCH_TODOS',
-  FETCH_TODOS_SUCCESS = 'FETCH_TODOS_SUCCESS',
-  FETCH_TODOS_FAILURE = 'FETCH_TODOS_FAILURE',
+export const Type = {
+  ADD_TODO: 'TODOS/ADD_TODO',
+  FETCH_TODOS: 'TODOS/FETCH_TODOS',
+  FETCH_TODOS_SUCCESS: 'TODOS/FETCH_TODOS_SUCCESS',
+  FETCH_TODOS_FAILURE: 'TODOS/FETCH_TODOS_FAILURE',
 }
 
 // action creator interfaces

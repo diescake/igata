@@ -5,11 +5,11 @@ export interface LoginResponse {
 }
 
 // action types
-export enum Type {
-  LOGIN = 'LOGIN',
-  LOGIN_SUCCESS = 'LOGIN_SUCCESS',
-  LOGIN_FAILURE = 'LOGIN_FAILURE',
-  LOGOUT = 'LOGOUT',
+export const Type = {
+  LOGIN: 'LOGIN/LOGIN',
+  LOGIN_SUCCESS: 'LOGIN/LOGIN_SUCCESS',
+  LOGIN_FAILURE: 'LOGIN/LOGIN_FAILURE',
+  LOGOUT: 'LOGIN/LOGOUT',
 }
 
 // action creator interfaces
