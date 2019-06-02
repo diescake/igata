@@ -26,7 +26,6 @@ const common = {
   module: {
     rules: [
       { test: /\.(ts|tsx)$/, use: 'ts-loader', exclude: /node_modules/ },
-      { test: /\.(json)$/, use: 'json-loader' },
       { test: /\.(yaml|yml)$/, use: ['json-loader', 'yaml-loader'] },
       { test: /\.(png|svg|jpg|gif)$/, use: 'file-loader' },
       { test: /\.(woff|woff2|eot|ttf|otf)$/, use: 'file-loader' },
