@@ -1,12 +1,10 @@
 import * as React from 'react'
 
-export namespace Footer {
-  export interface Props {}
-  export interface State {}
-}
+interface Props {}
+interface State {}
 
-export const EnhanceFooter = (ComposedComponent: React.ComponentType<Footer.Props>) =>
-  class extends React.Component<Footer.Props, Footer.State> {
+export const EnhanceFooter = (ComposedComponent: React.ComponentType<Props>) =>
+  class extends React.Component<Props, State> {
     render = () => (
       <div>
         <ComposedComponent />
