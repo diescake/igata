@@ -2,12 +2,10 @@ import { EnhanceFooter } from '@/app/helpers/EnhanceFooter'
 import words from '@/assets/strings'
 import * as React from 'react'
 
-namespace FooterHOC {
-  export interface Props {}
-  export interface State {}
-}
+interface Props {}
+interface State {}
 
-class FooterHOC extends React.Component<FooterHOC.Props, FooterHOC.State> {
+class FooterHOC extends React.Component<Props, State> {
   handleBackClick = () => {
     // eslint-disable-next-line
     alert(words.footer.back)

@@ -9,18 +9,17 @@ import { connect } from 'react-redux'
 import * as key from 'weak-key'
 import style from './style.scss'
 
-namespace TodoApp {
-  export interface Props {
-    title: string
-    todos: Todo[]
-    token: string
-    addTodo: AddTodo
-    fetchTodos: FetchTodos
-    logout: Logout
-  }
-  export interface State {
-    currentText: string
-  }
+interface Props {
+  title: string
+  todos: Todo[]
+  token: string
+  addTodo: AddTodo
+  fetchTodos: FetchTodos
+  logout: Logout
+}
+
+interface State {
+  currentText: string
 }
 
 const mapStateToProps = (state: RootState) => ({
@@ -34,12 +33,12 @@ const mapDispatchToProps = {
   logout,
 }
 
-class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
-  static defaultProps: Pick<TodoApp.Props, 'title'> = {
+class TodoApp extends React.Component<Props, State> {
+  static defaultProps: Pick<Props, 'title'> = {
     title: 'Todo Application',
   }
 
-  constructor(props: TodoApp.Props) {
+  constructor(props: Props) {
     super(props)
     this.state = {
       currentText: '',

@@ -6,16 +6,14 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import style from './style.scss'
 
-namespace LoginApp {
-  export interface Props {
-    token: string
-    login: Login
-    history: History
-  }
-  export interface State {
-    currentId: string
-    currentPassword: string
-  }
+interface Props {
+  token: string
+  login: Login
+  history: History
+}
+interface State {
+  currentId: string
+  currentPassword: string
 }
 
 const mapStateToProps = (state: RootState) => ({
@@ -26,8 +24,8 @@ const mapDispatchToProps = {
   login,
 }
 
-class LoginApp extends React.Component<LoginApp.Props, LoginApp.State> {
-  constructor(props: LoginApp.Props) {
+class LoginApp extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props)
     this.state = {
       currentId: '',
@@ -35,7 +33,7 @@ class LoginApp extends React.Component<LoginApp.Props, LoginApp.State> {
     }
   }
 
-  static getDerivedStateFromProps = (nextProps: LoginApp.Props) => {
+  static getDerivedStateFromProps = (nextProps: Props) => {
     if (nextProps.token) {
       nextProps.history.push('/')
     }

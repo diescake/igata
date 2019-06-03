@@ -1,14 +1,12 @@
 import * as React from 'react'
 import { Redirect } from 'react-router'
 
-export namespace Authenticated {
-  export interface Props {
-    children: React.ReactNode
-  }
-  export interface State {}
+interface Props {
+  children: React.ReactNode
 }
+interface State {}
 
-export class Authenticated extends React.Component<Authenticated.Props, Authenticated.State> {
+export class Authenticated extends React.Component<Props, State> {
   render = () => {
     if (!localStorage.getItem('token')) {
       return <Redirect to="/login" />

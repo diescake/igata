@@ -1,14 +1,12 @@
 import * as React from 'react'
 import style from './style.scss'
 
-export namespace ListWrapper {
-  export interface Props {
-    children: React.ReactNode
-  }
-  export interface State {}
+interface Props {
+  children: React.ReactNode
 }
+interface State {}
 
-export class ListWrapper extends React.Component<ListWrapper.Props, ListWrapper.State> {
+export class ListWrapper extends React.Component<Props, State> {
   render = () => {
     if (!this.props.children || !React.Children.count(this.props.children)) {
       return null

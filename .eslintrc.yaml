@@ -62,10 +62,6 @@ settings:
     version: detect
 
 rules:
-  # TEMPORARY FOR COMMIT
-  import/export: off
-  no-redeclare: 0
-
   # eslint official
   no-console: 'off'
   require-yield: error
