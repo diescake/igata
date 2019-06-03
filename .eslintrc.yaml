@@ -1,3 +1,4 @@
+---
 # ESLint rules
 # https://eslint.org/docs/rules/
 
@@ -12,9 +13,18 @@ extends:
   # https://github.com/airbnb/javascript
   - airbnb
 
+  # TypeScript ESLint plugin recommended rules
+  # https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/src/configs/recommended.json
   - plugin:@typescript-eslint/recommended
+
+  # eslint-plugin-import error rules
+  # https://github.com/benmosher/eslint-plugin-import/blob/master/config/errors.js
   - plugin:import/errors
+
+  # eslint-plugin-import warning rules
+  # https://github.com/benmosher/eslint-plugin-import/blob/master/config/warnings.js
   - plugin:import/warnings
+
   - plugin:prettier/recommended
   - prettier
   - prettier/@typescript-eslint
@@ -52,9 +62,12 @@ settings:
     version: detect
 
 rules:
+  # TEMPORARY FOR COMMIT
+  import/export: off
+  no-redeclare: 0
+
   # eslint official
-  newline-before-return: error
-  no-console: warn
+  no-console: 'off'
   require-yield: error
 
   # @typescript-eslint
@@ -62,6 +75,9 @@ rules:
   '@typescript-eslint/explicit-member-accessibility': off
   '@typescript-eslint/indent': off
   '@typescript-eslint/no-unnecessary-type-assertion': error
+  '@typescript-eslint/no-empty-interface': off
+  '@typescript-eslint/no-explicit-any': off
+  '@typescript-eslint/no-namespace': off
   '@typescript-eslint/no-unused-vars':
     - error
     - varsIgnorePattern: '[Rr]eact'
@@ -85,13 +101,15 @@ rules:
   react/jsx-uses-vars: error
   react/prop-types: off
   react/prefer-stateless-function: off
+  react/destructuring-assignment: off
 
   # react hooks
   react-hooks/rules-of-hooks: error
 
   # import
   import/extensions:
-    - error
+    # disable because the importing with the webpack alias is treated as an undeclared module
+    - off
     - always
     - js: never
       jsx: never
@@ -99,10 +117,14 @@ rules:
       tsx: never
 
   import/prefer-default-export: off
+  import/no-unresolved: off
+
+  # jsx-a11y
+  jsx-a11y/label-has-for: off
+  jsx-a11y/label-has-associated-control: off
 
   # Prettier Options
   # https://prettier.io/docs/en/options.html
-
   prettier/prettier:
     - error
     - printWidth: 130

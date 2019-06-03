@@ -11,17 +11,18 @@ export const loginReducer: Reducer<LoginState, LoginAction> = (state: LoginState
     case Type.LOGIN:
       return state
 
-    case Type.LOGIN_SUCCESS:
+    case Type.LOGIN_SUCCESS: {
       const { token } = action.payload
       localStorage.setItem('token', token)
       return { token }
+    }
 
     case Type.LOGIN_FAILURE:
       return state
 
     case Type.LOGOUT:
       localStorage.removeItem('token')
-      location.href = '/login'
+      window.location.href = '/login'
       return { token: '' }
 
     default:

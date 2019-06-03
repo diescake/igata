@@ -35,15 +35,15 @@ const mapDispatchToProps = {
 }
 
 class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
+  static defaultProps: Pick<TodoApp.Props, 'title'> = {
+    title: 'Todo Application',
+  }
+
   constructor(props: TodoApp.Props) {
     super(props)
     this.state = {
       currentText: '',
     }
-  }
-
-  static defaultProps: Pick<TodoApp.Props, 'title'> = {
-    title: 'Todo Application',
   }
 
   addTodo = () => {
@@ -57,6 +57,7 @@ class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
   }
 
   handleFetchTodos = () => this.props.fetchTodos()
+
   handleLogout = () => this.props.logout()
 
   handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -95,10 +96,10 @@ class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
         <h1 className={style.header}>{this.props.title}</h1>
         <div>
           {tokenHeader(this.props.token)}
-          <button className={style.fetchButton} onClick={this.handleFetchTodos}>
+          <button type="button" className={style.fetchButton} onClick={this.handleFetchTodos}>
             {words.todoApp.fetchTodos}
           </button>
-          <button className={style.logoutButton} onClick={this.handleLogout}>
+          <button type="button" className={style.logoutButton} onClick={this.handleLogout}>
             {words.todoApp.logout}
           </button>
         </div>
@@ -111,7 +112,7 @@ class TodoApp extends React.Component<TodoApp.Props, TodoApp.State> {
             placeholder={words.todoApp.placeholder}
             value={this.state.currentText}
           />
-          <button className={style.addButton} onClick={this.handleAddTodoClick}>
+          <button type="button" className={style.addButton} onClick={this.handleAddTodoClick}>
             {words.todoApp.addTodo}
           </button>
         </div>

@@ -8,6 +8,6 @@ import { todoReducer } from './todo'
 export const createRootReducer = (history: History) =>
   combineReducers<RootState>({
     router: connectRouter(history),
-    todoState: todoReducer as any,
-    loginState: loginReducer as any,
+    todoState: todoReducer,
+    loginState: loginReducer,
   })

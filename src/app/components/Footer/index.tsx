@@ -9,17 +9,23 @@ namespace FooterHOC {
 
 class FooterHOC extends React.Component<FooterHOC.Props, FooterHOC.State> {
   handleBackClick = () => {
+    // eslint-disable-next-line
     alert(words.footer.back)
   }
 
   handleForwardClick = () => {
+    // eslint-disable-next-line
     alert(words.footer.forward)
   }
 
   render = () => (
     <>
-      <button onClick={this.handleBackClick}>{words.footer.back}</button>
-      <button onClick={this.handleForwardClick}>{words.footer.forward}</button>
+      <button type="button" onClick={this.handleBackClick}>
+        {words.footer.back}
+      </button>
+      <button type="button" onClick={this.handleForwardClick}>
+        {words.footer.forward}
+      </button>
     </>
   )
 }

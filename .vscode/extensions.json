@@ -7,7 +7,7 @@
     "msjsdiag.debugger-for-chrome", // Debugger for Chrome
     "mikestead.dotenv", // DotEnv
     "esbenp.prettier-vscode", // Prettier
-    "eg2.tslint", // TSLint
+    "dbaeumer.vscode-eslint", // ESLint
     "shinnn.stylelint", // StyleLint
     "ms-vsliveshare.vsliveshare", // VS Live Share (Server)
     "ms-vsliveshare.vsliveshare-pack" // VS Live Share Extension Pack (Client)

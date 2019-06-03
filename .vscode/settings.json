@@ -4,9 +4,9 @@
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
 
-  // tslint
-  "tslint.enable": true,
-  "tslint.autoFixOnSave": true,
-  "tslint.jsEnable": true,
-  "tslint.packageManager": "yarn"
+  // eslint
+  "eslint.enable": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.packageManager": "yarn",
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "yaml"]
 }

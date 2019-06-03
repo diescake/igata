@@ -7,10 +7,6 @@ export namespace Footer {
 
 export const EnhanceFooter = (ComposedComponent: React.ComponentType<Footer.Props>) =>
   class extends React.Component<Footer.Props, Footer.State> {
-    constructor(props: Footer.Props) {
-      super(props)
-    }
-
     render = () => (
       <div>
         <ComposedComponent />

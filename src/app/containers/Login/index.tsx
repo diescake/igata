@@ -85,7 +85,7 @@ class LoginApp extends React.Component<LoginApp.Props, LoginApp.State> {
           value={this.state.currentPassword}
         />
       </div>
-      <button className={style.loginButton} onClick={this.handleLogin}>
+      <button type="button" className={style.loginButton} onClick={this.handleLogin}>
         {words.todoApp.login}
       </button>
     </div>

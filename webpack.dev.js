@@ -1,8 +1,10 @@
+/* eslint-disable */
 const webpack = require('webpack')
 const path = require('path')
 
 const DotEnv = require('dotenv-webpack')
 const { param, common } = require('./webpack.common.js')
+/* eslint-enable */
 
 const extConfig = {
   mode: 'development',

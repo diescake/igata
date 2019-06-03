@@ -1,7 +1,7 @@
+/* eslint-disable */
 const path = require('path')
-
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+/* eslint-enable */
 
 const param = {
   distPath: './public',
@@ -53,9 +53,6 @@ const common = {
       favicon: param.faviconPath,
       templateParameters: { title: param.title },
       template: './src/assets/html/template.html',
-    }),
-    new ForkTsCheckerWebpackPlugin({
-      tslint: true,
     }),
   ],
 }

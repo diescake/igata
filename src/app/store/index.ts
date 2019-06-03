@@ -8,7 +8,7 @@ import createSagaMiddleware from 'redux-saga'
 
 declare global {
   interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: any
   }
 }
 
@@ -20,10 +20,11 @@ const loggerOption = {
 }
 
 const createReduxImmutableStateInvariant = () =>
-  // tslint:disable: no-require-imports
+  // eslint-disable-next-line
   process.env.NODE_ENV !== 'production' ? require('redux-immutable-state-invariant').default() : null
 
 const gracefulApplyMiddleware = (...args: any) => {
+  // eslint-disable-next-line
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
   return composeEnhancers(applyMiddleware(...args.filter((v: any) => v)))
