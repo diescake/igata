@@ -6,7 +6,7 @@ import { Todo } from '@/app/models/Todo'
 import words from '@/assets/strings'
 import * as React from 'react'
 import { connect } from 'react-redux'
-import * as key from 'weak-key'
+import key from 'weak-key'
 import style from './style.scss'
 
 interface Props {
