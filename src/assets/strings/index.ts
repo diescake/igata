@@ -1,4 +1,4 @@
 // import word from './jp.yaml'
-import word from './en.yaml'
+import word from '@/assets/strings/en.yaml'
 
 export default word

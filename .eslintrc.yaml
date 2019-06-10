@@ -115,6 +115,8 @@ rules:
   import/prefer-default-export: off
   import/no-unresolved: off
 
+  import/no-extraneous-dependencies: ['error', { devDependencies: ['**/test/**'] }]
+
   # jsx-a11y
   jsx-a11y/label-has-for: off
   jsx-a11y/label-has-associated-control: off

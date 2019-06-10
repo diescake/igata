@@ -4,7 +4,7 @@ import words from '@/assets/strings'
 import { History } from 'history'
 import * as React from 'react'
 import { connect } from 'react-redux'
-import style from './style.scss'
+import style from '@/app/containers/Login/style.scss'
 
 interface Props {
   token: string

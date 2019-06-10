@@ -14,7 +14,9 @@
     "style": "stylelint --fix './src/**/*.{scss}'",
     "test": "jest",
     "deploy": "echo 'Not necessary for Netlify'",
-    "license": "license-checker --production --summary"
+    "license": "license-checker --production --summary",
+    "storybook": "start-storybook -c ./src/test/storybook/config -p 6006",
+    "build-storybook": "build-storybook -c ./src/test/storybook/config"
   },
   "husky": {
     "hooks": {
@@ -36,6 +38,13 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@storybook/addon-actions": "^5.1.3",
+    "@storybook/addon-info": "^5.1.3",
+    "@storybook/addon-links": "^5.1.3",
+    "@storybook/addons": "^5.1.3",
+    "@storybook/cli": "^5.1.3",
+    "@storybook/react": "^5.1.3",
     "@types/axios": "^0.14.0",
     "@types/history": "^4.7.2",
     "@types/jest": "^24.0.13",
@@ -47,9 +56,12 @@
     "@types/react-router-dom": "^4.3.3",
     "@types/redux-logger": "^3.0.7",
     "@types/redux-saga": "^0.10.5",
+    "@types/storybook__react": "^4.0.2",
     "@types/webpack": "^4.4.32",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.9.0",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.3",
     "css-loader": "^2.1.1",
@@ -74,6 +86,7 @@
     "lint-staged": "^8.2.0",
     "node-sass": "^4.12.0",
     "prettier": "1.18.2",
+    "react-docgen-typescript-loader": "^3.1.0",
     "redux-devtools": "^3.5.0",
     "redux-immutable-state-invariant": "^2.1.0",
     "sass-loader": "^7.1.0",
