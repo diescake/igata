@@ -12,19 +12,18 @@
     "format": "prettier --write './**/*.{md,js,jsx,ts,tsx,json,yml,yaml,css,sass,scss,html}'",
     "lint": "eslint --fix './src/**/*.{js,jsx,ts,tsx}'",
     "style": "stylelint --fix './src/**/*.{scss}'",
-    "test": "echo 'not implemented'",
+    "test": "jest",
     "deploy": "echo 'Not necessary for Netlify'",
     "license": "license-checker --production --summary"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && yarn test"
     }
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "yarn lint",
-      "yarn test",
       "git add"
     ],
     "*.{scss}": [
@@ -83,6 +82,7 @@
     "stylelint": "^10.1.0",
     "stylelint-config-standard": "^18.3.0",
     "stylelint-scss": "^3.7.0",
+    "ts-jest": "^24.0.2",
     "ts-loader": "^6.0.1",
     "typescript": "^3.5.1",
     "webpack": "^4.33.0",
