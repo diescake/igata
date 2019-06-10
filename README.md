@@ -38,7 +38,7 @@ Just fork me.😊
 
 - [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/)
 - [stylelint](https://stylelint.io/)
-- [Jest](https://jestjs.io/) **(not yet)**
+- [Jest](https://jestjs.io/)
 
 ### Buildings
 

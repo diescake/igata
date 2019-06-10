@@ -18,13 +18,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "yarn test && lint-staged"
     }
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "yarn lint",
-      "yarn test",
       "git add"
     ],
     "*.{scss}": [
@@ -35,15 +34,6 @@
       "yarn format",
       "git add"
     ]
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(ts?|tsx?)$",
-    "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1"
-    }
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
