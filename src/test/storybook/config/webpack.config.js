@@ -5,7 +5,7 @@ module.exports = ({ config }) => {
   config.module.rules.push(
     {
       test: /\.(ts|tsx)$/,
-      use: ['awesome-typescript-loader', 'react-docgen-typescript-loader'],
+      use: ['ts-loader', 'react-docgen-typescript-loader'],
     },
     { test: /\.(yaml|yml)$/, use: ['json-loader', 'yaml-loader'] }
   )
