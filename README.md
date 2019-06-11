@@ -1,7 +1,7 @@
 # igata
 
 <p align="left">
-  <img src="./data/logo.png" alt="logo" width="400">
+  <img src="./data/igata_kawaii.png" alt="logo" width="400">
 </p>
 
 [![CircleCI](https://circleci.com/gh/diescake/igata.svg?style=svg)](https://circleci.com/gh/diescake/igata)
