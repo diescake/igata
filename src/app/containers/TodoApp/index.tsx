@@ -10,16 +10,16 @@ import key from 'weak-key'
 import style from './style.scss'
 
 interface Props {
-  title: string
-  todos: Todo[]
-  token: string
-  addTodo: AddTodo
-  fetchTodos: FetchTodos
-  logout: Logout
+  readonly title: string
+  readonly todos: Todo[]
+  readonly token: string
+  readonly addTodo: AddTodo
+  readonly fetchTodos: FetchTodos
+  readonly logout: Logout
 }
 
 interface State {
-  currentText: string
+  readonly currentText: string
 }
 
 const mapStateToProps = (state: RootState) => ({

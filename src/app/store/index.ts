@@ -8,7 +8,7 @@ import createSagaMiddleware from 'redux-saga'
 
 declare global {
   interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: any
+    readonly __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: any
   }
 }
 

@@ -1,8 +1,8 @@
 export interface Todo {
-  done: boolean
-  text: string
+  readonly done: boolean
+  readonly text: string
 }
 
 export interface TodoState {
-  todos: Todo[]
+  readonly todos: Todo[]
 }

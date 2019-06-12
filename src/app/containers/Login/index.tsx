@@ -7,13 +7,13 @@ import { connect } from 'react-redux'
 import style from './style.scss'
 
 interface Props {
-  token: string
-  login: Login
-  history: History
+  readonly token: string
+  readonly login: Login
+  readonly history: History
 }
 interface State {
-  currentId: string
-  currentPassword: string
+  readonly currentId: string
+  readonly currentPassword: string
 }
 
 const mapStateToProps = (state: RootState) => ({
