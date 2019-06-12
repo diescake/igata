@@ -37,9 +37,10 @@ const common = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              modules: {
+                localIdentName: '[local]__[hash:base64:5]',
+              },
               importLoaders: 1,
-              localIdentName: '[local]__[hash:base64:5]',
               sourceMap: true, // FIXME: Enable on building production only
             },
           },
