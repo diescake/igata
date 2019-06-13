@@ -1,4 +1,9 @@
-// import word from './jp.yaml'
-import word from './en.yaml'
+import ja from './ja.yaml'
+import en from './en.yaml'
 
-export default word
+const locales = { ja, en }
+type LocaleKey = keyof typeof locales
+
+const language = (window.navigator.languages.find((lang: string) => lang in locales) || 'ja') as LocaleKey
+
+export default locales[language]
