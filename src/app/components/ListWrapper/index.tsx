@@ -2,7 +2,7 @@ import * as React from 'react'
 import style from './style.scss'
 
 interface Props {
-  children?: React.ReactNode
+  readonly children?: React.ReactNode
 }
 
 export const ListWrapper = (props: Props) => {

@@ -1,5 +1,5 @@
 export interface LoginResponse {
-  token: string
+  readonly token: string
 }
 
 // action types

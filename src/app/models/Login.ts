@@ -1,3 +1,3 @@
 export interface LoginState {
-  token: string
+  readonly token: string
 }
