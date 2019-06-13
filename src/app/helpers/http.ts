@@ -73,18 +73,18 @@ const internalPut = (url: string, token: string, body: object) =>
     .catch((error: AxiosError) => ({ error }))
 
 export function* get(url: string, isAuth: boolean = true, params: object = {}) {
-  return internalGet(url, isAuth ? yield getToken() : '', params)
+  return yield internalGet(url, isAuth ? yield getToken() : '', params)
 }
 
 export function* post(url: string, isAuth: boolean = true, body: object = {}) {
-  return internalPost(url, isAuth ? yield getToken() : '', body)
+  return yield internalPost(url, isAuth ? yield getToken() : '', body)
 }
 
 // NOTE: 'delete' is reserved
 export function* del(url: string, isAuth: boolean = true, data: object = {}) {
-  return internalDelete(url, isAuth ? yield getToken() : '', data)
+  return yield internalDelete(url, isAuth ? yield getToken() : '', data)
 }
 
 export function* put(url: string, isAuth: boolean = true, data: object = {}) {
-  return internalPut(url, isAuth ? yield getToken() : '', data)
+  return yield internalPut(url, isAuth ? yield getToken() : '', data)
 }
