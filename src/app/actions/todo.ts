@@ -2,11 +2,11 @@ import { Todo } from '@/app/models/Todo'
 
 // action types
 export const Type = {
-  ADD_TODO: 'TODOS/ADD_TODO' as const,
-  FETCH_TODOS: 'TODOS/FETCH_TODOS' as const,
-  FETCH_TODOS_SUCCESS: 'TODOS/FETCH_TODOS_SUCCESS' as const,
-  FETCH_TODOS_FAILURE: 'TODOS/FETCH_TODOS_FAILURE' as const,
-}
+  ADD_TODO: 'TODOS/ADD_TODO',
+  FETCH_TODOS: 'TODOS/FETCH_TODOS',
+  FETCH_TODOS_SUCCESS: 'TODOS/FETCH_TODOS_SUCCESS',
+  FETCH_TODOS_FAILURE: 'TODOS/FETCH_TODOS_FAILURE',
+} as const
 
 // action creator interfaces
 export type AddTodo = (text: string) => void

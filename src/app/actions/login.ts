@@ -4,11 +4,11 @@ export interface LoginResponse {
 
 // action types
 export const Type = {
-  LOGIN: 'LOGIN/LOGIN' as const,
-  LOGIN_SUCCESS: 'LOGIN/LOGIN_SUCCESS' as const,
-  LOGIN_FAILURE: 'LOGIN/LOGIN_FAILURE' as const,
-  LOGOUT: 'LOGIN/LOGOUT' as const,
-}
+  LOGIN: 'LOGIN/LOGIN',
+  LOGIN_SUCCESS: 'LOGIN/LOGIN_SUCCESS',
+  LOGIN_FAILURE: 'LOGIN/LOGIN_FAILURE',
+  LOGOUT: 'LOGIN/LOGOUT',
+} as const
 
 // action creator interfaces
 export type Login = (id: string, password: string) => void
