@@ -7,11 +7,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { Redirect, Route, Switch } from 'react-router'
+import { Authenticated } from './app/helpers/Authenticated'
 
 import '@/assets/css/reboot.css'
-
 import '@/assets/css/common.scss'
-import { Authenticated } from './app/helpers/Authenticated'
 
 if (process.env.NODE_ENV !== 'production') {
   console.info('Build with development mode')
