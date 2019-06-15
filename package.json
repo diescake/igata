@@ -11,7 +11,7 @@
     "build": "webpack --config webpack.prod.js",
     "format": "prettier --write './**/*.{md,js,jsx,ts,tsx,json,yml,yaml,css,sass,scss,html}'",
     "lint": "eslint --fix './src/**/*.{js,jsx,ts,tsx}'",
-    "style": "stylelint --fix './src/**/*.{scss}'",
+    "style": "stylelint --fix './src/**/*.scss'",
     "test": "jest",
     "deploy": "echo 'Not necessary for Netlify'",
     "license": "license-checker --production --summary",
@@ -28,7 +28,7 @@
       "yarn lint",
       "git add"
     ],
-    "*.{scss}": [
+    "*.{sass,scss}": [
       "yarn style",
       "git add"
     ],
