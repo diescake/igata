@@ -1,5 +1,5 @@
 import * as React from 'react'
-import style from './style.scss'
+import style from '@/app/components/ListWrapper/style.scss'
 
 interface Props {
   readonly children?: React.ReactNode

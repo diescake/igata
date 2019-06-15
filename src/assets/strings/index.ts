@@ -1,5 +1,5 @@
-import ja from './ja.yaml'
-import en from './en.yaml'
+import ja from '@/assets/strings/ja.yaml'
+import en from '@/assets/strings/en.yaml'
 
 const locales = { ja, en }
 type LocaleKey = keyof typeof locales

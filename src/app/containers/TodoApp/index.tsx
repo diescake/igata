@@ -7,7 +7,7 @@ import words from '@/assets/strings'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import key from 'weak-key'
-import style from './style.scss'
+import style from '@/app/containers/TodoApp/style.scss'
 import dayjs from 'dayjs'
 
 interface Props {

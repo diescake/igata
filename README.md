@@ -45,6 +45,7 @@ Please fork or hard copy me.😊
 - [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/)
 - [stylelint](https://stylelint.io/)
 - [Jest](https://jestjs.io/)
+- [StoryBook](https://storybook.js.org/)
 
 ### Buildings
 
@@ -67,15 +68,17 @@ Please fork or hard copy me.😊
 ## Npm scripts
 
 ```sh
-$ yarn          # install dependencies
-$ yarn start    # build and launch a development server
-$ yarn build    # build and generate the production codes
-$ yarn format   # format and save any codes with prettier
-$ yarn lint     # lint source codes after format automatically
-$ yarn style    # lint css and alt-css after format automatically
-$ yarn test     # run the test code using Jest framework
-$ yarn deploy   # deploy the production codes but currently not used
-$ yarn license  # display summary of OSS licenses which are bundled in production codes
+$ yarn                  # install dependencies
+$ yarn start            # build and launch a development server
+$ yarn build            # build and generate the production codes
+$ yarn format           # format and save any codes with prettier
+$ yarn lint             # lint source codes after format automatically
+$ yarn style            # lint css and alt-css after format automatically
+$ yarn test             # run the test code using Jest framework
+$ yarn deploy           # deploy the production codes but currently not used
+$ yarn license          # display summary of OSS licenses which are bundled in production codes
+$ yarn storybook        # run the UI component test code using StoryBook
+$ yarn build-storybook  # generate the UI component docs using StoryBook
 ```
 
 ## Note
