@@ -4,6 +4,7 @@ login:
   idPlaceholder: ID
   passwordPlaceholder: Password
 todoApp:
+  title: Todo Application
   name: TOP
   addTodo: ⇧
   placeholder: Enter your todo

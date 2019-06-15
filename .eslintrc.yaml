@@ -64,6 +64,7 @@ settings:
 rules:
   # eslint official
   no-console: 'off'
+  no-shadow: 'off'
   require-yield: error
 
   # @typescript-eslint

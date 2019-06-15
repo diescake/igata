@@ -4,6 +4,7 @@ login:
   idPlaceholder: ID
   passwordPlaceholder: パスワード
 todoApp:
+  title: Todo アプリ
   name: TOP
   addTodo: ⇧
   placeholder: TODO を入力してください

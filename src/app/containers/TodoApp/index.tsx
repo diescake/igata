@@ -1,29 +1,30 @@
+import React, { useState, FC } from 'react'
+import { connect } from 'react-redux'
+import key from 'weak-key'
+import dayjs from 'dayjs'
+
 import { logout, Logout } from '@/app/actions/login'
 import { addTodo, AddTodo, fetchTodos, FetchTodos } from '@/app/actions/todo'
 import { ListWrapper } from '@/app/components/ListWrapper'
 import { RootState } from '@/app/models'
 import { Todo } from '@/app/models/Todo'
 import words from '@/assets/strings'
-import React from 'react'
-import { connect } from 'react-redux'
-import key from 'weak-key'
 import style from '@/app/containers/TodoApp/style.scss'
-import dayjs from 'dayjs'
 
-interface Props {
-  readonly title: string
+interface StateProps {
   readonly todos: Todo[]
   readonly token: string
+}
+
+interface DispatchProps {
   readonly addTodo: AddTodo
   readonly fetchTodos: FetchTodos
   readonly logout: Logout
 }
 
-interface State {
-  readonly currentText: string
-}
+type TodoAppProps = StateProps & DispatchProps
 
-const mapStateToProps = (state: RootState) => ({
+const mapStateToProps = (state: RootState): StateProps => ({
   todos: state.todoState.todos,
   token: state.loginState.token,
 })
@@ -34,106 +35,87 @@ const mapDispatchToProps = {
   logout,
 }
 
-class TodoApp extends React.Component<Props, State> {
-  static defaultProps: Pick<Props, 'title'> = {
-    title: 'Todo Application',
-  }
+const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
+  const [text, setText] = useState<string>('')
 
-  constructor(props: Props) {
-    super(props)
-    this.state = {
-      currentText: '',
-    }
-  }
-
-  addTodo = () => {
-    if (!this.state.currentText) {
+  const addTodo = () => {
+    if (!text) {
       return
     }
-    this.props.addTodo(this.state.currentText)
-    this.setState({
-      currentText: '',
-    })
+    props.addTodo(text)
+    setText('')
   }
 
-  handleFetchTodos = () => this.props.fetchTodos()
+  const handleFetchTodos = () => props.fetchTodos()
+  const handleLogout = () => props.logout()
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value)
+  const handleAddTodoClick = () => addTodo()
 
-  handleLogout = () => this.props.logout()
-
-  handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    this.setState({
-      currentText: e.target.value,
-    })
-
-  handleAddTodoClick = () => this.addTodo()
-
-  handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key !== 'Enter') {
       return
     }
-    this.addTodo()
+    addTodo()
   }
 
-  handleCheckBoxClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCheckBoxClick = (e: React.ChangeEvent<HTMLInputElement>) => {
     // TODO: update the checked state to store
     console.log(e.target.value)
   }
 
-  render = () => {
-    const tokenHeader = (token: string) => (
-      <p>
-        {token && (
-          <>
-            <b>{`${words.todoApp.loginMessage}: `}</b>
-            {token}
-          </>
-        )}
-      </p>
-    )
+  const tokenHeader = (token: string) => (
+    <p>
+      {token && (
+        <>
+          <b>{`${words.todoApp.loginMessage}: `}</b>
+          {token}
+        </>
+      )}
+    </p>
+  )
 
-    const currentTimeHeader = () => (
-      <p>
-        <b>{`${words.todoApp.dateMessage}: ${dayjs().format('YYYY-MM-DD hh:mm:ss')}`}</b>
-      </p>
-    )
+  const currentTimeHeader = () => (
+    <p>
+      <b>{`${words.todoApp.dateMessage}: ${dayjs().format('YYYY-MM-DD hh:mm:ss')}`}</b>
+    </p>
+  )
 
-    return (
-      <div className={style.container}>
-        <h1 className={style.header}>{this.props.title}</h1>
-        <div>
-          {currentTimeHeader()}
-          {tokenHeader(this.props.token)}
-          <button type="button" className={style.fetchButton} onClick={this.handleFetchTodos}>
-            {words.todoApp.fetchTodos}
-          </button>
-          <button type="button" className={style.logoutButton} onClick={this.handleLogout}>
-            {words.todoApp.logout}
-          </button>
-        </div>
-        <div>
-          <input
-            className={style.inputTodo}
-            type="text"
-            onChange={this.handleInputChange}
-            onKeyPress={this.handleKeyPress}
-            placeholder={words.todoApp.placeholder}
-            value={this.state.currentText}
-          />
-          <button type="button" className={style.addButton} onClick={this.handleAddTodoClick}>
-            {words.todoApp.addTodo}
-          </button>
-        </div>
-        <ListWrapper>
-          {this.props.todos.map((todo: Todo) => (
-            <li className={style.list} key={key(todo)}>
-              <input className={style.checkbox} type="checkbox" onChange={this.handleCheckBoxClick} checked={todo.done} />
-              <label className={style.todoText}>{todo.text}</label>
-            </li>
-          ))}
-        </ListWrapper>
+  return (
+    <div className={style.container}>
+      <h1 className={style.header}>{words.todoApp.title}</h1>
+      <div>
+        {currentTimeHeader()}
+        {tokenHeader(props.token)}
+        <button type="button" className={style.fetchButton} onClick={handleFetchTodos}>
+          {words.todoApp.fetchTodos}
+        </button>
+        <button type="button" className={style.logoutButton} onClick={handleLogout}>
+          {words.todoApp.logout}
+        </button>
       </div>
-    )
-  }
+      <div>
+        <input
+          className={style.inputTodo}
+          type="text"
+          onChange={handleInputChange}
+          onKeyPress={handleKeyPress}
+          placeholder={words.todoApp.placeholder}
+          value={text}
+        />
+        <button type="button" className={style.addButton} onClick={handleAddTodoClick}>
+          {words.todoApp.addTodo}
+        </button>
+      </div>
+      <ListWrapper>
+        {props.todos.map((todo: Todo) => (
+          <li className={style.list} key={key(todo)}>
+            <input className={style.checkbox} type="checkbox" onChange={handleCheckBoxClick} checked={todo.done} />
+            <label className={style.todoText}>{todo.text}</label>
+          </li>
+        ))}
+      </ListWrapper>
+    </div>
+  )
 }
 
 export default connect(
