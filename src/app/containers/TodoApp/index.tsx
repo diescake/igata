@@ -8,6 +8,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import key from 'weak-key'
 import style from './style.scss'
+import dayjs from 'dayjs'
 
 interface Props {
   readonly title: string
@@ -90,10 +91,17 @@ class TodoApp extends React.Component<Props, State> {
       </p>
     )
 
+    const currentTimeHeader = () => (
+      <p>
+        <b>{`${words.todoApp.dateMessage}: ${dayjs().format('YYYY-MM-DD hh:mm:ss')}`}</b>
+      </p>
+    )
+
     return (
       <div className={style.container}>
         <h1 className={style.header}>{this.props.title}</h1>
         <div>
+          {currentTimeHeader()}
           {tokenHeader(this.props.token)}
           <button type="button" className={style.fetchButton} onClick={this.handleFetchTodos}>
             {words.todoApp.fetchTodos}

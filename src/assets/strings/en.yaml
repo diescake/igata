@@ -11,6 +11,7 @@ todoApp:
   login: login
   logout: logout
   loginMessage: Already logged-in
+  dateMessage: Date
 sfc:
   name: sfc
   hello: Hello from TypeScript and framework!!!

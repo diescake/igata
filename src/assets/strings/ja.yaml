@@ -11,6 +11,7 @@ todoApp:
   login: ログイン
   logout: ログアウト
   loginMessage: ログイン中です
+  dateMessage: 時刻
 sfc:
   name: sfc
   hello: こんにちは TypeScript の世界 !!!

@@ -32,7 +32,7 @@ Please fork or hard copy me.😊
 ### Utilities
 
 - [axios](https://github.com/axios/axios)
-- [moment](https://momentjs.com/)
+- [dayjs](https://github.com/iamkun/dayjs)
 - [netlify](https://www.netlify.com)
 
 ### Styles
