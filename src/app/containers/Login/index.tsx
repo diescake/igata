@@ -2,7 +2,7 @@ import { login, Login } from '@/app/actions/login'
 import { RootState } from '@/app/models'
 import words from '@/assets/strings'
 import { History } from 'history'
-import * as React from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import style from '@/app/containers/Login/style.scss'
 
