@@ -6,12 +6,14 @@
 
 [![CircleCI](https://circleci.com/gh/diescake/igata.svg?style=svg)](https://circleci.com/gh/diescake/igata)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&identifier=165770216)](https://dependabot.com)
+[![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://igata-storybook.netlify.com/)
 
 `igata(鋳型)` is my boilerplate for Web Frontend. It should be maintained by me and my lovely dependabot as much as possible. By the way, `鋳型` is a Japanese word and it means a boilerplate or casting mold.
 
 ## DEMO
 
-- https://igata-diescake.netlify.com
+- [Web Application](https://igata-diescake.netlify.com)
+- [Storybook](https://igata-storybook.netlify.com/)
 
 ## How to use
 
