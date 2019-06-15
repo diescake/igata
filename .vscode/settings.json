@@ -2,11 +2,13 @@
   // editor
   "editor.renderControlCharacters": true,
   "editor.formatOnSave": true,
-  "editor.tabSize": 2,
 
   // eslint
   "eslint.enable": true,
   "eslint.autoFixOnSave": true,
   "eslint.packageManager": "yarn",
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+
+  // stylelint
+  "prettier.stylelintIntegration": true
 }

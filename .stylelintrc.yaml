@@ -2,7 +2,37 @@
 # https://github.com/stylelint/stylelint/blob/master/docs/user-guide/rules.md
 
 plugins:
+  # stylelint-scss
+  # https://github.com/kristerkari/stylelint-scss
   - stylelint-scss
+
+  # stylelint-order
+  # https://github.com/hudochenkov/stylelint-order
+  - stylelint-order
+
+  # stylelint-config-rational-order
+  # https://github.com/constverum/stylelint-config-rational-order
+  - stylelint-config-rational-order/plugin
 
 extends:
   - stylelint-config-standard
+  - ./node_modules/prettier-stylelint/config.js
+  - stylelint-config-rational-order
+
+ignoreFiles:
+  - '**/node_modules/**'
+  - src/assets/css/reboot.css
+
+rules:
+  indentation: 2
+  string-quotes: single
+  length-zero-no-unit: true
+  number-leading-zero: never
+  color-hex-length: short
+  shorthand-property-no-redundant-values: true
+
+  order/properties-order: []
+  plugin/rational-order:
+    - true
+    - border-in-box-model: false
+      empty-line-between-groups: false
