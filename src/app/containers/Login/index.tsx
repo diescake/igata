@@ -41,7 +41,12 @@ class LoginApp extends React.Component<Props, State> {
     return null
   }
 
-  handleLogin = () => this.props.login(this.state.currentId, this.state.currentPassword)
+  login = () => this.props.login(this.state.currentId, this.state.currentPassword)
+
+  handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    this.login()
+  }
 
   handleLoginIdChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     this.setState({
@@ -57,35 +62,39 @@ class LoginApp extends React.Component<Props, State> {
     if (e.key !== 'Enter') {
       return
     }
-    this.handleLogin()
+    this.login()
   }
 
   render = () => (
     <div className={style.container}>
       <h1 className={style.header}>{words.login.title}</h1>
-      <div>
-        <input
-          className={style.inputId}
-          type="text"
-          onChange={this.handleLoginIdChange}
-          onKeyPress={this.handleKeyPress}
-          placeholder={words.login.idPlaceholder}
-          value={this.state.currentId}
-        />
-      </div>
-      <div>
-        <input
-          className={style.inputPassword}
-          type="password"
-          onChange={this.handleLoginPasswordChange}
-          onKeyPress={this.handleKeyPress}
-          placeholder={words.login.passwordPlaceholder}
-          value={this.state.currentPassword}
-        />
-      </div>
-      <button type="button" className={style.loginButton} onClick={this.handleLogin}>
-        {words.todoApp.login}
-      </button>
+      <form onSubmit={this.handleSubmit}>
+        <div>
+          <input
+            className={style.inputId}
+            type="text"
+            autoComplete="username"
+            onChange={this.handleLoginIdChange}
+            onKeyPress={this.handleKeyPress}
+            placeholder={words.login.idPlaceholder}
+            value={this.state.currentId}
+          />
+        </div>
+        <div>
+          <input
+            className={style.inputPassword}
+            type="password"
+            autoComplete="current-password"
+            onChange={this.handleLoginPasswordChange}
+            onKeyPress={this.handleKeyPress}
+            placeholder={words.login.passwordPlaceholder}
+            value={this.state.currentPassword}
+          />
+        </div>
+        <button type="submit" className={style.loginButton}>
+          {words.todoApp.login}
+        </button>
+      </form>
     </div>
   )
 }
