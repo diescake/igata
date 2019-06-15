@@ -69,14 +69,14 @@ Please fork or hard copy me.😊
 
 ```sh
 $ yarn                  # install dependencies
-$ yarn start            # build and launch the development server
+$ yarn start            # build and launch a development server
 $ yarn build            # build and generate the production codes
 $ yarn format           # format and save any codes with prettier
 $ yarn lint             # lint source codes after format automatically
 $ yarn style            # lint css and alt-css after format automatically
 $ yarn test             # run the test code using Jest framework
-$ yarn deploy           # deploy the production codes to GitHub.io
-$ yarn license          # display OSS licenses summary of bundled as production codes
+$ yarn deploy           # deploy the production codes but currently not used
+$ yarn license          # display summary of OSS licenses which are bundled in production codes
 $ yarn storybook        # run the UI component test code using StoryBook
 $ yarn build-storybook  # generate the UI component docs using StoryBook
 ```
