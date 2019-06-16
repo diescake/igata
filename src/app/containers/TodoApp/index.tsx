@@ -1,9 +1,8 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC, useState, useEffect, ChangeEvent, KeyboardEvent } from 'react'
 import { connect } from 'react-redux'
-import key from 'weak-key'
 
 import { logout, Logout } from '@/app/actions/login'
-import { addTodo, AddTodo, fetchTodos, FetchTodos } from '@/app/actions/todo'
+import { addTodo, AddTodo, updateTodo, UpdateTodo, fetchTodos, FetchTodos } from '@/app/actions/todo'
 import { ListWrapper } from '@/app/components/ListWrapper'
 import { RootState } from '@/app/models'
 import { Todo } from '@/app/models/Todo'
@@ -18,6 +17,7 @@ interface StateProps {
 
 interface DispatchProps {
   readonly addTodo: AddTodo
+  readonly updateTodo: UpdateTodo
   readonly fetchTodos: FetchTodos
   readonly logout: Logout
 }
@@ -31,6 +31,7 @@ const mapStateToProps = (state: RootState): StateProps => ({
 
 const mapDispatchToProps = {
   addTodo,
+  updateTodo,
   fetchTodos,
   logout,
 }
@@ -52,24 +53,21 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
 
   const handleFetchTodos = () => props.fetchTodos()
   const handleLogout = () => props.logout()
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value)
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => setText(e.target.value)
   const handleAddTodoClick = () => addTodo()
 
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key !== 'Enter') {
-      return
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      addTodo()
     }
-    addTodo()
   }
 
-  const handleCheckBoxClick = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // TODO: update the checked state to store
-    console.log(e.target.value)
-  }
+  const handleCheckBoxClick = (todo: Todo) => props.updateTodo({ ...todo, done: !todo.done })
 
   return (
     <div className={style.container}>
       <Header title={words.todoApp.title} userId={props.userId} />
+
       <div>
         <button type="button" className={style.fetchButton} onClick={handleFetchTodos}>
           {words.todoApp.fetchTodos}
@@ -91,10 +89,16 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
           {words.todoApp.addTodo}
         </button>
       </div>
+
       <ListWrapper>
         {props.todos.map((todo: Todo) => (
-          <li className={style.list} key={key(todo)}>
-            <input className={style.checkbox} type="checkbox" onChange={handleCheckBoxClick} checked={todo.done} />
+          <li className={style.list} key={todo.id}>
+            <input
+              className={style.checkbox}
+              type="checkbox"
+              onChange={handleCheckBoxClick.bind(null, todo)}
+              checked={todo.done}
+            />
             <label className={style.todoText}>{todo.text}</label>
           </li>
         ))}
