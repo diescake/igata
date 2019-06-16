@@ -13,6 +13,7 @@
     "lint": "eslint --fix './src/**/*.{js,jsx,ts,tsx}'",
     "style": "stylelint --fix './src/**/*.scss'",
     "test": "jest",
+    "test:watch": "jest --watch",
     "deploy": "echo 'Not necessary for Netlify'",
     "license": "license-checker --production --summary",
     "storybook": "start-storybook -c ./src/test/storybook/config -p 6006",
