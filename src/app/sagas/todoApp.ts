@@ -5,7 +5,7 @@ import { TodoState } from '@/app/models/Todo'
 import { get, HttpResponse } from '@/app/helpers/http'
 
 // NOTE: "myjson.com" supports CORS and allows basic headers and methods.
-const TODOS_JSON_URL = 'https://api.myjson.com/bins/81wtd'
+const TODOS_JSON_URL = 'https://api.myjson.com/bins/gagz1'
 
 const mapResponseToState = (res: TodosResponse): TodoState => ({
   todos: res.todos,

@@ -1,5 +1,4 @@
 import { todoReducer } from '@/app/reducers/todo'
-
 import { TodoState } from '@/app/models/Todo'
 import { addTodo, fetchTodos, fetchTodosSuccess, fetchTodosFailure } from '@/app/actions/todo'
 
@@ -11,6 +10,7 @@ describe('todoReducer', () => {
     expect(todoReducer(emptyState, action)).toEqual({
       todos: [
         {
+          id: expect.any(String),
           done: false,
           text: 'Buy the clothes.',
         },
@@ -27,16 +27,24 @@ describe('todoReducer', () => {
     const todoData: TodoState = {
       todos: [
         {
+          id: '2ffa8a4b-0d83-4148-8de5-eb9302b05788',
           done: true,
-          text: 'sleep for 15 hours',
+          text: 'Sleep for 15 hours',
         },
         {
+          id: 'e01cf278-8e89-43c1-b074-b541db1d1d88',
           done: false,
-          text: 'eat nice fried rice',
+          text: 'Cook and eat my graceful fried rice',
         },
         {
+          id: 'e558dfea-e20d-40a2-b72e-dbc76ca7b679',
           done: false,
-          text: 'watch nice animation movie',
+          text: 'Eat a nice fried rice',
+        },
+        {
+          id: 'c436a4c9-2d26-4a5d-9723-41f5fc738349',
+          done: false,
+          text: 'Watch a nice animation movie',
         },
       ],
     }
