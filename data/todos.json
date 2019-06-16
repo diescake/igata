@@ -2,15 +2,19 @@
   "todos": [
     {
       "done": true,
-      "text": "sleep for 15 hours"
+      "text": "Sleep for 15 hours"
     },
     {
       "done": false,
-      "text": "eat nice fried rice"
+      "text": "Cook and eat my graceful fried rice"
     },
     {
       "done": false,
-      "text": "watch nice animation movie"
+      "text": "Eat a nice fried rice"
+    },
+    {
+      "done": false,
+      "text": "Watch a nice animation movie"
     }
   ]
 }
