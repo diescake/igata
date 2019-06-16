@@ -4,6 +4,7 @@ import { Reducer } from 'redux'
 
 const defaultState: LoginState = {
   token: localStorage.getItem('token') || '',
+  userId: localStorage.getItem('userId') || '',
 }
 
 export const loginReducer: Reducer<LoginState, LoginAction> = (state: LoginState = defaultState, action: LoginAction) => {
@@ -12,9 +13,10 @@ export const loginReducer: Reducer<LoginState, LoginAction> = (state: LoginState
       return state
 
     case Type.LOGIN_SUCCESS: {
-      const { token } = action.payload
+      const { token, userId } = action.payload
       localStorage.setItem('token', token)
-      return { token }
+      localStorage.setItem('userId', userId)
+      return { token, userId }
     }
 
     case Type.LOGIN_FAILURE:
@@ -22,8 +24,9 @@ export const loginReducer: Reducer<LoginState, LoginAction> = (state: LoginState
 
     case Type.LOGOUT:
       localStorage.removeItem('token')
+      localStorage.removeItem('userId')
       window.location.href = '/login'
-      return { token: '' }
+      return { token: '', userId: '' }
 
     default:
       return state

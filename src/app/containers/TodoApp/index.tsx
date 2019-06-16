@@ -13,7 +13,7 @@ import style from '@/app/containers/TodoApp/style.scss'
 
 interface StateProps {
   readonly todos: Todo[]
-  readonly token: string
+  readonly userId: string
 }
 
 interface DispatchProps {
@@ -26,7 +26,7 @@ type TodoAppProps = StateProps & DispatchProps
 
 const mapStateToProps = (state: RootState): StateProps => ({
   todos: state.todoState.todos,
-  token: state.loginState.token,
+  userId: state.loginState.userId,
 })
 
 const mapDispatchToProps = {
@@ -63,12 +63,12 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
     console.log(e.target.value)
   }
 
-  const tokenHeader = (token: string) => (
+  const userIdHeader = (userId: string) => (
     <p>
-      {token && (
+      {userId && (
         <>
           <b>{`${words.todoApp.loginMessage}: `}</b>
-          {token}
+          {userId}
         </>
       )}
     </p>
@@ -85,7 +85,7 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
       <h1 className={style.header}>{words.todoApp.title}</h1>
       <div>
         {currentTimeHeader()}
-        {tokenHeader(props.token)}
+        {userIdHeader(props.userId)}
         <button type="button" className={style.fetchButton} onClick={handleFetchTodos}>
           {words.todoApp.fetchTodos}
         </button>

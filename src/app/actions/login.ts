@@ -1,5 +1,6 @@
 export interface LoginResponse {
   readonly token: string
+  readonly userId: string
 }
 
 // action types
@@ -21,9 +22,9 @@ export const login = () => ({
   type: Type.LOGIN,
 })
 
-export const loginSuccess = ({ token }: LoginResponse) => ({
+export const loginSuccess = ({ token, userId }: LoginResponse) => ({
   type: Type.LOGIN_SUCCESS,
-  payload: { token },
+  payload: { token, userId },
 })
 
 export const loginFailure = (errorText: string) => ({
