@@ -45,41 +45,52 @@ describe('todoReducer', () => {
       },
     ],
   }
-  it('ADD_TODO', () => {
-    const action = addTodo('Buy the clothes.')
-    expect(todoReducer(emptyState, action)).toEqual({
-      todos: [
-        {
-          id: expect.any(String),
-          done: false,
-          text: 'Buy the clothes.',
-        },
-      ],
+
+  describe('ADD_TODO', () => {
+    it('should succeed', () => {
+      const action = addTodo('Buy the clothes.')
+      expect(todoReducer(emptyState, action)).toEqual({
+        todos: [
+          {
+            id: expect.any(String),
+            done: false,
+            text: 'Buy the clothes.',
+          },
+        ],
+      })
     })
   })
 
-  it('UPDATE_TODO_1', () => {
-    const action = updateTodo(newTodo)
-    expect(todoReducer(baseState, action)).toEqual(baseState)
+  describe('UPDATE_TODO', () => {
+    it('should succeed', () => {
+      const action = updateTodo(newTodo)
+      expect(todoReducer(baseState, action)).toEqual(baseState)
+    })
+
+    it('should succeed', () => {
+      const action = updateTodo(storedTodo)
+      expect(todoReducer(baseState, action)).toEqual(updatedState)
+    })
   })
 
-  it('UPDATE_TODO_2', () => {
-    const action = updateTodo(storedTodo)
-    expect(todoReducer(baseState, action)).toEqual(updatedState)
+  describe('FETCH_TODOS', () => {
+    it('should succeed', () => {
+      const action = fetchTodos()
+      expect(todoReducer(emptyState, action)).toEqual(emptyState)
+    })
   })
 
-  it('FETCH_TODOS', () => {
-    const action = fetchTodos()
-    expect(todoReducer(emptyState, action)).toEqual(emptyState)
+  describe('FETCH_TODOS_SUCCESS', () => {
+    it('should succeed', () => {
+      const action = fetchTodosSuccess(baseState)
+      expect(todoReducer(emptyState, action)).toEqual(baseState)
+    })
   })
 
-  it('FETCH_TODOS_SUCCESS', () => {
-    const action = fetchTodosSuccess(baseState)
-    expect(todoReducer(emptyState, action)).toEqual(baseState)
-  })
-
-  it('FETCH_TODOS_FAILURE', () => {
-    const action = fetchTodosFailure('403 Forbidden.')
-    expect(todoReducer(emptyState, action)).toMatchObject(emptyState)
+  describe('FETCH_TODOS_FAILURE', () => {
+    it('should succeed', () => {
+      const action = fetchTodosFailure('403 Forbidden.')
+      expect(todoReducer(emptyState, action)).toMatchObject(emptyState)
+    })
   })
 })
