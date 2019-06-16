@@ -94,12 +94,15 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
         {props.todos.map((todo: Todo) => (
           <li className={style.list} key={todo.id}>
             <input
+              id={todo.id}
               className={style.checkbox}
               type="checkbox"
               onChange={handleCheckBoxClick.bind(null, todo)}
               checked={todo.done}
             />
-            <label className={style.todoText}>{todo.text}</label>
+            <label className={style.todoText} htmlFor={todo.id}>
+              {todo.text}
+            </label>
           </li>
         ))}
       </ListWrapper>
