@@ -25,6 +25,10 @@ extends:
   # https://github.com/benmosher/eslint-plugin-import/blob/master/config/warnings.js
   - plugin:import/warnings
 
+  # eslint-plugin-import typescript rules
+  # https://github.com/benmosher/eslint-plugin-import/blob/master/config/typescript.js
+  - plugin:import/typescript
+
   - plugin:prettier/recommended
   - prettier
   - prettier/@typescript-eslint
@@ -47,6 +51,7 @@ plugins:
   - prefer-arrow
   - react
   - react-hooks
+  - import
 
 root: true
 
@@ -67,7 +72,7 @@ rules:
   no-shadow: 'off'
   require-yield: error
 
-  # Storybook prefers importing with absolute paths
+  ## Storybook prefers importing with absolute paths
   no-restricted-imports:
     - error
     - patterns: [../*, ./*]
@@ -109,8 +114,8 @@ rules:
   react-hooks/rules-of-hooks: error
 
   # import
+  ## Disable because the importing with the webpack alias is treated as an undeclared module
   import/extensions:
-    # Disable because the importing with the webpack alias is treated as an undeclared module
     - off
     - always
     - js: never
@@ -120,9 +125,22 @@ rules:
 
   import/prefer-default-export: off
   import/no-unresolved: off
+  import/order:
+    - error
+    - groups:
+        - internal
+        - builtin
+        - external
+        - parent
+        - sibling
+        - index
+      newlines-between: ignore
 
-  # For Storybook
-  import/no-extraneous-dependencies: ['error', { devDependencies: ['**/test/**'] }]
+  ## For Storybook
+  import/no-extraneous-dependencies:
+    - error
+    - devDependencies:
+        - '**/test/**'
 
   # jsx-a11y
   jsx-a11y/label-has-for: off
