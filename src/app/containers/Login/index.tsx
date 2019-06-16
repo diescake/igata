@@ -6,6 +6,7 @@ import { login, Login } from '@/app/actions/login'
 import { RootState } from '@/app/models'
 import words from '@/assets/strings'
 import style from '@/app/containers/Login/style.scss'
+import { Footer } from '@/app/components/Footer'
 
 interface StateProps {
   readonly token: string
@@ -80,6 +81,7 @@ const LoginApp: FC<LoginAppProps> = (props: LoginAppProps) => {
           {words.todoApp.login}
         </button>
       </form>
+      <Footer copyright="@diescake" />
     </div>
   )
 }
