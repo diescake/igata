@@ -26,8 +26,9 @@ ReactDOM.render(
         <Route exact path="/login" component={Login} />
         <Authenticated>
           <Route exact path="/" component={TodoApp} />
-          <Route render={() => <h1>404 Not Found</h1>} />
         </Authenticated>
+        {/* FIXME: Following "Not Found" is unreachable and doesn't work. */}
+        <Route render={() => <h1>404 Not Found</h1>} />
       </Switch>
     </ConnectedRouter>
   </Provider>,
