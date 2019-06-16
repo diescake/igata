@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Redirect, Route, Switch } from 'react-router'
+import { Route, Switch } from 'react-router'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
@@ -26,8 +26,8 @@ ReactDOM.render(
         <Route exact path="/login" component={Login} />
         <Authenticated>
           <Route exact path="/" component={TodoApp} />
+          <Route render={() => <h1>404 Not Found</h1>} />
         </Authenticated>
-        <Redirect to="/" />
       </Switch>
     </ConnectedRouter>
   </Provider>,
