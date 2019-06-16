@@ -21,6 +21,9 @@ export const todoReducer: Reducer<TodoState, TodoAction> = (state: TodoState = d
 
     case Type.UPDATE_TODO: {
       const filteredTodo = state.todos.filter(todo => todo.id !== action.payload.id)
+      if (state.todos.length === filteredTodo.length) {
+        return state
+      }
       return { todos: [...filteredTodo, action.payload] }
     }
 
