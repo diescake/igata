@@ -1,4 +1,4 @@
-import { Todo } from '@/app/models/Todo'
+import { TodoState } from '@/app/models/Todo'
 
 // action types
 export const Type = {
@@ -11,7 +11,7 @@ export const Type = {
 // action creator interfaces
 export type AddTodo = (text: string) => void
 export type FetchTodos = () => void
-export type fetchTodosSuccess = (todos: Todo[]) => void
+export type fetchTodosSuccess = (todoState: TodoState) => void
 export type fetchTodosFailure = (errorCode: string) => void
 
 // action creators
@@ -24,7 +24,7 @@ export const fetchTodos = () => ({
   type: Type.FETCH_TODOS,
 })
 
-export const fetchTodosSuccess = (todos: Todo[]) => ({
+export const fetchTodosSuccess = ({ todos }: TodoState) => ({
   type: Type.FETCH_TODOS_SUCCESS,
   payload: { todos },
 })
