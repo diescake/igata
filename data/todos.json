@@ -1,7 +1,7 @@
 {
   "todos": [
     {
-      "done": false,
+      "done": true,
       "text": "sleep for 15 hours"
     },
     {
