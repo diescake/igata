@@ -13,7 +13,7 @@ export default {
     fetchTodos: 'TODO を取得',
     login: 'ログイン',
     logout: 'ログアウト',
-    loginMessage: 'ログイン中です',
+    loginMessage: (userId: string) => `ログインユーザ: ${userId}`,
     dateMessage: '時刻',
   },
   sfc: {

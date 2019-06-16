@@ -1,5 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
+import { Header } from '@/app/components/Header'
 import { Footer } from '@/app/components/Footer'
 import { ListWrapper } from '@/app/components/ListWrapper'
 // import Login from '@/app/containers/Login'
@@ -11,6 +12,12 @@ import '@/assets/css/common.scss'
 
 // FIXME: Preparing connect I/Fs to import container components
 // storiesOf('Containers|Login', module).add('with no props', () => <Login />)
+
+storiesOf('Components|Header', module)
+  .add('with empty strings', () => <Header title="" userId="" />)
+  .add('with title only', () => <Header title="Todo Application" userId="" />)
+  .add('with userId only', () => <Header title="" userId="diescake" />)
+  .add('with both', () => <Header title="Todo Application" userId="diescake" />)
 
 storiesOf('Components|Footer', module)
   .add('with no props', () => <Footer />)

@@ -1,7 +1,6 @@
 import React, { useState, FC } from 'react'
 import { connect } from 'react-redux'
 import key from 'weak-key'
-import dayjs from 'dayjs'
 
 import { logout, Logout } from '@/app/actions/login'
 import { addTodo, AddTodo, fetchTodos, FetchTodos } from '@/app/actions/todo'
@@ -10,6 +9,7 @@ import { RootState } from '@/app/models'
 import { Todo } from '@/app/models/Todo'
 import words from '@/assets/strings'
 import style from '@/app/containers/TodoApp/style.scss'
+import { Header } from '@/app/components/Header'
 
 interface StateProps {
   readonly todos: Todo[]
@@ -63,29 +63,10 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
     console.log(e.target.value)
   }
 
-  const userIdHeader = (userId: string) => (
-    <p>
-      {userId && (
-        <>
-          <b>{`${words.todoApp.loginMessage}: `}</b>
-          {userId}
-        </>
-      )}
-    </p>
-  )
-
-  const currentTimeHeader = () => (
-    <p>
-      <b>{`${words.todoApp.dateMessage}: ${dayjs().format('YYYY-MM-DD HH:mm:ss')}`}</b>
-    </p>
-  )
-
   return (
     <div className={style.container}>
-      <h1 className={style.header}>{words.todoApp.title}</h1>
+      <Header title={words.todoApp.title} userId={props.userId} />
       <div>
-        {currentTimeHeader()}
-        {userIdHeader(props.userId)}
         <button type="button" className={style.fetchButton} onClick={handleFetchTodos}>
           {words.todoApp.fetchTodos}
         </button>

@@ -12,8 +12,8 @@ export default {
     placeholder: 'Enter your todo',
     fetchTodos: 'Fetch Todos',
     login: 'login',
-    logout: 'logout',
-    loginMessage: 'Already logged-in',
+    logout: 'Logout',
+    loginMessage: (userId: string) => `Login user: ${userId}`,
     dateMessage: 'Date',
   },
   sfc: {
