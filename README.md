@@ -35,7 +35,6 @@ Please fork or hard copy me.😊
 
 - [axios](https://github.com/axios/axios)
 - [dayjs](https://github.com/iamkun/dayjs)
-- [netlify](https://www.netlify.com)
 
 ### Styles
 
