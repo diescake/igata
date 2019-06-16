@@ -1,4 +1,4 @@
-import React, { useState, FC } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import key from 'weak-key'
 
@@ -37,6 +37,10 @@ const mapDispatchToProps = {
 
 const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
   const [text, setText] = useState<string>('')
+
+  useEffect(() => {
+    props.fetchTodos()
+  }, [])
 
   const addTodo = () => {
     if (!text) {
