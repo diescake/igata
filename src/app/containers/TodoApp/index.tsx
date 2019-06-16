@@ -76,7 +76,7 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
 
   const currentTimeHeader = () => (
     <p>
-      <b>{`${words.todoApp.dateMessage}: ${dayjs().format('YYYY-MM-DD hh:mm:ss')}`}</b>
+      <b>{`${words.todoApp.dateMessage}: ${dayjs().format('YYYY-MM-DD HH:mm:ss')}`}</b>
     </p>
   )
 
