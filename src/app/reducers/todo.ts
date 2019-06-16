@@ -3,16 +3,7 @@ import { TodoState } from '@/app/models/Todo'
 import { Reducer } from 'redux'
 
 const defaultState: TodoState = {
-  todos: [
-    {
-      text: 'Cook and eat my graceful fried rice',
-      done: false,
-    },
-    {
-      text: 'Sleep for 15 hours',
-      done: true,
-    },
-  ],
+  todos: [],
 }
 
 export const todoReducer: Reducer<TodoState, TodoAction> = (state: TodoState = defaultState, action: TodoAction): TodoState => {
