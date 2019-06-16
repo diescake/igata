@@ -1,5 +1,5 @@
 import { TodoAction, Type } from '@/app/actions/todo'
-import { TodoState } from '@/app/models/Todo'
+import { TodoState, Todo } from '@/app/models/Todo'
 import { Reducer } from 'redux'
 import uuid from 'uuidv4'
 
@@ -20,11 +20,12 @@ export const todoReducer: Reducer<TodoState, TodoAction> = (state: TodoState = d
     }
 
     case Type.UPDATE_TODO: {
-      const filteredTodo = state.todos.filter(todo => todo.id !== action.payload.id)
-      if (state.todos.length === filteredTodo.length) {
+      const index = state.todos.findIndex((todo: Todo) => todo.id === action.payload.id)
+      if (index === -1) {
         return state
       }
-      return { todos: [...filteredTodo, action.payload] }
+
+      return { todos: Object.assign([...state.todos], { [index]: action.payload }) }
     }
 
     case Type.FETCH_TODOS:
