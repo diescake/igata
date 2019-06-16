@@ -21,7 +21,8 @@ export default {
     hello: 'こんにちは TypeScript の世界 !!!',
   },
   footer: {
-    back: '戻る',
-    forward: '進む',
+    author: '作者',
+    twitterBaseUrl: 'https://twitter.com',
+    followMe: (account: string) => `フォロー歓迎！ Twitter: ${account}`,
   },
 } as const

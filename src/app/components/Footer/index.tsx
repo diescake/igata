@@ -1,31 +1,23 @@
-import React from 'react'
-import { EnhanceFooter } from '@/app/helpers/EnhanceFooter'
+import React, { FC } from 'react'
+import { EnhanceFooter, EnhanceFooterProps } from '@/app/helpers/EnhanceFooter'
 import words from '@/assets/strings'
 
-interface Props {}
-interface State {}
-
-class FooterHOC extends React.Component<Props, State> {
-  handleBackClick = () => {
-    // eslint-disable-next-line
-    alert(words.footer.back)
+const WrappedFooter: FC<EnhanceFooterProps> = (props: EnhanceFooterProps) => {
+  if (!props.copyright) {
+    return null
   }
 
-  handleForwardClick = () => {
-    // eslint-disable-next-line
-    alert(words.footer.forward)
-  }
+  // eslint-disable-next-line
+  const handleAuthorClick = () => alert(words.footer.followMe(props.copyright!))
 
-  render = () => (
+  return (
     <>
-      <button type="button" onClick={this.handleBackClick}>
-        {words.footer.back}
+      <button type="button" onClick={handleAuthorClick}>
+        {words.footer.author}
       </button>
-      <button type="button" onClick={this.handleForwardClick}>
-        {words.footer.forward}
-      </button>
+      <a href={`${words.footer.twitterBaseUrl}/${props.copyright}`}>{props.copyright}</a>
     </>
   )
 }
 
-export const Footer = EnhanceFooter(FooterHOC)
+export const Footer = EnhanceFooter(WrappedFooter)

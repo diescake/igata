@@ -1,13 +1,20 @@
-import React from 'react'
+import React, { FC, ComponentType } from 'react'
 
-interface Props {}
-interface State {}
+export interface EnhanceFooterProps {
+  readonly copyright?: string
+}
 
-export const EnhanceFooter = (ComposedComponent: React.ComponentType<Props>) =>
-  class extends React.Component<Props, State> {
-    render = () => (
-      <div>
-        <ComposedComponent />
-      </div>
-    )
+export const EnhanceFooter = (ComposedComponent: ComponentType<EnhanceFooterProps>): FC<EnhanceFooterProps> => (
+  props: EnhanceFooterProps
+) => {
+  if (!props.copyright) {
+    return null
   }
+
+  return (
+    <div>
+      <hr />
+      <ComposedComponent copyright={props.copyright} />
+    </div>
+  )
+}

@@ -21,7 +21,8 @@ export default {
     hello: 'Hello from TypeScript and framework!!!',
   },
   footer: {
-    back: 'Back',
-    forward: 'Forward',
+    author: 'author',
+    twitterBaseUrl: 'https://twitter.com',
+    followMe: (account: string) => `Please follow ${account} on Twitter !!`,
   },
 } as const
