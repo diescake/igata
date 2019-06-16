@@ -1,7 +1,4 @@
-export interface LoginResponse {
-  readonly token: string
-  readonly userId: string
-}
+import { LoginState } from '@/app/models/Login'
 
 // action types
 export const Type = {
@@ -13,7 +10,7 @@ export const Type = {
 
 // action creator interfaces
 export type Login = (id: string, password: string) => void
-export type LoginSuccess = (token: string) => void
+export type LoginSuccess = (loginState: LoginState) => void
 export type LoginFailure = (errorCode: string) => void
 export type Logout = () => void
 
@@ -22,7 +19,7 @@ export const login = () => ({
   type: Type.LOGIN,
 })
 
-export const loginSuccess = ({ token, userId }: LoginResponse) => ({
+export const loginSuccess = ({ token, userId }: LoginState) => ({
   type: Type.LOGIN_SUCCESS,
   payload: { token, userId },
 })
