@@ -45,7 +45,7 @@ describe('todoReducer', () => {
       },
     ],
   }
-  test('ADD_TODO', () => {
+  it('ADD_TODO', () => {
     const action = addTodo('Buy the clothes.')
     expect(todoReducer(emptyState, action)).toEqual({
       todos: [
@@ -58,27 +58,27 @@ describe('todoReducer', () => {
     })
   })
 
-  test('UPDATE_TODO_1', () => {
+  it('UPDATE_TODO_1', () => {
     const action = updateTodo(newTodo)
     expect(todoReducer(baseState, action)).toEqual(baseState)
   })
 
-  test('UPDATE_TODO_2', () => {
+  it('UPDATE_TODO_2', () => {
     const action = updateTodo(storedTodo)
     expect(todoReducer(baseState, action)).toEqual(updatedState)
   })
 
-  test('FETCH_TODOS', () => {
+  it('FETCH_TODOS', () => {
     const action = fetchTodos()
     expect(todoReducer(emptyState, action)).toEqual(emptyState)
   })
 
-  test('FETCH_TODOS_SUCCESS', () => {
+  it('FETCH_TODOS_SUCCESS', () => {
     const action = fetchTodosSuccess(baseState)
     expect(todoReducer(emptyState, action)).toEqual(baseState)
   })
 
-  test('FETCH_TODOS_FAILURE', () => {
+  it('FETCH_TODOS_FAILURE', () => {
     const action = fetchTodosFailure('403 Forbidden.')
     expect(todoReducer(emptyState, action)).toMatchObject(emptyState)
   })
