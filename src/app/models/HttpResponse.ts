@@ -9,5 +9,5 @@ interface Todo {
 }
 
 export interface TodosResponse {
-  readonly tokens: Todo[]
+  readonly todos: Todo[]
 }
