@@ -1,7 +1,7 @@
+import { call, put, takeLatest } from 'redux-saga/effects'
 import { fetchTodosFailure, fetchTodosSuccess, Type } from '@/app/actions/todo'
 import { TodoState } from '@/app/models/Todo'
 import { get, HttpResponse } from '@/app/helpers/http'
-import { call, put, takeLatest } from 'redux-saga/effects'
 
 // NOTE: "myjson.com" supports CORS and allows basic headers and methods.
 const TODOS_JSON_URL = 'https://api.myjson.com/bins/81wtd'

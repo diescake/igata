@@ -1,7 +1,7 @@
+import { call, put, takeLatest } from 'redux-saga/effects'
 import { loginFailure, loginSuccess, Type } from '@/app/actions/login'
 import { LoginState } from '@/app/models/Login'
 import { get, HttpResponse } from '@/app/helpers/http'
-import { call, put, takeLatest } from 'redux-saga/effects'
 
 const LOGIN_JSON_URL = 'https://raw.githubusercontent.com/diescake/igata/master/data/login.json'
 

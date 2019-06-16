@@ -1,14 +1,14 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Redirect, Route, Switch } from 'react-router'
+import { Provider } from 'react-redux'
+import { ConnectedRouter } from 'connected-react-router'
+import { createBrowserHistory } from 'history'
+
 import Login from '@/app/containers/Login'
 import TodoApp from '@/app/containers/TodoApp'
 import { configureStore } from '@/app/store'
-import { ConnectedRouter } from 'connected-react-router'
-import { createBrowserHistory } from 'history'
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import { Redirect, Route, Switch } from 'react-router'
-import { Authenticated } from './app/helpers/Authenticated'
-
+import { Authenticated } from '@/app/helpers/Authenticated'
 import '@/assets/css/reboot.css'
 import '@/assets/css/common.scss'
 

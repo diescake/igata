@@ -67,6 +67,11 @@ rules:
   no-shadow: 'off'
   require-yield: error
 
+  # Storybook prefers importing with absolute paths
+  no-restricted-imports:
+    - error
+    - patterns: [../*, ./*]
+
   # @typescript-eslint
   '@typescript-eslint/explicit-function-return-type': off
   '@typescript-eslint/explicit-member-accessibility': off
@@ -105,7 +110,7 @@ rules:
 
   # import
   import/extensions:
-    # disable because the importing with the webpack alias is treated as an undeclared module
+    # Disable because the importing with the webpack alias is treated as an undeclared module
     - off
     - always
     - js: never
@@ -116,6 +121,7 @@ rules:
   import/prefer-default-export: off
   import/no-unresolved: off
 
+  # For Storybook
   import/no-extraneous-dependencies: ['error', { devDependencies: ['**/test/**'] }]
 
   # jsx-a11y

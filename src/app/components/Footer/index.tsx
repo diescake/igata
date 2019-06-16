@@ -1,6 +1,6 @@
+import React from 'react'
 import { EnhanceFooter } from '@/app/helpers/EnhanceFooter'
 import words from '@/assets/strings'
-import React from 'react'
 
 interface Props {}
 interface State {}

@@ -1,10 +1,11 @@
-import { createRootReducer } from '@/app/reducers'
-import mySaga from '@/app/sagas'
-import { routerMiddleware } from 'connected-react-router'
-import { History } from 'history'
 import { applyMiddleware, compose, createStore } from 'redux'
+import { routerMiddleware } from 'connected-react-router'
 import { createLogger } from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
+import { History } from 'history'
+
+import { createRootReducer } from '@/app/reducers'
+import mySaga from '@/app/sagas'
 
 declare global {
   interface Window {
