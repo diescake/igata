@@ -6,7 +6,7 @@ export default {
     passwordPlaceholder: 'パスワード',
   },
   todoApp: {
-    title: 'Todo アプリ',
+    title: 'TODO アプリ',
     name: 'TOP',
     newTodo: 'TODO を追加',
     addTodo: '⇧',
