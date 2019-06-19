@@ -8,6 +8,7 @@ export default {
   todoApp: {
     title: 'Todo Application',
     name: 'TOP',
+    newTodo: 'Add TODO',
     addTodo: '⇧',
     placeholder: 'Enter your todo',
     fetchTodos: 'Fetch Todos',

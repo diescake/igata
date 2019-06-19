@@ -90,9 +90,9 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
         </button>
       </div>
       <button type="button" onClick={modalOpen}>
-        add Todo
+        {words.todoApp.newTodo}
       </button>
-      <Modal hidden={modalHidden} name="add todo" close={modalClose}>
+      <Modal hidden={modalHidden} name={words.todoApp.newTodo} close={modalClose}>
         <input
           className={style.inputTodo}
           type="text"

@@ -8,6 +8,7 @@ export default {
   todoApp: {
     title: 'Todo アプリ',
     name: 'TOP',
+    newTodo: 'TODO を追加',
     addTodo: '⇧',
     placeholder: 'TODO を入力してください',
     fetchTodos: 'TODO を取得',
