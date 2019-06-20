@@ -3,20 +3,47 @@ import { fetchTodosFailure, fetchTodosSuccess, Type } from '@/app/actions/todo'
 import { TodosResponse } from '@/app/models/HttpResponse'
 import { TodoState } from '@/app/models/Todo'
 import { get, HttpResponse } from '@/app/helpers/http'
+import { AxiosResponse, AxiosError } from 'axios'
 
 // NOTE: "myjson.com" supports CORS and allows basic headers and methods.
 const TODOS_JSON_URL = 'https://api.myjson.com/bins/gagz1'
+
+const isTodosResponse = (props: any): props is TodosResponse => {
+  try {
+    return props.todos.every((todo: any) => {
+      const { id, done, text } = todo
+      return typeof id === 'string' && typeof done === 'boolean' && typeof text === 'string'
+    })
+  } catch (e) {
+    console.error(e)
+    return false
+  }
+}
 
 const mapResponseToState = (res: TodosResponse): TodoState => ({
   todos: res.todos,
 })
 
-function* fetchTodos() {
-  const { res, error }: HttpResponse<TodosResponse> = yield call(get, TODOS_JSON_URL)
-  if (res) {
+function* putWithResponse(res: AxiosResponse<unknown>) {
+  if (isTodosResponse(res.data)) {
     yield put(fetchTodosSuccess(mapResponseToState(res.data)))
   } else {
-    yield put(fetchTodosFailure(error.message))
+    console.error('Invalid response')
+    console.error(res.data)
+    yield put(fetchTodosFailure('Invalid response'))
+  }
+}
+
+function* putWithError(error: AxiosError) {
+  yield put(fetchTodosFailure(error.message))
+}
+
+function* fetchTodos() {
+  const { res, error }: HttpResponse<unknown> = yield call(get, TODOS_JSON_URL)
+  if (res) {
+    yield putWithResponse(res)
+  } else {
+    yield putWithError(error)
   }
 }
 
