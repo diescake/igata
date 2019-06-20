@@ -5,11 +5,6 @@ import { Footer } from '@/app/components/Footer'
 import { ListWrapper } from '@/app/components/ListWrapper'
 // import Login from '@/app/containers/Login'
 
-// FIXME: import reboot.css
-// import '@/assets/css/reboot.css'
-
-import '@/assets/css/common.scss'
-
 // FIXME: Preparing connect I/Fs to import container components
 // storiesOf('Containers|Login', module).add('with no props', () => <Login />)
 

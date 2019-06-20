@@ -17,7 +17,7 @@
     "deploy": "echo 'Not necessary for Netlify'",
     "license": "license-checker --production --summary",
     "storybook": "start-storybook -c ./src/test/storybook/config -p 6006",
-    "build-storybook": "build-storybook -c ./src/test/storybook/config"
+    "storybook:build": "build-storybook -c ./src/test/storybook/config"
   },
   "husky": {
     "hooks": {
