@@ -39,11 +39,7 @@ function* putWithError(error: AxiosError) {
 function* login() {
   // NOTE: Actually the login request should be POST
   const { res, error }: HttpResponse<unknown> = yield call(get, LOGIN_JSON_URL, false)
-  if (res) {
-    yield putWithResponse(res)
-  } else {
-    yield putWithError(error)
-  }
+  yield res ? putWithResponse(res) : putWithError(error)
 }
 
 export default function*() {

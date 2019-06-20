@@ -40,11 +40,7 @@ function* putWithError(error: AxiosError) {
 
 function* fetchTodos() {
   const { res, error }: HttpResponse<unknown> = yield call(get, TODOS_JSON_URL)
-  if (res) {
-    yield putWithResponse(res)
-  } else {
-    yield putWithError(error)
-  }
+  yield res ? putWithResponse(res) : putWithError(error)
 }
 
 export default function*() {
