@@ -1,5 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
+import { text } from '@storybook/addon-knobs'
 import { Header } from '@/app/components/Header'
 import { Footer } from '@/app/components/Footer'
 import { ListWrapper } from '@/app/components/ListWrapper'
@@ -9,18 +10,17 @@ import { ListWrapper } from '@/app/components/ListWrapper'
 // storiesOf('Containers|Login', module).add('with no props', () => <Login />)
 
 storiesOf('Components|Header', module)
-  .add('with empty strings', () => <Header title="" userId="" />)
-  .add('with title only', () => <Header title="Todo Application" userId="" />)
-  .add('with userId only', () => <Header title="" userId="diescake" />)
-  .add('with both', () => <Header title="Todo Application" userId="diescake" />)
+  .add('with both', () => <Header title={text('title', 'TODO Application')} userId={text('userId', 'diescake')} />)
+  .add('with title only', () => <Header title={text('title', 'TODO Application')} userId={text('userId', '')} />)
+  .add('with userId only', () => <Header title={text('title', '')} userId={text('userId', 'diescake')} />)
+  .add('with empty strings', () => <Header title={text('title', '')} userId={text('userId', '')} />)
 
 storiesOf('Components|Footer', module)
-  .add('with no props', () => <Footer />)
-  .add('with @diescake', () => <Footer copyright="@diescake" />)
-  .add('with @pankona', () => <Footer copyright="@pankona" />)
+  .add('with @diescake ', () => <Footer copyright={text('copyright', 'diescake')} />)
+  .add('with @pankona', () => <Footer copyright={text('copyright', 'pankona')} />)
+  .add('with no props', () => <Footer copyright={text('copyright', '')} />)
 
 storiesOf('Components|ListWrapper', module)
-  .add('with no props', () => <ListWrapper />)
   .add('with lists', () => (
     <ListWrapper>
       <li>item 1</li>
@@ -28,3 +28,4 @@ storiesOf('Components|ListWrapper', module)
       <li>item 3</li>
     </ListWrapper>
   ))
+  .add('with no props', () => <ListWrapper />)
