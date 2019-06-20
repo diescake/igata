@@ -12,7 +12,7 @@ const mapResponseToState = (res: TodosResponse): TodoState => ({
 })
 
 function* fetchTodos() {
-  const { res, error }: HttpResponse<TodoState> = yield call(get, TODOS_JSON_URL)
+  const { res, error }: HttpResponse<TodosResponse> = yield call(get, TODOS_JSON_URL)
   if (error) {
     yield put(fetchTodosFailure(error.message))
     return
