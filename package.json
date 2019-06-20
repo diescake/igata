@@ -60,7 +60,7 @@
     "@types/redux-saga": "^0.10.5",
     "@types/storybook__react": "^4.0.2",
     "@types/uuidv4": "^2.0.0",
-    "@types/webpack": "^4.4.32",
+    "@types/webpack": "^4.4.33",
     "@typescript-eslint/eslint-plugin": "^1.10.2",
     "@typescript-eslint/parser": "^1.10.2",
     "awesome-typescript-loader": "^5.2.1",
