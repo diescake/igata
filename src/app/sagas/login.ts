@@ -14,17 +14,10 @@ const mapResponseToState = (res: LoginResponse): LoginState => ({
 function* login() {
   // NOTE: Actually the login request should be POST
   const { res, error }: HttpResponse<LoginResponse> = yield call(get, LOGIN_JSON_URL, false)
-  if (error) {
+  if (res) {
+    yield put(loginSuccess(mapResponseToState(res.data)))
+  } else {
     yield put(loginFailure(error.message))
-    return
-  }
-
-  switch (res.status) {
-    case 200:
-      yield put(loginSuccess(mapResponseToState(res.data)))
-      break
-    default:
-      yield put(loginFailure(res.statusText))
   }
 }
 

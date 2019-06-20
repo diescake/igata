@@ -13,17 +13,10 @@ const mapResponseToState = (res: TodosResponse): TodoState => ({
 
 function* fetchTodos() {
   const { res, error }: HttpResponse<TodosResponse> = yield call(get, TODOS_JSON_URL)
-  if (error) {
+  if (res) {
+    yield put(fetchTodosSuccess(mapResponseToState(res.data)))
+  } else {
     yield put(fetchTodosFailure(error.message))
-    return
-  }
-
-  switch (res.status) {
-    case 200:
-      yield put(fetchTodosSuccess(mapResponseToState(res.data)))
-      break
-    default:
-      yield put(fetchTodosFailure(res.statusText))
   }
 }
 

@@ -10,14 +10,15 @@ export interface HttpResponse<T = any> {
 export const getCategory = (res: AxiosResponse) => Math.floor(res.status / 100)
 
 axios.interceptors.response.use(
-  (res: AxiosResponse) => {
-    if (res.status === 401) {
+  (res: AxiosResponse) => res,
+  (error: AxiosError) => {
+    if (error.response && error.response.status === 401) {
       localStorage.removeItem('token')
       window.location.href = '/login'
     }
-    return res
-  },
-  (error: AxiosError) => Promise.reject(error)
+
+    return Promise.reject(error)
+  }
 )
 
 function* getToken() {
