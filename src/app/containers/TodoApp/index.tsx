@@ -9,6 +9,7 @@ import { Todo } from '@/app/models/Todo'
 import words from '@/assets/strings'
 import style from '@/app/containers/TodoApp/style.scss'
 import { Header } from '@/app/components/Header'
+import { Modal } from '@/app/components/Modal'
 
 interface StateProps {
   readonly todos: Todo[]
@@ -38,6 +39,7 @@ const mapDispatchToProps = {
 
 const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
   const [text, setText] = useState<string>('')
+  const [modalHidden, setModalHidden] = useState<boolean>(true)
 
   useEffect(() => {
     props.fetchTodos()
@@ -49,6 +51,7 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
     }
     props.addTodo(text)
     setText('')
+    setModalHidden(true)
   }
 
   const handleFetchTodos = () => props.fetchTodos()
@@ -64,6 +67,16 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
 
   const handleCheckBoxClick = (todo: Todo) => props.updateTodo({ ...todo, done: !todo.done })
 
+  const modalOpen = () => {
+    setText('')
+    setModalHidden(false)
+  }
+
+  const modalClose = () => {
+    setText('')
+    setModalHidden(true)
+  }
+
   return (
     <div className={style.container}>
       <Header title={words.todoApp.title} userId={props.userId} />
@@ -76,7 +89,10 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
           {words.todoApp.logout}
         </button>
       </div>
-      <div>
+      <button type="button" onClick={modalOpen}>
+        {words.todoApp.newTodo}
+      </button>
+      <Modal hidden={modalHidden} name={words.todoApp.newTodo} close={modalClose}>
         <input
           className={style.inputTodo}
           type="text"
@@ -88,7 +104,7 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
         <button type="button" className={style.addButton} onClick={handleAddTodoClick}>
           {words.todoApp.addTodo}
         </button>
-      </div>
+      </Modal>
 
       <ListWrapper>
         {props.todos.map((todo: Todo) => (
