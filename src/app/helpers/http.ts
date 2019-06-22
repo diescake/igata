@@ -10,7 +10,10 @@ export interface HttpResponse<T = any> {
 export const getCategory = (res: AxiosResponse) => Math.floor(res.status / 100)
 
 axios.interceptors.response.use(
+  // 2xx
   (res: AxiosResponse) => res,
+
+  // Except for 2xx
   (error: AxiosError) => {
     if (error.response && error.response.status === 401) {
       localStorage.removeItem('token')
