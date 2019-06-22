@@ -10,13 +10,13 @@ export const Type = {
   FETCH_TODOS_FAILURE: 'TODOS/FETCH_TODOS_FAILURE',
 } as const
 
-// action creator interfaces
-export type AddTodo = (text: string) => void
-export type UpdateTodo = (todo: Todo) => void
-export type DeleteTodo = (todoId: string) => void
-export type FetchTodos = () => void
-export type fetchTodosSuccess = (todoState: TodoState) => void
-export type fetchTodosFailure = (errorCode: string) => void
+// bound action creator interfaces
+export type DispatchAddTodo = (text: string) => void
+export type DispatchUpdateTodo = (todo: Todo) => void
+export type DispatchDeleteTodo = (todoId: string) => void
+export type DispatchFetchTodos = () => void
+export type DispatchFetchTodosSuccess = (todoState: TodoState) => void
+export type DispatchFetchTodosFailure = (errorCode: string) => void
 
 // action creators
 export const addTodo = (text: string) => ({

@@ -1,8 +1,17 @@
 import React, { FC, useState, useEffect, ChangeEvent, KeyboardEvent } from 'react'
 import { connect } from 'react-redux'
 
-import { logout, Logout } from '@/app/actions/login'
-import { addTodo, AddTodo, updateTodo, UpdateTodo, deleteTodo, DeleteTodo, fetchTodos, FetchTodos } from '@/app/actions/todo'
+import { logout, DispatchLogout } from '@/app/actions/login'
+import {
+  addTodo,
+  DispatchAddTodo,
+  updateTodo,
+  DispatchUpdateTodo,
+  deleteTodo,
+  DispatchDeleteTodo,
+  fetchTodos,
+  DispatchFetchTodos,
+} from '@/app/actions/todo'
 import { Header } from '@/app/components/Header'
 import { TodoItem } from '@/app/components/TodoItem'
 import { ListWrapper } from '@/app/components/ListWrapper'
@@ -19,11 +28,11 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  readonly addTodo: AddTodo
-  readonly updateTodo: UpdateTodo
-  readonly deleteTodo: DeleteTodo
-  readonly fetchTodos: FetchTodos
-  readonly logout: Logout
+  readonly addTodo: DispatchAddTodo
+  readonly updateTodo: DispatchUpdateTodo
+  readonly deleteTodo: DispatchDeleteTodo
+  readonly fetchTodos: DispatchFetchTodos
+  readonly logout: DispatchLogout
 }
 
 type TodoAppProps = StateProps & DispatchProps

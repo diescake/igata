@@ -8,11 +8,11 @@ export const Type = {
   LOGOUT: 'LOGIN/LOGOUT',
 } as const
 
-// action creator interfaces
-export type Login = (id: string, password: string) => void
-export type LoginSuccess = (loginState: LoginState) => void
-export type LoginFailure = (errorCode: string) => void
-export type Logout = () => void
+// bound action creator interfaces
+export type DispatchLogin = (id: string, password: string) => void
+export type DispatchLoginSuccess = (loginState: LoginState) => void
+export type DispatchLoginFailure = (errorCode: string) => void
+export type DispatchLogout = () => void
 
 // action creators
 export const login = () => ({

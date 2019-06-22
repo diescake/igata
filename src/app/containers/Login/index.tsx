@@ -2,7 +2,7 @@ import React, { useState, useEffect, FC } from 'react'
 import { RouteComponentProps, withRouter } from 'react-router'
 import { connect } from 'react-redux'
 
-import { login, Login } from '@/app/actions/login'
+import { login, DispatchLogin } from '@/app/actions/login'
 import { RootState } from '@/app/models'
 import words from '@/assets/strings'
 import style from '@/app/containers/Login/style.scss'
@@ -13,7 +13,7 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  readonly login: Login
+  readonly login: DispatchLogin
 }
 
 type LoginAppProps = StateProps & DispatchProps & RouteComponentProps
