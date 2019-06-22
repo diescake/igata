@@ -3,13 +3,15 @@ import { connect } from 'react-redux'
 
 import { logout, Logout } from '@/app/actions/login'
 import { addTodo, AddTodo, updateTodo, UpdateTodo, fetchTodos, FetchTodos } from '@/app/actions/todo'
+import { Header } from '@/app/components/Header'
+import { TodoItem } from '@/app/components/TodoItem'
 import { ListWrapper } from '@/app/components/ListWrapper'
+import { Modal } from '@/app/components/Modal'
+
 import { RootState } from '@/app/models'
 import { Todo } from '@/app/models/Todo'
 import words from '@/assets/strings'
 import style from '@/app/containers/TodoApp/style.scss'
-import { Header } from '@/app/components/Header'
-import { Modal } from '@/app/components/Modal'
 
 interface StateProps {
   readonly todos: Todo[]
@@ -108,18 +110,7 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
 
       <ListWrapper>
         {props.todos.map((todo: Todo) => (
-          <li className={style.list} key={todo.id}>
-            <input
-              id={todo.id}
-              className={style.checkbox}
-              type="checkbox"
-              onChange={handleCheckBoxClick.bind(null, todo)}
-              checked={todo.done}
-            />
-            <label className={style.todoText} htmlFor={todo.id}>
-              {todo.text}
-            </label>
-          </li>
+          <TodoItem key={todo.id} todo={todo} handleCheckBoxClick={handleCheckBoxClick} />
         ))}
       </ListWrapper>
     </div>
