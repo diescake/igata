@@ -17,7 +17,7 @@ export const TodoItem: FC<Props> = ({ todo, handleCheckBoxClick }: Props) => (
       checked={todo.done}
     />
     <label className={style.todoText} htmlFor={todo.id}>
-      {todo.text}
+      {todo.done ? <s>{todo.text}</s> : todo.text}
     </label>
   </li>
 )
