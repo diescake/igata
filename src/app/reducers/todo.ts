@@ -28,6 +28,11 @@ export const todoReducer: Reducer<TodoState, TodoAction> = (state: TodoState = d
       return { todos: Object.assign([...state.todos], { [index]: action.payload }) }
     }
 
+    case Type.DELETE_TODO:
+      return {
+        todos: state.todos.filter(todo => todo.id !== action.payload),
+      }
+
     case Type.FETCH_TODOS:
       return state
 

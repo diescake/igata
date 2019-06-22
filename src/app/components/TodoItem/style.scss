@@ -5,6 +5,7 @@
   padding-left: 15px;
   font-size: 2.6rem;
   border: solid 1px #c3c3c3;
+  border-radius: 10px 0 0 10px;
 }
 
 .checkbox {
@@ -17,4 +18,9 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.deleteButton {
+  width: 40px;
+  margin-left: auto;
 }

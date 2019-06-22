@@ -4,6 +4,7 @@ import { TodoState, Todo } from '@/app/models/Todo'
 export const Type = {
   ADD_TODO: 'TODOS/ADD_TODO',
   UPDATE_TODO: 'TODOS/UPDATE_TODO',
+  DELETE_TODO: 'TODOS/DELETE_TODO',
   FETCH_TODOS: 'TODOS/FETCH_TODOS',
   FETCH_TODOS_SUCCESS: 'TODOS/FETCH_TODOS_SUCCESS',
   FETCH_TODOS_FAILURE: 'TODOS/FETCH_TODOS_FAILURE',
@@ -12,6 +13,7 @@ export const Type = {
 // action creator interfaces
 export type AddTodo = (text: string) => void
 export type UpdateTodo = (todo: Todo) => void
+export type DeleteTodo = (todoId: string) => void
 export type FetchTodos = () => void
 export type fetchTodosSuccess = (todoState: TodoState) => void
 export type fetchTodosFailure = (errorCode: string) => void
@@ -25,6 +27,11 @@ export const addTodo = (text: string) => ({
 export const updateTodo = (todo: Todo) => ({
   type: Type.UPDATE_TODO,
   payload: { ...todo },
+})
+
+export const deleteTodo = (todoId: string) => ({
+  type: Type.DELETE_TODO,
+  payload: todoId,
 })
 
 export const fetchTodos = () => ({
@@ -44,6 +51,7 @@ export const fetchTodosFailure = (errorText: string) => ({
 export type TodoAction =
   | ReturnType<typeof addTodo>
   | ReturnType<typeof updateTodo>
+  | ReturnType<typeof deleteTodo>
   | ReturnType<typeof fetchTodos>
   | ReturnType<typeof fetchTodosSuccess>
   | ReturnType<typeof fetchTodosFailure>

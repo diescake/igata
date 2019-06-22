@@ -5,9 +5,10 @@ import { Todo } from '@/app/models/Todo'
 interface Props {
   readonly todo: Todo
   readonly handleCheckBoxClick: (todo: Todo) => void
+  readonly handleDeleteClick: (todo: Todo) => void
 }
 
-export const TodoItem: FC<Props> = ({ todo, handleCheckBoxClick }: Props) => (
+export const TodoItem: FC<Props> = ({ todo, handleCheckBoxClick, handleDeleteClick }: Props) => (
   <li className={style.list}>
     <input
       id={todo.id}
@@ -19,5 +20,8 @@ export const TodoItem: FC<Props> = ({ todo, handleCheckBoxClick }: Props) => (
     <label className={style.todoText} htmlFor={todo.id}>
       {todo.done ? <s>{todo.text}</s> : todo.text}
     </label>
+    <button className={style.deleteButton} type="button" onClick={handleDeleteClick.bind(null, todo)}>
+      ✕
+    </button>
   </li>
 )

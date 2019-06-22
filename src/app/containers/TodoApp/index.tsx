@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect, ChangeEvent, KeyboardEvent } from 'reac
 import { connect } from 'react-redux'
 
 import { logout, Logout } from '@/app/actions/login'
-import { addTodo, AddTodo, updateTodo, UpdateTodo, fetchTodos, FetchTodos } from '@/app/actions/todo'
+import { addTodo, AddTodo, updateTodo, UpdateTodo, deleteTodo, DeleteTodo, fetchTodos, FetchTodos } from '@/app/actions/todo'
 import { Header } from '@/app/components/Header'
 import { TodoItem } from '@/app/components/TodoItem'
 import { ListWrapper } from '@/app/components/ListWrapper'
@@ -21,6 +21,7 @@ interface StateProps {
 interface DispatchProps {
   readonly addTodo: AddTodo
   readonly updateTodo: UpdateTodo
+  readonly deleteTodo: DeleteTodo
   readonly fetchTodos: FetchTodos
   readonly logout: Logout
 }
@@ -35,6 +36,7 @@ const mapStateToProps = (state: RootState): StateProps => ({
 const mapDispatchToProps = {
   addTodo,
   updateTodo,
+  deleteTodo,
   fetchTodos,
   logout,
 }
@@ -68,6 +70,7 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
   }
 
   const handleCheckBoxClick = (todo: Todo) => props.updateTodo({ ...todo, done: !todo.done })
+  const handleDeleteClick = (todo: Todo) => props.deleteTodo(todo.id)
 
   const modalOpen = () => {
     setText('')
@@ -110,7 +113,7 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
 
       <ListWrapper>
         {props.todos.map((todo: Todo) => (
-          <TodoItem key={todo.id} todo={todo} handleCheckBoxClick={handleCheckBoxClick} />
+          <TodoItem key={todo.id} todo={todo} handleCheckBoxClick={handleCheckBoxClick} handleDeleteClick={handleDeleteClick} />
         ))}
       </ListWrapper>
     </div>
