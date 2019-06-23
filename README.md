@@ -5,6 +5,7 @@
 </p>
 
 [![CircleCI](https://circleci.com/gh/diescake/igata.svg?style=svg)](https://circleci.com/gh/diescake/igata)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6dcaa70a-5921-49f5-83f9-01fdef7b54b4/deploy-status)](https://app.netlify.com/sites/igata-storybook/deploys)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&identifier=165770216)](https://dependabot.com)
 [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://igata-storybook.netlify.com/)
 
