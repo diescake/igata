@@ -32,6 +32,9 @@ jobs:
           name: Run test
           command: yarn test
       - run:
+          name: Run storybook:build
+          command: yarn storybook:build
+      - run:
           name: Build
           command: yarn build
       - run:

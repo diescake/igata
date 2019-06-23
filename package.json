@@ -28,6 +28,7 @@
     "*.{js,jsx,ts,tsx}": [
       "yarn lint",
       "yarn test",
+      "yarn storybook:build",
       "git add"
     ],
     "*.{sass,scss}": [
