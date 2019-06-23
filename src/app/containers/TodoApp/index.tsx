@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect, ChangeEvent, KeyboardEvent } from 'react'
 import { connect } from 'react-redux'
+import { faListAlt } from '@fortawesome/free-solid-svg-icons'
 
 import { logout, DispatchLogout } from '@/app/actions/login'
 import {
@@ -93,7 +94,7 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
 
   return (
     <div className={style.container}>
-      <Header title={words.todoApp.title} userId={props.userId} />
+      <Header title={words.todoApp.title} userId={props.userId} icon={faListAlt} />
 
       <div>
         <button type="button" className={style.fetchButton} onClick={handleFetchTodos}>
