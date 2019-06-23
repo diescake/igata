@@ -15,13 +15,26 @@ module.exports = ({ config }) => {
     { test: /\.(png|svg|jpg|gif)$/, use: 'file-loader' },
     { test: /\.(woff|woff2|eot|ttf|otf)$/, use: 'file-loader' },
     {
-      test: /\.(scss|sass)$/,
-      use: ['style-loader', 'css-loader', 'sass-loader'],
-    },
-    {
       test: /\.(css)$/,
       include: path.resolve(__dirname, '..'),
       use: ['style-loader', 'css-loader'],
+    },
+    {
+      test: /\.(scss|sass)$/,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: {
+              localIdentName: '[local]__[hash:base64:5]',
+            },
+            importLoaders: 1,
+            sourceMap: true, // FIXME: Enable on building production only
+          },
+        },
+        'sass-loader',
+      ],
     }
   )
 
