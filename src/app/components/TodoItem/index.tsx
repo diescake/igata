@@ -1,6 +1,8 @@
 import React, { FC } from 'react'
 import style from '@/app/components/TodoItem/style.scss'
 import { Todo } from '@/app/models/Todo'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 interface Props {
   readonly todo: Todo
@@ -21,7 +23,7 @@ export const TodoItem: FC<Props> = ({ todo, handleCheckBoxClick, handleDeleteCli
       {todo.done ? <s>{todo.text}</s> : todo.text}
     </label>
     <button className={style.deleteButton} type="button" onClick={handleDeleteClick.bind(null, todo)}>
-      ✕
+      <FontAwesomeIcon icon={faTrashAlt} />
     </button>
   </li>
 )

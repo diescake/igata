@@ -29,5 +29,13 @@
 
 .deleteButton {
   width: 40px;
+  height: 40px;
   margin-left: auto;
+  color: white;
+  font-size: 1.8rem;
+  background: rgb(202, 60, 60);
+
+  &:hover {
+    opacity: 0.9;
+  }
 }

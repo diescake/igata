@@ -39,6 +39,7 @@ Please fork or hard copy me.😊
 ### Styles
 
 - [Sass](https://sass-lang.com/) as CSS Modules
+- [Font Awesome](https://fontawesome.com/)
 - [Reboot.css](https://raw.githubusercontent.com/twbs/bootstrap/v4-dev/dist/css/bootstrap-reboot.css)
 
 ### Tests
