@@ -38,7 +38,7 @@ export const fetchTodos = () => ({
   type: Type.FETCH_TODOS,
 })
 
-export const fetchTodosSuccess = ({ todos }: TodoState) => ({
+export const fetchTodosSuccess = (todos: Todo[]) => ({
   type: Type.FETCH_TODOS_SUCCESS,
   payload: { todos },
 })

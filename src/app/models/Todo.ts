@@ -6,4 +6,5 @@ export interface Todo {
 
 export interface TodoState {
   readonly todos: Todo[]
+  readonly fetching: boolean
 }

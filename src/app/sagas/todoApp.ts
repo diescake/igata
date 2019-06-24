@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { fetchTodosFailure, fetchTodosSuccess, Type } from '@/app/actions/todo'
 import { TodosResponse } from '@/app/models/HttpResponse'
-import { TodoState } from '@/app/models/Todo'
+import { Todo } from '@/app/models/Todo'
 import { get, HttpResponse } from '@/app/helpers/http'
 import { AxiosResponse, AxiosError } from 'axios'
 
@@ -20,9 +20,7 @@ const isTodosResponse = (props: any): props is TodosResponse => {
   }
 }
 
-const mapResponseToState = (res: TodosResponse): TodoState => ({
-  todos: res.todos,
-})
+const mapResponseToState = (res: TodosResponse): Todo[] => res.todos
 
 function* putWithResponse(res: AxiosResponse<unknown>) {
   if (isTodosResponse(res.data)) {
