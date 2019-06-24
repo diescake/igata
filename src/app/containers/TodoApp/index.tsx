@@ -26,6 +26,7 @@ import style from '@/app/containers/TodoApp/style.scss'
 interface StateProps {
   readonly todos: Todo[]
   readonly userId: string
+  readonly fetching: boolean
 }
 
 interface DispatchProps {
@@ -40,6 +41,7 @@ type TodoAppProps = StateProps & DispatchProps
 
 const mapStateToProps = (state: RootState): StateProps => ({
   todos: state.todoState.todos,
+  fetching: state.todoState.fetching,
   userId: state.loginState.userId,
 })
 
@@ -97,7 +99,7 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
       <Header title={words.todoApp.title} userId={props.userId} icon={faListAlt} />
 
       <div>
-        <button type="button" className={style.fetchButton} onClick={handleFetchTodos}>
+        <button type="button" className={style.fetchButton} disabled={props.fetching} onClick={handleFetchTodos}>
           {words.todoApp.fetchTodos}
         </button>
         <button type="button" className={style.logoutButton} onClick={handleLogout}>
@@ -116,12 +118,12 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
           placeholder={words.todoApp.placeholder}
           value={text}
         />
-        <button type="button" className={style.addButton} onClick={handleAddTodoClick}>
+        <button type="button" className={style.addButton} disabled={props.fetching} onClick={handleAddTodoClick}>
           {words.todoApp.addTodo}
         </button>
       </Modal>
 
-      <ListWrapper>
+      <ListWrapper loading={props.fetching}>
         {props.todos.map((todo: Todo) => (
           <TodoItem key={todo.id} todo={todo} handleCheckBoxClick={handleCheckBoxClick} handleDeleteClick={handleDeleteClick} />
         ))}
