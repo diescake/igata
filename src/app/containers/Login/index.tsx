@@ -16,7 +16,7 @@ interface DispatchProps {
   readonly login: DispatchLogin
 }
 
-type LoginAppProps = StateProps & DispatchProps & RouteComponentProps
+type LoginProps = StateProps & DispatchProps & RouteComponentProps
 
 const mapStateToProps = (state: RootState): StateProps => ({
   token: state.loginState.token,
@@ -26,7 +26,7 @@ const mapDispatchToProps: DispatchProps = {
   login,
 }
 
-const LoginApp: FC<LoginAppProps> = (props: LoginAppProps) => {
+const Login: FC<LoginProps> = (props: LoginProps) => {
   const [loginId, setLoginId] = useState<string>('')
   const [password, setPassword] = useState<string>('')
 
@@ -90,5 +90,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(LoginApp)
+  )(Login)
 )
