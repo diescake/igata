@@ -1,6 +1,6 @@
 import axios, { AxiosResponse, AxiosError } from 'axios'
-import { RootState } from '@/app/models/index'
 import { select } from 'redux-saga/effects'
+import { RootState } from '@/app/models/index'
 
 export interface HttpResponse<T = any> {
   res: AxiosResponse<T>

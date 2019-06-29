@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
-import style from '@/app/components/TodoItem/style.scss'
-import { Todo } from '@/app/models/Todo'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import style from '@/app/components/TodoItem/style.scss'
+import { Todo } from '@/app/models/Todo'
 
 interface Props {
   readonly todo: Todo

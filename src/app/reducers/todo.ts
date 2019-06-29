@@ -1,7 +1,7 @@
-import { TodoAction, Type } from '@/app/actions/todo'
-import { TodoState, Todo } from '@/app/models/Todo'
 import { Reducer } from 'redux'
 import uuid from 'uuidv4'
+import { TodoAction, Type } from '@/app/actions/todo'
+import { TodoState, Todo } from '@/app/models/Todo'
 
 const defaultState: TodoState = {
   todos: [],

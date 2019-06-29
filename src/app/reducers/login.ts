@@ -1,6 +1,6 @@
+import { Reducer } from 'redux'
 import { LoginAction, Type } from '@/app/actions/login'
 import { LoginState } from '@/app/models/Login'
-import { Reducer } from 'redux'
 
 const defaultState: LoginState = {
   token: localStorage.getItem('token') || '',

@@ -1,9 +1,9 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
+import { AxiosResponse, AxiosError } from 'axios'
 import { loginFailure, loginSuccess, Type } from '@/app/actions/login'
 import { LoginResponse } from '@/app/models/HttpResponse'
 import { LoginState } from '@/app/models/Login'
 import { get, HttpResponse } from '@/app/helpers/http'
-import { AxiosResponse, AxiosError } from 'axios'
 
 const LOGIN_JSON_URL = 'https://raw.githubusercontent.com/diescake/igata/master/data/login.json'
 

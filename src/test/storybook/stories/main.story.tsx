@@ -1,11 +1,11 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { text, boolean } from '@storybook/addon-knobs'
+import { faListAlt } from '@fortawesome/free-solid-svg-icons'
 import { Header } from '@/app/components/Header'
 import { Footer } from '@/app/components/Footer'
 import { ListWrapper } from '@/app/components/ListWrapper'
 import { Modal } from '@/app/components/Modal'
-import { faListAlt } from '@fortawesome/free-solid-svg-icons'
 // import Login from '@/app/containers/Login'
 
 // FIXME: Preparing connect I/Fs to import container components

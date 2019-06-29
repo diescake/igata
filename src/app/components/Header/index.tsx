@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 
-import words from '@/assets/strings'
-import style from '@/app/components/Header/style.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons'
+import words from '@/assets/strings'
+import style from '@/app/components/Header/style.scss'
 
 interface Props {
   readonly title: string
