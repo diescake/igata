@@ -17,6 +17,7 @@ import { Header } from '@/app/components/Header'
 import { TodoItem } from '@/app/components/TodoItem'
 import { ListWrapper } from '@/app/components/ListWrapper'
 import { Modal } from '@/app/components/Modal'
+import { Footer } from '@/app/components/Footer'
 
 import { RootState } from '@/app/models'
 import { Todo } from '@/app/models/Todo'
@@ -128,6 +129,7 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
           <TodoItem key={todo.id} todo={todo} handleCheckBoxClick={handleCheckBoxClick} handleDeleteClick={handleDeleteClick} />
         ))}
       </ListWrapper>
+      <Footer copyright="@diescake" />
     </div>
   )
 }

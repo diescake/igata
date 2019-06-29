@@ -1,7 +1,9 @@
 import React, { useState, useEffect, FC } from 'react'
 import { RouteComponentProps, withRouter } from 'react-router'
 import { connect } from 'react-redux'
+import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 
+import { Header } from '@/app/components/Header'
 import { login, DispatchLogin } from '@/app/actions/login'
 import { RootState } from '@/app/models'
 import words from '@/assets/strings'
@@ -53,8 +55,9 @@ const Login: FC<LoginProps> = (props: LoginProps) => {
 
   return (
     <div className={style.container}>
-      <h1 className={style.header}>{words.login.title}</h1>
+      <Header title={words.login.title} userId="" icon={faSignInAlt} />
       <form onSubmit={handleSubmit}>
+        <label>User ID:</label>
         <div>
           <input
             className={style.inputId}
@@ -66,6 +69,7 @@ const Login: FC<LoginProps> = (props: LoginProps) => {
             value={loginId}
           />
         </div>
+        <label>Password:</label>
         <div>
           <input
             className={style.inputPassword}
