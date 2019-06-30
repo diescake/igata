@@ -59,10 +59,10 @@ const Login: FC<LoginProps> = (props: LoginProps) => {
     <div className={style.container}>
       <Header title={login.title} userId="" icon={faSignInAlt} />
       <form onSubmit={handleSubmit}>
-        <label>{login.id}</label>
+        <label className={style.label}>{login.id}</label>
         <div>
           <input
-            className={style.inputId}
+            className={style.input}
             type="text"
             autoComplete="username"
             onChange={handleLoginIdChange}
@@ -71,10 +71,10 @@ const Login: FC<LoginProps> = (props: LoginProps) => {
             value={loginId}
           />
         </div>
-        <label>{login.password}</label>
+        <label className={style.label}>{login.password}</label>
         <div>
           <input
-            className={style.inputPassword}
+            className={style.input}
             type="password"
             autoComplete="current-password"
             onChange={handleLoginPasswordChange}

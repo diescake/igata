@@ -4,13 +4,20 @@
   padding: 10px 30px;
 }
 
-.inputId,
-.inputPassword {
-  width: 40%;
+.label {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.input {
+  width: 300px;
   padding: 0 10px;
   font-size: 1.6rem;
 }
 
 .loginButton {
+  width: 100px;
+  height: 20px;
+  margin-top: 30px;
   font-size: 1rem;
 }
