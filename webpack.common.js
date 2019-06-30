@@ -38,7 +38,7 @@ const common = isProd => ({
             loader: MiniCssExtractPlugin.loader,
             options: {
               publicPath: '../',
-              hmr: false, // FIXME: Enable on building development only
+              hmr: !isProd,
             },
           },
           {
@@ -48,7 +48,7 @@ const common = isProd => ({
                 localIdentName: '[local]__[hash:base64:5]',
               },
               importLoaders: 1,
-              sourceMap: false, // FIXME: Enable on building development only
+              sourceMap: !isProd,
             },
           },
           'sass-loader',

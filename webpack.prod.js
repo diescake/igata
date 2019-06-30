@@ -23,9 +23,10 @@ const extPlugins = [
     safe: false,
   }),
 ]
+const commonConfig = common(true)
 
 module.exports = {
-  ...common,
+  ...commonConfig,
   ...extConfig,
-  plugins: [...common.plugins, ...extPlugins],
+  plugins: [...commonConfig.plugins, ...extPlugins],
 }

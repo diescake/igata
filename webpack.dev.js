@@ -33,8 +33,10 @@ const extPlugins = [
   }),
 ]
 
+const commonConfig = common(false)
+
 module.exports = {
-  ...common,
+  ...commonConfig,
   ...extConfig,
-  plugins: [...common.plugins, ...extPlugins],
+  plugins: [...commonConfig.plugins, ...extPlugins],
 }
