@@ -41,7 +41,7 @@ const common = {
                 localIdentName: '[local]__[hash:base64:5]',
               },
               importLoaders: 1,
-              sourceMap: true, // FIXME: Enable on building production only
+              sourceMap: false, // FIXME: Enable on building development only
             },
           },
           'sass-loader',
