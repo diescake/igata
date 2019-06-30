@@ -17,10 +17,6 @@ export default {
     loginMessage: (userId: string) => `Login user: ${userId}`,
     dateMessage: 'Date',
   },
-  sfc: {
-    name: 'sfc',
-    hello: 'Hello from TypeScript and framework!!!',
-  },
   footer: {
     author: 'author',
     twitterBaseUrl: 'https://twitter.com',

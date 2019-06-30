@@ -17,10 +17,6 @@ export default {
     loginMessage: (userId: string) => `ログインユーザ: ${userId}`,
     dateMessage: '時刻',
   },
-  sfc: {
-    name: 'sfc',
-    hello: 'こんにちは TypeScript の世界 !!!',
-  },
   footer: {
     author: '作者',
     twitterBaseUrl: 'https://twitter.com',
