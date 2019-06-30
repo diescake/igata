@@ -85,7 +85,7 @@ const Login: FC<LoginProps> = (props: LoginProps) => {
           {words.todoApp.login}
         </button>
       </form>
-      <Footer copyright="@diescake" />
+      <Footer />
     </div>
   )
 }

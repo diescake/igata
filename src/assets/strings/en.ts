@@ -18,8 +18,13 @@ export default {
     dateMessage: 'Date',
   },
   footer: {
-    author: 'author',
-    twitterBaseUrl: 'https://twitter.com',
-    followMe: (account: string) => `Please follow ${account} on Twitter !!`,
+    twitter: {
+      label: 'Twitter',
+      url: 'https://twitter.com/diescake',
+    },
+    github: {
+      label: 'GitHub',
+      url: 'https://github.com/diescake/igata',
+    },
   },
 } as const

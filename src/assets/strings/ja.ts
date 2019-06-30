@@ -18,8 +18,13 @@ export default {
     dateMessage: '時刻',
   },
   footer: {
-    author: '作者',
-    twitterBaseUrl: 'https://twitter.com',
-    followMe: (account: string) => `フォロー歓迎！ Twitter: ${account}`,
+    twitter: {
+      label: 'Twitter',
+      url: 'https://twitter.com/diescake',
+    },
+    github: {
+      label: 'GitHub',
+      url: 'https://github.com/diescake/igata',
+    },
   },
 } as const

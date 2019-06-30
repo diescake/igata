@@ -1,23 +1,13 @@
 import React, { FC } from 'react'
-import { EnhanceFooter, EnhanceFooterProps } from '@/app/helpers/EnhanceFooter'
 import words from '@/assets/strings'
+import style from '@/app/components/Footer/style.scss'
 
-const WrappedFooter: FC<EnhanceFooterProps> = (props: EnhanceFooterProps) => {
-  if (!props.copyright) {
-    return null
-  }
-
-  // eslint-disable-next-line
-  const handleAuthorClick = () => alert(words.footer.followMe(props.copyright!))
+export const Footer: FC = () => {
+  const { twitter, github } = words.footer
 
   return (
-    <>
-      <button type="button" onClick={handleAuthorClick}>
-        {words.footer.author}
-      </button>
-      <a href={`${words.footer.twitterBaseUrl}/${props.copyright}`}>{props.copyright}</a>
-    </>
+    <div className={style.footer}>
+      <a href={twitter.url}>{twitter.label}</a> | <a href={github.url}>{github.label}</a>
+    </div>
   )
 }
-
-export const Footer = EnhanceFooter(WrappedFooter)

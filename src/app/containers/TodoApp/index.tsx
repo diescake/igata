@@ -129,7 +129,7 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
           <TodoItem key={todo.id} todo={todo} handleCheckBoxClick={handleCheckBoxClick} handleDeleteClick={handleDeleteClick} />
         ))}
       </ListWrapper>
-      <Footer copyright="@diescake" />
+      <Footer />
     </div>
   )
 }

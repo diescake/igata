@@ -20,10 +20,7 @@ storiesOf('Components|Header', module)
   .add('with userId only', () => <Header title={text('title', '')} userId={text('userId', 'diescake')} />)
   .add('with empty strings', () => <Header title={text('title', '')} userId={text('userId', '')} />)
 
-storiesOf('Components|Footer', module)
-  .add('with @diescake ', () => <Footer copyright={text('copyright', 'diescake')} />)
-  .add('with @pankona', () => <Footer copyright={text('copyright', 'pankona')} />)
-  .add('with no props', () => <Footer copyright={text('copyright', '')} />)
+storiesOf('Components|Footer', module).add('with no props', () => <Footer />)
 
 const createModal = (hidden: boolean) => (
   <>
