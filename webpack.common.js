@@ -5,14 +5,53 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 /* eslint-enable */
 
 const param = {
+  title: 'igata',
+  entryPath: './src/main.tsx',
   distPath: './public',
   faviconPath: './src/assets/images/favicon.ico',
   dotEnvPath: './src/envs',
-  title: 'igata',
+  templatePath: './src/assets/html/template.html',
 }
 
+const optimization = {
+  splitChunks: {
+    chunks: 'async',
+    minSize: 30000,
+    maxSize: 524288, // 500KB
+    minChunks: 1,
+    maxAsyncRequests: 5,
+    maxInitialRequests: 3,
+    automaticNameDelimiter: '~',
+    automaticNameMaxLength: 30,
+    name: true,
+    cacheGroups: {
+      vendors: {
+        test: /[\\/]node_modules[\\/]/,
+        priority: -10,
+      },
+      default: {
+        minChunks: 2,
+        priority: -20,
+        reuseExistingChunk: true,
+      },
+    },
+  },
+}
+
+const plugins = [
+  new HtmlWebpackPlugin({
+    favicon: param.faviconPath,
+    templateParameters: { title: param.title },
+    template: param.templatePath,
+  }),
+  new MiniCssExtractPlugin({
+    filename: '[name].css',
+    chunkFilename: '[id].css',
+  }),
+]
+
 const common = isProd => ({
-  entry: './src/main.tsx',
+  entry: param.entryPath,
   output: {
     filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js',
@@ -56,17 +95,8 @@ const common = isProd => ({
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      favicon: param.faviconPath,
-      templateParameters: { title: param.title },
-      template: './src/assets/html/template.html',
-    }),
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
-    }),
-  ],
+  optimization,
+  plugins,
 })
 
 module.exports = { param, common }
