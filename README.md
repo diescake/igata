@@ -18,7 +18,7 @@
 
 ## How to use
 
-Please fork or hard copy me.😊
+Recommend to use as a template. Please click above ["Use this template"](https://help.github.com/en/articles/creating-a-repository-from-a-template) button to start. 😊
 
 ## Technology stacks
 
