@@ -27,7 +27,6 @@ rules:
   indentation: 2
   string-quotes: single
   length-zero-no-unit: true
-  number-leading-zero: never
   color-hex-length: short
   shorthand-property-no-redundant-values: true
 
