@@ -53,11 +53,13 @@ const Login: FC<LoginProps> = (props: LoginProps) => {
   const handleLoginIdChange = (e: React.ChangeEvent<HTMLInputElement>) => setLoginId(e.target.value)
   const handleLoginPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)
 
+  const { login } = words
+
   return (
     <div className={style.container}>
-      <Header title={words.login.title} userId="" icon={faSignInAlt} />
+      <Header title={login.title} userId="" icon={faSignInAlt} />
       <form onSubmit={handleSubmit}>
-        <label>User ID:</label>
+        <label>{login.id}</label>
         <div>
           <input
             className={style.inputId}
@@ -65,11 +67,11 @@ const Login: FC<LoginProps> = (props: LoginProps) => {
             autoComplete="username"
             onChange={handleLoginIdChange}
             onKeyPress={handleKeyPress}
-            placeholder={words.login.idPlaceholder}
+            placeholder={login.idPlaceholder}
             value={loginId}
           />
         </div>
-        <label>Password:</label>
+        <label>{login.password}</label>
         <div>
           <input
             className={style.inputPassword}
@@ -77,12 +79,12 @@ const Login: FC<LoginProps> = (props: LoginProps) => {
             autoComplete="current-password"
             onChange={handleLoginPasswordChange}
             onKeyPress={handleKeyPress}
-            placeholder={words.login.passwordPlaceholder}
+            placeholder={login.passwordPlaceholder}
             value={password}
           />
         </div>
         <button type="submit" className={style.loginButton}>
-          {words.todoApp.login}
+          {login.login}
         </button>
       </form>
       <Footer />

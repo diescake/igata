@@ -2,7 +2,9 @@ export default {
   login: {
     title: 'Login',
     login: 'login',
+    id: 'User ID:',
     idPlaceholder: 'ID',
+    password: 'Password:',
     passwordPlaceholder: 'Password',
   },
   todoApp: {
@@ -12,7 +14,6 @@ export default {
     addTodo: '⇧',
     placeholder: 'Enter your TODO',
     fetchTodos: 'Fetch TODOs',
-    login: 'login',
     logout: 'Logout',
     loginMessage: (userId: string) => `Login user: ${userId}`,
     dateMessage: 'Date',

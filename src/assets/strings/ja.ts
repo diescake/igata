@@ -2,7 +2,9 @@ export default {
   login: {
     title: 'ログイン',
     login: 'ログイン',
+    id: 'ユーザ ID:',
     idPlaceholder: 'ID',
+    password: 'パスワード',
     passwordPlaceholder: 'パスワード',
   },
   todoApp: {
@@ -12,7 +14,6 @@ export default {
     addTodo: '⇧',
     placeholder: 'TODO を入力してください',
     fetchTodos: 'TODO を取得',
-    login: 'ログイン',
     logout: 'ログアウト',
     loginMessage: (userId: string) => `ログインユーザ: ${userId}`,
     dateMessage: '時刻',
