@@ -1,6 +1,7 @@
 /* eslint-disable */
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 /* eslint-enable */
 
 const param = {
@@ -10,7 +11,7 @@ const param = {
   title: 'igata',
 }
 
-const common = {
+const common = isProd => ({
   entry: './src/main.tsx',
   output: {
     filename: '[name].bundle.js',
@@ -33,7 +34,13 @@ const common = {
       {
         test: /\.(css|scss|sass)$/,
         use: [
-          'style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../',
+              hmr: false, // FIXME: Enable on building development only
+            },
+          },
           {
             loader: 'css-loader',
             options: {
@@ -55,7 +62,11 @@ const common = {
       templateParameters: { title: param.title },
       template: './src/assets/html/template.html',
     }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
   ],
-}
+})
 
 module.exports = { param, common }
