@@ -4,3 +4,4 @@ yarn-lock.json
 storybook-static/
 public/
 node_modules/
+coverage/
