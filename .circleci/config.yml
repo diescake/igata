@@ -31,6 +31,8 @@ jobs:
       - run:
           name: Run test
           command: yarn test
+      - store_artifacts:
+          path: coverage
       - run:
           name: Run storybook:build
           command: yarn storybook:build
