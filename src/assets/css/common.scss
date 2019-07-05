@@ -1,11 +1,18 @@
 @import '~@/app/helpers/styleVars';
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   font-size: 62.5%;
 }
 
 body {
   color: $black_01;
+  font-size: 1.6rem;
 }
 
 a:link {

@@ -107,7 +107,7 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
           {words.todoApp.logout}
         </button>
       </div>
-      <button type="button" onClick={modalOpen}>
+      <button type="button" className={style.addButton} onClick={modalOpen}>
         {words.todoApp.newTodo}
       </button>
       <Modal hidden={modalHidden} name={words.todoApp.newTodo} close={modalClose}>
@@ -119,7 +119,7 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
           placeholder={words.todoApp.placeholder}
           value={text}
         />
-        <button type="button" className={style.addButton} disabled={props.fetching} onClick={handleAddTodoClick}>
+        <button type="button" className={style.postButton} disabled={props.fetching} onClick={handleAddTodoClick}>
           {words.todoApp.addTodo}
         </button>
       </Modal>
