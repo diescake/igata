@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { Redirect } from 'react-router'
 
 interface Props {
-  readonly children?: React.ReactNode
+  readonly children?: ReactNode
 }
 
 export const Authenticated = (props: Props) => {
