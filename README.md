@@ -18,7 +18,9 @@
 
 ## How to use
 
-Recommend to use as a template. Please click above ["Use this template"](https://help.github.com/en/articles/creating-a-repository-from-a-template) button to start. 😊
+Recommend to use as a template. Please click above ["Use this template"](https://help.github.com/en/articles/creating-a-repository-from-a-template) button to start. Though the template function provided by GitHub is really confort and useful, please note that your new repository is always created from HEAD of `master`.
+
+About template for more information, see [Creating a repository from a template](https://help.github.com/articles/creating-a-repository-from-a-template)
 
 ## Technology stacks
 
