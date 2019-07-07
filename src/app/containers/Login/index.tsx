@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FC } from 'react'
-import { RouteComponentProps, withRouter } from 'react-router'
+import { RouteComponentProps } from 'react-router'
 import { connect } from 'react-redux'
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 
@@ -92,9 +92,7 @@ const Login: FC<LoginProps> = (props: LoginProps) => {
   )
 }
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Login)
-)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login)
