@@ -7,6 +7,7 @@ import { createBrowserHistory } from 'history'
 
 import Login from '@/app/containers/Login'
 import TodoApp from '@/app/containers/TodoApp'
+import AppController from '@/app/helpers/AppController'
 import { configureStore } from '@/app/store'
 import { Authenticated } from '@/app/helpers/Authenticated'
 import '@/assets/css/reboot.css'
@@ -22,14 +23,16 @@ const store = configureStore(history)
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Switch>
-        <Route exact path="/login" component={Login} />
-        <Authenticated>
-          <Route exact path="/" component={TodoApp} />
-        </Authenticated>
-        {/* FIXME: Following "Not Found" is unreachable and doesn't work. */}
-        <Route render={() => <h1>404 Not Found</h1>} />
-      </Switch>
+      <AppController>
+        <Switch>
+          <Route exact path="/login" component={Login} />
+          <Authenticated>
+            <Route exact path="/" component={TodoApp} />
+          </Authenticated>
+          {/* FIXME: Following "Not Found" is unreachable and doesn't work. */}
+          <Route render={() => <h1>404 Not Found</h1>} />
+        </Switch>
+      </AppController>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
