@@ -37,3 +37,5 @@ declare module '*.scss' {
   const style: any
   export default style
 }
+
+type FIXME_any = any
