@@ -1,6 +1,7 @@
 import { Reducer } from 'redux'
 import { LoginAction, Type } from '@/app/actions/login'
 import { LoginState } from '@/app/models/Login'
+import { paths } from '@/app/common/paths'
 
 const defaultState: LoginState = {
   token: localStorage.getItem('token') || '',
@@ -25,7 +26,7 @@ export const loginReducer: Reducer<LoginState, LoginAction> = (state: LoginState
     case Type.LOGOUT:
       localStorage.removeItem('token')
       localStorage.removeItem('userId')
-      window.location.href = '/login'
+      window.location.href = paths.login
       return { token: '', userId: '' }
 
     default:

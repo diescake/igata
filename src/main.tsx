@@ -10,6 +10,7 @@ import TodoApp from '@/app/containers/TodoApp'
 import AppController from '@/app/components/AppController'
 import { Authenticated } from '@/app/components/Authenticated'
 import { configureStore } from '@/app/store'
+import { paths } from '@/app/common/paths'
 import '@/assets/css/reboot.css'
 import '@/assets/css/common.scss'
 
@@ -25,9 +26,9 @@ ReactDOM.render(
     <ConnectedRouter history={history}>
       <AppController>
         <Switch>
-          <Route exact path="/login" component={Login} />
+          <Route exact path={paths.login} component={Login} />
           <Authenticated>
-            <Route exact path="/" component={TodoApp} />
+            <Route exact path={paths.root} component={TodoApp} />
           </Authenticated>
           {/* FIXME: Following "Not Found" is unreachable and doesn't work. */}
           <Route render={() => <h1>404 Not Found</h1>} />

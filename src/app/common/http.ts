@@ -1,6 +1,7 @@
 import axios, { AxiosResponse, AxiosError } from 'axios'
 import { select } from 'redux-saga/effects'
 import { RootState } from '@/app/models/index'
+import { paths } from '@/app/common/paths'
 
 export interface HttpResponse<T = any> {
   res: AxiosResponse<T>
@@ -17,7 +18,7 @@ axios.interceptors.response.use(
   (error: AxiosError) => {
     if (error.response && error.response.status === 401) {
       localStorage.removeItem('token')
-      window.location.href = '/login'
+      window.location.href = paths.login
     }
 
     return Promise.reject(error)

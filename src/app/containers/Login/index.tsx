@@ -4,11 +4,12 @@ import { connect } from 'react-redux'
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 
 import { Header } from '@/app/components/Header'
+import { Footer } from '@/app/components/Footer'
 import { login, DispatchLogin } from '@/app/actions/login'
 import { RootState } from '@/app/models'
+import { paths } from '@/app/common/paths'
 import words from '@/assets/strings'
 import style from '@/app/containers/Login/style.scss'
-import { Footer } from '@/app/components/Footer'
 
 interface StateProps {
   readonly token: string
@@ -34,7 +35,7 @@ const Login: FC<LoginProps> = (props: LoginProps) => {
 
   useEffect(() => {
     if (props.token) {
-      props.history.push('/')
+      props.history.push(paths.root)
     }
   }, [props.token])
 
