@@ -7,7 +7,7 @@ import { createBrowserHistory } from 'history'
 
 import Login from '@/app/containers/Login'
 import TodoApp from '@/app/containers/TodoApp'
-import AppController from '@/app/helpers/AppController'
+import AppController from '@/app/components/AppController'
 import { configureStore } from '@/app/store'
 import { Authenticated } from '@/app/helpers/Authenticated'
 import '@/assets/css/reboot.css'
