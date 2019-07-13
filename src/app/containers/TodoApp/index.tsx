@@ -119,6 +119,7 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
           placeholder={words.todoApp.placeholder}
           value={text}
         />
+        <br />
         <button type="button" className={style.postButton} disabled={props.fetching} onClick={handleAddTodoClick}>
           {words.todoApp.addTodo}
         </button>

@@ -11,7 +11,7 @@ export default {
     title: 'TODO Application',
     name: 'TOP',
     newTodo: 'Add TODO',
-    addTodo: '⇧',
+    addTodo: 'Add',
     placeholder: 'Enter your TODO',
     fetchTodos: 'Fetch TODOs',
     logout: 'Logout',

@@ -11,7 +11,7 @@ export default {
     title: 'TODO アプリ',
     name: 'TOP',
     newTodo: 'TODO を追加',
-    addTodo: '⇧',
+    addTodo: '追加',
     placeholder: 'TODO を入力してください',
     fetchTodos: 'TODO を取得',
     logout: 'ログアウト',
