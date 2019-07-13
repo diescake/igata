@@ -1,24 +1,30 @@
 import React, { FC } from 'react'
+import { faTimes, IconDefinition } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import style from '@/app/components/Modal/style.scss'
 
 interface Props {
   hidden: boolean
+  icon?: IconDefinition
   name: string
   children: React.ReactNode
-  close: (e: React.MouseEvent<HTMLElement>) => void
+  close: (e?: React.MouseEvent<HTMLElement>) => void
 }
 
-export const Modal: FC<Props> = (props: Props) => {
-  return (
-    <div>
-      <div role="presentation" className={style.modal} hidden={props.hidden} onClick={props.close} onKeyPress={() => {}} />
-      <div className={style.modalContent} hidden={props.hidden}>
-        <h1>{props.name}</h1>
+export const Modal: FC<Props> = (props: Props) => (
+  <div>
+    <div role="presentation" className={style.modal} hidden={props.hidden} onClick={props.close} />
+    <div className={style.modalContent} hidden={props.hidden}>
+      <header className={style.header}>
+        <h1 className={style.title}>
+          {props.icon && <FontAwesomeIcon className={style.icon} icon={props.icon} />}
+          {props.name}
+        </h1>
         <button type="button" className={style.close} onClick={props.close}>
-          &times;
+          <FontAwesomeIcon icon={faTimes} />
         </button>
-        {props.children}
-      </div>
+      </header>
+      {props.children}
     </div>
-  )
-}
+  </div>
+)

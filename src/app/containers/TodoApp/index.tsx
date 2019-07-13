@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect, ChangeEvent, KeyboardEvent } from 'react'
 import { connect } from 'react-redux'
-import { faListAlt } from '@fortawesome/free-solid-svg-icons'
+import { faListAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
 import { logout, DispatchLogout } from '@/app/actions/login'
 import {
@@ -110,7 +110,7 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
       <button type="button" className={style.addButton} onClick={modalOpen}>
         {words.todoApp.newTodo}
       </button>
-      <Modal hidden={modalHidden} name={words.todoApp.newTodo} close={modalClose}>
+      <Modal hidden={modalHidden} icon={faPlusCircle} name={words.todoApp.newTodo} close={modalClose}>
         <input
           className={style.inputTodo}
           type="text"

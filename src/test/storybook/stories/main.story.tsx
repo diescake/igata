@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { text, boolean } from '@storybook/addon-knobs'
-import { faListAlt } from '@fortawesome/free-solid-svg-icons'
+import { faListAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { Header } from '@/app/components/Header'
 import { Footer } from '@/app/components/Footer'
 import { ListWrapper } from '@/app/components/ListWrapper'
@@ -25,7 +25,12 @@ storiesOf('Components|Footer', module).add('with no props', () => <Footer />)
 const createModal = (hidden: boolean) => (
   <>
     <p>--- outside of modal ---</p>
-    <Modal hidden={boolean('hidden', hidden)} name={text('name', 'Sample dialog')} close={() => console.log('close')}>
+    <Modal
+      hidden={boolean('hidden', hidden)}
+      icon={faPlusCircle}
+      name={text('name', 'Sample dialog')}
+      close={() => console.log('close')}
+    >
       <p>This is a sample modal description.</p>
     </Modal>
     <p>--- outside of modal ---</p>
