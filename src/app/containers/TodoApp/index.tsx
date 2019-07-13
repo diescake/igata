@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect, ChangeEvent, KeyboardEvent } from 'reac
 import { connect } from 'react-redux'
 import { faListAlt } from '@fortawesome/free-solid-svg-icons'
 
+import { setImages, getImages } from '@/app/helpers/simpleIDB'
 import { logout, DispatchLogout } from '@/app/actions/login'
 import {
   addTodo,
@@ -23,6 +24,8 @@ import { RootState } from '@/app/models'
 import { Todo } from '@/app/models/Todo'
 import words from '@/assets/strings'
 import style from '@/app/containers/TodoApp/style.scss'
+
+import base64Image from '@/assets/images/base64Image'
 
 interface StateProps {
   readonly todos: Todo[]
@@ -85,6 +88,9 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
   const handleCheckBoxClick = (todo: Todo) => props.updateTodo({ ...todo, done: !todo.done })
   const handleDeleteClick = (todo: Todo) => props.deleteTodo(todo.id)
 
+  const handleSetDataToDB = () => setImages([base64Image, 'test_01', 'test_04', 'test_02', 'test_03'])
+  const handleGetDataFromDB = () => getImages().then(images => console.log(images[0]))
+
   const modalOpen = () => {
     setText('')
     setModalHidden(false)
@@ -129,6 +135,13 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
           <TodoItem key={todo.id} todo={todo} handleCheckBoxClick={handleCheckBoxClick} handleDeleteClick={handleDeleteClick} />
         ))}
       </ListWrapper>
+
+      <button type="button" onClick={handleSetDataToDB}>
+        Set Data to DB
+      </button>
+      <button type="button" onClick={handleGetDataFromDB}>
+        Get Data from DB
+      </button>
       <Footer />
     </div>
   )
