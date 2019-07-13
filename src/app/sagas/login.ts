@@ -3,7 +3,7 @@ import { AxiosResponse, AxiosError } from 'axios'
 import { loginFailure, loginSuccess, Type } from '@/app/actions/login'
 import { LoginResponse } from '@/app/models/HttpResponse'
 import { LoginState } from '@/app/models/Login'
-import { get, HttpResponse } from '@/app/helpers/http'
+import { get, HttpResponse } from '@/app/common/http'
 
 const LOGIN_JSON_URL = 'https://raw.githubusercontent.com/diescake/igata/master/data/login.json'
 

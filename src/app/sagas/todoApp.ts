@@ -3,7 +3,7 @@ import { AxiosResponse, AxiosError } from 'axios'
 import { fetchTodosFailure, fetchTodosSuccess, Type } from '@/app/actions/todo'
 import { TodosResponse } from '@/app/models/HttpResponse'
 import { Todo } from '@/app/models/Todo'
-import { get, HttpResponse } from '@/app/helpers/http'
+import { get, HttpResponse } from '@/app/common/http'
 
 // NOTE: "myjson.com" supports CORS and allows basic headers and methods.
 const TODOS_JSON_URL = 'https://api.myjson.com/bins/gagz1'
