@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, ChangeEvent, KeyboardEvent } from 'react'
+import React, { FC, useState, useEffect, useRef, ChangeEvent, KeyboardEvent } from 'react'
 import { connect } from 'react-redux'
 import { faListAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
@@ -57,6 +57,7 @@ const mapDispatchToProps = {
 const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
   const [text, setText] = useState<string>('')
   const [modalHidden, setModalHidden] = useState<boolean>(true)
+  const inputElem = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     props.fetchTodos()
@@ -95,6 +96,12 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
     setModalHidden(true)
   }
 
+  const handleModalLoad = () => {
+    if (inputElem.current) {
+      inputElem.current.focus()
+    }
+  }
+
   return (
     <div className={style.container}>
       <Header title={words.todoApp.title} userId={props.userId} icon={faListAlt} />
@@ -110,8 +117,9 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
       <button type="button" className={style.addButton} onClick={modalOpen}>
         {words.todoApp.newTodo}
       </button>
-      <Modal hidden={modalHidden} icon={faPlusCircle} name={words.todoApp.newTodo} close={modalClose}>
+      <Modal hidden={modalHidden} onLoad={handleModalLoad} icon={faPlusCircle} name={words.todoApp.newTodo} close={modalClose}>
         <input
+          ref={inputElem}
           className={style.inputTodo}
           type="text"
           onChange={handleInputChange}
