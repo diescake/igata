@@ -46,7 +46,7 @@ function* inspect(promise: Promise<unknown>) {
   return ret
 }
 
-function* getToken() {
+function* selectToken() {
   return yield select((state: RootState) => state.loginState.token)
 }
 
@@ -99,18 +99,18 @@ const internalPut = (url: string, token: string, body: object) =>
     .catch((error: AxiosError) => ({ error }))
 
 export function* get(url: string, isAuth: boolean = true, params: object = {}) {
-  return yield inspect(internalGet(url, isAuth ? yield getToken() : '', params))
+  return yield inspect(internalGet(url, isAuth ? yield selectToken() : '', params))
 }
 
 export function* post(url: string, isAuth: boolean = true, body: object = {}) {
-  return yield inspect(internalPost(url, isAuth ? yield getToken() : '', body))
+  return yield inspect(internalPost(url, isAuth ? yield selectToken() : '', body))
 }
 
-// NOTE: 'delete' is reserved
+// NOTE: Unfortunately, 'delete' is reserved
 export function* del(url: string, isAuth: boolean = true, data: object = {}) {
-  return yield inspect(internalDelete(url, isAuth ? yield getToken() : '', data))
+  return yield inspect(internalDelete(url, isAuth ? yield selectToken() : '', data))
 }
 
 export function* put(url: string, isAuth: boolean = true, data: object = {}) {
-  return yield inspect(internalPut(url, isAuth ? yield getToken() : '', data))
+  return yield inspect(internalPut(url, isAuth ? yield selectToken() : '', data))
 }
