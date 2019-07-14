@@ -1,5 +1,6 @@
-import axios, { AxiosResponse, AxiosError } from 'axios'
+import axios, { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios'
 import { select } from 'redux-saga/effects'
+import { putIncrementConnection, putDecrementConnection } from '@/app//sagas/network'
 import { RootState } from '@/app/models/index'
 import { paths } from '@/app/common/paths'
 
@@ -9,6 +10,19 @@ export interface HttpResponse<T = any> {
 }
 
 export const getCategory = (res: AxiosResponse) => Math.floor(res.status / 100)
+
+axios.interceptors.request.use(
+  (config: AxiosRequestConfig) => {
+    // NOTE: Put common configs here about HTTP Requests.
+    return config
+  },
+
+  // TODO: When does the following onRejected route run ?
+  (error: AxiosError) => {
+    console.error(error)
+    return Promise.reject(error)
+  }
+)
 
 axios.interceptors.response.use(
   // 2xx
@@ -24,6 +38,13 @@ axios.interceptors.response.use(
     return Promise.reject(error)
   }
 )
+
+function* inspect(promise: Promise<unknown>) {
+  yield putIncrementConnection()
+  const ret = yield promise
+  yield putDecrementConnection()
+  return ret
+}
 
 function* getToken() {
   return yield select((state: RootState) => state.loginState.token)
@@ -78,18 +99,18 @@ const internalPut = (url: string, token: string, body: object) =>
     .catch((error: AxiosError) => ({ error }))
 
 export function* get(url: string, isAuth: boolean = true, params: object = {}) {
-  return yield internalGet(url, isAuth ? yield getToken() : '', params)
+  return yield inspect(internalGet(url, isAuth ? yield getToken() : '', params))
 }
 
 export function* post(url: string, isAuth: boolean = true, body: object = {}) {
-  return yield internalPost(url, isAuth ? yield getToken() : '', body)
+  return yield inspect(internalPost(url, isAuth ? yield getToken() : '', body))
 }
 
 // NOTE: 'delete' is reserved
 export function* del(url: string, isAuth: boolean = true, data: object = {}) {
-  return yield internalDelete(url, isAuth ? yield getToken() : '', data)
+  return yield inspect(internalDelete(url, isAuth ? yield getToken() : '', data))
 }
 
 export function* put(url: string, isAuth: boolean = true, data: object = {}) {
-  return yield internalPut(url, isAuth ? yield getToken() : '', data)
+  return yield inspect(internalPut(url, isAuth ? yield getToken() : '', data))
 }

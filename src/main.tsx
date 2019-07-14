@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
 
+import ProgressBar from '@/app/containers/ProgressBar'
 import Login from '@/app/containers/Login'
 import TodoApp from '@/app/containers/TodoApp'
 import AppController from '@/app/components/AppController'
@@ -24,6 +25,7 @@ const store = configureStore(history)
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
+      <ProgressBar />
       <AppController>
         <Switch>
           <Route exact path={paths.login} component={Login} />
