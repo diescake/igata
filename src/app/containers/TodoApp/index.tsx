@@ -128,7 +128,7 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
           value={text}
         />
         <br />
-        <button type="button" className={style.postButton} disabled={props.fetching} onClick={handleAddTodoClick}>
+        <button type="button" className={style.postButton} disabled={!text || props.fetching} onClick={handleAddTodoClick}>
           {words.todoApp.addTodo}
         </button>
       </Modal>
