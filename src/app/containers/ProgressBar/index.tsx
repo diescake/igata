@@ -14,6 +14,6 @@ const mapStateToProps = (state: RootState): StateProps => ({
 })
 
 const ProgressBar: FC<ProgressBarProps> = ({ connectionCount }: ProgressBarProps) =>
-  connectionCount > 0 ? <div className={style.bar} /> : null
+  connectionCount > 0 ? <div className={style.bar} /> : <div className={style.hiddenBar} />
 
 export default connect(mapStateToProps)(ProgressBar)

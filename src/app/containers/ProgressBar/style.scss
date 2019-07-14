@@ -1,11 +1,21 @@
 @import '~@/app/common/styleVars';
 
-.bar {
+.bar,
+.hiddenBar {
   position: fixed;
   top: 0;
-  left: 0;
   z-index: 5;
   width: 100vw;
   height: 3px;
   background-color: $progress_bar_color;
+}
+
+.bar {
+  left: 0;
+  transition-timing-function: ease-out;
+  transition-duration: 0.6s;
+}
+
+.hiddenBar {
+  left: -100vw;
 }
