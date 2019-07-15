@@ -29,6 +29,8 @@ rules:
   length-zero-no-unit: true
   color-hex-length: short
   shorthand-property-no-redundant-values: true
+  at-rule-no-unknown: null
+  scss/at-rule-no-unknown: null
 
   order/properties-order: []
   plugin/rational-order:
