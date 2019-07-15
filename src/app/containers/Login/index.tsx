@@ -5,7 +5,7 @@ import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 
 import { Header } from '@/app/components/Header'
 import { Footer } from '@/app/components/Footer'
-import { login, DispatchLogin } from '@/app/actions/login'
+import { login } from '@/app/actions/login'
 import { RootState } from '@/app/models'
 import { paths } from '@/app/common/paths'
 import words from '@/assets/strings'
@@ -16,7 +16,7 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  readonly login: DispatchLogin
+  readonly login: typeof login
 }
 
 type LoginProps = StateProps & DispatchProps & RouteComponentProps

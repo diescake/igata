@@ -1,4 +1,4 @@
-import { TodoState, Todo } from '@/app/models/Todo'
+import { Todo } from '@/app/models/Todo'
 
 // action types
 export const Type = {
@@ -9,14 +9,6 @@ export const Type = {
   FETCH_TODOS_SUCCESS: 'TODOS/FETCH_TODOS_SUCCESS',
   FETCH_TODOS_FAILURE: 'TODOS/FETCH_TODOS_FAILURE',
 } as const
-
-// bound action creator interfaces
-export type DispatchAddTodo = (text: string) => void
-export type DispatchUpdateTodo = (todo: Todo) => void
-export type DispatchDeleteTodo = (todoId: string) => void
-export type DispatchFetchTodos = () => void
-export type DispatchFetchTodosSuccess = (todoState: TodoState) => void
-export type DispatchFetchTodosFailure = (errorCode: string) => void
 
 // action creators
 export const addTodo = (text: string) => ({

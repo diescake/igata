@@ -8,15 +8,10 @@ export const Type = {
   LOGOUT: 'LOGIN/LOGOUT',
 } as const
 
-// bound action creator interfaces
-export type DispatchLogin = (id: string, password: string) => void
-export type DispatchLoginSuccess = (loginState: LoginState) => void
-export type DispatchLoginFailure = (errorCode: string) => void
-export type DispatchLogout = () => void
-
 // action creators
-export const login = () => ({
+export const login = (id: string, password: string) => ({
   type: Type.LOGIN,
+  payload: { id, password },
 })
 
 export const loginSuccess = ({ token, userId }: LoginState) => ({

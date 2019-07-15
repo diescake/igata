@@ -4,10 +4,6 @@ export const Type = {
   DECREMENT_CONNECTION: 'NETWORK/DECREMENT_CONNECTION',
 } as const
 
-// bound action creator interfaces
-export type DispatchIncrementConnection = () => void
-export type DispatchDecrementConnection = () => void
-
 // action creators
 export const incrementConnection = () => ({
   type: Type.INCREMENT_CONNECTION,
