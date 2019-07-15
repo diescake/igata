@@ -40,6 +40,8 @@ axios.interceptors.response.use(
 )
 
 function* inspect(promise: Promise<unknown>) {
+  // FIXME: There are cases in which collapse the consistency
+  // because the called functions by takeLatest may omit the duplicating process.
   yield putIncrementConnection()
   const ret = yield promise
   yield putDecrementConnection()
