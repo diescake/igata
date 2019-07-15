@@ -39,11 +39,3 @@ export const fetchTodosFailure = (errorText: string) => ({
   type: Type.FETCH_TODOS_FAILURE,
   payload: { errorText },
 })
-
-export type TodoAction =
-  | ReturnType<typeof addTodo>
-  | ReturnType<typeof updateTodo>
-  | ReturnType<typeof deleteTodo>
-  | ReturnType<typeof fetchTodos>
-  | ReturnType<typeof fetchTodosSuccess>
-  | ReturnType<typeof fetchTodosFailure>

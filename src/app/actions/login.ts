@@ -27,9 +27,3 @@ export const loginFailure = (errorText: string) => ({
 export const logout = () => ({
   type: Type.LOGOUT,
 })
-
-export type LoginAction =
-  | ReturnType<typeof login>
-  | ReturnType<typeof loginSuccess>
-  | ReturnType<typeof loginFailure>
-  | ReturnType<typeof logout>

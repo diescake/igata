@@ -12,5 +12,3 @@ export const incrementConnection = () => ({
 export const decrementConnection = () => ({
   type: Type.DECREMENT_CONNECTION,
 })
-
-export type NetworkAction = ReturnType<typeof incrementConnection> | ReturnType<typeof decrementConnection>

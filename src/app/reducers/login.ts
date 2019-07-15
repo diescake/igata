@@ -1,7 +1,11 @@
 import { Reducer } from 'redux'
-import { LoginAction, Type } from '@/app/actions/login'
+import * as LoginActionModule from '@/app/actions/login'
 import { LoginState } from '@/app/models/Login'
 import { paths } from '@/app/common/paths'
+import { CreateActionTypes } from '@/app/common/typeHelper'
+
+const { Type } = LoginActionModule
+type LoginAction = CreateActionTypes<typeof LoginActionModule>
 
 const defaultState: LoginState = {
   token: localStorage.getItem('token') || '',
