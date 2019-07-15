@@ -14,8 +14,14 @@ export const networkReducer: Reducer<NetworkState, NetworkAction> = (
     case Type.INCREMENT_CONNECTION:
       return { connectionCount: state.connectionCount + 1 }
 
-    case Type.DECREMENT_CONNECTION:
-      return { connectionCount: state.connectionCount - 1 }
+    case Type.DECREMENT_CONNECTION: {
+      const nextCount = state.connectionCount - 1
+
+      if (nextCount < 0) {
+        console.warn('Invalid consistency for counting the network connections.')
+      }
+      return { connectionCount: Math.max(nextCount, 0) }
+    }
 
     default:
       return state

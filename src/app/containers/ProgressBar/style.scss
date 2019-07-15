@@ -1,7 +1,6 @@
 @import '~@/app/common/styleVars';
 
-.bar,
-.hiddenBar {
+@mixin bar {
   position: fixed;
   top: 0;
   z-index: 5;
@@ -10,12 +9,24 @@
   background-color: $progress_bar_color;
 }
 
-.bar {
-  left: 0;
-  transition-timing-function: ease-out;
-  transition-duration: 0.6s;
+.idle {
+  @include bar;
+
+  left: -100vw;
 }
 
-.hiddenBar {
-  left: -100vw;
+.running {
+  @include bar;
+
+  left: -10vw;
+  transition-timing-function: ease-out;
+  transition-duration: 4s;
+}
+
+.closing {
+  @include bar;
+
+  // NOTE: At least one change is needed in order to override the new transition-duration value
+  left: 100vw;
+  transition-duration: 0.3s;
 }
