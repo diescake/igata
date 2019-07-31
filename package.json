@@ -50,7 +50,7 @@
     "@storybook/addon-links": "^5.1.10",
     "@storybook/addons": "^5.1.9",
     "@storybook/cli": "^5.1.10",
-    "@storybook/react": "^5.1.9",
+    "@storybook/react": "^5.1.10",
     "@types/axios": "^0.14.0",
     "@types/history": "^4.7.2",
     "@types/jest": "^24.0.16",
