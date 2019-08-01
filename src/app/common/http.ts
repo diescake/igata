@@ -99,6 +99,17 @@ const internalPut = (url: string, token: string, body: object) =>
     .then((res: AxiosResponse) => ({ res }))
     .catch((error: AxiosError) => ({ error }))
 
+const internalPatch = (url: string, token: string, body: object) =>
+  axios
+    .patch(url, body, {
+      headers: {
+        ...authorizationHeader(token),
+        ...contentTypeHeader(),
+      },
+    })
+    .then((res: AxiosResponse) => ({ res }))
+    .catch((error: AxiosError) => ({ error }))
+
 export function* get(url: string, isAuth: boolean = true, params: object = {}) {
   return yield inspect(internalGet(url, isAuth ? yield selectToken() : '', params))
 }
@@ -114,4 +125,8 @@ export function* del(url: string, isAuth: boolean = true, data: object = {}) {
 
 export function* put(url: string, isAuth: boolean = true, data: object = {}) {
   return yield inspect(internalPut(url, isAuth ? yield selectToken() : '', data))
+}
+
+export function* patch(url: string, isAuth: boolean = true, data: object = {}) {
+  return yield inspect(internalPatch(url, isAuth ? yield selectToken() : '', data))
 }
