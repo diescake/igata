@@ -13,7 +13,7 @@
 
 ```exs
 'boilerplate'
-|> toJapanese  // 鋳型
+|> toJapanese // 鋳型
 |> toAlphabet // igata 🎉
 ```
 
