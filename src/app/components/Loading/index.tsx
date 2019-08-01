@@ -1,5 +1,6 @@
 import React from 'react'
-import spinner from '@/app/components/Loading/spinner.scss'
+import clsx from 'clsx'
+import style from '@/app/components/Loading/style.scss'
 
 interface Props {
   visible: boolean
@@ -12,9 +13,9 @@ export const Loading = (props: Props) => {
   }
 
   return (
-    <div className={spinner.halfCircleSpinner}>
-      <div className={`${spinner.circle} ${spinner.circle1}`} />
-      <div className={`${spinner.circle} ${spinner.circle2}`} />
+    <div className={style.halfCircleSpinner}>
+      <div className={clsx(style.circle, style.circle1)} />
+      <div className={clsx(style.circle, style.circle2)} />
     </div>
   )
 }
