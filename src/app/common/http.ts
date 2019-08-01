@@ -3,6 +3,7 @@ import { select } from 'redux-saga/effects'
 import { putIncrementConnection, putDecrementConnection } from '@/app//sagas/network'
 import { RootState } from '@/app/models/index'
 import { paths } from '@/app/common/paths'
+import { ContentType } from '@/app/common/types'
 
 export interface HttpResponse<T = any> {
   res: AxiosResponse<T>
@@ -53,7 +54,7 @@ function* selectToken() {
 }
 
 const authorizationHeader = (token: string) => (token ? { Authorization: token } : {})
-const contentTypeHeader = () => ({ 'Content-Type': 'application/json' })
+const contentTypeHeader = (contentType: ContentType = 'application/json') => ({ 'Content-Type': contentType })
 
 const internalGet = (url: string, token: string, params: object) =>
   axios
@@ -66,12 +67,12 @@ const internalGet = (url: string, token: string, params: object) =>
     .then((res: AxiosResponse) => ({ res }))
     .catch((error: AxiosError) => ({ error }))
 
-const internalPost = (url: string, token: string, body: object) =>
+const internalPost = (url: string, token: string, contentType?: ContentType, body?: object) =>
   axios
-    .post(url, body, {
+    .post(url, body || {}, {
       headers: {
         ...authorizationHeader(token),
-        ...contentTypeHeader(),
+        ...contentTypeHeader(contentType),
       },
     })
     .then((res: AxiosResponse) => ({ res }))
@@ -88,23 +89,23 @@ const internalDelete = (url: string, token: string, data: object) =>
     .then((res: AxiosResponse) => ({ res }))
     .catch((error: AxiosError) => ({ error }))
 
-const internalPut = (url: string, token: string, body: object) =>
+const internalPut = (url: string, token: string, contentType?: ContentType, body?: object) =>
   axios
-    .put(url, body, {
+    .put(url, body || {}, {
       headers: {
         ...authorizationHeader(token),
-        ...contentTypeHeader(),
+        ...contentTypeHeader(contentType),
       },
     })
     .then((res: AxiosResponse) => ({ res }))
     .catch((error: AxiosError) => ({ error }))
 
-const internalPatch = (url: string, token: string, body: object) =>
+const internalPatch = (url: string, token: string, contentType?: ContentType, body?: object) =>
   axios
-    .patch(url, body, {
+    .patch(url, body || {}, {
       headers: {
         ...authorizationHeader(token),
-        ...contentTypeHeader(),
+        ...contentTypeHeader(contentType),
       },
     })
     .then((res: AxiosResponse) => ({ res }))
@@ -114,8 +115,8 @@ export function* get(url: string, isAuth: boolean = true, params: object = {}) {
   return yield inspect(internalGet(url, isAuth ? yield selectToken() : '', params))
 }
 
-export function* post(url: string, isAuth: boolean = true, body: object = {}) {
-  return yield inspect(internalPost(url, isAuth ? yield selectToken() : '', body))
+export function* post(url: string, isAuth: boolean = true, contentType?: ContentType, data?: object) {
+  return yield inspect(internalPost(url, isAuth ? yield selectToken() : '', contentType, data))
 }
 
 // NOTE: Unfortunately, 'delete' is reserved
@@ -123,10 +124,10 @@ export function* del(url: string, isAuth: boolean = true, data: object = {}) {
   return yield inspect(internalDelete(url, isAuth ? yield selectToken() : '', data))
 }
 
-export function* put(url: string, isAuth: boolean = true, data: object = {}) {
-  return yield inspect(internalPut(url, isAuth ? yield selectToken() : '', data))
+export function* put(url: string, isAuth: boolean = true, contentType?: ContentType, data?: object) {
+  return yield inspect(internalPut(url, isAuth ? yield selectToken() : '', contentType, data))
 }
 
-export function* patch(url: string, isAuth: boolean = true, data: object = {}) {
-  return yield inspect(internalPatch(url, isAuth ? yield selectToken() : '', data))
+export function* patch(url: string, isAuth: boolean = true, contentType?: ContentType, data?: object) {
+  return yield inspect(internalPatch(url, isAuth ? yield selectToken() : '', contentType, data))
 }
