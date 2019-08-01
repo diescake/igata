@@ -82,7 +82,6 @@ const internalDelete = (url: string, token: string, data: object) =>
     .delete(url, {
       headers: {
         ...authorizationHeader(token),
-        ...contentTypeHeader(),
       },
       data,
     })
