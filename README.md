@@ -11,10 +11,10 @@
 
 `igata(鋳型)` is my boilerplate for Web Frontend. It should be maintained by me and my lovely dependabot as much as possible. By the way, `鋳型` is a Japanese word and it means a boilerplate or casting mold.
 
-```js
+```exs
 'boilerplate'
 |> toJapanese  // 鋳型
-  |> toAlphabet // igata 🎉
+|> toAlphabet // igata 🎉
 ```
 
 ## DEMO
