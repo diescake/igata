@@ -6,7 +6,7 @@ import { Todo } from '@/app/models/Todo'
 import { get, HttpResponse } from '@/app/common/http'
 
 // NOTE: "myjson.com" supports CORS and allows basic headers and methods.
-const TODOS_JSON_URL = 'https://api.myjson.com/bins/gagz1'
+const TODOS_JSON_URL = 'https://api.myjson.com/bins/17rf2l'
 
 const isTodosResponse = (props: any): props is TodosResponse => {
   try {
