@@ -8,7 +8,7 @@ import style from '@/app/components/Header/style.scss'
 interface Props {
   readonly title: string
   readonly icon?: IconDefinition
-  readonly userId: string
+  readonly userId?: string
 }
 
 export const Header: FC<Props> = (props: Props) => (
