@@ -4,8 +4,11 @@ export default {
     login: 'login',
     id: 'User ID:',
     idPlaceholder: 'ID',
+    idErrorEmpty: 'Required',
+    idErrorInvalid: 'Invalid email address',
     password: 'Password:',
     passwordPlaceholder: 'Password',
+    passwordErrorEmpty: 'Required',
   },
   todoApp: {
     title: 'TODO Application',

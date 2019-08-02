@@ -4,8 +4,11 @@ export default {
     login: 'ログイン',
     id: 'ユーザ ID:',
     idPlaceholder: 'ID',
+    idErrorEmpty: '入力必須項目です',
+    idErrorInvalid: '無効なメールアドレスです',
     password: 'パスワード',
     passwordPlaceholder: 'パスワード',
+    passwordErrorEmpty: '入力必須項目です',
   },
   todoApp: {
     title: 'TODO アプリ',

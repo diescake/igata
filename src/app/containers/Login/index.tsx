@@ -1,9 +1,10 @@
-import React, { useState, useEffect, FC } from 'react'
+import React, { useEffect, FC } from 'react'
 import { RouteComponentProps } from 'react-router'
 import { connect } from 'react-redux'
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 
 import { Header } from '@/app/components/Header'
+import { LoginForm } from '@/app/components/LoginForm'
 import { Footer } from '@/app/components/Footer'
 import { login, DispatchLogin } from '@/app/actions/login'
 import { RootState } from '@/app/models'
@@ -30,64 +31,16 @@ const mapDispatchToProps: DispatchProps = {
 }
 
 const Login: FC<LoginProps> = (props: LoginProps) => {
-  const [loginId, setLoginId] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
-
   useEffect(() => {
     if (props.token) {
       props.history.push(paths.root)
     }
   }, [props.token])
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    props.login(loginId, password)
-  }
-
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key !== 'Enter') {
-      return
-    }
-    props.login(loginId, password)
-  }
-
-  const handleLoginIdChange = (e: React.ChangeEvent<HTMLInputElement>) => setLoginId(e.target.value)
-  const handleLoginPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)
-
-  const { login } = words
-
   return (
     <div className={style.container}>
-      <Header title={login.title} userId="" icon={faSignInAlt} />
-      <form onSubmit={handleSubmit}>
-        <label className={style.label}>{login.id}</label>
-        <div>
-          <input
-            className={style.input}
-            type="text"
-            autoComplete="username"
-            onChange={handleLoginIdChange}
-            onKeyPress={handleKeyPress}
-            placeholder={login.idPlaceholder}
-            value={loginId}
-          />
-        </div>
-        <label className={style.label}>{login.password}</label>
-        <div>
-          <input
-            className={style.input}
-            type="password"
-            autoComplete="current-password"
-            onChange={handleLoginPasswordChange}
-            onKeyPress={handleKeyPress}
-            placeholder={login.passwordPlaceholder}
-            value={password}
-          />
-        </div>
-        <button type="submit" className={style.loginButton}>
-          {login.login}
-        </button>
-      </form>
+      <Header title={words.login.title} icon={faSignInAlt} />
+      <LoginForm login={props.login} />
       <Footer />
     </div>
   )

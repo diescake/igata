@@ -51,6 +51,7 @@ About template for more information, see [Creating a repository from a template]
 
 - [axios](https://github.com/axios/axios)
 - [dayjs](https://github.com/iamkun/dayjs)
+- [Formik](https://jaredpalmer.com/formik/)
 
 ### Static code analysis and formatters
 
