@@ -9,6 +9,7 @@ export default {
     password: 'Password:',
     passwordPlaceholder: 'Password',
     passwordErrorEmpty: 'Required',
+    passwordErrorInvalid: 'Invalid password',
   },
   todoApp: {
     title: 'TODO Application',

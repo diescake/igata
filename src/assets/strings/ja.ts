@@ -9,6 +9,7 @@ export default {
     password: 'パスワード',
     passwordPlaceholder: 'パスワード',
     passwordErrorEmpty: '入力必須項目です',
+    passwordErrorInvalid: '無効なパスワードです',
   },
   todoApp: {
     title: 'TODO アプリ',

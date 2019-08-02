@@ -1,9 +1,10 @@
 import React, { FC } from 'react'
-import { Formik } from 'formik'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { DispatchLogin } from '@/app/actions/login'
 
 import words from '@/assets/strings'
 import style from '@/app/components/LoginForm/style.scss'
+import { isValidEmail, isValidPassword } from '@/app/common/utils'
 
 interface Props {
   readonly login: DispatchLogin
@@ -13,7 +14,7 @@ const validateEmail = (email: string) => {
   if (!email) {
     return words.login.idErrorEmpty
   }
-  if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
+  if (!isValidEmail(email)) {
     return words.login.idErrorInvalid
   }
   return ''
@@ -22,6 +23,9 @@ const validateEmail = (email: string) => {
 const validatePassword = (password: string) => {
   if (!password) {
     return words.login.passwordErrorEmpty
+  }
+  if (!isValidPassword(password)) {
+    return words.login.passwordErrorInvalid
   }
   return ''
 }
@@ -36,40 +40,31 @@ export const LoginForm: FC<Props> = (props: Props) => (
     }}
     onSubmit={values => props.login(values.email, values.password)}
     validateOnBlur
+    enableReinitialize
   >
-    {({ values, errors, handleChange, handleBlur, handleSubmit }) => {
+    {() => {
       const { login } = words
 
       return (
-        <form onSubmit={handleSubmit}>
+        <Form>
           <label className={style.label}>{login.id}</label>
-          <label className={style.errorLabel}>{errors.email}</label>
-          <input
-            className={style.input}
-            type="email"
-            name="email"
-            autoComplete="username"
-            onChange={handleChange}
-            placeholder={login.idPlaceholder}
-            onBlur={handleBlur}
-            value={values.email}
-          />
+          <ErrorMessage className={style.errorLabel} name="email" component="div" />
+          <Field className={style.input} type="email" name="email" autoComplete="username" placeholder={login.idPlaceholder} />
+
           <label className={style.label}>{login.password}</label>
-          <label className={style.errorLabel}>{errors.password}</label>
-          <input
+          <ErrorMessage className={style.errorLabel} name="password" component="div" />
+          <Field
             className={style.input}
             type="password"
             name="password"
             autoComplete="current-password"
-            onChange={handleChange}
             placeholder={login.passwordPlaceholder}
-            onBlur={handleBlur}
-            value={values.password}
           />
+
           <button type="submit" className={style.loginButton}>
             {login.login}
           </button>
-        </form>
+        </Form>
       )
     }}
   </Formik>
