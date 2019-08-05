@@ -1,5 +1,5 @@
 import { LoginState } from '@/app/models/Login'
-import { CreateActionTypes } from '@/app/common/typeHelper'
+import { CreateActionTypes, CreateDispatcherTypes } from '@/app/common/typeHelper'
 
 // action types
 export const Type = {
@@ -30,3 +30,4 @@ export const logout = () => ({
 })
 
 export type LoginAction = CreateActionTypes<Omit<typeof import('./login'), 'Type'>>
+export type LoginDispatcher = CreateDispatcherTypes<Omit<typeof import('./login'), 'Type'>>

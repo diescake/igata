@@ -2,8 +2,8 @@ import React, { FC, useState, useEffect, useRef, ChangeEvent, KeyboardEvent } fr
 import { connect } from 'react-redux'
 import { faListAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
-import { logout } from '@/app/actions/login'
-import { addTodo, updateTodo, deleteTodo, fetchTodos } from '@/app/actions/todo'
+import { logout, LoginDispatcher } from '@/app/actions/login'
+import { addTodo, updateTodo, deleteTodo, fetchTodos, TodoDispatcher } from '@/app/actions/todo'
 import { Header } from '@/app/components/Header'
 import { TodoItem } from '@/app/components/TodoItem'
 import { ListWrapper } from '@/app/components/ListWrapper'
@@ -22,11 +22,11 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  readonly addTodo: typeof addTodo
-  readonly updateTodo: typeof updateTodo
-  readonly deleteTodo: typeof deleteTodo
-  readonly fetchTodos: typeof fetchTodos
-  readonly logout: typeof logout
+  readonly addTodo: TodoDispatcher['addTodo']
+  readonly updateTodo: TodoDispatcher['updateTodo']
+  readonly deleteTodo: TodoDispatcher['deleteTodo']
+  readonly fetchTodos: TodoDispatcher['fetchTodos']
+  readonly logout: LoginDispatcher['logout']
 }
 
 type TodoAppProps = StateProps & DispatchProps

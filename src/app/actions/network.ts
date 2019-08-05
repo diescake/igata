@@ -1,4 +1,4 @@
-import { CreateActionTypes } from '@/app/common/typeHelper'
+import { CreateActionTypes, CreateDispatcherTypes } from '@/app/common/typeHelper'
 
 // action types
 export const Type = {
@@ -16,3 +16,4 @@ export const decrementConnection = () => ({
 })
 
 export type NetworkAction = CreateActionTypes<Omit<typeof import('./network'), 'Type'>>
+export type NetworkDispatchTypes = CreateDispatcherTypes<Omit<typeof import('./network'), 'Type'>>
