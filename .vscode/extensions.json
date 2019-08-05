@@ -8,7 +8,7 @@
     "mikestead.dotenv", // DotEnv
     "dbaeumer.vscode-eslint", // ESLint
     "shinnn.stylelint", // StyleLint
-    "robinbentley.sass-indented", // Sass
+    "syler.sass-indented", // Sass
     "ms-vsliveshare.vsliveshare", // VS Live Share (Server)
     "ms-vsliveshare.vsliveshare-pack" // VS Live Share Extension Pack (Client)
   ],
