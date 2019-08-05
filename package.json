@@ -120,7 +120,7 @@
     "yaml-loader": "^0.5.0"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.20",
+    "@fortawesome/fontawesome-svg-core": "^1.2.21",
     "@fortawesome/free-solid-svg-icons": "^5.10.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "axios": "^0.19.0",
