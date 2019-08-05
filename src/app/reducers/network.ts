@@ -1,10 +1,6 @@
 import { Reducer } from 'redux'
-import * as NetworkActionModule from '@/app/actions/network'
+import { Type, NetworkAction } from '@/app/actions/network'
 import { NetworkState } from '@/app/models/Network'
-import { CreateActionTypes } from '@/app/common/typeHelper'
-
-const { Type } = NetworkActionModule
-type NetworkAction = CreateActionTypes<typeof NetworkActionModule>
 
 const defaultState: NetworkState = {
   connectionCount: 0,

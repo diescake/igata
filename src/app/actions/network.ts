@@ -1,3 +1,5 @@
+import { CreateActionTypes } from '@/app/common/typeHelper'
+
 // action types
 export const Type = {
   INCREMENT_CONNECTION: 'NETWORK/INCREMENT_CONNECTION',
@@ -12,3 +14,5 @@ export const incrementConnection = () => ({
 export const decrementConnection = () => ({
   type: Type.DECREMENT_CONNECTION,
 })
+
+export type NetworkAction = CreateActionTypes<Omit<typeof import('./network'), 'Type'>>

@@ -1,4 +1,5 @@
 import { Todo } from '@/app/models/Todo'
+import { CreateActionTypes } from '@/app/common/typeHelper'
 
 // action types
 export const Type = {
@@ -39,3 +40,5 @@ export const fetchTodosFailure = (errorText: string) => ({
   type: Type.FETCH_TODOS_FAILURE,
   payload: { errorText },
 })
+
+export type TodoAction = CreateActionTypes<Omit<typeof import('./todo'), 'Type'>>

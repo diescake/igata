@@ -1,4 +1,5 @@
 import { LoginState } from '@/app/models/Login'
+import { CreateActionTypes } from '@/app/common/typeHelper'
 
 // action types
 export const Type = {
@@ -27,3 +28,5 @@ export const loginFailure = (errorText: string) => ({
 export const logout = () => ({
   type: Type.LOGOUT,
 })
+
+export type LoginAction = CreateActionTypes<Omit<typeof import('./login'), 'Type'>>
