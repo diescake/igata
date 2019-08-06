@@ -1,13 +1,13 @@
 import React, { FC } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { DispatchLogin } from '@/app/actions/login'
+import { LoginDispatcher } from '@/app/actions/login'
 
 import words from '@/assets/strings'
 import style from '@/app/components/LoginForm/style.scss'
 import { isValidEmail, isValidPassword } from '@/app/common/utils'
 
 interface Props {
-  readonly login: DispatchLogin
+  readonly login: LoginDispatcher['login']
 }
 
 const validateEmail = (email: string) => {
