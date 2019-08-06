@@ -5,3 +5,8 @@ storybook-static/
 public/
 node_modules/
 coverage/
+priv/
+deps/
+out/
+_build/
+.elixir_ls/
