@@ -1916,13 +1916,6 @@
   resolved "https://registry.yarnpkg.com/@types/anymatch/-/anymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
   integrity sha512-/+CRPXpBDpo2RK9C68N3b2cOvO0Cf5B9aPijHsoDQTHivnGSObdOF2BRQOYjojWTDy6nQvMjmqRXIxH55VjxxA==
 
-"@types/axios@^0.14.0":
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/@types/axios/-/axios-0.14.0.tgz#ec2300fbe7d7dddd7eb9d3abf87999964cafce46"
-  integrity sha1-7CMA++fX3d1+udOr+HmZlkyvzkY=
-  dependencies:
-    axios "*"
-
 "@types/babel__core@^7.1.0":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.2.tgz#608c74f55928033fce18b99b213c16be4b3d114f"
@@ -2103,13 +2096,6 @@
   integrity sha512-oV9qiCuowhVR/ehqUobWWkXJjohontbDGLV88Be/7T4bqMQ3kjXwkFNL7doIIqlbg3X2PC5WPziZ8/j/QHNQ4A==
   dependencies:
     redux "^3.6.0"
-
-"@types/redux-saga@^0.10.5":
-  version "0.10.5"
-  resolved "https://registry.yarnpkg.com/@types/redux-saga/-/redux-saga-0.10.5.tgz#80bf21078379ebc97387dbe56e44467b5677fa85"
-  integrity sha1-gL8hB4N568lzh9vlbkRGe1Z3+oU=
-  dependencies:
-    redux-saga "*"
 
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
@@ -2899,7 +2885,7 @@ axe-core@^3.2.2:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-3.2.2.tgz#b06d6e9ae4636d706068843272bfaeed3fe97362"
   integrity sha512-gAy4kMSPpuRJV3mwictJqlg5LhE84Vw2CydKdC4tvrLhR6+G3KW51zbL/vYujcLA2jvWOq3HMHrVeNuw+mrLVA==
 
-axios@*, axios@^0.19.0:
+axios@^0.19.0:
   version "0.19.0"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.19.0.tgz#8e09bff3d9122e133f7b8101c8fbdd00ed3d2ab8"
   integrity sha512-1uvKqKQta3KBxIz14F2v06AEHZ/dIoeKfbTRkK1E5oqjDnuEerLmYTgJB5AiQZHJcljpg1TuRzdjDR06qNk0DQ==
@@ -11552,7 +11538,7 @@ redux-logger@^3.0.6:
   dependencies:
     deep-diff "^0.3.5"
 
-redux-saga@*, redux-saga@^1.0.5:
+redux-saga@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-1.0.5.tgz#03317261bc5fa7ee2ecb778f4e4848f573557bbb"
   integrity sha512-ytGFtaHyz6NQMQp7/LpQ/6CtOkbPRCcAeljUpc4c95hRm5U6dFvrRiZHeBPuQZ56L3oXfTX3hiYh8/3ZudsiNg==
