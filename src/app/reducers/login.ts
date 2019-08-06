@@ -1,5 +1,5 @@
 import { Reducer } from 'redux'
-import { LoginAction, Type } from '@/app/actions/login'
+import { Type, LoginAction } from '@/app/actions/login'
 import { LoginState } from '@/app/models/Login'
 import { paths } from '@/app/common/paths'
 

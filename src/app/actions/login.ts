@@ -1,4 +1,5 @@
 import { LoginState } from '@/app/models/Login'
+import { CreateActionTypes, CreateDispatcherTypes } from '@/app/common/typeHelper'
 
 // action types
 export const Type = {
@@ -8,15 +9,10 @@ export const Type = {
   LOGOUT: 'LOGIN/LOGOUT',
 } as const
 
-// bound action creator interfaces
-export type DispatchLogin = (id: string, password: string) => void
-export type DispatchLoginSuccess = (loginState: LoginState) => void
-export type DispatchLoginFailure = (errorCode: string) => void
-export type DispatchLogout = () => void
-
 // action creators
-export const login = () => ({
+export const login = (id: string, password: string) => ({
   type: Type.LOGIN,
+  payload: { id, password },
 })
 
 export const loginSuccess = ({ token, userId }: LoginState) => ({
@@ -33,8 +29,5 @@ export const logout = () => ({
   type: Type.LOGOUT,
 })
 
-export type LoginAction =
-  | ReturnType<typeof login>
-  | ReturnType<typeof loginSuccess>
-  | ReturnType<typeof loginFailure>
-  | ReturnType<typeof logout>
+export type LoginAction = CreateActionTypes<Omit<typeof import('./login'), 'Type'>>
+export type LoginDispatcher = CreateDispatcherTypes<Omit<typeof import('./login'), 'Type'>>

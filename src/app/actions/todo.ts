@@ -1,4 +1,5 @@
-import { TodoState, Todo } from '@/app/models/Todo'
+import { Todo } from '@/app/models/Todo'
+import { CreateActionTypes, CreateDispatcherTypes } from '@/app/common/typeHelper'
 
 // action types
 export const Type = {
@@ -9,14 +10,6 @@ export const Type = {
   FETCH_TODOS_SUCCESS: 'TODOS/FETCH_TODOS_SUCCESS',
   FETCH_TODOS_FAILURE: 'TODOS/FETCH_TODOS_FAILURE',
 } as const
-
-// bound action creator interfaces
-export type DispatchAddTodo = (text: string) => void
-export type DispatchUpdateTodo = (todo: Todo) => void
-export type DispatchDeleteTodo = (todoId: string) => void
-export type DispatchFetchTodos = () => void
-export type DispatchFetchTodosSuccess = (todoState: TodoState) => void
-export type DispatchFetchTodosFailure = (errorCode: string) => void
 
 // action creators
 export const addTodo = (text: string) => ({
@@ -48,10 +41,5 @@ export const fetchTodosFailure = (errorText: string) => ({
   payload: { errorText },
 })
 
-export type TodoAction =
-  | ReturnType<typeof addTodo>
-  | ReturnType<typeof updateTodo>
-  | ReturnType<typeof deleteTodo>
-  | ReturnType<typeof fetchTodos>
-  | ReturnType<typeof fetchTodosSuccess>
-  | ReturnType<typeof fetchTodosFailure>
+export type TodoAction = CreateActionTypes<Omit<typeof import('./todo'), 'Type'>>
+export type TodoDispatcher = CreateDispatcherTypes<Omit<typeof import('./todo'), 'Type'>>

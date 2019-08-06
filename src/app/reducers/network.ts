@@ -1,5 +1,5 @@
 import { Reducer } from 'redux'
-import { NetworkAction, Type } from '@/app/actions/network'
+import { Type, NetworkAction } from '@/app/actions/network'
 import { NetworkState } from '@/app/models/Network'
 
 const defaultState: NetworkState = {
