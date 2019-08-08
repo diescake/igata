@@ -28,6 +28,19 @@ Recommend to use as a template. Please click above ["Use this template"](https:/
 
 About template for more information, see [Creating a repository from a template](https://help.github.com/articles/creating-a-repository-from-a-template)
 
+## How to build and launch server
+
+```sh
+$ yarn # npm install
+$ yarn start # npm start
+```
+
+## Requirements
+
+- Node.js v8.xx
+  - Probably the newer version is also fine.
+- Recommend to use version manager [asdf](https://github.com/asdf-vm/asdf).
+
 ## Technology stacks
 
 ### Languages
@@ -78,11 +91,6 @@ About template for more information, see [Creating a repository from a template]
 ### Editors
 
 - [Visual Studio Code](https://code.visualstudio.com/) (Recommended)
-
-## Requirements
-
-- Node.js v8.xx
-  - Possibly the latest version is also fine.
 
 ## Npm scripts
 
