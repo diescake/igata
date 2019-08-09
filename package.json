@@ -127,7 +127,7 @@
     "formik": "^1.5.8",
     "history": "^4.9.0",
     "qs": "^6.7.0",
-    "react": "^16.8.6",
+    "react": "^16.9.0",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "react-router": "^5.0.0",
