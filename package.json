@@ -135,7 +135,7 @@
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.0.5",
-    "uuidv4": "^5.0.0",
+    "uuidv4": "^5.0.1",
     "weak-key": "^1.0.1"
   }
 }
