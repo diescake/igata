@@ -109,7 +109,7 @@
     "stylelint-order": "^3.1.0",
     "stylelint-scss": "^3.10.1",
     "ts-jest": "^24.0.2",
-    "ts-loader": "^6.0.4",
+    "ts-loader": "^6.1.0",
     "typescript": "^3.6.3",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8",
