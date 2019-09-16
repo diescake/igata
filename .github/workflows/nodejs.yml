@@ -12,8 +12,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           version: 10.x
-      - name: npm install, build, and test
+      - name: yarn commands
         run: |
-          npm install
-          npm run build --if-present
-          npm test
+          yarn
+          yarn format
+          yarn lint
+          yarn build
+          yarn test
+          yarn storybook:build
