@@ -111,23 +111,23 @@ const internalPatch = (url: string, token: string, contentType?: ContentType, bo
     .then((res: AxiosResponse) => ({ res }))
     .catch((error: AxiosError) => ({ error }))
 
-export function* get(url: string, isAuth: boolean = true, params: object = {}) {
+export function* get(url: string, isAuth = true, params: object = {}) {
   return yield inspect(internalGet(url, isAuth ? yield selectToken() : '', params))
 }
 
-export function* post(url: string, isAuth: boolean = true, contentType?: ContentType, data?: object) {
+export function* post(url: string, isAuth = true, contentType?: ContentType, data?: object) {
   return yield inspect(internalPost(url, isAuth ? yield selectToken() : '', contentType, data))
 }
 
 // NOTE: Unfortunately, 'delete' is reserved
-export function* del(url: string, isAuth: boolean = true, data: object = {}) {
+export function* del(url: string, isAuth = true, data: object = {}) {
   return yield inspect(internalDelete(url, isAuth ? yield selectToken() : '', data))
 }
 
-export function* put(url: string, isAuth: boolean = true, contentType?: ContentType, data?: object) {
+export function* put(url: string, isAuth = true, contentType?: ContentType, data?: object) {
   return yield inspect(internalPut(url, isAuth ? yield selectToken() : '', contentType, data))
 }
 
-export function* patch(url: string, isAuth: boolean = true, contentType?: ContentType, data?: object) {
+export function* patch(url: string, isAuth = true, contentType?: ContentType, data?: object) {
   return yield inspect(internalPatch(url, isAuth ? yield selectToken() : '', contentType, data))
 }
