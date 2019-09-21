@@ -9,7 +9,8 @@ import { withKnobs } from '@storybook/addon-knobs'
 const req = require.context('../stories', true, /\.story\.(ts|tsx)$/)
 
 function loadStories() {
-  addDecorator(withInfo)
+  // NOTE: Probably, that type definition is wrong.
+  addDecorator(withInfo as any)
   addDecorator(withKnobs)
   req.keys().forEach(req)
 }
