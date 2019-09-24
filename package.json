@@ -103,7 +103,7 @@
     "sass-loader": "^8.0.0",
     "source-map-loader": "^0.2.4",
     "stylelint": "^10.1.0",
-    "stylelint-config-prettier": "^5.2.0",
+    "stylelint-config-prettier": "^6.0.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^19.0.0",
     "stylelint-order": "^3.1.1",
