@@ -1501,15 +1501,15 @@
     react-inspector "^3.0.2"
     uuid "^3.3.2"
 
-"@storybook/addon-info@^5.2.1":
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-5.2.1.tgz#d3534ae6cb6ef2d0036522d5eb01aedf68751d40"
-  integrity sha512-/BLUXZT5UCayKaeglRZvkMiRzDrypUoWvDzYFDSBgYXfa9b2LJFYVEcwc6cC8Xtl5F225qXBPNnSNRnz7hDAeg==
+"@storybook/addon-info@^5.2.3":
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-5.2.3.tgz#df792892a124b0f8dae2895b6f070cdf8bfafe4b"
+  integrity sha512-vOyf04fi1MAcESpFxkqLNy95x9CC88TAtVZIQWTNQpGSwTF+ApV0HXvm4gVodMZEyr9SEupOK3MbQsKpWFS2eA==
   dependencies:
-    "@storybook/addons" "5.2.1"
-    "@storybook/client-logger" "5.2.1"
-    "@storybook/components" "5.2.1"
-    "@storybook/theming" "5.2.1"
+    "@storybook/addons" "5.2.3"
+    "@storybook/client-logger" "5.2.3"
+    "@storybook/components" "5.2.3"
+    "@storybook/theming" "5.2.3"
     core-js "^3.0.1"
     global "^4.3.2"
     jsx-to-string "^1.4.0"
