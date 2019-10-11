@@ -119,7 +119,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
-    "@fortawesome/react-fontawesome": "^0.1.5",
+    "@fortawesome/react-fontawesome": "^0.1.6",
     "axios": "^0.19.0",
     "clsx": "^1.0.4",
     "connected-react-router": "^6.5.2",
