@@ -44,7 +44,7 @@
     "@babel/core": "^7.6.4",
     "@fortawesome/fontawesome-free": "^5.11.2",
     "@storybook/addon-a11y": "^5.2.5",
-    "@storybook/addon-actions": "^5.2.4",
+    "@storybook/addon-actions": "^5.2.5",
     "@storybook/addon-info": "^5.2.5",
     "@storybook/addon-knobs": "^5.2.4",
     "@storybook/addon-links": "^5.2.5",
