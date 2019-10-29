@@ -10,7 +10,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
 
-    "lib": ["es6", "es7", "dom"],
+    "lib": ["es6", "es7", "dom", "es2019"],
 
     "baseUrl": "./src/",
     "outDir": "./public/",
