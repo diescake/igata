@@ -8,6 +8,7 @@ import { createBrowserHistory } from 'history'
 import ProgressBar from '@/app/containers/ProgressBar'
 import Login from '@/app/containers/Login'
 import TodoApp from '@/app/containers/TodoApp'
+import DetailTodo from '@/app/containers/DetailTodo'
 import AppController from '@/app/components/AppController'
 import { Authenticated } from '@/app/components/Authenticated'
 import { configureStore } from '@/app/store'
@@ -32,6 +33,7 @@ ReactDOM.render(
           <Authenticated>
             <Switch>
               <Route exact path={paths.root} component={TodoApp} />
+              <Route exact path={`${paths.detail}/:id`} component={DetailTodo} />
             </Switch>
           </Authenticated>
           {/* FIXME: Following "Not Found" is unreachable and doesn't work. */}

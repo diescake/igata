@@ -17,10 +17,12 @@ export default {
     newTodo: 'TODO を追加',
     addTodo: '追加',
     placeholder: 'TODO を入力してください',
+    placeholderDetail: '詳細 を入力してください',
     fetchTodos: 'TODO を取得',
     logout: 'ログアウト',
     loginMessage: (userId: string) => `ログインユーザ: ${userId}`,
     dateMessage: '時刻',
+    detailBack: '戻る',
   },
   footer: {
     twitter: {

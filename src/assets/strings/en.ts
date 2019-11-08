@@ -17,10 +17,12 @@ export default {
     newTodo: 'Add TODO',
     addTodo: 'Add',
     placeholder: 'Enter your TODO',
+    placeholderDetail: 'Enter your Detail',
     fetchTodos: 'Fetch TODOs',
     logout: 'Logout',
     loginMessage: (userId: string) => `Login user: ${userId}`,
     dateMessage: 'Date',
+    detailBack: 'Back',
   },
   footer: {
     twitter: {

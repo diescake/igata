@@ -1,5 +1,7 @@
+/* eslint-disable prefer-template */
 import { Reducer } from 'redux'
 import uuid from 'uuidv4'
+import { paths } from '@/app/common/paths'
 import { Type, TodoAction } from '@/app/actions/todo'
 import { TodoState, Todo } from '@/app/models/Todo'
 
@@ -19,6 +21,7 @@ export const todoReducer: Reducer<TodoState, TodoAction> = (state: TodoState = d
         id: uuid(),
         done: false,
         text: action.payload.text,
+        detailText: action.payload.detailText,
       }
 
       return { ...state, todos: [...state.todos, newTodo] }
@@ -46,6 +49,13 @@ export const todoReducer: Reducer<TodoState, TodoAction> = (state: TodoState = d
         ...state,
         todos: state.todos.filter(todo => todo.id !== action.payload),
       }
+
+    case Type.DETAIL_TODO:
+      if (state.fetching) {
+        return state
+      }
+      window.location.href = paths.detail + '/' + action.payload
+      return state
 
     case Type.FETCH_TODOS:
       return {

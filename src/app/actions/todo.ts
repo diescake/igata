@@ -6,15 +6,16 @@ export const Type = {
   ADD_TODO: 'TODOS/ADD_TODO',
   UPDATE_TODO: 'TODOS/UPDATE_TODO',
   DELETE_TODO: 'TODOS/DELETE_TODO',
+  DETAIL_TODO: 'TODOS/DETAIL_TODO',
   FETCH_TODOS: 'TODOS/FETCH_TODOS',
   FETCH_TODOS_SUCCESS: 'TODOS/FETCH_TODOS_SUCCESS',
   FETCH_TODOS_FAILURE: 'TODOS/FETCH_TODOS_FAILURE',
 } as const
 
 // action creators
-export const addTodo = (text: string) => ({
+export const addTodo = (text: string, detailText: string) => ({
   type: Type.ADD_TODO,
-  payload: { text },
+  payload: { text, detailText },
 })
 
 export const updateTodo = (todo: Todo) => ({
@@ -24,6 +25,11 @@ export const updateTodo = (todo: Todo) => ({
 
 export const deleteTodo = (todoId: string) => ({
   type: Type.DELETE_TODO,
+  payload: todoId,
+})
+
+export const detailTodo = (todoId: string) => ({
+  type: Type.DETAIL_TODO,
   payload: todoId,
 })
 

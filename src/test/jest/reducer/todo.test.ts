@@ -11,11 +11,13 @@ describe('todoReducer', () => {
         id: '2ffa8a4b-0d83-4148-8de5-eb9302b05788',
         done: true,
         text: 'Sleep for 15 hours',
+        detailText: 'Detail text',
       },
       {
         id: 'e01cf278-8e89-43c1-b074-b541db1d1d88',
         done: false,
         text: 'Cook and eat my graceful fried rice',
+        detailText: 'Detail text',
       },
     ],
     fetching: false,
@@ -25,12 +27,14 @@ describe('todoReducer', () => {
     id: '93056462-8924-474e-b68e-dc16906ac4be',
     done: false,
     text: 'Watch a nice animation movie',
+    detailText: 'Detail text',
   }
 
   const storedTodo: Todo = {
     id: 'e01cf278-8e89-43c1-b074-b541db1d1d88',
     done: true,
     text: 'Contribute to igata project.',
+    detailText: 'Detail text',
   }
 
   const addedState: TodoState = {
@@ -39,6 +43,7 @@ describe('todoReducer', () => {
         id: expect.any(String),
         done: false,
         text: 'Buy the clothes.',
+        detailText: 'Detail text',
       },
     ],
     fetching: false,
@@ -50,11 +55,13 @@ describe('todoReducer', () => {
         id: '2ffa8a4b-0d83-4148-8de5-eb9302b05788',
         done: true,
         text: 'Sleep for 15 hours',
+        detailText: 'Detail text',
       },
       {
         id: 'e01cf278-8e89-43c1-b074-b541db1d1d88',
         done: true,
         text: 'Contribute to igata project.',
+        detailText: 'Detail text',
       },
     ],
     fetching: false,
@@ -62,7 +69,7 @@ describe('todoReducer', () => {
 
   describe('ADD_TODO', () => {
     it('should succeed', () => {
-      const action = addTodo('Buy the clothes.')
+      const action = addTodo('Buy the clothes.', 'Detail text')
       expect(todoReducer(emptyState, action)).toEqual(addedState)
     })
   })
