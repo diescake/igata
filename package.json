@@ -124,7 +124,7 @@
     "clsx": "^1.0.4",
     "connected-react-router": "^6.5.2",
     "dayjs": "^1.8.17",
-    "formik": "^1.5.8",
+    "formik": "^2.0.3",
     "history": "^4.10.1",
     "qs": "^6.9.1",
     "react": "^16.11.0",
