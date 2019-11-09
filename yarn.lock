@@ -1524,15 +1524,15 @@
     react-inspector "^3.0.2"
     uuid "^3.3.2"
 
-"@storybook/addon-info@^5.2.5":
-  version "5.2.5"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-5.2.5.tgz#ef651bdb03282d345a4515988af544314fe6cd06"
-  integrity sha512-MGIROIZ5zXFtQZ6jiHwQM4DWvuWjeQHl+2Vvlzlu/p/OmwnImmO3ONNfhpHRefDiTOkBwtxqeYgKBt2MRjo+UA==
+"@storybook/addon-info@^5.2.6":
+  version "5.2.6"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-5.2.6.tgz#25c8405ded9e20b1bf3b607d235601b087a73a5f"
+  integrity sha512-2ct91Zf14Be5HZ77szPpJK4Fvy4D/haQtziCfv9UKZXaBm7Rz9vKPuM3uCcfMywh1eMunhhluhJ/3bxmttHXAw==
   dependencies:
-    "@storybook/addons" "5.2.5"
-    "@storybook/client-logger" "5.2.5"
-    "@storybook/components" "5.2.5"
-    "@storybook/theming" "5.2.5"
+    "@storybook/addons" "5.2.6"
+    "@storybook/client-logger" "5.2.6"
+    "@storybook/components" "5.2.6"
+    "@storybook/theming" "5.2.6"
     core-js "^3.0.1"
     global "^4.3.2"
     jsx-to-string "^1.4.0"
@@ -1597,7 +1597,7 @@
     global "^4.3.2"
     util-deprecate "^1.0.2"
 
-"@storybook/addons@^5.2.6":
+"@storybook/addons@5.2.6", "@storybook/addons@^5.2.6":
   version "5.2.6"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-5.2.6.tgz#c1278137acb3502e068b0b0d07a8371c607e9c02"
   integrity sha512-5MF64lsAhIEMxTbVpYROz5Wez595iwSw45yXyP8gWt12d+EmFO5tdy7cYJCxcMuVhDfaCI78tFqS9orr1atVyA==
@@ -1764,6 +1764,31 @@
   dependencies:
     "@storybook/client-logger" "5.2.5"
     "@storybook/theming" "5.2.5"
+    "@types/react-syntax-highlighter" "10.1.0"
+    "@types/react-textarea-autosize" "^4.3.3"
+    core-js "^3.0.1"
+    global "^4.3.2"
+    markdown-to-jsx "^6.9.1"
+    memoizerific "^1.11.3"
+    polished "^3.3.1"
+    popper.js "^1.14.7"
+    prop-types "^15.7.2"
+    react "^16.8.3"
+    react-dom "^16.8.3"
+    react-focus-lock "^1.18.3"
+    react-helmet-async "^1.0.2"
+    react-popper-tooltip "^2.8.3"
+    react-syntax-highlighter "^8.0.1"
+    react-textarea-autosize "^7.1.0"
+    simplebar-react "^1.0.0-alpha.6"
+
+"@storybook/components@5.2.6":
+  version "5.2.6"
+  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-5.2.6.tgz#cddb60227720aea7cae34fe782d0370bcdbd4005"
+  integrity sha512-C7OS90bZ1ZvxlWUZ3B2MPFFggqAtUo7X8DqqS3IwsuDUiK9dD/KS0MwPgOuFDnOTW1R5XqmQd/ylt53w3s/U5g==
+  dependencies:
+    "@storybook/client-logger" "5.2.6"
+    "@storybook/theming" "5.2.6"
     "@types/react-syntax-highlighter" "10.1.0"
     "@types/react-textarea-autosize" "^4.3.3"
     core-js "^3.0.1"
