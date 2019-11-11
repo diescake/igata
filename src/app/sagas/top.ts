@@ -5,7 +5,7 @@ import { QuestionsResponse } from '@/app/models/HttpResponse'
 import { Question } from '@/app/models/Question'
 import { get, HttpResponse } from '@/app/common/http'
 
-const QUESTIONS_JSON_URL = 'https://stackoverflow-clone.solomondev.access-company.com/v1/question'
+const QUESTIONS_JSON_URL = 'https://api.myjson.com/bins/17rf2l'
 
 const isQuestionsResponse = (props: any): props is QuestionsResponse => {
   try {
