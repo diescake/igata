@@ -6,7 +6,9 @@ import { ConnectedRouter } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
 
 import ProgressBar from '@/app/containers/ProgressBar'
+import Top from '@/app/containers/top'
 import Login from '@/app/containers/Login'
+import QuestionCreate from '@/app/containers/QuestionCreate'
 import TodoApp from '@/app/containers/TodoApp'
 import AppController from '@/app/components/AppController'
 import { Authenticated } from '@/app/components/Authenticated'
@@ -29,6 +31,9 @@ ReactDOM.render(
       <AppController>
         <Switch>
           <Route exact path={paths.login} component={Login} />
+          <Route exact path={paths.top} component={Top} />
+          <Route exact path={paths.questionCreate} component={QuestionCreate} />
+
           <Authenticated>
             <Switch>
               <Route exact path={paths.root} component={TodoApp} />

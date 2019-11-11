@@ -32,4 +32,9 @@ export default {
       url: 'https://github.com/diescake/igata',
     },
   },
+  questionCreate: {
+    title: '質問投稿する',
+    create: '投稿する',
+    notLogin: '質問を投稿するにはログインしてください。',
+  },
 } as const

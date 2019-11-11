@@ -26,7 +26,7 @@ export const loginReducer: Reducer<LoginState, LoginAction> = (state: LoginState
     case Type.LOGOUT:
       localStorage.removeItem('token')
       localStorage.removeItem('userId')
-      window.location.href = paths.login
+      window.location.href = paths.top
       return { token: '', userId: '' }
 
     default:

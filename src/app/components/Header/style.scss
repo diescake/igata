@@ -6,3 +6,36 @@
   margin-right: 12px;
   font-size: 4.2rem;
 }
+
+.navDefault {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background-color: #fafafa;
+  border-bottom: 1px solid #dadada;
+  -ms-flex-align: center;
+  -ms-flex-pack: justify;
+}
+
+.formInline {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  -ms-flex-align: center;
+}
+
+.navbarText {
+  display: inline-block;
+  margin: 0 10px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
