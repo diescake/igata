@@ -5,7 +5,7 @@ import { Question as HttpResQuestion } from '@/app/models/HttpResponse'
 import { Question } from '@/app/models/Question'
 import { get, HttpResponse } from '@/app/common/http'
 
-const QUESTIONS_JSON_URL = 'https://api.myjson.com/bins/gxhdu'
+const QUESTIONS_JSON_URL = 'https://api.myjson.com/bins/16s4gy'
 
 const isQuestionsResponse = (props: any): props is HttpResQuestion[] => {
   try {
