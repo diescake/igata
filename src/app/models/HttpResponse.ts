@@ -35,3 +35,8 @@ export interface Question {
 export interface QuestionsResponse {
   readonly questions: Question[]
 }
+
+export interface QuestionsCreateResponse {
+  readonly title: string
+  readonly body: string
+}

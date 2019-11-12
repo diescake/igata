@@ -11,7 +11,6 @@ export default {
   question: {
     additional: (additional: string) => `Posted at ${additional} by `,
   },
-
   login: {
     title: 'ログイン',
     login: 'ログイン',

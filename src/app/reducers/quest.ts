@@ -54,6 +54,16 @@ export const questionReducer: Reducer<QuestionState, QuestionAction> = (
         fetching: false,
       }
 
+    case Type.POST_QUESTION:
+      return state
+
+    case Type.POST_QUESTION_SUCCESS:
+      return state
+
+    case Type.POST_QUESTION_FAILURE:
+      // えらーぶんが必要かも
+      return state
+
     default:
       return state
   }

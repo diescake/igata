@@ -9,6 +9,9 @@ export const Type = {
   FETCH_QUESTIONS: 'QUESTIONS/FETCH_QUESTIONS',
   FETCH_QUESTIONS_SUCCESS: 'QUESTIONS/FETCH_QUESTIONS_SUCCESS',
   FETCH_QUESTIONS_FAILURE: 'QUESTIONS/FETCH_QUESTIONS_FAILURE',
+  POST_QUESTION: 'QUESTIONS/POST_QUESTION',
+  POST_QUESTION_SUCCESS: 'QUESTIONS/POST_QUESTION_SUCCESS',
+  POST_QUESTION_FAILURE: 'QUESTIONS/POST_QUESTION_FAILURE',
 } as const
 
 // action creators
@@ -39,6 +42,19 @@ export const fetchQuestionsSuccess = (questions: Question[]) => ({
 export const fetchQuestionsFailure = (errorText: string) => ({
   type: Type.FETCH_QUESTIONS_FAILURE,
   payload: { errorText },
+})
+
+export const postQuestion = (title: string, body: string) => ({
+  type: Type.POST_QUESTION,
+  payload: { title, body },
+})
+
+export const postQuestionSuccess = () => ({
+  type: Type.POST_QUESTION_SUCCESS,
+})
+
+export const postQuestionFailure = () => ({
+  type: Type.POST_QUESTION_FAILURE,
 })
 
 export type QuestionAction = CreateActionTypes<Omit<typeof import('./question'), 'Type'>>
