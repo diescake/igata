@@ -35,4 +35,7 @@ const QuestionCreate: FC<QuestionCreateProps> = (props: QuestionCreateProps) => 
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuestionCreate)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(QuestionCreate)

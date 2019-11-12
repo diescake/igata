@@ -1,68 +1,9 @@
-div {
-  display: block;
-}
-
-.main {
-  width: 80%;
-  margin: 30px auto auto;
-}
-
-.container {
-  height: 100vh;
-  padding: 10px 30px;
-}
-
-.pageTitle {
-  margin-bottom: 20px;
+.title {
   overflow: hidden;
-  font-size: 1.5rem;
   text-overflow: ellipsis;
-}
-
-.voteArrow {
-  margin-left: -5px;
-  color: #ccc;
-  font-size: 1.8em;
-  cursor: not-allowed;
-}
-
-.voteCount {
-  color: #888;
-  font-size: 1.8em;
-}
-
-.contentArea {
-  flex-grow: 1;
-}
-
-.body {
-  white-space: pre-wrap;
-  word-break: break-all;
 }
 
 .additional {
   color: #aaa;
   font-size: small;
-}
-
-.commentList {
-  margin-left: 10px;
-}
-
-.question,
-.answerList {
-  margin-bottom: 20px;
-}
-
-.answerListTitle {
-  font-size: var(--page-sub-title-font-size);
-}
-
-.infoArea {
-  width: 30px;
-  margin: 0 20px 0 10px;
-}
-
-.mainArea {
-  display: flex;
 }

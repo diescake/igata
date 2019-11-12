@@ -24,12 +24,12 @@ export interface Comment {
 export interface Question {
   readonly body: string
   readonly comments: Comment[]
-  readonly createdAt: string
-  readonly dislikeVoterIds: string[]
+  readonly created_at: string
+  readonly dislike_voter_ids: string[]
   readonly id: string
-  readonly likeVoterIds: string[]
+  readonly like_voter_ids: string[]
   readonly title: string
-  readonly userId: string
+  readonly user_id: string
 }
 
 export interface QuestionsResponse {

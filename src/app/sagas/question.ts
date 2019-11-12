@@ -1,13 +1,12 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { AxiosResponse, AxiosError } from 'axios'
 import { fetchQuestionsFailure, fetchQuestionsSuccess, Type } from '@/app/actions/question'
-import { QuestionsResponse } from '@/app/models/HttpResponse'
 import { Question } from '@/app/models/Question'
 import { get, HttpResponse } from '@/app/common/http'
 
 const QUESTIONS_JSON_URL = 'https://stackoverflow-clone.solomondev.access-company.com/v1/question'
 
-const isQuestionsResponse = (props: any): props is QuestionsResponse => {
+const isQuestionsResponse = (props: any): props is Question[] => {
   try {
     return props.questions.every((question: any) => {
       const { body, comments, createdAt, dislikeVoterIds, id, likeVoterIds, title, userId } = question
@@ -28,11 +27,9 @@ const isQuestionsResponse = (props: any): props is QuestionsResponse => {
   }
 }
 
-const mapResponseToState = (res: QuestionsResponse): Question[] => res.questions
-
 function* putWithResponse(res: AxiosResponse<unknown>) {
   if (isQuestionsResponse(res.data)) {
-    yield put(fetchQuestionsSuccess(mapResponseToState(res.data)))
+    yield put(fetchQuestionsSuccess(res.data))
   } else {
     console.error('Invalid response')
     console.error(res.data)

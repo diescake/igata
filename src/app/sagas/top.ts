@@ -1,25 +1,24 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { AxiosResponse, AxiosError } from 'axios'
 import { fetchQuestionsFailure, fetchQuestionsSuccess, Type } from '@/app/actions/question'
-import { QuestionsResponse } from '@/app/models/HttpResponse'
+import { Question as HttpResQuestion } from '@/app/models/HttpResponse'
 import { Question } from '@/app/models/Question'
 import { get, HttpResponse } from '@/app/common/http'
 
-const QUESTIONS_JSON_URL = 'https://api.myjson.com/bins/17rf2l'
+const QUESTIONS_JSON_URL = 'https://api.myjson.com/bins/gxhdu'
 
-const isQuestionsResponse = (props: any): props is QuestionsResponse => {
+const isQuestionsResponse = (props: any): props is HttpResQuestion[] => {
   try {
-    return props.questions.every((question: any) => {
-      const { body, comments, createdAt, dislikeVoterIds, id, likeVoterIds, title, userId } = question
+    return props.every((question: any) => {
+      const { id, title, body, user_id, created_at, comments, like_voter_ids } = question
       return (
-        typeof body === 'string' &&
-        typeof comments !== 'undefined' &&
-        typeof createdAt === 'string' &&
-        typeof dislikeVoterIds === 'string' &&
         typeof id === 'string' &&
-        typeof likeVoterIds === 'string' &&
         typeof title === 'string' &&
-        typeof userId === 'string'
+        typeof body === 'string' &&
+        typeof user_id === 'string' &&
+        typeof created_at === 'string' &&
+        Array.isArray(comments) &&
+        Array.isArray(like_voter_ids)
       )
     })
   } catch (e) {
@@ -28,7 +27,17 @@ const isQuestionsResponse = (props: any): props is QuestionsResponse => {
   }
 }
 
-const mapResponseToState = (res: QuestionsResponse): Question[] => res.questions
+const mapResponseToState = (res: HttpResQuestion[]): Question[] =>
+  res.map(question => ({
+    body: question.body,
+    comments: question.comments,
+    createdAt: question.created_at,
+    dislikeVoterIds: question.dislike_voter_ids,
+    id: question.id,
+    likeVoterIds: question.like_voter_ids,
+    title: question.title,
+    userId: question.user_id,
+  }))
 
 function* putWithResponse(res: AxiosResponse<unknown>) {
   if (isQuestionsResponse(res.data)) {

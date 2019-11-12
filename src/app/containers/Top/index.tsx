@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { faListAlt } from '@fortawesome/free-solid-svg-icons'
 import { RouteComponentProps, withRouter } from 'react-router'
@@ -13,7 +13,7 @@ import { Question } from '@/app/models/Question'
 import words from '@/assets/strings'
 import style from '@/app/containers/Top/style.scss'
 import { QuestionItem } from '@/app/components/QuestionItem'
-// import { paths } from '@/app/common/paths'
+import { paths } from '@/app/common/paths'
 import { login, LoginDispatcher } from '@/app/actions/login'
 
 interface StateProps {
@@ -49,10 +49,24 @@ const mapDispatchToProps = {
 }
 
 const Top: FC<TopProps> = (props: TopProps) => {
+  useEffect(() => {
+    props.fetchQuestions()
+  }, [])
+
   return (
     <div className={style.container}>
       <Header title={words.todoApp.title} userId={props.userId} icon={faListAlt} />
       <div className={style.pageTitle}>質問を見る</div>
+      <a
+        href="/"
+        onClick={e => {
+          props.history.push(paths.root)
+          e.preventDefault()
+        }}
+      >
+        質問する
+      </a>
+      <hr />
 
       <ListWrapper loading={props.fetching}>
         {props.questions.map((question: Question) => (
@@ -64,4 +78,9 @@ const Top: FC<TopProps> = (props: TopProps) => {
   )
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Top))
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Top)
+)

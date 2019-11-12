@@ -31,9 +31,8 @@ ReactDOM.render(
       <AppController>
         <Switch>
           <Route exact path={paths.login} component={Login} />
-          <Route exact path={paths.top} component={Top} />
           <Route exact path={paths.questionCreate} component={QuestionCreate} />
-
+          <Route exact path={paths.top} component={Top} />
           <Authenticated>
             <Switch>
               <Route exact path={paths.root} component={TodoApp} />
