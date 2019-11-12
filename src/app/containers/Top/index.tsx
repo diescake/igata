@@ -14,7 +14,7 @@ import words from '@/assets/strings'
 import style from '@/app/containers/Top/style.scss'
 import { QuestionItem } from '@/app/components/QuestionItem'
 import { paths } from '@/app/common/paths'
-import { login, LoginDispatcher } from '@/app/actions/login'
+import { login, logout, LoginDispatcher } from '@/app/actions/login'
 
 interface StateProps {
   readonly questions: Question[]
@@ -29,6 +29,7 @@ interface DispatchProps {
   readonly deleteQuestion: QuestionDispatcher['deleteQuestion']
   readonly fetchQuestions: QuestionDispatcher['fetchQuestions']
   readonly login: LoginDispatcher['login']
+  readonly logout: LoginDispatcher['logout']
 }
 
 type TopProps = StateProps & DispatchProps & RouteComponentProps
@@ -46,33 +47,49 @@ const mapDispatchToProps = {
   deleteQuestion,
   fetchQuestions,
   login,
+  logout,
 }
 
 const Top: FC<TopProps> = (props: TopProps) => {
   useEffect(() => {
     props.fetchQuestions()
   }, [])
-
+  const handlerLogin = () => {
+    props.history.push(paths.login)
+  }
+  const handlerLogout = () => {
+    props.history.push(paths.login)
+    props.logout()
+  }
   return (
     <div className={style.container}>
-      <Header title={words.todoApp.title} userId={props.userId} icon={faListAlt} />
-      <div className={style.pageTitle}>質問を見る</div>
-      <a
-        href="/"
-        onClick={e => {
-          props.history.push(paths.root)
-          e.preventDefault()
-        }}
-      >
-        質問する
-      </a>
-      <hr />
+      <Header
+        title={words.todoApp.title}
+        userId={props.userId}
+        icon={faListAlt}
+        handlerLogin={handlerLogin}
+        handlerLogout={handlerLogout}
+      />
+      <div className={style.main}>
+        <div className={style.pageTitle}>{words.top.title}</div>
+        <a
+          href="/"
+          onClick={e => {
+            console.log('hoge')
+            props.history.push(paths.questionCreate)
+            e.preventDefault()
+          }}
+        >
+          {words.top.question}
+        </a>
+        <hr />
 
-      <ListWrapper loading={props.fetching}>
-        {props.questions.map((question: Question) => (
-          <QuestionItem key={question.id} question={question} />
-        ))}
-      </ListWrapper>
+        <ListWrapper loading={props.fetching}>
+          {props.questions.map((question: Question) => (
+            <QuestionItem key={question.id} question={question} />
+          ))}
+        </ListWrapper>
+      </div>
       <Footer />
     </div>
   )

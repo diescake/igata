@@ -9,9 +9,7 @@ import ProgressBar from '@/app/containers/ProgressBar'
 import Top from '@/app/containers/top'
 import Login from '@/app/containers/Login'
 import QuestionCreate from '@/app/containers/QuestionCreate'
-import TodoApp from '@/app/containers/TodoApp'
 import AppController from '@/app/components/AppController'
-import { Authenticated } from '@/app/components/Authenticated'
 import { configureStore } from '@/app/store'
 import { paths } from '@/app/common/paths'
 import '@/assets/css/reboot.css'
@@ -33,11 +31,6 @@ ReactDOM.render(
           <Route exact path={paths.login} component={Login} />
           <Route exact path={paths.questionCreate} component={QuestionCreate} />
           <Route exact path={paths.top} component={Top} />
-          <Authenticated>
-            <Switch>
-              <Route exact path={paths.root} component={TodoApp} />
-            </Switch>
-          </Authenticated>
           {/* FIXME: Following "Not Found" is unreachable and doesn't work. */}
           <Route render={() => <h1>404 Not Found</h1>} />
         </Switch>

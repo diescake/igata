@@ -1,9 +1,8 @@
 import React, { FC } from 'react'
 import { connect } from 'react-redux'
-
 import { faListAlt } from '@fortawesome/free-solid-svg-icons'
 import words from '@/assets/strings'
-import style from '@/app/components/LoginForm/style.scss'
+import style from '@/app/containers/QuestionCreate/style.scss'
 import { Header } from '@/app/components/Header'
 import { Footer } from '@/app/components/Footer'
 import { RootState } from '@/app/models'
@@ -28,8 +27,11 @@ const QuestionCreate: FC<QuestionCreateProps> = (props: QuestionCreateProps) => 
   return (
     <div className={style.container}>
       <Header title={words.todoApp.title} userId={props.userId} icon={faListAlt} />
-      <div>質問投稿する</div>
-      <div>質問を投稿するにはログインしてください。</div>
+      <div className={style.main}>
+        <div>質問投稿する</div>
+        <div>質問を投稿するにはログインしてください。</div>
+      </div>
+
       <Footer />
     </div>
   )

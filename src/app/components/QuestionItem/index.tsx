@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import style from '@/app/components/QuestionItem/style.scss'
 import { Question } from '@/app/models/Question'
+import words from '@/assets/strings'
 
 interface Props {
   readonly question: Question
@@ -13,7 +14,7 @@ export const QuestionItem: FC<Props> = ({ question }: Props) => (
     </h5>
 
     <div className={style.additional}>
-      {question.createdAt}
+      {words.question.additional(question.createdAt)}
       <a href="/">{question.userId}</a>
       <hr />
     </div>

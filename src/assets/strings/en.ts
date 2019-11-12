@@ -1,4 +1,16 @@
 export default {
+  header: {
+    title: 'StackoverFlowClone',
+    login: 'login',
+    logout: 'Logout',
+  },
+  top: {
+    title: 'See questions',
+    question: 'question',
+  },
+  question: {
+    additional: (additional: string) => `Posted at ${additional} by `,
+  },
   login: {
     title: 'Login',
     login: 'login',
