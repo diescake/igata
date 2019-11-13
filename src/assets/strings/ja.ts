@@ -1,15 +1,25 @@
 export default {
+  // 共通
+  common: {
+    additional: (additional: string) => `Posted at ${additional}  `,
+    by: 'by ',
+  },
+  // ヘッダー
   header: {
     title: 'StackoverFlowClone',
     login: 'ログイン',
     logout: 'ログアウト',
   },
+  // トップ
   top: {
     title: '質問を見る',
     question: '質問する',
   },
-  question: {
-    additional: (additional: string) => `Posted at ${additional} by `,
+  // ユーザー詳細
+  user: {
+    title: 'ユーザー詳細',
+    questionList: '質問一覧',
+    answerList: '回答一覧',
   },
   login: {
     title: 'ログイン',

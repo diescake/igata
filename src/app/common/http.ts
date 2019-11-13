@@ -33,7 +33,7 @@ axios.interceptors.response.use(
   (error: AxiosError) => {
     if (error.response && error.response.status === 401) {
       localStorage.removeItem('token')
-      window.location.href = paths.top
+      window.location.href = paths.root
     }
 
     return Promise.reject(error)

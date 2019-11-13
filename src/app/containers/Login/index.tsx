@@ -33,7 +33,7 @@ const mapDispatchToProps: DispatchProps = {
 const Login: FC<LoginProps> = (props: LoginProps) => {
   useEffect(() => {
     if (props.token) {
-      props.history.push(paths.top)
+      props.history.push(paths.root)
     }
   }, [props.token])
 

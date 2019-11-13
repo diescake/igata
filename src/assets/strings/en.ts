@@ -1,4 +1,9 @@
 export default {
+  // 共通
+  common: {
+    additional: (additional: string) => `Posted at ${additional}  `,
+    by: 'by ',
+  },
   header: {
     title: 'StackoverFlowClone',
     login: 'login',
@@ -8,8 +13,10 @@ export default {
     title: 'See questions',
     question: 'question',
   },
-  question: {
-    additional: (additional: string) => `Posted at ${additional} by `,
+  user: {
+    title: 'User details',
+    questionList: 'Question list',
+    answerList: 'Answer list',
   },
   login: {
     title: 'Login',

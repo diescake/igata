@@ -30,8 +30,9 @@ export const deleteQuestion = (questionId: string) => ({
   payload: questionId,
 })
 
-export const fetchQuestions = () => ({
+export const fetchQuestions = (id?: string) => ({
   type: Type.FETCH_QUESTIONS,
+  payload: id,
 })
 
 export const fetchQuestionsSuccess = (questions: Question[]) => ({

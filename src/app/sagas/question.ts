@@ -58,13 +58,13 @@ function* putWithError(error: AxiosError) {
   yield put(fetchQuestionsFailure(error.message))
 }
 
-function* fetchQuestions() {
-  const { res, error }: HttpResponse<unknown> = yield call(get, QUESTIONS_JSON_URL)
+function* fetchQuestions(action: any) {
+  const { res, error }: HttpResponse<unknown> = yield call(get, QUESTIONS_JSON_URL + (action.payload ? action.payload : ''))
   yield res ? putWithResponse(res) : putWithError(error)
 }
 
 function* postQuestion(action: any) {
-  const { res }: HttpResponse<unknown> = yield call(post, QUESTIONS_JSON_URL, action)
+  const { res }: HttpResponse<unknown> = yield call(post, QUESTIONS_JSON_URL, action.payload)
   yield res ? put(postQuestionSuccess()) : put(postQuestionFailure())
 }
 

@@ -6,12 +6,14 @@ import { networkReducer } from '@/app/reducers/network'
 import { loginReducer } from '@/app/reducers/login'
 import { todoReducer } from '@/app/reducers/todo'
 import { questionReducer } from '@/app/reducers/quest'
+import { answerReducer } from '@/app/reducers/answer'
 
 export const createRootReducer = (history: History) =>
   combineReducers<RootState>({
     router: connectRouter(history),
     networkState: networkReducer,
-    questionState: questionReducer,
     todoState: todoReducer,
     loginState: loginReducer,
+    questionState: questionReducer,
+    answerState: answerReducer,
   })

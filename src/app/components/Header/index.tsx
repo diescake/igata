@@ -19,7 +19,7 @@ const HeaderBase: FC<Props> = (props: Props) => (
       <a
         href="/"
         onClick={e => {
-          props.history.push(paths.top)
+          props.history.push(paths.root)
           e.preventDefault()
         }}
       >
@@ -36,7 +36,6 @@ const HeaderBase: FC<Props> = (props: Props) => (
                     props.handlerLogin()
                   }
                   e.preventDefault()
-                  return false
                 }}
                 className={style.loginLink}
               >

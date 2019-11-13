@@ -1,9 +1,8 @@
 export const paths = {
-  top: '/top',
   root: '/',
   login: '/login',
-  user: '/user/id:',
-  question: '/question/id:',
+  user: '/user/',
+  question: '/question/',
   questionCreate: '/question/create',
 } as const
 
