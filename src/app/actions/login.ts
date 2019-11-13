@@ -15,9 +15,9 @@ export const login = (id: string, password: string) => ({
   payload: { id, password },
 })
 
-export const loginSuccess = ({ token, userId }: LoginState) => ({
+export const loginSuccess = ({ id, email, createdAt, session }: LoginState) => ({
   type: Type.LOGIN_SUCCESS,
-  payload: { token, userId },
+  payload: { id, email, createdAt, session },
 })
 
 export const loginFailure = (errorText: string) => ({

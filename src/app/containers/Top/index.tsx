@@ -18,9 +18,9 @@ import { login, logout, LoginDispatcher } from '@/app/actions/login'
 
 interface StateProps {
   readonly questions: Question[]
-  readonly userId: string
+  readonly id: string
   readonly fetching: boolean
-  readonly token: string
+  readonly key: string
 }
 
 interface DispatchProps {
@@ -37,8 +37,8 @@ type TopProps = StateProps & DispatchProps & RouteComponentProps
 const mapStateToProps = (state: RootState): StateProps => ({
   questions: state.questionState.questions,
   fetching: state.questionState.fetching,
-  userId: state.loginState.userId,
-  token: state.loginState.token,
+  id: state.loginState.id,
+  key: state.loginState.session.key,
 })
 
 const mapDispatchToProps = {
@@ -51,9 +51,15 @@ const mapDispatchToProps = {
 }
 
 const Top: FC<TopProps> = (props: TopProps) => {
+  useEffect(() => {}, [props.key])
+
   useEffect(() => {
-    props.fetchQuestions()
-  }, [])
+    if (props.key) {
+      props.history.push(paths.root)
+    } else {
+      props.fetchQuestions()
+    }
+  }, [props.key])
   const handlerLogin = () => {
     props.history.push(paths.login)
   }
@@ -67,7 +73,7 @@ const Top: FC<TopProps> = (props: TopProps) => {
     <div className={style.container}>
       <Header
         title={words.todoApp.title}
-        userId={props.userId}
+        userId={props.id}
         icon={faListAlt}
         handlerLogin={handlerLogin}
         handlerLogout={handlerLogout}

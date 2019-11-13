@@ -1,7 +1,7 @@
 export interface Comment {
   readonly id: string
   readonly userId: string
-  readonly created_at: string
+  readonly createdAt: string
   readonly body: string
 }
 

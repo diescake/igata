@@ -53,6 +53,21 @@ export const questionReducer: Reducer<QuestionState, QuestionAction> = (
         ...state,
         fetching: false,
       }
+    case Type.FETCH_QUESTION:
+      return {
+        ...state,
+        fetching: true,
+      }
+
+    case Type.FETCH_QUESTION_SUCCESS:
+      return state
+    // return { question: action.payload.question, fetching: false }
+
+    case Type.FETCH_QUESTION_FAILURE:
+      return {
+        ...state,
+        fetching: false,
+      }
 
     case Type.POST_QUESTION:
       return state

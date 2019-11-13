@@ -13,7 +13,7 @@ import words from '@/assets/strings'
 import style from '@/app/containers/Login/style.scss'
 
 interface StateProps {
-  readonly token: string
+  readonly key: string
 }
 
 interface DispatchProps {
@@ -23,7 +23,7 @@ interface DispatchProps {
 type LoginProps = StateProps & DispatchProps & RouteComponentProps
 
 const mapStateToProps = (state: RootState): StateProps => ({
-  token: state.loginState.token,
+  key: state.loginState.session.key,
 })
 
 const mapDispatchToProps: DispatchProps = {
@@ -32,10 +32,10 @@ const mapDispatchToProps: DispatchProps = {
 
 const Login: FC<LoginProps> = (props: LoginProps) => {
   useEffect(() => {
-    if (props.token) {
+    if (props.key) {
       props.history.push(paths.root)
     }
-  }, [props.token])
+  }, [props.key])
 
   return (
     <div className={style.container}>

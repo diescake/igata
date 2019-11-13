@@ -25,10 +25,10 @@ interface StateProps {
   readonly questions: Question[]
   readonly answers: Answer[]
 
-  readonly userId: string
+  readonly id: string
   readonly fetchingQuestion: boolean
   readonly fetchingAnswer: boolean
-  readonly token: string
+  readonly key: string
 }
 
 interface DispatchProps {
@@ -49,8 +49,8 @@ const mapStateToProps = (state: RootState): StateProps => ({
   answers: state.answerState.answers,
   fetchingQuestion: state.questionState.fetching,
   fetchingAnswer: state.answerState.fetching,
-  userId: state.loginState.userId,
-  token: state.loginState.token,
+  id: state.loginState.id,
+  key: state.loginState.session.key,
 })
 
 const mapDispatchToProps = {
@@ -83,7 +83,7 @@ const User: FC<UserProps> = (props: UserProps) => {
       {/* ヘッダー */}
       <Header
         title={words.todoApp.title}
-        userId={props.userId}
+        userId={props.id}
         icon={faListAlt}
         handlerLogin={handlerLogin}
         handlerLogout={handlerLogout}

@@ -1,7 +1,20 @@
 // ログイン
+export interface Session {
+  readonly key: string
+  readonly expires_at: string
+  readonly password_set_at: string
+  readonly password_expires_at: string
+}
+
 export interface LoginResponse {
   readonly token: string
   readonly user_id: string
+  readonly id: string
+  readonly email: string
+  readonly created_at: string
+  readonly session: Session
+  readonly key: string
+  readonly expires_at: string
 }
 
 // TODO
@@ -20,7 +33,7 @@ export interface Comment {
   readonly body: string
   readonly created_at: string
   readonly id: string
-  readonly userId: string
+  readonly user_id: string
 }
 export interface Question {
   readonly body: string

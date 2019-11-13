@@ -50,7 +50,7 @@ function* inspect(promise: Promise<unknown>) {
 }
 
 function* selectToken() {
-  return yield select((state: RootState) => state.loginState.token)
+  return yield select((state: RootState) => state.loginState.session.key)
 }
 
 const authorizationHeader = (token: string) => (token ? { Authorization: token } : {})

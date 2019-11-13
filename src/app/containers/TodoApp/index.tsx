@@ -34,7 +34,7 @@ type TodoAppProps = StateProps & DispatchProps
 const mapStateToProps = (state: RootState): StateProps => ({
   todos: state.todoState.todos,
   fetching: state.todoState.fetching,
-  userId: state.loginState.userId,
+  userId: state.loginState.id,
 })
 
 const mapDispatchToProps = {

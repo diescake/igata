@@ -9,7 +9,7 @@ import { RootState } from '@/app/models'
 import { QuestionDispatcher } from '@/app/actions/question'
 
 interface StateProps {
-  readonly userId: string
+  readonly id: string
   readonly fetching: boolean
 }
 
@@ -21,7 +21,7 @@ type QuestionCreateProps = StateProps & DispatchProps
 
 const mapStateToProps = (state: RootState): StateProps => ({
   fetching: state.todoState.fetching,
-  userId: state.loginState.userId,
+  id: state.loginState.id,
 })
 
 const mapDispatchToProps = {}
@@ -38,16 +38,16 @@ const QuestionCreate: FC<QuestionCreateProps> = (props: QuestionCreateProps) => 
 
   return (
     <div className={style.container}>
-      <Header title={words.todoApp.title} userId={props.userId} icon={faListAlt} />
+      <Header title={words.todoApp.title} userId={props.id} icon={faListAlt} />
       <div className={style.main}>
-        {!props.userId && (
+        {!props.id && (
           <>
             <div>質問投稿する</div>
             <div>質問を投稿するにはログインしてください。</div>
           </>
         )}
 
-        {props.userId && (
+        {props.id && (
           <>
             <div>タイトル</div>
             <br />

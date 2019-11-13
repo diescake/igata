@@ -37,10 +37,15 @@ const mapResponseToState = (res: HttpResAnswer[]): Answer[] =>
   res.map(answer => ({
     id: answer.id,
     body: answer.body,
-    questionId: answer.body,
-    comments: answer.comments,
+    questionId: answer.question_id,
     createdAt: answer.created_at,
     userId: answer.user_id,
+    comments: answer.comments.map(comment => ({
+      id: comment.id,
+      userId: comment.user_id,
+      createdAt: comment.created_at,
+      body: comment.body,
+    })),
   }))
 
 function* putWithResponse(res: AxiosResponse<unknown>) {

@@ -1,25 +1,33 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { AxiosResponse, AxiosError } from 'axios'
 import { loginFailure, loginSuccess, Type } from '@/app/actions/login'
-import { LoginResponse } from '@/app/models/HttpResponse'
 import { LoginState } from '@/app/models/Login'
+import { LoginResponse as HttpResLogin } from '@/app/models/HttpResponse'
 import { get, HttpResponse } from '@/app/common/http'
 
-const LOGIN_JSON_URL = 'https://raw.githubusercontent.com/diescake/igata/master/data/login.json'
+// const LOGIN_JSON_URL = 'https://raw.githubusercontent.com/diescake/igata/master/data/login.json'
+const LOGIN_JSON_URL = 'https://api.myjson.com/bins/ne4gm'
 
-const isLoginResponse = (props: any): props is LoginResponse => {
+const isLoginResponse = (props: any): props is HttpResLogin => {
   try {
-    const { token, user_id } = props
-    return typeof token === 'string' && typeof user_id === 'string'
+    const { id, email, created_at, session } = props
+    return typeof id === 'string' && typeof email === 'string' && typeof created_at === 'string' && session !== 'undefind'
   } catch (e) {
     console.error(e)
     return false
   }
 }
 
-const mapResponseToState = (res: LoginResponse): LoginState => ({
-  token: res.token,
-  userId: res.user_id,
+const mapResponseToState = (res: HttpResLogin): LoginState => ({
+  id: res.id,
+  email: res.email,
+  createdAt: res.created_at,
+  session: {
+    key: res.session.key,
+    expiresAt: res.session.expires_at,
+    passwordSetAt: res.session.password_set_at,
+    passwordExpiresAt: res.session.password_expires_at,
+  },
 })
 
 function* putWithResponse(res: AxiosResponse<unknown>) {

@@ -8,9 +8,10 @@ import { login, LoginDispatcher } from '@/app/actions/login'
 import { RootState } from '@/app/models'
 import words from '@/assets/strings'
 import style from '@/app/containers/Question/style.scss'
+import { VoteItem } from '@/app/components/VoteItem'
 
 interface StateProps {
-  readonly token: string
+  readonly key: string
 }
 
 interface DispatchProps {
@@ -20,7 +21,7 @@ interface DispatchProps {
 type QuestionProps = StateProps & DispatchProps & RouteComponentProps
 
 const mapStateToProps = (state: RootState): StateProps => ({
-  token: state.loginState.token,
+  key: state.loginState.session.key,
 })
 
 const mapDispatchToProps: DispatchProps = {
@@ -43,9 +44,7 @@ const Question: FC<QuestionProps> = (props: QuestionProps) => {
           <div className={style.mainArea}>
             {/* 情報エリア */}
             <div className={style.infoArea}>
-              <div className={style.voteArrow}>▲</div>
-              <div className={style.voteCount}>0</div>
-              <div className={style.voteArrow}>▼</div>
+              <VoteItem />
             </div>
 
             {/* コンテンツエリア */}

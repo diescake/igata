@@ -9,6 +9,10 @@ export const Type = {
   FETCH_QUESTIONS: 'QUESTIONS/FETCH_QUESTIONS',
   FETCH_QUESTIONS_SUCCESS: 'QUESTIONS/FETCH_QUESTIONS_SUCCESS',
   FETCH_QUESTIONS_FAILURE: 'QUESTIONS/FETCH_QUESTIONS_FAILURE',
+  FETCH_QUESTION: 'QUESTIONS/FETCH_QUESTION',
+  FETCH_QUESTION_SUCCESS: 'QUESTIONS/FETCH_QUESTION_SUCCESS',
+  FETCH_QUESTION_FAILURE: 'QUESTIONS/FETCH_QUESTION_FAILURE',
+
   POST_QUESTION: 'QUESTIONS/POST_QUESTION',
   POST_QUESTION_SUCCESS: 'QUESTIONS/POST_QUESTION_SUCCESS',
   POST_QUESTION_FAILURE: 'QUESTIONS/POST_QUESTION_FAILURE',
@@ -30,6 +34,23 @@ export const deleteQuestion = (questionId: string) => ({
   payload: questionId,
 })
 
+// 単体 GET
+export const fetchQuestion = (id: string) => ({
+  type: Type.FETCH_QUESTION,
+  payload: id,
+})
+
+export const fetchQuestionSuccess = (questions: Question) => ({
+  type: Type.FETCH_QUESTION_SUCCESS,
+  payload: { questions },
+})
+
+export const fetchQuestionFailure = (errorText: string) => ({
+  type: Type.FETCH_QUESTION_FAILURE,
+  payload: { errorText },
+})
+
+// 複数 GET
 export const fetchQuestions = (id?: string) => ({
   type: Type.FETCH_QUESTIONS,
   payload: id,
@@ -45,6 +66,7 @@ export const fetchQuestionsFailure = (errorText: string) => ({
   payload: { errorText },
 })
 
+// POST
 export const postQuestion = (title: string, body: string) => ({
   type: Type.POST_QUESTION,
   payload: { title, body },
