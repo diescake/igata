@@ -40,39 +40,49 @@ const QuestionCreate: FC<QuestionCreateProps> = (props: QuestionCreateProps) => 
     <div className={style.container}>
       <Header title={words.todoApp.title} userId={props.userId} icon={faListAlt} />
       <div className={style.main}>
-        <div>質問投稿する</div>
-        <div>質問を投稿するにはログインしてください。</div>
-        <div>タイトル</div>
-        <br />
-        <form>
-          <input
-            id="form-title"
-            className={`${style.titleEdit} ${style.formControl}`}
-            type="text"
-            onChange={handletTitleChange}
-            placeholder={words.todoApp.placeholder}
-            value={title}
-          />
-          <br />
-          <div>本文</div>
-          <br />
-          <textarea
-            id="form-body"
-            maxLength={3000}
-            minLength={1}
-            required
-            className={`${style.bodyEdit} ${style.formControl}`}
-            onChange={handletTextChange}
-            placeholder={words.todoApp.placeholder}
-            value={body}
-          />
-          <br />
-          <div className={style.formGroup}>
-            <button type="submit" className={style.btnPrimary} onClick={handlepostQuestion}>
-              {words.todoApp.addTodo}
-            </button>
-          </div>
-        </form>
+        {!props.userId && (
+          <>
+            <div>質問投稿する</div>
+            <div>質問を投稿するにはログインしてください。</div>
+          </>
+        )}
+
+        {props.userId && (
+          <>
+            <div>タイトル</div>
+            <br />
+            <form>
+              <input
+                id="form-title"
+                maxLength={100}
+                minLength={1}
+                required
+                className={`${style.titleEdit} ${style.formControl}`}
+                type="text"
+                onChange={handletTitleChange}
+                value={title}
+              />
+              <br />
+              <div>本文</div>
+              <br />
+              <textarea
+                id="form-body"
+                maxLength={3000}
+                minLength={1}
+                required
+                className={`${style.bodyEdit} ${style.formControl}`}
+                onChange={handletTextChange}
+                value={body}
+              />
+              <br />
+              <div className={style.formGroup}>
+                <button type="submit" className={style.btnPrimary} onClick={handlepostQuestion}>
+                  {words.todoApp.addTodo}
+                </button>
+              </div>
+            </form>
+          </>
+        )}
       </div>
       <Footer />
     </div>
