@@ -44,8 +44,11 @@ function* putWithError(error: AxiosError) {
   yield put(loginFailure(error.message))
 }
 
+// TODO: 通信先を変更したら修正する。
 function* login() {
   // NOTE: Actually the login request should be POST
+  // function* login(actions: any) {
+  // const { res, error }: HttpResponse<unknown> = yield call(post, LOGIN_JSON_URL, actions.payload)
   const { res, error }: HttpResponse<unknown> = yield call(get, LOGIN_JSON_URL, false)
   yield res ? putWithResponse(res) : putWithError(error)
 }
