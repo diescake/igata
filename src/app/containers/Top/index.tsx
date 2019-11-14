@@ -83,7 +83,6 @@ const Top: FC<TopProps> = (props: TopProps) => {
         <a
           href="/"
           onClick={e => {
-            console.log('hoge')
             props.history.push(paths.questionCreate)
             e.preventDefault()
           }}

@@ -7,24 +7,49 @@ import { paths } from '@/app/common/paths'
 
 type Props = {
   readonly answer: Answer
+  readonly isUserIdShow?: boolean
+  readonly isHref: boolean
 } & RouteComponentProps
 
 export const AnswerItemBase: FC<Props> = (props: Props) => (
   <div>
-    <h5 className={style.title}>
-      <a
-        href="/"
-        onClick={e => {
-          props.history.push(paths.question + props.answer.id)
-          e.preventDefault()
-        }}
-      >
-        {props.answer.body}
-      </a>
-    </h5>
+    {/* リンクあり */}
+    {props.isHref === true && (
+      <>
+        <h5 className={style.title}>
+          <a
+            href="/"
+            onClick={e => {
+              props.history.push(paths.question + props.answer.id)
+              e.preventDefault()
+            }}
+          >
+            {props.answer.body}
+          </a>
+        </h5>
+      </>
+    )}
+    {/* リンクがない場合 */}
+    {props.isHref === false && <div>{props.answer.body}</div>}
 
     <div className={style.additional}>
       {words.common.additional(props.answer.createdAt)}
+      {/* 投稿したユーザーID */}
+      {props.isUserIdShow === true && (
+        <>
+          {words.common.by}
+          <a
+            href="/"
+            onClick={e => {
+              props.history.push(paths.user + props.answer.userId)
+              e.preventDefault()
+            }}
+          >
+            {props.answer.userId}
+          </a>
+        </>
+      )}
+
       <hr />
     </div>
   </div>

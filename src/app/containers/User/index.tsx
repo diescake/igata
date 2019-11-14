@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { faListAlt } from '@fortawesome/free-solid-svg-icons'
 import { RouteComponentProps, withRouter } from 'react-router'
 
-import { addQuestion, updateQuestion, deleteQuestion, fetchQuestions, QuestionDispatcher } from '@/app/actions/question'
+import { fetchQuestions, QuestionDispatcher } from '@/app/actions/question'
 import { fetchAnswers, AnswerDispatcher } from '@/app/actions/answer'
 
 import { Header } from '@/app/components/Header'
@@ -32,9 +32,6 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  readonly addQuestion: QuestionDispatcher['addQuestion']
-  readonly updateQuestion: QuestionDispatcher['updateQuestion']
-  readonly deleteQuestion: QuestionDispatcher['deleteQuestion']
   readonly fetchQuestions: QuestionDispatcher['fetchQuestions']
   readonly fetchAnswers: AnswerDispatcher['fetchAnswers']
 
@@ -54,9 +51,6 @@ const mapStateToProps = (state: RootState): StateProps => ({
 })
 
 const mapDispatchToProps = {
-  addQuestion,
-  updateQuestion,
-  deleteQuestion,
   fetchQuestions,
   fetchAnswers,
   login,
@@ -66,7 +60,7 @@ const mapDispatchToProps = {
 // ユーザー詳細画面
 const User: FC<UserProps> = (props: UserProps) => {
   useEffect(() => {
-    props.fetchQuestions()
+    props.fetchQuestions(`?user_id=${props.match.params.userId}`)
     props.fetchAnswers(`?user_id=${props.match.params.userId}`)
   }, [])
   const handlerLogin = () => {
@@ -78,6 +72,8 @@ const User: FC<UserProps> = (props: UserProps) => {
   }
 
   const fetching = props.fetchingAnswer && props.fetchingAnswer
+  // hrefを使えるようにする。
+  const isHref = true
   return (
     <div className={style.container}>
       {/* ヘッダー */}
@@ -107,7 +103,7 @@ const User: FC<UserProps> = (props: UserProps) => {
           */}
           <div className={style.pageTitle}>{words.user.answerList}</div>
           {props.answers.map((answer: Answer) => (
-            <AnswerItem answer={answer} />
+            <AnswerItem answer={answer} isHref={isHref} />
           ))}
         </ListWrapper>
       </div>

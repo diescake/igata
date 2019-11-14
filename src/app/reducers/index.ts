@@ -5,7 +5,7 @@ import { RootState } from '@/app/models'
 import { networkReducer } from '@/app/reducers/network'
 import { loginReducer } from '@/app/reducers/login'
 import { todoReducer } from '@/app/reducers/todo'
-import { questionReducer } from '@/app/reducers/quest'
+import { questionReducer } from '@/app/reducers/question'
 import { answerReducer } from '@/app/reducers/answer'
 
 export const createRootReducer = (history: History) =>

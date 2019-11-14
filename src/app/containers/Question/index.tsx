@@ -1,35 +1,65 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { RouteComponentProps } from 'react-router'
 import { connect } from 'react-redux'
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 
 import { Header } from '@/app/components/Header'
-import { login, LoginDispatcher } from '@/app/actions/login'
+import { fetchQuestion, QuestionDispatcher } from '@/app/actions/question'
+import { fetchAnswers, AnswerDispatcher } from '@/app/actions/answer'
 import { RootState } from '@/app/models'
 import words from '@/assets/strings'
 import style from '@/app/containers/Question/style.scss'
 import { VoteItem } from '@/app/components/VoteItem'
+import { Question as QuestionModel, Comment } from '@/app/models/Question'
+import { QuestionItem } from '@/app/components/QuestionItem'
+import { CommentItem } from '@/app/components/CommentItem'
+import { Answer } from '@/app/models/Answer'
+import { AnswerItem } from '@/app/components/AnswerItem'
+import { CommentForm } from '@/app/components/CommentForm'
+import { AnswerForm } from '@/app/components/AnswerForm'
 
 interface StateProps {
-  readonly key: string
+  readonly question: QuestionModel
+  readonly answers: Answer[]
+  readonly id: string
+  readonly fetchingQuestion: boolean
+  readonly fetchingAnswer: boolean
 }
 
 interface DispatchProps {
-  readonly login: LoginDispatcher['login']
+  readonly fetchQuestion: QuestionDispatcher['fetchQuestion']
+  readonly fetchAnswers: AnswerDispatcher['fetchAnswers']
 }
 
-type QuestionProps = StateProps & DispatchProps & RouteComponentProps
+type QuestionProps = StateProps & DispatchProps & RouteComponentProps<{ id: string }>
 
 const mapStateToProps = (state: RootState): StateProps => ({
-  key: state.loginState.session.key,
+  question: state.questionState.question,
+  answers: state.answerState.answers,
+  fetchingQuestion: state.questionState.fetching,
+  fetchingAnswer: state.answerState.fetching,
+  id: state.loginState.id,
 })
 
 const mapDispatchToProps: DispatchProps = {
-  login,
+  fetchQuestion,
+  fetchAnswers,
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Question: FC<QuestionProps> = (props: QuestionProps) => {
+  useEffect(() => {
+    props.fetchQuestion(`/${props.match.params.id}`)
+    props.fetchAnswers(`?question_id=${props.match.params.id}`)
+  }, [])
+
+  // ユーザーID表示する。
+  const isUserIdShow = true
+  // bodyテキストを使用する。
+  const isBody = true
+  // 回答のhrefを使用しない。
+  const isHref = false
+
+  const anserNumber = props.answers.length
   return (
     <div className={style.container}>
       <Header title={words.login.title} icon={faSignInAlt} />
@@ -37,7 +67,7 @@ const Question: FC<QuestionProps> = (props: QuestionProps) => {
         {/* 質問 */}
         <div className={style.question}>
           {/* タイトル */}
-          <div className={style.pageTitle}>タイトル</div>
+          <div className={style.pageTitle}>{props.question.title}</div>
           <hr />
 
           {/* メインエリア */}
@@ -49,137 +79,37 @@ const Question: FC<QuestionProps> = (props: QuestionProps) => {
 
             {/* コンテンツエリア */}
             <div className={style.contentArea}>
-              <div>
-                <div className={style.body}>テスト</div>
-                <div className={style.additional}>
-                  Posted at 2019-xx-xxxxxxxx
-                  <a href="xxxxxxxxxxxx">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a>
-                </div>
-              </div>
-              <hr />
-              <div className={style.commentList}>コメントするにはログインしてください。</div>
+              <QuestionItem question={props.question} isUserIdShow={isUserIdShow} isBody={isBody} />
+              {props.question.comments.map((comment: Comment) => (
+                <CommentItem comment={comment} />
+              ))}
+              <CommentForm userId={props.id} />
             </div>
           </div>
         </div>
 
         {/* 回答一覧 */}
         <div className={style.answerList}>
-          <div className={style.answerListTitle}>3件の回答</div>
+          <div className={style.answerListTitle}>{words.question.answerNumber(anserNumber)}</div>
           <hr />
           {/* 回答 */}
           <span>
-            <div>
-              <div className={style.mainArea}>
-                <div className={style.infoArea} />
-                <div className={style.contentArea}>
-                  <div>
-                    <div className={style.body}>回答コメント１</div>
-                    <div className={style.additional}>
-                      Posted at 2019-mm-dd
-                      <a href="xxxxxxxxxxxx">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a>
-                    </div>
-                  </div>
-                  <hr />
-                  <div className={style.commentList}>
-                    <span>
-                      <div className={style.comment}>
-                        <div>
-                          <div className={style.content}>
-                            <span className={style.body}>テスト</span>
-                            <span className={style.additional}>
-                              Posted at 2019-xx-xxxxxxxx
-                              <a href="xxxxxxxxxxxx">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a>
-                            </span>
-                          </div>
-                        </div>
-                        <hr />
-                      </div>
-                    </span>
-                    <div>
-                      <span className={style.notLoggedInCaution}>コメントするにはログインしてください。</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <hr />
-            </div>
-            <div>
-              <div className={style.mainArea}>
-                <div className={style.infoArea} />
-                <div className={style.contentArea}>
-                  <div>
-                    <div className={style.body}>回答コメント2</div>
-                    <div className={style.additional}>
-                      Posted at 2019-mm-dd
-                      <a href="xxxxxxxxxxxx">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a>
-                    </div>
-                  </div>
-                  <hr />
-                  <div className={style.commentList}>
-                    <span>
-                      <div className={style.comment}>
-                        <div>
-                          <div className={style.content}>
-                            <span className={style.body}>テスト</span>
-                            <span className={style.additional}>
-                              Posted at 2019-xx-xxxxxxxx
-                              <a href="xxxxxxxxxxxx">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a>
-                            </span>
-                          </div>
-                        </div>
-                        <hr />
-                      </div>
-                    </span>
-                    <div>
-                      <span className={style.notLoggedInCaution}>コメントするにはログインしてください。</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <hr />
-            </div>
-            <div>
-              <div className={style.mainArea}>
-                <div className={style.infoArea} />
-                <div className={style.contentArea}>
-                  <div>
-                    <div className={style.body}>回答コメント3</div>
-                    <div className={style.additional}>
-                      Posted at 2019-mm-dd
-                      <a href="xxxxxxxxxxxx">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a>
-                    </div>
-                  </div>
-                  <hr />
-                  <div className={style.commentList}>
-                    <span>
-                      <div className={style.comment}>
-                        <div>
-                          <div className={style.content}>
-                            <span className={style.body}>テスト</span>
-                            <span className={style.additional}>
-                              Posted at 2019-xx-xxxxxxxx
-                              <a href="xxxxxxxxxxxx">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a>
-                            </span>
-                          </div>
-                        </div>
-                        <hr />
-                      </div>
-                    </span>
-                    <div>
-                      <span className={style.notLoggedInCaution}>コメントするにはログインしてください。</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <hr />
-            </div>
+            {props.answers.map((answer: Answer) => (
+              <>
+                <AnswerItem answer={answer} isUserIdShow={isUserIdShow} isHref={isHref} />
+                {answer.comments.map((comment: Comment) => (
+                  <CommentItem comment={comment} />
+                ))}
+                <CommentForm userId={props.id} />
+              </>
+            ))}
           </span>
         </div>
         {/* 回答する */}
         <div className={style.newAnswer}>
-          <div className="new-answer-title">回答する</div>
+          <div className="new-answer-title">{words.question.answer}</div>
           <hr />
-          <div>回答するにはログインしてください。</div>
+          <AnswerForm userId={props.id} />
         </div>
       </div>
     </div>

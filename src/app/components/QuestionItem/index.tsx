@@ -7,25 +7,36 @@ import { paths } from '@/app/common/paths'
 
 type Props = {
   readonly question: Question
-  readonly isUserIdShow: boolean
+  readonly isUserIdShow?: boolean
+  readonly isBody?: boolean
 } & RouteComponentProps
 
 export const QuestionItemBase: FC<Props> = (props: Props) => (
   <div>
-    <h5 className={style.title}>
-      <a
-        href="/"
-        onClick={e => {
-          props.history.push(paths.question + props.question.id)
-          e.preventDefault()
-        }}
-      >
-        {props.question.title}
-      </a>
-    </h5>
+    {/* タイトル */}
+    {!props.isBody && (
+      <>
+        <h5 className={style.title}>
+          <a
+            href="/"
+            onClick={e => {
+              props.history.push(paths.question + props.question.id)
+              e.preventDefault()
+            }}
+          >
+            {props.question.title}
+          </a>
+        </h5>
+      </>
+    )}
 
+    {/* 本文 */}
+    {props.isBody && props.isBody === true && <div>{props.question.body}</div>}
+
+    {/* 追加した日 */}
     <div className={style.additional}>
       {words.common.additional(props.question.createdAt)}
+      {/* 投稿したユーザーID */}
       {props.isUserIdShow === true && (
         <>
           {words.common.by}
@@ -44,5 +55,4 @@ export const QuestionItemBase: FC<Props> = (props: Props) => (
     </div>
   </div>
 )
-
 export const QuestionItem = withRouter(QuestionItemBase)

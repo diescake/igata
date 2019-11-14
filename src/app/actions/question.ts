@@ -34,22 +34,6 @@ export const deleteQuestion = (questionId: string) => ({
   payload: questionId,
 })
 
-// 単体 GET
-export const fetchQuestion = (id: string) => ({
-  type: Type.FETCH_QUESTION,
-  payload: id,
-})
-
-export const fetchQuestionSuccess = (questions: Question) => ({
-  type: Type.FETCH_QUESTION_SUCCESS,
-  payload: { questions },
-})
-
-export const fetchQuestionFailure = (errorText: string) => ({
-  type: Type.FETCH_QUESTION_FAILURE,
-  payload: { errorText },
-})
-
 // 複数 GET
 export const fetchQuestions = (id?: string) => ({
   type: Type.FETCH_QUESTIONS,
@@ -63,6 +47,22 @@ export const fetchQuestionsSuccess = (questions: Question[]) => ({
 
 export const fetchQuestionsFailure = (errorText: string) => ({
   type: Type.FETCH_QUESTIONS_FAILURE,
+  payload: { errorText },
+})
+
+// 単体 GET
+export const fetchQuestion = (id: string) => ({
+  type: Type.FETCH_QUESTION,
+  payload: id,
+})
+
+export const fetchQuestionSuccess = (question: Question) => ({
+  type: Type.FETCH_QUESTION_SUCCESS,
+  payload: { question },
+})
+
+export const fetchQuestionFailure = (errorText: string) => ({
+  type: Type.FETCH_QUESTION_FAILURE,
   payload: { errorText },
 })
 

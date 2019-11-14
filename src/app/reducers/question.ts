@@ -1,9 +1,19 @@
 import { Reducer } from 'redux'
 import { Type, QuestionAction } from '@/app/actions/question'
-import { QuestionState, Question } from '@/app/models/Question'
+import { QuestionState, Question as QuestionModels } from '@/app/models/Question'
 
 const defaultState: QuestionState = {
   questions: [],
+  question: {
+    body: '',
+    comments: [],
+    createdAt: '',
+    dislikeVoterIds: [],
+    id: '',
+    likeVoterIds: [],
+    title: '',
+    userId: '',
+  },
   fetching: false,
 }
 
@@ -21,7 +31,7 @@ export const questionReducer: Reducer<QuestionState, QuestionAction> = (
         return state
       }
 
-      const index = state.questions.findIndex((question: Question) => question.id === action.payload.id)
+      const index = state.questions.findIndex((question: QuestionModels) => question.id === action.payload.id)
       if (index === -1) {
         return state
       }
@@ -46,7 +56,20 @@ export const questionReducer: Reducer<QuestionState, QuestionAction> = (
       }
 
     case Type.FETCH_QUESTIONS_SUCCESS:
-      return { questions: action.payload.questions, fetching: false }
+      return {
+        questions: action.payload.questions,
+        question: {
+          body: '',
+          comments: [],
+          createdAt: '',
+          dislikeVoterIds: [],
+          id: '',
+          likeVoterIds: [],
+          title: '',
+          userId: '',
+        },
+        fetching: false,
+      }
 
     case Type.FETCH_QUESTIONS_FAILURE:
       return {
@@ -60,8 +83,7 @@ export const questionReducer: Reducer<QuestionState, QuestionAction> = (
       }
 
     case Type.FETCH_QUESTION_SUCCESS:
-      return state
-    // return { question: action.payload.question, fetching: false }
+      return { questions: [], question: action.payload.question, fetching: false }
 
     case Type.FETCH_QUESTION_FAILURE:
       return {
@@ -76,7 +98,6 @@ export const questionReducer: Reducer<QuestionState, QuestionAction> = (
       return state
 
     case Type.POST_QUESTION_FAILURE:
-      // えらーぶんが必要かも
       return state
 
     default:

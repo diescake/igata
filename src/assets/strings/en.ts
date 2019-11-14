@@ -56,4 +56,10 @@ export default {
     create: 'Submit',
     notLogin: 'Please login to contribute a question.',
   },
+  question: {
+    answer: '回答する',
+    answerNumber: (number: number) => `${number}件の回答`,
+    loginToComment: 'コメントするにはログインしてください。',
+    loginToAnswer: '回答するにはログインしてください。',
+  },
 } as const

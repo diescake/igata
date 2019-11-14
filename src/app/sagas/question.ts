@@ -79,18 +79,16 @@ function* fetchQuestions(action: any) {
 // 単体
 const isQuestionResponse = (props: any): props is HttpResQuestion => {
   try {
-    return props.every((question: any) => {
-      const { id, title, body, user_id, created_at, comments, like_voter_ids } = question
-      return (
-        typeof id === 'string' &&
-        typeof title === 'string' &&
-        typeof body === 'string' &&
-        typeof user_id === 'string' &&
-        typeof created_at === 'string' &&
-        Array.isArray(comments) &&
-        Array.isArray(like_voter_ids)
-      )
-    })
+    const { id, title, body, user_id, created_at, comments, like_voter_ids } = props
+    return (
+      typeof id === 'string' &&
+      typeof title === 'string' &&
+      typeof body === 'string' &&
+      typeof user_id === 'string' &&
+      typeof created_at === 'string' &&
+      Array.isArray(comments) &&
+      Array.isArray(like_voter_ids)
+    )
   } catch (e) {
     console.error(e)
     return false
@@ -127,8 +125,11 @@ function* putWithQuestionError(error: AxiosError) {
   yield put(fetchQuestionFailure(error.message))
 }
 
-function* fetchQuestion(action: any) {
-  const { res, error }: HttpResponse<unknown> = yield call(get, QUESTION_JSON_URL + action.payload)
+function* fetchQuestion() {
+  // TODO: 本番環境に切り替えたら修正する。
+  // function* fetchQuestion(action: any) {
+  // const { res, error }: HttpResponse<unknown> = yield call(get, QUESTION_JSON_URL + action.payload)
+  const { res, error }: HttpResponse<unknown> = yield call(get, QUESTION_JSON_URL)
   yield res ? putWithQuestionResponse(res) : putWithQuestionError(error)
 }
 
@@ -139,7 +140,7 @@ function* postQuestion(action: any) {
 }
 
 export default function*() {
-  yield takeLatest(Type.FETCH_QUESTION, fetchQuestion)
   yield takeLatest(Type.FETCH_QUESTIONS, fetchQuestions)
+  yield takeLatest(Type.FETCH_QUESTION, fetchQuestion)
   yield takeLatest(Type.POST_QUESTION, postQuestion)
 }
