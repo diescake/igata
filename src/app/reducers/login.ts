@@ -34,11 +34,17 @@ export const loginReducer: Reducer<LoginState, LoginAction> = (state: LoginState
       return state
 
     case Type.LOGOUT:
+      return state
+
+    case Type.LOGOUT_SUCCESS:
       localStorage.removeItem('id')
       localStorage.removeItem('email')
       localStorage.removeItem('key')
       localStorage.removeItem('expiresAt')
       window.location.href = paths.login
+      return state
+
+    case Type.LOGOUT_FAILURE:
       return state
 
     default:

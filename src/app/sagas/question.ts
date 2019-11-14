@@ -3,8 +3,8 @@ import { AxiosResponse, AxiosError } from 'axios'
 import {
   fetchQuestionsFailure,
   fetchQuestionsSuccess,
-  // fetchQuestionFailure,
-  // fetchQuestionSuccess,
+  fetchQuestionFailure,
+  fetchQuestionSuccess,
   postQuestionSuccess,
   postQuestionFailure,
   Type,
@@ -13,28 +13,11 @@ import { Question } from '@/app/models/Question'
 import { Question as HttpResQuestion } from '@/app/models/HttpResponse'
 import { get, post, HttpResponse } from '@/app/common/http'
 
+// 複数URL
 const QUESTIONS_JSON_URL = 'https://api.myjson.com/bins/16s4gy'
 
-// 単体
-// const isQuestionResponse = (props: any): props is HttpResQuestion => {
-//   try {
-//     return props.every((question: any) => {
-//       const { id, title, body, user_id, created_at, comments, like_voter_ids } = question
-//       return (
-//         typeof id === 'string' &&
-//         typeof title === 'string' &&
-//         typeof body === 'string' &&
-//         typeof user_id === 'string' &&
-//         typeof created_at === 'string' &&
-//         Array.isArray(comments) &&
-//         Array.isArray(like_voter_ids)
-//       )
-//     })
-//   } catch (e) {
-//     console.error(e)
-//     return false
-//   }
-// }
+// 単体URL
+const QUESTION_JSON_URL = 'https://api.myjson.com/bins/rqvza'
 
 // 複数
 const isQuestionsResponse = (props: any): props is HttpResQuestion[] => {
@@ -56,7 +39,8 @@ const isQuestionsResponse = (props: any): props is HttpResQuestion[] => {
     return false
   }
 }
-const mapResponseToState = (res: HttpResQuestion[]): Question[] =>
+
+const mapQuestionsResponseToState = (res: HttpResQuestion[]): Question[] =>
   res.map(question => ({
     body: question.body,
     comments: question.comments.map(comment => ({
@@ -73,20 +57,9 @@ const mapResponseToState = (res: HttpResQuestion[]): Question[] =>
     userId: question.user_id,
   }))
 
-// const mapResponseToState = (res: HttpResQuestion): Question => res => ({
-//   body: res.body,
-//   comments: res.comments,
-//   createdAt: res.created_at,
-//   dislikeVoterIds: res.dislike_voter_ids,
-//   id: res.id,
-//   likeVoterIds: res.like_voter_ids,
-//   title: res.title,
-//   userId: res.user_id,
-// })
-
-function* putWithResponse(res: AxiosResponse<unknown>) {
+function* putWithQuestionsResponse(res: AxiosResponse<unknown>) {
   if (isQuestionsResponse(res.data)) {
-    yield put(fetchQuestionsSuccess(mapResponseToState(res.data)))
+    yield put(fetchQuestionsSuccess(mapQuestionsResponseToState(res.data)))
   } else {
     console.error('Invalid response')
     console.error(res.data)
@@ -94,20 +67,72 @@ function* putWithResponse(res: AxiosResponse<unknown>) {
   }
 }
 
-function* putWithError(error: AxiosError) {
+function* putWithQuestionsError(error: AxiosError) {
   yield put(fetchQuestionsFailure(error.message))
 }
 
 function* fetchQuestions(action: any) {
   const { res, error }: HttpResponse<unknown> = yield call(get, QUESTIONS_JSON_URL + (action.payload ? action.payload : ''))
-  yield res ? putWithResponse(res) : putWithError(error)
+  yield res ? putWithQuestionsResponse(res) : putWithQuestionsError(error)
+}
+
+// 単体
+const isQuestionResponse = (props: any): props is HttpResQuestion => {
+  try {
+    return props.every((question: any) => {
+      const { id, title, body, user_id, created_at, comments, like_voter_ids } = question
+      return (
+        typeof id === 'string' &&
+        typeof title === 'string' &&
+        typeof body === 'string' &&
+        typeof user_id === 'string' &&
+        typeof created_at === 'string' &&
+        Array.isArray(comments) &&
+        Array.isArray(like_voter_ids)
+      )
+    })
+  } catch (e) {
+    console.error(e)
+    return false
+  }
+}
+
+const mapQuestionResponseToState = (res: HttpResQuestion): Question => ({
+  body: res.body,
+  comments: res.comments.map(comment => ({
+    body: comment.body,
+    createdAt: comment.created_at,
+    id: comment.id,
+    userId: comment.user_id,
+  })),
+  createdAt: res.created_at,
+  dislikeVoterIds: res.dislike_voter_ids,
+  id: res.id,
+  likeVoterIds: res.like_voter_ids,
+  title: res.title,
+  userId: res.user_id,
+})
+
+function* putWithQuestionResponse(res: AxiosResponse<unknown>) {
+  if (isQuestionResponse(res.data)) {
+    yield put(fetchQuestionSuccess(mapQuestionResponseToState(res.data)))
+  } else {
+    console.error('Invalid response')
+    console.error(res.data)
+    yield put(fetchQuestionFailure('Invalid response'))
+  }
+}
+
+function* putWithQuestionError(error: AxiosError) {
+  yield put(fetchQuestionFailure(error.message))
 }
 
 function* fetchQuestion(action: any) {
-  const { res, error }: HttpResponse<unknown> = yield call(get, QUESTIONS_JSON_URL + action.payload)
-  yield res ? putWithResponse(res) : putWithError(error)
+  const { res, error }: HttpResponse<unknown> = yield call(get, QUESTION_JSON_URL + action.payload)
+  yield res ? putWithQuestionResponse(res) : putWithQuestionError(error)
 }
 
+// 投稿
 function* postQuestion(action: any) {
   const { res }: HttpResponse<unknown> = yield call(post, QUESTIONS_JSON_URL, action.payload)
   yield res ? put(postQuestionSuccess()) : put(postQuestionFailure())

@@ -7,9 +7,12 @@ export const Type = {
   LOGIN_SUCCESS: 'LOGIN/LOGIN_SUCCESS',
   LOGIN_FAILURE: 'LOGIN/LOGIN_FAILURE',
   LOGOUT: 'LOGIN/LOGOUT',
+  LOGOUT_SUCCESS: 'LOGIN/LOGOUT_SUCCESS',
+  LOGOUT_FAILURE: 'LOGIN/LOGOUT_FAILURE',
 } as const
 
 // action creators
+// ログイン
 export const login = (address: string, pw: string) => ({
   type: Type.LOGIN,
   payload: { email: address, password: pw },
@@ -25,8 +28,18 @@ export const loginFailure = (errorText: string) => ({
   payload: { errorText },
 })
 
+// ログアウト
 export const logout = () => ({
   type: Type.LOGOUT,
+})
+
+export const logoutSuccess = () => ({
+  type: Type.LOGOUT_SUCCESS,
+})
+
+export const logoutFailure = (errorText: string) => ({
+  type: Type.LOGOUT_FAILURE,
+  payload: { errorText },
 })
 
 export type LoginAction = CreateActionTypes<Omit<typeof import('./login'), 'Type'>>

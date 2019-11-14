@@ -1,17 +1,19 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { AxiosResponse, AxiosError } from 'axios'
-import { loginFailure, loginSuccess, Type } from '@/app/actions/login'
+import { loginFailure, loginSuccess, logoutFailure, logoutSuccess, Type } from '@/app/actions/login'
 import { LoginState } from '@/app/models/Login'
 import { LoginResponse as HttpResLogin } from '@/app/models/HttpResponse'
 import { get, HttpResponse } from '@/app/common/http'
 
 // const LOGIN_JSON_URL = 'https://raw.githubusercontent.com/diescake/igata/master/data/login.json'
 const LOGIN_JSON_URL = 'https://api.myjson.com/bins/ne4gm'
+const LOGOUT_JSON_URL = 'https://api.myjson.com/bins/ne4gm'
 
+//
 const isLoginResponse = (props: any): props is HttpResLogin => {
   try {
     const { id, email, created_at, session } = props
-    return typeof id === 'string' && typeof email === 'string' && typeof created_at === 'string' && session !== 'undefind'
+    return typeof id === 'string' && typeof email === 'string' && typeof created_at === 'string' && typeof session === 'object'
   } catch (e) {
     console.error(e)
     return false
@@ -53,6 +55,12 @@ function* login() {
   yield res ? putWithResponse(res) : putWithError(error)
 }
 
+function* logout() {
+  const { res, error }: HttpResponse<unknown> = yield call(get, LOGOUT_JSON_URL, false)
+  yield res ? put(logoutSuccess()) : put(logoutFailure(error.message))
+}
+
 export default function*() {
   yield takeLatest(Type.LOGIN, login)
+  yield takeLatest(Type.LOGOUT, logout)
 }
