@@ -21,13 +21,13 @@ export const loginReducer: Reducer<LoginState, LoginAction> = (state: LoginState
       return state
 
     case Type.LOGIN_SUCCESS: {
-      const { id, email, createdAt, session } = action.payload
+      const { id, email, session } = action.payload
       localStorage.setItem('id', id)
       localStorage.setItem('email', email)
       localStorage.setItem('key', session.key)
       localStorage.setItem('expiresAt', session.expiresAt)
       window.location.href = paths.root
-      return { id, email, createdAt, session }
+      return state
     }
 
     case Type.LOGIN_FAILURE:
@@ -35,7 +35,9 @@ export const loginReducer: Reducer<LoginState, LoginAction> = (state: LoginState
 
     case Type.LOGOUT:
       localStorage.removeItem('id')
+      localStorage.removeItem('email')
       localStorage.removeItem('key')
+      localStorage.removeItem('expiresAt')
       window.location.href = paths.login
       return state
 
