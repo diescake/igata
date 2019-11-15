@@ -5,7 +5,7 @@ import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 
 import { Header } from '@/app/components/Header'
 import { fetchQuestion, QuestionDispatcher } from '@/app/actions/question'
-import { fetchAnswers, AnswerDispatcher } from '@/app/actions/answer'
+import { fetchAnswers, postAnswer, AnswerDispatcher } from '@/app/actions/answer'
 import { RootState } from '@/app/models'
 import words from '@/assets/strings'
 import style from '@/app/containers/Question/style.scss'
@@ -40,6 +40,7 @@ interface DispatchProps {
   readonly putCommentQuestion: CommentDispatcher['putCommentQuestion']
   readonly postCommentAnswer: CommentDispatcher['postCommentAnswer']
   readonly putCommentAnswer: CommentDispatcher['putCommentAnswer']
+  readonly postAnswer: AnswerDispatcher['postAnswer']
 }
 
 type QuestionProps = StateProps & DispatchProps & RouteComponentProps<{ id: string }>
@@ -59,6 +60,7 @@ const mapDispatchToProps: DispatchProps = {
   putCommentQuestion,
   postCommentAnswer,
   putCommentAnswer,
+  postAnswer,
 }
 
 const Question: FC<QuestionProps> = (props: QuestionProps) => {
@@ -127,7 +129,7 @@ const Question: FC<QuestionProps> = (props: QuestionProps) => {
         <div className={style.newAnswer}>
           <div className="new-answer-title">{words.question.answer}</div>
           <hr />
-          <AnswerForm userId={props.id} />
+          <AnswerForm userId={props.id} questionId={props.match.params.id} postAnswer={props.postAnswer} />
         </div>
       </div>
     </div>

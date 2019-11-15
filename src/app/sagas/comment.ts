@@ -51,7 +51,6 @@ function* postCommentAnswer(action: any) {
   const url = `${COMMENT_QUESTION_POST_JSON_URL}${path}`
   console.log(url)
   console.log(data)
-
   // const { res }: HttpResponse<unknown> = yield call(post, COMMENT_ANSWER_POST_JSON_URL, true, 'application/json', data)
   const { res }: HttpResponse<unknown> = yield call(get, COMMENT_ANSWER_POST_JSON_URL)
 

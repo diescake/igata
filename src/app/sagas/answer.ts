@@ -1,6 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { AxiosResponse, AxiosError } from 'axios'
 import {
+  fetchAnswers as actionFetchAnswers,
   fetchAnswersFailure,
   fetchAnswersSuccess,
   postAnswerSuccess,
@@ -9,6 +10,7 @@ import {
   putAnswerFailure,
   Type,
 } from '@/app/actions/answer'
+
 import { Answer } from '@/app/models/Answer'
 import { get, post, HttpResponse } from '@/app/common/http'
 import { Answer as HttpResAnswer } from '@/app/models/HttpResponse'
@@ -68,7 +70,17 @@ function* fetchAnswers(action: any) {
 }
 // POST
 function* postAnswer(action: any) {
-  const { res }: HttpResponse<unknown> = yield call(post, QUESTIONS_JSON_URL, action.payload)
+  const { body, questionId } = action.payload
+  const data = {
+    body,
+    questionId,
+  }
+  console.log(data)
+  const { res }: HttpResponse<unknown> = yield call(get, QUESTIONS_JSON_URL)
+  // const { res }: HttpResponse<unknown> = yield call(post, QUESTIONS_JSON_URL, true, 'application/json', data)
+  if (res) {
+    yield put(actionFetchAnswers(`?question_id=${questionId}`))
+  }
   yield res ? put(postAnswerSuccess()) : put(postAnswerFailure())
 }
 // PUT
