@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
 
-import Top from '@/app/containers/top'
+import QuestionList from '@/app/containers/QuestionList'
 import Login from '@/app/containers/Login'
 import User from '@/app/containers/User'
 import ProgressBar from '@/app/containers/ProgressBar'
@@ -33,7 +33,7 @@ ReactDOM.render(
       <AppController>
         <Switch>
           <Route exact path={paths.login} component={Login} />
-          <Route exact path={paths.root} component={Top} />
+          <Route exact path={paths.root} component={QuestionList} />
           <Route exact path={`${paths.user}:userId`} component={User} />
           <Route exact path={paths.questionCreate} component={QuestionCreate} />
           <Route exact path={`${paths.question}:id`} component={Question} />

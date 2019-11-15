@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const Authenticated = (props: Props) => {
-  if (!localStorage.getItem('token')) {
+  if (!localStorage.getItem('key')) {
     return <Redirect to={paths.login} />
   }
 

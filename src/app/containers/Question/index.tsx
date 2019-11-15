@@ -91,7 +91,13 @@ const Question: FC<QuestionProps> = (props: QuestionProps) => {
             <div className={style.contentArea}>
               <QuestionItem question={props.question} isUserIdShow isBody />
               {props.question.comments.map((comment: Comment) => (
-                <CommentItem comment={comment} />
+                <CommentItem
+                  comment={comment}
+                  userId={props.id}
+                  questionId={props.question.id}
+                  putCommentQuestion={props.putCommentQuestion}
+                  id={props.match.params.id}
+                />
               ))}
               <CommentForm
                 userId={props.id}
@@ -113,7 +119,13 @@ const Question: FC<QuestionProps> = (props: QuestionProps) => {
               <>
                 <AnswerItem answer={answer} isUserIdShow />
                 {answer.comments.map((comment: Comment) => (
-                  <CommentItem comment={comment} />
+                  <CommentItem
+                    comment={comment}
+                    userId={props.id}
+                    putCommentAnswer={props.putCommentAnswer}
+                    id={props.match.params.id}
+                    answerId={answer.id}
+                  />
                 ))}
                 <CommentForm
                   userId={props.id}

@@ -63,10 +63,10 @@ const User: FC<UserProps> = (props: UserProps) => {
     props.fetchQuestions(`?user_id=${props.match.params.userId}`)
     props.fetchAnswers(`?user_id=${props.match.params.userId}`)
   }, [])
-  const handlerLogin = () => {
+  const handleLogin = () => {
     props.history.push(paths.login)
   }
-  const handlerLogout = () => {
+  const handleLogout = () => {
     props.history.push(paths.login)
     props.logout()
   }
@@ -81,8 +81,8 @@ const User: FC<UserProps> = (props: UserProps) => {
         title={words.todoApp.title}
         userId={props.id}
         icon={faListAlt}
-        handlerLogin={handlerLogin}
-        handlerLogout={handlerLogout}
+        handleLogin={handleLogin}
+        handleLogout={handleLogout}
       />
 
       {/* 内容 */}

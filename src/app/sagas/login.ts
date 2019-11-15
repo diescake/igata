@@ -1,9 +1,11 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { AxiosResponse, AxiosError } from 'axios'
+import { push } from 'connected-react-router'
 import { loginFailure, loginSuccess, logoutFailure, logoutSuccess, Type } from '@/app/actions/login'
 import { LoginState } from '@/app/models/Login'
 import { LoginResponse as HttpResLogin } from '@/app/models/HttpResponse'
 import { get, HttpResponse } from '@/app/common/http'
+import { paths } from '@/app/common/paths'
 
 // const LOGIN_JSON_URL = 'https://raw.githubusercontent.com/diescake/igata/master/data/login.json'
 const LOGIN_JSON_URL = 'https://api.myjson.com/bins/ne4gm'
@@ -35,6 +37,7 @@ const mapResponseToState = (res: HttpResLogin): LoginState => ({
 function* putWithResponse(res: AxiosResponse<unknown>) {
   if (isLoginResponse(res.data)) {
     yield put(loginSuccess(mapResponseToState(res.data)))
+    yield put(push(paths.root))
   } else {
     console.error('Invalid response')
     console.error(res.data)
@@ -55,9 +58,14 @@ function* login() {
   yield res ? putWithResponse(res) : putWithError(error)
 }
 
+function* putWithResponseLogout() {
+  yield put(logoutSuccess())
+  yield put(push(paths.login))
+}
+
 function* logout() {
   const { res, error }: HttpResponse<unknown> = yield call(get, LOGOUT_JSON_URL, false)
-  yield res ? put(logoutSuccess()) : put(logoutFailure(error.message))
+  yield res ? putWithResponseLogout() : put(logoutFailure(error.message))
 }
 
 export default function*() {

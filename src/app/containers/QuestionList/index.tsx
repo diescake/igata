@@ -11,7 +11,7 @@ import { Footer } from '@/app/components/Footer'
 import { RootState } from '@/app/models'
 import { Question } from '@/app/models/Question'
 import words from '@/assets/strings'
-import style from '@/app/containers/Top/style.scss'
+import style from '@/app/containers/QuestionList/style.scss'
 import { QuestionItem } from '@/app/components/QuestionItem'
 import { paths } from '@/app/common/paths'
 import { login, logout, LoginDispatcher } from '@/app/actions/login'
@@ -32,7 +32,7 @@ interface DispatchProps {
   readonly logout: LoginDispatcher['logout']
 }
 
-type TopProps = StateProps & DispatchProps & RouteComponentProps
+type QuestionListProps = StateProps & DispatchProps & RouteComponentProps
 
 const mapStateToProps = (state: RootState): StateProps => ({
   questions: state.questionState.questions,
@@ -49,25 +49,23 @@ const mapDispatchToProps = {
   login,
   logout,
 }
-
-const Top: FC<TopProps> = (props: TopProps) => {
-  useEffect(() => {}, [props.key])
-
+// handle -> handleに修正する
+const QuestionList: FC<QuestionListProps> = (props: QuestionListProps) => {
   useEffect(() => {
     if (props.key) {
       props.history.push(paths.root)
-    } else {
-      props.fetchQuestions()
     }
+    props.fetchQuestions()
   }, [props.key])
-  const handlerLogin = () => {
+
+  const handleLogin = () => {
     props.history.push(paths.login)
   }
-  const handlerLogout = () => {
+  const handleLogout = () => {
+    // サクセスした場合に遷移するように修正する
     props.history.push(paths.login)
     props.logout()
   }
-  const isUserIdShow = true
 
   return (
     <div className={style.container}>
@@ -75,8 +73,8 @@ const Top: FC<TopProps> = (props: TopProps) => {
         title={words.todoApp.title}
         userId={props.id}
         icon={faListAlt}
-        handlerLogin={handlerLogin}
-        handlerLogout={handlerLogout}
+        handleLogin={handleLogin}
+        handleLogout={handleLogout}
       />
       <div className={style.main}>
         <div className={style.pageTitle}>{words.top.title}</div>
@@ -93,7 +91,7 @@ const Top: FC<TopProps> = (props: TopProps) => {
 
         <ListWrapper loading={props.fetching}>
           {props.questions.map((question: Question) => (
-            <QuestionItem question={question} isUserIdShow={isUserIdShow} />
+            <QuestionItem question={question} isUserIdShow />
           ))}
         </ListWrapper>
       </div>
@@ -106,5 +104,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(Top)
+  )(QuestionList)
 )

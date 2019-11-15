@@ -12,12 +12,10 @@ import {
   putCommentAnswerSuccess,
   putCommentAnswerFailure,
 } from '@/app/actions/comment'
-import { get, put, HttpResponse } from '@/app/common/http'
+import { get, HttpResponse } from '@/app/common/http'
 
-const COMMENT_QUESTION_POST_JSON_URL = 'https://api.myjson.com/bins/hp7x2'
-const COMMENT_QUESTION_PUT_JSON_URL = 'https://api.myjson.com/bins/hp7x2'
-const COMMENT_ANSWER_POST_JSON_URL = 'https://api.myjson.com/bins/hp7x2'
-const COMMENT_ANSWER_PUT_JSON_URL = 'https://api.myjson.com/bins/hp7x2'
+const COMMENT_QUESTION_JSON_URL = 'https://api.myjson.com/bins/hp7x2'
+const COMMENT_ANSWER_JSON_URL = 'https://api.myjson.com/bins/hp7x2'
 
 // POST Question
 function* postCommentQuestion(action: any) {
@@ -25,20 +23,31 @@ function* postCommentQuestion(action: any) {
   const data = {
     body,
   }
-  const url = `${COMMENT_QUESTION_POST_JSON_URL}${path}`
+  const url = `${COMMENT_QUESTION_JSON_URL}${path}`
   console.log(url)
   console.log(data)
-  // const { res }: HttpResponse<unknown> = yield call(post, COMMENT_QUESTION_POST_JSON_URL, true, 'application/json', data)
-  const { res }: HttpResponse<unknown> = yield call(get, COMMENT_QUESTION_POST_JSON_URL)
+  // const { res }: HttpResponse<unknown> = yield call(post, url, true, 'application/json', data)
+  const { res }: HttpResponse<unknown> = yield call(get, COMMENT_QUESTION_JSON_URL)
   if (res) {
     yield reduxPut(fetchQuestion(`/${id}`))
   }
-
   yield res ? reduxPut(postCommentQuestionSuccess()) : reduxPut(postCommentQuestionFailure())
 }
 // PUT  Question
 function* putCommentQuestion(action: any) {
-  const { res }: HttpResponse<unknown> = yield call(put, COMMENT_QUESTION_PUT_JSON_URL, action.payload)
+  const { body, path, id } = action.payload
+  const data = {
+    body,
+  }
+  const url = `${COMMENT_QUESTION_JSON_URL}${path}`
+  console.log(url)
+  console.log(data)
+
+  // const { res }: HttpResponse<unknown> = yield call(put, url, true, 'application/json', data)
+  const { res }: HttpResponse<unknown> = yield call(get, COMMENT_QUESTION_JSON_URL)
+  if (res) {
+    yield reduxPut(fetchQuestion(`/${id}`))
+  }
   yield res ? reduxPut(putCommentQuestionSuccess()) : reduxPut(putCommentQuestionFailure())
 }
 
@@ -48,11 +57,11 @@ function* postCommentAnswer(action: any) {
   const data = {
     body,
   }
-  const url = `${COMMENT_QUESTION_POST_JSON_URL}${path}`
+  const url = `${COMMENT_ANSWER_JSON_URL}${path}`
   console.log(url)
   console.log(data)
-  // const { res }: HttpResponse<unknown> = yield call(post, COMMENT_ANSWER_POST_JSON_URL, true, 'application/json', data)
-  const { res }: HttpResponse<unknown> = yield call(get, COMMENT_ANSWER_POST_JSON_URL)
+  // const { res }: HttpResponse<unknown> = yield call(post, url, true, 'application/json', data)
+  const { res }: HttpResponse<unknown> = yield call(get, COMMENT_ANSWER_JSON_URL)
 
   if (res) {
     yield reduxPut(fetchAnswers(`?question_id=${id}`))
@@ -61,7 +70,18 @@ function* postCommentAnswer(action: any) {
 }
 // PUT  Answer
 function* putCommentAnswer(action: any) {
-  const { res }: HttpResponse<unknown> = yield call(put, COMMENT_ANSWER_PUT_JSON_URL, action.payload)
+  const { body, path, id } = action.payload
+  const data = {
+    body,
+  }
+  const url = `${COMMENT_ANSWER_JSON_URL}${path}`
+  console.log(url)
+  console.log(data)
+  // const { res }: HttpResponse<unknown> = yield call(put, url, true, 'application/json', data)
+  const { res }: HttpResponse<unknown> = yield call(get, COMMENT_ANSWER_JSON_URL)
+  if (res) {
+    yield reduxPut(fetchAnswers(`?question_id=${id}`))
+  }
   yield res ? reduxPut(putCommentAnswerSuccess()) : reduxPut(putCommentAnswerFailure())
 }
 

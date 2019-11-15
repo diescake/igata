@@ -3,6 +3,8 @@ export const paths = {
   login: '/login',
   user: '/user/',
   question: '/question/',
+  answer: '/answer/',
+  comment: '/comment',
   questionCreate: '/question/create',
 } as const
 

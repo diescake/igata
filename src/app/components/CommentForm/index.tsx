@@ -18,10 +18,10 @@ export const CommentForm: FC<Props> = (props: Props) => {
   const handlePostClick = () => {
     if (typeof props.postCommentQuestion !== 'undefined' && props.questionId) {
       // 質問にコメント
-      props.postCommentQuestion(`${paths.question}${props.questionId}/comment`, text, props.id)
+      props.postCommentQuestion(`${paths.question}${props.questionId}${paths.answer}`, text, props.id)
     } else if (typeof props.postCommentAnswer !== 'undefined' && props.answerId) {
       // 回答にコメント
-      props.postCommentAnswer(`${paths.question}${props.answerId}/comment`, text, props.id)
+      props.postCommentAnswer(`${paths.answer}${props.answerId}${paths.comment}`, text, props.id)
     }
     setText('')
   }
