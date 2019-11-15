@@ -31,13 +31,13 @@ export const QuestionItemBase: FC<Props> = (props: Props) => (
     )}
 
     {/* 本文 */}
-    {props.isBody && props.isBody === true && <div>{props.question.body}</div>}
+    {props.isBody && <div>{props.question.body}</div>}
 
     {/* 追加した日 */}
     <div className={style.additional}>
       {words.common.additional(props.question.createdAt)}
       {/* 投稿したユーザーID */}
-      {props.isUserIdShow === true && (
+      {props.isUserIdShow && (
         <>
           {words.common.by}
           <a

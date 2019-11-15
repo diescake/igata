@@ -17,6 +17,13 @@ import { Answer } from '@/app/models/Answer'
 import { AnswerItem } from '@/app/components/AnswerItem'
 import { CommentForm } from '@/app/components/CommentForm'
 import { AnswerForm } from '@/app/components/AnswerForm'
+import {
+  postCommentQuestion,
+  putCommentQuestion,
+  postCommentAnswer,
+  putCommentAnswer,
+  CommentDispatcher,
+} from '@/app/actions/comment'
 
 interface StateProps {
   readonly question: QuestionModel
@@ -29,6 +36,10 @@ interface StateProps {
 interface DispatchProps {
   readonly fetchQuestion: QuestionDispatcher['fetchQuestion']
   readonly fetchAnswers: AnswerDispatcher['fetchAnswers']
+  readonly postCommentQuestion: CommentDispatcher['postCommentQuestion']
+  readonly putCommentQuestion: CommentDispatcher['putCommentQuestion']
+  readonly postCommentAnswer: CommentDispatcher['postCommentAnswer']
+  readonly putCommentAnswer: CommentDispatcher['putCommentAnswer']
 }
 
 type QuestionProps = StateProps & DispatchProps & RouteComponentProps<{ id: string }>
@@ -44,6 +55,10 @@ const mapStateToProps = (state: RootState): StateProps => ({
 const mapDispatchToProps: DispatchProps = {
   fetchQuestion,
   fetchAnswers,
+  postCommentQuestion,
+  putCommentQuestion,
+  postCommentAnswer,
+  putCommentAnswer,
 }
 
 const Question: FC<QuestionProps> = (props: QuestionProps) => {
@@ -51,13 +66,6 @@ const Question: FC<QuestionProps> = (props: QuestionProps) => {
     props.fetchQuestion(`/${props.match.params.id}`)
     props.fetchAnswers(`?question_id=${props.match.params.id}`)
   }, [])
-
-  // ユーザーID表示する。
-  const isUserIdShow = true
-  // bodyテキストを使用する。
-  const isBody = true
-  // 回答のhrefを使用しない。
-  const isHref = false
 
   const anserNumber = props.answers.length
   return (
@@ -79,11 +87,16 @@ const Question: FC<QuestionProps> = (props: QuestionProps) => {
 
             {/* コンテンツエリア */}
             <div className={style.contentArea}>
-              <QuestionItem question={props.question} isUserIdShow={isUserIdShow} isBody={isBody} />
+              <QuestionItem question={props.question} isUserIdShow isBody />
               {props.question.comments.map((comment: Comment) => (
                 <CommentItem comment={comment} />
               ))}
-              <CommentForm userId={props.id} />
+              <CommentForm
+                userId={props.id}
+                postCommentQuestion={props.postCommentQuestion}
+                questionId={props.question.id}
+                id={props.match.params.id}
+              />
             </div>
           </div>
         </div>
@@ -96,11 +109,16 @@ const Question: FC<QuestionProps> = (props: QuestionProps) => {
           <span>
             {props.answers.map((answer: Answer) => (
               <>
-                <AnswerItem answer={answer} isUserIdShow={isUserIdShow} isHref={isHref} />
+                <AnswerItem answer={answer} isUserIdShow />
                 {answer.comments.map((comment: Comment) => (
                   <CommentItem comment={comment} />
                 ))}
-                <CommentForm userId={props.id} />
+                <CommentForm
+                  userId={props.id}
+                  postCommentAnswer={props.postCommentAnswer}
+                  id={props.match.params.id}
+                  answerId={answer.id}
+                />
               </>
             ))}
           </span>

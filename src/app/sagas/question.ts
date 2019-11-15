@@ -11,7 +11,7 @@ import {
 } from '@/app/actions/question'
 import { Question } from '@/app/models/Question'
 import { Question as HttpResQuestion } from '@/app/models/HttpResponse'
-import { get, post, HttpResponse } from '@/app/common/http'
+import { get, HttpResponse } from '@/app/common/http'
 
 // 複数URL
 const QUESTIONS_JSON_URL = 'https://api.myjson.com/bins/16s4gy'
@@ -135,8 +135,16 @@ function* fetchQuestion() {
 
 // 投稿
 function* postQuestion(action: any) {
-  const { res }: HttpResponse<unknown> = yield call(post, QUESTIONS_JSON_URL, action.payload)
-  yield res ? put(postQuestionSuccess()) : put(postQuestionFailure())
+  const data = {
+    title: action.payload.title,
+    body: action.payload.body,
+  }
+  console.log(action)
+  console.log(data)
+
+  // const { res, error }: HttpResponse<unknown> = yield call(post, QUESTION_JSON_URL, true, 'application/json', data))
+  const { res, error }: HttpResponse<unknown> = yield call(get, QUESTION_JSON_URL)
+  yield res ? put(postQuestionSuccess()) : put(postQuestionFailure(error.message))
 }
 
 export default function*() {

@@ -76,8 +76,9 @@ export const postQuestionSuccess = () => ({
   type: Type.POST_QUESTION_SUCCESS,
 })
 
-export const postQuestionFailure = () => ({
+export const postQuestionFailure = (errorText: string) => ({
   type: Type.POST_QUESTION_FAILURE,
+  payload: { errorText },
 })
 
 export type QuestionAction = CreateActionTypes<Omit<typeof import('./question'), 'Type'>>

@@ -7,6 +7,7 @@ import { loginReducer } from '@/app/reducers/login'
 import { todoReducer } from '@/app/reducers/todo'
 import { questionReducer } from '@/app/reducers/question'
 import { answerReducer } from '@/app/reducers/answer'
+import { commentReducer } from '@/app/reducers/comment'
 
 export const createRootReducer = (history: History) =>
   combineReducers<RootState>({
@@ -16,4 +17,5 @@ export const createRootReducer = (history: History) =>
     loginState: loginReducer,
     questionState: questionReducer,
     answerState: answerReducer,
+    commentState: commentReducer,
   })

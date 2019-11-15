@@ -1,4 +1,5 @@
 import { Reducer } from 'redux'
+import { paths } from '@/app/common/paths'
 import { Type, QuestionAction } from '@/app/actions/question'
 import { QuestionState, Question as QuestionModels } from '@/app/models/Question'
 
@@ -95,6 +96,7 @@ export const questionReducer: Reducer<QuestionState, QuestionAction> = (
       return state
 
     case Type.POST_QUESTION_SUCCESS:
+      window.location.href = paths.root
       return state
 
     case Type.POST_QUESTION_FAILURE:

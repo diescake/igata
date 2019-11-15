@@ -81,3 +81,10 @@ export interface AnswerCreateResponse {
 export interface AnswerUpdateResponse {
   readonly body: string
 }
+
+export interface CommentState {
+  readonly id: string
+  readonly user_id: string
+  readonly body: string
+  readonly created_at: string
+}

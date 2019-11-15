@@ -32,7 +32,7 @@ axios.interceptors.response.use(
   // Except for 2xx
   (error: AxiosError) => {
     if (error.response && error.response.status === 401) {
-      localStorage.removeItem('token')
+      localStorage.removeItem('key')
       window.location.href = paths.root
     }
 

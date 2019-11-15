@@ -8,13 +8,13 @@ import { paths } from '@/app/common/paths'
 type Props = {
   readonly answer: Answer
   readonly isUserIdShow?: boolean
-  readonly isHref: boolean
+  readonly isHref?: boolean
 } & RouteComponentProps
 
 export const AnswerItemBase: FC<Props> = (props: Props) => (
   <div>
     {/* リンクあり */}
-    {props.isHref === true && (
+    {props.isHref && (
       <>
         <h5 className={style.title}>
           <a
@@ -29,8 +29,9 @@ export const AnswerItemBase: FC<Props> = (props: Props) => (
         </h5>
       </>
     )}
+
     {/* リンクがない場合 */}
-    {props.isHref === false && <div>{props.answer.body}</div>}
+    {!props.isHref && <div>{props.answer.body}</div>}
 
     <div className={style.additional}>
       {words.common.additional(props.answer.createdAt)}
@@ -49,7 +50,6 @@ export const AnswerItemBase: FC<Props> = (props: Props) => (
           </a>
         </>
       )}
-
       <hr />
     </div>
   </div>

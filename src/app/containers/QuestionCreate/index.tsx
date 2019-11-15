@@ -6,7 +6,7 @@ import style from '@/app/containers/QuestionCreate/style.scss'
 import { Header } from '@/app/components/Header'
 import { Footer } from '@/app/components/Footer'
 import { RootState } from '@/app/models'
-import { QuestionDispatcher } from '@/app/actions/question'
+import { postQuestion, QuestionDispatcher } from '@/app/actions/question'
 
 interface StateProps {
   readonly id: string
@@ -24,7 +24,9 @@ const mapStateToProps = (state: RootState): StateProps => ({
   id: state.loginState.id,
 })
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+  postQuestion,
+}
 
 const QuestionCreate: FC<QuestionCreateProps> = (props: QuestionCreateProps) => {
   const [title, setTitle] = useState<string>('')
@@ -76,7 +78,7 @@ const QuestionCreate: FC<QuestionCreateProps> = (props: QuestionCreateProps) => 
               />
               <br />
               <div className={style.formGroup}>
-                <button type="submit" className={style.btnPrimary} onClick={handlepostQuestion}>
+                <button type="button" className={style.btnPrimary} onClick={handlepostQuestion}>
                   {words.todoApp.addTodo}
                 </button>
               </div>
