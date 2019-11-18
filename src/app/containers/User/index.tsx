@@ -72,8 +72,6 @@ const User: FC<UserProps> = (props: UserProps) => {
   }
 
   const fetching = props.fetchingAnswer && props.fetchingAnswer
-  // hrefを使えるようにする。
-  const isHref = true
   return (
     <div className={style.container}>
       {/* ヘッダー */}
@@ -103,7 +101,7 @@ const User: FC<UserProps> = (props: UserProps) => {
           */}
           <div className={style.pageTitle}>{words.user.answerList}</div>
           {props.answers.map((answer: Answer) => (
-            <AnswerItem answer={answer} isHref={isHref} />
+            <AnswerItem answer={answer} isAnswerLink />
           ))}
         </ListWrapper>
       </div>

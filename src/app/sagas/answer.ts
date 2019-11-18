@@ -12,10 +12,10 @@ import {
 } from '@/app/actions/answer'
 
 import { Answer } from '@/app/models/Answer'
-import { get, post, HttpResponse } from '@/app/common/http'
+import { get, HttpResponse } from '@/app/common/http'
 import { Answer as HttpResAnswer } from '@/app/models/HttpResponse'
 
-const QUESTIONS_JSON_URL = 'https://api.myjson.com/bins/hp7x2'
+const ANSWER_JSON_URL = 'https://api.myjson.com/bins/hp7x2'
 
 const isAnswersResponse = (props: any): props is HttpResAnswer[] => {
   try {
@@ -65,7 +65,7 @@ function* putWithError(error: AxiosError) {
 }
 // GET
 function* fetchAnswers(action: any) {
-  const { res, error }: HttpResponse<unknown> = yield call(get, QUESTIONS_JSON_URL + (action.payload ? action.payload : ''))
+  const { res, error }: HttpResponse<unknown> = yield call(get, ANSWER_JSON_URL + (action.payload ? action.payload : ''))
   yield res ? putWithResponse(res) : putWithError(error)
 }
 // POST
@@ -76,8 +76,8 @@ function* postAnswer(action: any) {
     questionId,
   }
   console.log(data)
-  const { res }: HttpResponse<unknown> = yield call(get, QUESTIONS_JSON_URL)
-  // const { res }: HttpResponse<unknown> = yield call(post, QUESTIONS_JSON_URL, true, 'application/json', data)
+  const { res }: HttpResponse<unknown> = yield call(get, ANSWER_JSON_URL)
+  // const { res }: HttpResponse<unknown> = yield call(post, ANSWER_JSON_URL, true, 'application/json', data)
   if (res) {
     yield put(actionFetchAnswers(`?question_id=${questionId}`))
   }
@@ -85,7 +85,20 @@ function* postAnswer(action: any) {
 }
 // PUT
 function* putAnswer(action: any) {
-  const { res }: HttpResponse<unknown> = yield call(post, QUESTIONS_JSON_URL, action.payload)
+  const { path, body, questionId } = action.payload
+  const data = {
+    body,
+  }
+
+  const url = `${ANSWER_JSON_URL}${path}`
+  console.log(data)
+  console.log(url)
+  const { res }: HttpResponse<unknown> = yield call(get, ANSWER_JSON_URL)
+  // const { res }: HttpResponse<unknown> = yield call(put, ANSWER_JSON_URL, true, 'application/json', data)
+  if (res) {
+    // データ更新
+    yield put(actionFetchAnswers(`?question_id=${questionId}`))
+  }
   yield res ? put(putAnswerSuccess()) : put(putAnswerFailure())
 }
 

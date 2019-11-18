@@ -5,7 +5,7 @@ import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 
 import { Header } from '@/app/components/Header'
 import { fetchQuestion, QuestionDispatcher } from '@/app/actions/question'
-import { fetchAnswers, postAnswer, AnswerDispatcher } from '@/app/actions/answer'
+import { fetchAnswers, postAnswer, putAnswer, AnswerDispatcher } from '@/app/actions/answer'
 import { RootState } from '@/app/models'
 import words from '@/assets/strings'
 import style from '@/app/containers/Question/style.scss'
@@ -41,6 +41,7 @@ interface DispatchProps {
   readonly postCommentAnswer: CommentDispatcher['postCommentAnswer']
   readonly putCommentAnswer: CommentDispatcher['putCommentAnswer']
   readonly postAnswer: AnswerDispatcher['postAnswer']
+  readonly putAnswer: AnswerDispatcher['putAnswer']
 }
 
 type QuestionProps = StateProps & DispatchProps & RouteComponentProps<{ id: string }>
@@ -61,6 +62,7 @@ const mapDispatchToProps: DispatchProps = {
   postCommentAnswer,
   putCommentAnswer,
   postAnswer,
+  putAnswer,
 }
 
 const Question: FC<QuestionProps> = (props: QuestionProps) => {
@@ -69,7 +71,7 @@ const Question: FC<QuestionProps> = (props: QuestionProps) => {
     props.fetchAnswers(`?question_id=${props.match.params.id}`)
   }, [])
 
-  const anserNumber = props.answers.length
+  const answerNumber = props.answers.length
   return (
     <div className={style.container}>
       <Header title={words.login.title} icon={faSignInAlt} />
@@ -111,7 +113,7 @@ const Question: FC<QuestionProps> = (props: QuestionProps) => {
 
         {/* 回答一覧 */}
         <div className={style.answerList}>
-          <div className={style.answerListTitle}>{words.question.answerNumber(anserNumber)}</div>
+          <div className={style.answerListTitle}>{words.question.answerNumber(answerNumber)}</div>
           <hr />
           {/* 回答 */}
           <span>

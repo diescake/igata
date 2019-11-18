@@ -68,7 +68,7 @@ export const CommentItemBase: FC<Props> = (props: Props) => {
           <div>コメント追加</div>
           <form>
             <input
-              id="new-comment"
+              id="updateComment"
               maxLength={3000}
               minLength={1}
               required

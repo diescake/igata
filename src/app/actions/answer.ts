@@ -64,9 +64,9 @@ export const postAnswerFailure = () => ({
 })
 
 // PUT
-export const putAnswer = (body: string, questionId: string) => ({
+export const putAnswer = (path: string, body: string, questionId: string) => ({
   type: Type.PUT_ANSWER,
-  payload: { body, questionId },
+  payload: { path, body, questionId },
 })
 
 export const putAnswerSuccess = () => ({
