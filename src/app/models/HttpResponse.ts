@@ -88,3 +88,8 @@ export interface CommentState {
   readonly body: string
   readonly created_at: string
 }
+
+export interface VoteState {
+  readonly like_voter_ids: string[]
+  readonly dislike_voter_ids: string[]
+}

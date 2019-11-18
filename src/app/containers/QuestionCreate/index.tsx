@@ -32,9 +32,9 @@ const QuestionCreate: FC<QuestionCreateProps> = (props: QuestionCreateProps) => 
   const [title, setTitle] = useState<string>('')
   const [body, setBody] = useState<string>('')
 
-  const handletTitleChange = (e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)
-  const handletTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => setBody(e.target.value)
-  const handlepostQuestion = () => {
+  const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)
+  const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => setBody(e.target.value)
+  const handlePostQuestion = () => {
     props.postQuestion(title, body)
   }
 
@@ -61,7 +61,7 @@ const QuestionCreate: FC<QuestionCreateProps> = (props: QuestionCreateProps) => 
                 required
                 className={`${style.titleEdit} ${style.formControl}`}
                 type="text"
-                onChange={handletTitleChange}
+                onChange={handleTitleChange}
                 value={title}
               />
               <br />
@@ -73,12 +73,12 @@ const QuestionCreate: FC<QuestionCreateProps> = (props: QuestionCreateProps) => 
                 minLength={1}
                 required
                 className={`${style.bodyEdit} ${style.formControl}`}
-                onChange={handletTextChange}
+                onChange={handleTextChange}
                 value={body}
               />
               <br />
               <div className={style.formGroup}>
-                <button type="button" className={style.btnPrimary} onClick={handlepostQuestion}>
+                <button type="button" className={style.btnPrimary} onClick={handlePostQuestion}>
                   {words.todoApp.addTodo}
                 </button>
               </div>

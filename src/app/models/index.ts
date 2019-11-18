@@ -1,4 +1,5 @@
 import { RouterState } from 'connected-react-router'
+import { VoteState } from '@/app/models/Vote'
 import { NetworkState } from '@/app/models/Network'
 import { LoginState } from '@/app/models/Login'
 import { TodoState } from '@/app/models/Todo'
@@ -14,4 +15,5 @@ export interface RootState {
   readonly questionState: QuestionState
   readonly answerState: AnswerState
   readonly commentState: CommentState
+  readonly voteState: VoteState
 }

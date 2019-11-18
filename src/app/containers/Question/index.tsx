@@ -24,6 +24,7 @@ import {
   putCommentAnswer,
   CommentDispatcher,
 } from '@/app/actions/comment'
+import { postVote, VoteDispatcher } from '@/app/actions/vote'
 
 interface StateProps {
   readonly question: QuestionModel
@@ -42,6 +43,7 @@ interface DispatchProps {
   readonly putCommentAnswer: CommentDispatcher['putCommentAnswer']
   readonly postAnswer: AnswerDispatcher['postAnswer']
   readonly putAnswer: AnswerDispatcher['putAnswer']
+  readonly postVote: VoteDispatcher['postVote']
 }
 
 type QuestionProps = StateProps & DispatchProps & RouteComponentProps<{ id: string }>
@@ -63,6 +65,7 @@ const mapDispatchToProps: DispatchProps = {
   putCommentAnswer,
   postAnswer,
   putAnswer,
+  postVote,
 }
 
 const Question: FC<QuestionProps> = (props: QuestionProps) => {
@@ -86,7 +89,13 @@ const Question: FC<QuestionProps> = (props: QuestionProps) => {
           <div className={style.mainArea}>
             {/* 情報エリア */}
             <div className={style.infoArea}>
-              <VoteItem />
+              <VoteItem
+                userId={props.id}
+                questionId={props.match.params.id}
+                likeVoterIds={props.question.likeVoterIds}
+                dislikeVoterIds={props.question.dislikeVoterIds}
+                postVote={props.postVote}
+              />
             </div>
 
             {/* コンテンツエリア */}

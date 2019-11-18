@@ -4,7 +4,8 @@ import todoApp from '@/app/sagas/todoApp'
 import question from '@/app/sagas/question'
 import answer from '@/app/sagas/answer'
 import comment from '@/app/sagas/comment'
+import vote from '@/app/sagas/vote'
 
 export default function* rootSaga() {
-  yield all([fork(todoApp), fork(login), fork(question), fork(answer), fork(comment)])
+  yield all([fork(todoApp), fork(login), fork(question), fork(answer), fork(comment), fork(vote)])
 }
