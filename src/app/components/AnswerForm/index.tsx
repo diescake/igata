@@ -11,7 +11,7 @@ export interface Props {
 
 export const AnswerForm: FC<Props> = (props: Props) => {
   const [text, setText] = useState<string>('')
-  const handletTextChange = (e: ChangeEvent<HTMLInputElement>) => setText(e.target.value)
+  const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => setText(e.target.value)
   const handlePostClick = () => {
     if (typeof props.postAnswer !== 'undefined' && props.questionId) {
       // 回答
@@ -37,7 +37,7 @@ export const AnswerForm: FC<Props> = (props: Props) => {
               required
               className={`${style.titleEdit} ${style.formControl}`}
               type="text"
-              onChange={handletTextChange}
+              onChange={handleTextChange}
               value={text}
             />
             <div className={style.formGroup}>

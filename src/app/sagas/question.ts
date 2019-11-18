@@ -7,6 +7,8 @@ import {
   fetchQuestionSuccess,
   postQuestionSuccess,
   postQuestionFailure,
+  putQuestionSuccess,
+  putQuestionFailure,
   Type,
 } from '@/app/actions/question'
 import { Question } from '@/app/models/Question'
@@ -18,6 +20,11 @@ const QUESTIONS_JSON_URL = 'https://api.myjson.com/bins/16s4gy'
 
 // 単体URL
 const QUESTION_JSON_URL = 'https://api.myjson.com/bins/rqvza'
+
+const EnumQuestionType = {
+  fetch: 'fetch',
+  put: 'put',
+}
 
 // 複数
 const isQuestionsResponse = (props: any): props is HttpResQuestion[] => {
@@ -111,13 +118,23 @@ const mapQuestionResponseToState = (res: HttpResQuestion): Question => ({
   userId: res.user_id,
 })
 
-function* putWithQuestionResponse(res: AxiosResponse<unknown>) {
-  if (isQuestionResponse(res.data)) {
-    yield put(fetchQuestionSuccess(mapQuestionResponseToState(res.data)))
-  } else {
-    console.error('Invalid response')
-    console.error(res.data)
-    yield put(fetchQuestionFailure('Invalid response'))
+function* putWithQuestionResponse(res: AxiosResponse<unknown>, type: string) {
+  if (type === EnumQuestionType.fetch) {
+    if (isQuestionResponse(res.data)) {
+      yield put(fetchQuestionSuccess(mapQuestionResponseToState(res.data)))
+    } else {
+      console.error('Invalid response')
+      console.error(res.data)
+      yield put(fetchQuestionFailure('Invalid response'))
+    }
+  } else if (type === EnumQuestionType.put) {
+    if (isQuestionResponse(res.data)) {
+      yield put(putQuestionSuccess(mapQuestionResponseToState(res.data)))
+    } else {
+      console.error('Invalid response')
+      console.error(res.data)
+      yield put(putQuestionFailure('Invalid response'))
+    }
   }
 }
 
@@ -130,7 +147,7 @@ function* fetchQuestion() {
   // function* fetchQuestion(action: any) {
   // const { res, error }: HttpResponse<unknown> = yield call(get, QUESTION_JSON_URL + action.payload)
   const { res, error }: HttpResponse<unknown> = yield call(get, QUESTION_JSON_URL)
-  yield res ? putWithQuestionResponse(res) : putWithQuestionError(error)
+  yield res ? putWithQuestionResponse(res, EnumQuestionType.fetch) : putWithQuestionError(error)
 }
 
 // 投稿
@@ -147,8 +164,26 @@ function* postQuestion(action: any) {
   yield res ? put(postQuestionSuccess()) : put(postQuestionFailure(error.message))
 }
 
+// 更新
+function* putQuestion(action: any) {
+  const { title, body, id } = action.payload
+
+  const data = {
+    title,
+    body,
+  }
+  const url = `${QUESTION_JSON_URL}/${id}`
+  console.log(action)
+  console.log(data)
+  console.log(url)
+  // const { res, error }: HttpResponse<unknown> = yield call(put, QUESTION_JSON_URL, true, 'application/json', data))
+  const { res, error }: HttpResponse<unknown> = yield call(get, QUESTION_JSON_URL)
+  yield res ? putWithQuestionResponse(res, EnumQuestionType.put) : putWithQuestionError(error)
+}
+
 export default function*() {
   yield takeLatest(Type.FETCH_QUESTIONS, fetchQuestions)
   yield takeLatest(Type.FETCH_QUESTION, fetchQuestion)
   yield takeLatest(Type.POST_QUESTION, postQuestion)
+  yield takeLatest(Type.PUT_QUESTION, putQuestion)
 }

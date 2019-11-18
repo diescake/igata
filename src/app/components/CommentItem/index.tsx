@@ -65,7 +65,6 @@ export const CommentItemBase: FC<Props> = (props: Props) => {
       {/* コメントを更新 */}
       {isUpdateComment && (
         <>
-          <div>コメント追加</div>
           <form>
             <input
               id="updateComment"

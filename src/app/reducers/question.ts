@@ -1,7 +1,7 @@
 import { Reducer } from 'redux'
 import { paths } from '@/app/common/paths'
 import { Type, QuestionAction } from '@/app/actions/question'
-import { QuestionState, Question as QuestionModels } from '@/app/models/Question'
+import { QuestionState } from '@/app/models/Question'
 
 const defaultState: QuestionState = {
   questions: [],
@@ -23,33 +23,6 @@ export const questionReducer: Reducer<QuestionState, QuestionAction> = (
   action: QuestionAction
 ): QuestionState => {
   switch (action.type) {
-    case Type.ADD_QUESTION: {
-      return state
-    }
-
-    case Type.UPDATE_QUESTION: {
-      if (state.fetching) {
-        return state
-      }
-
-      const index = state.questions.findIndex((question: QuestionModels) => question.id === action.payload.id)
-      if (index === -1) {
-        return state
-      }
-
-      return { ...state, questions: Object.assign([...state.questions], { [index]: action.payload }) }
-    }
-
-    case Type.DELETE_QUESTION:
-      if (state.fetching) {
-        return state
-      }
-
-      return {
-        ...state,
-        questions: state.questions.filter(question => question.id !== action.payload),
-      }
-
     case Type.FETCH_QUESTIONS:
       return {
         ...state,

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { faListAlt } from '@fortawesome/free-solid-svg-icons'
 import { RouteComponentProps, withRouter } from 'react-router'
 
-import { addQuestion, updateQuestion, deleteQuestion, fetchQuestions, QuestionDispatcher } from '@/app/actions/question'
+import { fetchQuestions, QuestionDispatcher } from '@/app/actions/question'
 import { Header } from '@/app/components/Header'
 import { ListWrapper } from '@/app/components/ListWrapper'
 import { Footer } from '@/app/components/Footer'
@@ -24,9 +24,6 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  readonly addQuestion: QuestionDispatcher['addQuestion']
-  readonly updateQuestion: QuestionDispatcher['updateQuestion']
-  readonly deleteQuestion: QuestionDispatcher['deleteQuestion']
   readonly fetchQuestions: QuestionDispatcher['fetchQuestions']
   readonly login: LoginDispatcher['login']
   readonly logout: LoginDispatcher['logout']
@@ -42,9 +39,6 @@ const mapStateToProps = (state: RootState): StateProps => ({
 })
 
 const mapDispatchToProps = {
-  addQuestion,
-  updateQuestion,
-  deleteQuestion,
   fetchQuestions,
   login,
   logout,

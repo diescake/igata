@@ -3,37 +3,25 @@ import { CreateActionTypes, CreateDispatcherTypes } from '@/app/common/typeHelpe
 
 // action types
 export const Type = {
-  ADD_QUESTION: 'QUESTIONS/ADD_QUESTION',
-  UPDATE_QUESTION: 'QUESTIONS/UPDATE_QUESTION',
-  DELETE_QUESTION: 'QUESTIONS/DELETE_QUESTION',
+  // 複数 GET
   FETCH_QUESTIONS: 'QUESTIONS/FETCH_QUESTIONS',
   FETCH_QUESTIONS_SUCCESS: 'QUESTIONS/FETCH_QUESTIONS_SUCCESS',
   FETCH_QUESTIONS_FAILURE: 'QUESTIONS/FETCH_QUESTIONS_FAILURE',
+  // 単体 GET
   FETCH_QUESTION: 'QUESTIONS/FETCH_QUESTION',
   FETCH_QUESTION_SUCCESS: 'QUESTIONS/FETCH_QUESTION_SUCCESS',
   FETCH_QUESTION_FAILURE: 'QUESTIONS/FETCH_QUESTION_FAILURE',
-
+  // POST
   POST_QUESTION: 'QUESTIONS/POST_QUESTION',
   POST_QUESTION_SUCCESS: 'QUESTIONS/POST_QUESTION_SUCCESS',
   POST_QUESTION_FAILURE: 'QUESTIONS/POST_QUESTION_FAILURE',
+  // PUT
+  PUT_QUESTION: 'QUESTIONS/PUT_QUESTION',
+  PUT_QUESTION_SUCCESS: 'QUESTIONS/PUT_QUESTION_SUCCESS',
+  PUT_QUESTION_FAILURE: 'QUESTIONS/PUT_QUESTION_FAILURE',
 } as const
 
 // action creators
-export const addQuestion = (text: string) => ({
-  type: Type.ADD_QUESTION,
-  payload: { text },
-})
-
-export const updateQuestion = (question: Question) => ({
-  type: Type.UPDATE_QUESTION,
-  payload: { ...question },
-})
-
-export const deleteQuestion = (questionId: string) => ({
-  type: Type.DELETE_QUESTION,
-  payload: questionId,
-})
-
 // 複数 GET
 export const fetchQuestions = (id?: string) => ({
   type: Type.FETCH_QUESTIONS,
@@ -78,6 +66,22 @@ export const postQuestionSuccess = () => ({
 
 export const postQuestionFailure = (errorText: string) => ({
   type: Type.POST_QUESTION_FAILURE,
+  payload: { errorText },
+})
+
+// PUT
+export const putQuestion = (title: string, body: string, id: string) => ({
+  type: Type.PUT_QUESTION,
+  payload: { title, body, id },
+})
+
+export const putQuestionSuccess = (question: Question) => ({
+  type: Type.PUT_QUESTION_SUCCESS,
+  payload: { question },
+})
+
+export const putQuestionFailure = (errorText: string) => ({
+  type: Type.PUT_QUESTION_FAILURE,
   payload: { errorText },
 })
 
