@@ -1,4 +1,4 @@
-import React, { FC, useEffect, ChangeEvent, useState } from 'react'
+import React, { FC, useEffect } from 'react'
 import { RouteComponentProps } from 'react-router'
 import { connect } from 'react-redux'
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
@@ -9,7 +9,6 @@ import { fetchAnswers, postAnswer, putAnswer, AnswerDispatcher } from '@/app/act
 import { RootState } from '@/app/models'
 import words from '@/assets/strings'
 import style from '@/app/containers/QuestionDetail/style.scss'
-import { VoteItem } from '@/app/components/VoteItem'
 import { Question as QuestionModel, Comment } from '@/app/models/Question'
 import { CommentItem } from '@/app/components/CommentItem'
 import { Answer } from '@/app/models/Answer'
@@ -77,132 +76,20 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
   }, [])
   const answerNumber = props.answers.length
 
-  const [title, setTitle] = useState<string>('')
-  const [body, setBody] = useState<string>('')
-  const [isUpdateQuestion, setIsUpdateQuestion] = useState<boolean>(false)
-  const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)
-  const handleBodyChange = (e: ChangeEvent<HTMLTextAreaElement>) => setBody(e.target.value)
-
-  const handlePutClick = () => {
-    // 質問のタイトルと本文を更新
-    if (typeof title !== 'undefined' && typeof body !== 'undefined') {
-      props.putQuestion(title, body, props.match.params.id)
-    }
-    setIsUpdateQuestion(false)
-    setTitle('')
-    setBody('')
-  }
-
   return (
     <div className={style.container}>
       <Header title={words.login.title} icon={faSignInAlt} />
       <div className={style.main}>
         {/* 質問 */}
-        <div className={style.question}>
-          {/* タイトル */}
-          {isUpdateQuestion && (
-            <>
-              <input
-                id="form-title"
-                maxLength={3000}
-                minLength={1}
-                required
-                className={`${style.titleEdit} ${style.formControl}`}
-                type="text"
-                onChange={handleTitleChange}
-                value={title}
-              />
-            </>
-          )}
-          {!isUpdateQuestion && <div className={style.pageTitle}>{props.question.title}</div>}
-          <hr />
-
-          {/* メインエリア */}
-          <div className={style.mainArea}>
-            {/* 情報エリア */}
-            <div className={style.infoArea}>
-              {/* 評価 */}
-              <VoteItem
-                userId={props.id}
-                questionId={props.match.params.id}
-                likeVoterIds={props.question.likeVoterIds}
-                dislikeVoterIds={props.question.dislikeVoterIds}
-                postVote={props.postVote}
-              />
-            </div>
-
-            {/* コンテンツエリア */}
-            <div className={style.contentArea}>
-              {!isUpdateQuestion && (
-                <>
-                  <QuestionDetailItem question={props.question} isUserIdShow />
-
-                  <span>
-                    {/* 同じidなら編集可能にする */}
-                    <button
-                      type="button"
-                      onClick={e => {
-                        setTitle(props.question.title)
-                        setBody(props.question.body)
-                        setIsUpdateQuestion(true)
-                        e.preventDefault()
-                      }}
-                    >
-                      更新
-                    </button>
-                  </span>
-                </>
-              )}
-              {/* 質問のタイトル更新 */}
-              {isUpdateQuestion && (
-                <>
-                  <textarea
-                    id="body"
-                    maxLength={3000}
-                    minLength={1}
-                    required
-                    className={`${style.bodyEdit} ${style.formControl}`}
-                    onChange={handleBodyChange}
-                    value={body}
-                  />
-                  <div className={style.formGroup}>
-                    <button type="button" className={style.btnPrimary} onClick={handlePutClick}>
-                      保存
-                    </button>
-                  </div>
-                  <button
-                    type="button"
-                    className={style.btnPrimary}
-                    onClick={e => {
-                      setIsUpdateQuestion(false)
-                      e.preventDefault()
-                    }}
-                  >
-                    キャンセル
-                  </button>
-                </>
-              )}
-
-              <hr />
-
-              {props.question.comments.map((comment: Comment) => (
-                <CommentItem
-                  comment={comment}
-                  userId={props.id}
-                  questionId={props.question.id}
-                  putCommentQuestion={props.putCommentQuestion}
-                  id={props.match.params.id}
-                />
-              ))}
-              <CommentForm
-                userId={props.id}
-                postCommentQuestion={props.postCommentQuestion}
-                questionId={props.question.id}
-                id={props.match.params.id}
-              />
-            </div>
-          </div>
-        </div>
+        <QuestionDetailItem
+          userId={props.id}
+          questionId={props.match.params.id}
+          question={props.question}
+          putQuestion={props.putQuestion}
+          postCommentQuestion={props.postCommentQuestion}
+          putCommentQuestion={props.putCommentQuestion}
+          postVote={props.postVote}
+        />
 
         {/* 回答一覧 */}
         <div className={style.answerList}>
