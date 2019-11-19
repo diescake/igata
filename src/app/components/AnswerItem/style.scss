@@ -7,3 +7,36 @@
   color: #aaa;
   font-size: small;
 }
+
+.body {
+  margin-bottom: 20px;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.mainArea {
+  display: flex;
+}
+
+.contentArea {
+  flex-grow: 1;
+}
+
+.infoArea {
+  margin: 0 20px 0 10px;
+}
+
+.commentList {
+  margin-left: 10px;
+}
+
+.commentListEffectEnterActive,
+.commentListEffectLeaveActive {
+  transition: all 1s;
+}
+
+.commentListEffectEnter,
+.commentListEffectLeaveTo {
+  transform: translateX(30px);
+  opacity: 0;
+}

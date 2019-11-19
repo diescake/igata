@@ -26,3 +26,30 @@ input:focus {
   border: 1px solid $form_border_color_focused;
   transition: all 0.2s ease;
 }
+
+:root {
+  --page-sub-title-font-size: 1.2rem;
+}
+
+.navbarBrand {
+  font-size: 1rem;
+}
+
+.pageTitle {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.navbarDefault {
+  background-color: #fafafa;
+  border-bottom: 1px solid #dadada;
+}
+
+a {
+  color: #0044a0;
+}
+
+.additional {
+  color: #aaa;
+  font-size: small;
+}

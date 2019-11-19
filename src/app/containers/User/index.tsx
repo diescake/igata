@@ -60,7 +60,7 @@ const mapDispatchToProps = {
 // ユーザー詳細画面
 const User: FC<UserProps> = (props: UserProps) => {
   useEffect(() => {
-    props.fetchQuestions(`?user_id=${props.match.params.userId}`)
+    props.fetchQuestions(props.match.params.userId)
     props.fetchAnswers(`?user_id=${props.match.params.userId}`)
   }, [])
   const handleLogin = () => {

@@ -35,7 +35,9 @@ const QuestionCreate: FC<QuestionCreateProps> = (props: QuestionCreateProps) => 
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)
   const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => setBody(e.target.value)
   const handlePostQuestion = () => {
-    props.postQuestion(title, body)
+    if (typeof title !== 'undefined' && typeof body !== 'undefined') {
+      props.postQuestion(title, body)
+    }
   }
 
   return (

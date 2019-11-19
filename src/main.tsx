@@ -10,7 +10,7 @@ import Login from '@/app/containers/Login'
 import User from '@/app/containers/User'
 import ProgressBar from '@/app/containers/ProgressBar'
 import QuestionCreate from '@/app/containers/QuestionCreate'
-import Question from '@/app/containers/Question'
+import QuestionDetail from '@/app/containers/QuestionDetail'
 
 import AppController from '@/app/components/AppController'
 
@@ -36,7 +36,7 @@ ReactDOM.render(
           <Route exact path={paths.root} component={QuestionList} />
           <Route exact path={`${paths.user}:userId`} component={User} />
           <Route exact path={paths.questionCreate} component={QuestionCreate} />
-          <Route exact path={`${paths.question}:id`} component={Question} />
+          <Route exact path={`${paths.question}:id`} component={QuestionDetail} />
 
           {/* FIXME: Following "Not Found" is unreachable and doesn't work. */}
           <Route render={() => <h1>404 Not Found</h1>} />

@@ -1,5 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { AxiosResponse, AxiosError } from 'axios'
+import qs from 'qs'
+
 import {
   fetchQuestionsFailure,
   fetchQuestionsSuccess,
@@ -15,7 +17,6 @@ import { Question } from '@/app/models/Question'
 import { Question as HttpResQuestion } from '@/app/models/HttpResponse'
 import { get, HttpResponse } from '@/app/common/http'
 
-// 複数URL
 const QUESTIONS_JSON_URL = 'https://api.myjson.com/bins/16s4gy'
 
 // 単体URL
@@ -79,7 +80,28 @@ function* putWithQuestionsError(error: AxiosError) {
 }
 
 function* fetchQuestions(action: any) {
-  const { res, error }: HttpResponse<unknown> = yield call(get, QUESTIONS_JSON_URL + (action.payload ? action.payload : ''))
+  const { userId, fromId } = action.payload
+  let id
+  if (userId) {
+    id = userId
+  }
+  let fId
+  if (fromId) {
+    fId = fromId
+  }
+  console.log(`userId = ${userId}`)
+  console.log(`from_id = ${fromId}`)
+
+  const obj = {
+    limit: 10,
+    user_id: id,
+    from_id: fId,
+  }
+
+  const query = qs.stringify(obj)
+  console.log(`query = ${query}`)
+
+  const { res, error }: HttpResponse<unknown> = yield call(get, `${QUESTIONS_JSON_URL}?${query}`)
   yield res ? putWithQuestionsResponse(res) : putWithQuestionsError(error)
 }
 

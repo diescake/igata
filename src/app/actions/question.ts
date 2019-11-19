@@ -23,9 +23,9 @@ export const Type = {
 
 // action creators
 // 複数 GET
-export const fetchQuestions = (id?: string) => ({
+export const fetchQuestions = (userId?: string, fromId?: string) => ({
   type: Type.FETCH_QUESTIONS,
-  payload: id,
+  payload: { userId, fromId },
 })
 
 export const fetchQuestionsSuccess = (questions: Question[]) => ({

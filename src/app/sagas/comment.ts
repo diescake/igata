@@ -1,4 +1,4 @@
-import { call, put as reduxPut, takeLatest } from 'redux-saga/effects'
+import { call, put, takeLatest } from 'redux-saga/effects'
 import { fetchAnswers } from '@/app/actions/answer'
 import { fetchQuestion } from '@/app/actions/question'
 import {
@@ -29,9 +29,9 @@ function* postCommentQuestion(action: any) {
   // const { res }: HttpResponse<unknown> = yield call(post, url, true, 'application/json', data)
   const { res }: HttpResponse<unknown> = yield call(get, COMMENT_QUESTION_JSON_URL)
   if (res) {
-    yield reduxPut(fetchQuestion(`/${id}`))
+    yield put(fetchQuestion(`/${id}`))
   }
-  yield res ? reduxPut(postCommentQuestionSuccess()) : reduxPut(postCommentQuestionFailure())
+  yield res ? put(postCommentQuestionSuccess()) : put(postCommentQuestionFailure())
 }
 // PUT  Question
 function* putCommentQuestion(action: any) {
@@ -46,9 +46,9 @@ function* putCommentQuestion(action: any) {
   // const { res }: HttpResponse<unknown> = yield call(put, url, true, 'application/json', data)
   const { res }: HttpResponse<unknown> = yield call(get, COMMENT_QUESTION_JSON_URL)
   if (res) {
-    yield reduxPut(fetchQuestion(`/${id}`))
+    yield put(fetchQuestion(`/${id}`))
   }
-  yield res ? reduxPut(putCommentQuestionSuccess()) : reduxPut(putCommentQuestionFailure())
+  yield res ? put(putCommentQuestionSuccess()) : put(putCommentQuestionFailure())
 }
 
 // POST Answer
@@ -64,9 +64,9 @@ function* postCommentAnswer(action: any) {
   const { res }: HttpResponse<unknown> = yield call(get, COMMENT_ANSWER_JSON_URL)
 
   if (res) {
-    yield reduxPut(fetchAnswers(`?question_id=${id}`))
+    yield put(fetchAnswers(`?question_id=${id}`))
   }
-  yield res ? reduxPut(postCommentAnswerSuccess()) : reduxPut(postCommentAnswerFailure())
+  yield res ? put(postCommentAnswerSuccess()) : put(postCommentAnswerFailure())
 }
 // PUT  Answer
 function* putCommentAnswer(action: any) {
@@ -80,9 +80,9 @@ function* putCommentAnswer(action: any) {
   // const { res }: HttpResponse<unknown> = yield call(put, url, true, 'application/json', data)
   const { res }: HttpResponse<unknown> = yield call(get, COMMENT_ANSWER_JSON_URL)
   if (res) {
-    yield reduxPut(fetchAnswers(`?question_id=${id}`))
+    yield put(fetchAnswers(`?question_id=${id}`))
   }
-  yield res ? reduxPut(putCommentAnswerSuccess()) : reduxPut(putCommentAnswerFailure())
+  yield res ? put(putCommentAnswerSuccess()) : put(putCommentAnswerFailure())
 }
 
 export default function*() {

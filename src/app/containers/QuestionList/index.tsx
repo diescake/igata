@@ -13,6 +13,8 @@ import { Question } from '@/app/models/Question'
 import words from '@/assets/strings'
 import style from '@/app/containers/QuestionList/style.scss'
 import { QuestionItem } from '@/app/components/QuestionItem'
+import { QuestionPager } from '@/app/components/QuestionPager'
+
 import { paths } from '@/app/common/paths'
 import { login, logout, LoginDispatcher } from '@/app/actions/login'
 
@@ -89,6 +91,7 @@ const QuestionList: FC<QuestionListProps> = (props: QuestionListProps) => {
           ))}
         </ListWrapper>
       </div>
+      <QuestionPager questions={props.questions} fetchQuestions={props.fetchQuestions} />
       <Footer />
     </div>
   )

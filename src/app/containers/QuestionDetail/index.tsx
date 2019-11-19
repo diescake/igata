@@ -8,7 +8,7 @@ import { fetchQuestion, putQuestion, QuestionDispatcher } from '@/app/actions/qu
 import { fetchAnswers, postAnswer, putAnswer, AnswerDispatcher } from '@/app/actions/answer'
 import { RootState } from '@/app/models'
 import words from '@/assets/strings'
-import style from '@/app/containers/Question/style.scss'
+import style from '@/app/containers/QuestionDetail/style.scss'
 import { VoteItem } from '@/app/components/VoteItem'
 import { Question as QuestionModel, Comment } from '@/app/models/Question'
 import { CommentItem } from '@/app/components/CommentItem'
@@ -70,7 +70,7 @@ const mapDispatchToProps: DispatchProps = {
   postVote,
 }
 
-const Question: FC<QuestionProps> = (props: QuestionProps) => {
+const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
   useEffect(() => {
     props.fetchQuestion(`/${props.match.params.id}`)
     props.fetchAnswers(`?question_id=${props.match.params.id}`)
@@ -103,7 +103,7 @@ const Question: FC<QuestionProps> = (props: QuestionProps) => {
           {isUpdateQuestion && (
             <>
               <input
-                id="updateQuestionTitle"
+                id="form-title"
                 maxLength={3000}
                 minLength={1}
                 required
@@ -156,22 +156,20 @@ const Question: FC<QuestionProps> = (props: QuestionProps) => {
               {/* 質問のタイトル更新 */}
               {isUpdateQuestion && (
                 <>
-                  <form>
-                    <textarea
-                      id="body"
-                      maxLength={3000}
-                      minLength={1}
-                      required
-                      className={`${style.bodyEdit} ${style.formControl}`}
-                      onChange={handleBodyChange}
-                      value={body}
-                    />
-                    <div className={style.formGroup}>
-                      <button type="button" className={style.btnPrimary} onClick={handlePutClick}>
-                        保存
-                      </button>
-                    </div>
-                  </form>
+                  <textarea
+                    id="body"
+                    maxLength={3000}
+                    minLength={1}
+                    required
+                    className={`${style.bodyEdit} ${style.formControl}`}
+                    onChange={handleBodyChange}
+                    value={body}
+                  />
+                  <div className={style.formGroup}>
+                    <button type="button" className={style.btnPrimary} onClick={handlePutClick}>
+                      保存
+                    </button>
+                  </div>
                   <button
                     type="button"
                     className={style.btnPrimary}
@@ -248,4 +246,4 @@ const Question: FC<QuestionProps> = (props: QuestionProps) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Question)
+)(QuestionDetail)
