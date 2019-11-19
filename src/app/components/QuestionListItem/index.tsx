@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { withRouter, RouteComponentProps } from 'react-router-dom'
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
 import style from '@/app/components/QuestionListItem/style.scss'
 import { Question } from '@/app/models/Question'
 import words from '@/assets/strings'
@@ -10,18 +10,10 @@ type Props = {
   readonly isUserIdShow?: boolean
 } & RouteComponentProps
 
-export const QuestionListItemBase: FC<Props> = (props: Props) => (
+const QuestionListItemBase: FC<Props> = (props: Props) => (
   <div>
     <h5 className={style.title}>
-      <a
-        href="/"
-        onClick={e => {
-          props.history.push(paths.question + props.question.id)
-          e.preventDefault()
-        }}
-      >
-        {props.question.title}
-      </a>
+      <Link to={`${paths.question}${props.question.id}`}>{props.question.title}</Link>
     </h5>
 
     <div className={style.additional}>
@@ -29,15 +21,7 @@ export const QuestionListItemBase: FC<Props> = (props: Props) => (
       {props.isUserIdShow && (
         <>
           {words.common.by}
-          <a
-            href="/"
-            onClick={e => {
-              props.history.push(paths.user + props.question.userId)
-              e.preventDefault()
-            }}
-          >
-            {props.question.userId}
-          </a>
+          <Link to={`${paths.user}${props.question.userId}`}>{props.question.userId}</Link>
         </>
       )}
       <hr />

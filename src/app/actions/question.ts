@@ -1,4 +1,4 @@
-import { Question } from '@/app/models/Question'
+import { Question, Query } from '@/app/models/Question'
 import { CreateActionTypes, CreateDispatcherTypes } from '@/app/common/typeHelper'
 
 // action types
@@ -23,9 +23,9 @@ export const Type = {
 
 // action creators
 // 複数 GET
-export const fetchQuestions = (userId?: string, fromId?: string) => ({
+export const fetchQuestions = (obj?: Query) => ({
   type: Type.FETCH_QUESTIONS,
-  payload: { userId, fromId },
+  payload: { obj },
 })
 
 export const fetchQuestionsSuccess = (questions: Question[]) => ({

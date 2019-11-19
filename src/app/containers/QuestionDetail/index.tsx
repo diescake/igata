@@ -1,7 +1,6 @@
 import React, { FC, useEffect } from 'react'
 import { RouteComponentProps } from 'react-router'
 import { connect } from 'react-redux'
-import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 
 import { Header } from '@/app/components/Header'
 import { fetchQuestion, putQuestion, QuestionDispatcher } from '@/app/actions/question'
@@ -24,6 +23,8 @@ import {
 } from '@/app/actions/comment'
 import { postVote, VoteDispatcher } from '@/app/actions/vote'
 import { QuestionDetailItem } from '@/app/components/QuestionDetailItem'
+import { login, logout, LoginDispatcher } from '@/app/actions/login'
+import { paths } from '@/app/common/paths'
 
 interface StateProps {
   readonly question: QuestionModel
@@ -44,6 +45,8 @@ interface DispatchProps {
   readonly postAnswer: AnswerDispatcher['postAnswer']
   readonly putAnswer: AnswerDispatcher['putAnswer']
   readonly postVote: VoteDispatcher['postVote']
+  readonly login: LoginDispatcher['login']
+  readonly logout: LoginDispatcher['logout']
 }
 
 type QuestionProps = StateProps & DispatchProps & RouteComponentProps<{ id: string }>
@@ -67,20 +70,31 @@ const mapDispatchToProps: DispatchProps = {
   postAnswer,
   putAnswer,
   postVote,
+  login,
+  logout,
 }
 
 const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
   useEffect(() => {
     props.fetchQuestion(`/${props.match.params.id}`)
-    props.fetchAnswers(`?question_id=${props.match.params.id}`)
+    props.fetchAnswers({
+      questionId: props.match.params.id,
+    })
   }, [])
+
+  const handleLogin = () => {
+    props.history.push(paths.login)
+  }
+  const handleLogout = () => {
+    props.history.push(paths.login)
+    props.logout()
+  }
   const answerNumber = props.answers.length
 
   return (
     <div className={style.container}>
-      <Header title={words.login.title} icon={faSignInAlt} />
+      <Header title={words.todoApp.title} userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />
       <div className={style.main}>
-        {/* 質問 */}
         <QuestionDetailItem
           userId={props.id}
           questionId={props.match.params.id}
@@ -91,11 +105,9 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
           postVote={props.postVote}
         />
 
-        {/* 回答一覧 */}
         <div className={style.answerList}>
           <div className={style.answerListTitle}>{words.question.answerNumber(answerNumber)}</div>
           <hr />
-          {/* 回答 */}
           <span>
             {props.answers.map((answer: Answer) => (
               <>
@@ -119,9 +131,9 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
             ))}
           </span>
         </div>
-        {/* 回答する */}
+
         <div className={style.newAnswer}>
-          <div className="new-answer-title">{words.question.answer}</div>
+          <div>{words.question.answer}</div>
           <hr />
           <AnswerForm userId={props.id} questionId={props.match.params.id} postAnswer={props.postAnswer} />
         </div>

@@ -1,13 +1,13 @@
 import React, { FC } from 'react'
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
-import { IconDefinition } from '@fortawesome/free-solid-svg-icons'
+import { faSignInAlt, faUser, faCog } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import words from '@/assets/strings'
 import style from '@/app/components/Header/style.scss'
 import { paths } from '@/app/common/paths'
 
 type Props = {
   readonly title: string
-  readonly icon?: IconDefinition
   readonly userId?: string
   readonly handleLogin?: () => void
   readonly handleLogout?: () => void
@@ -16,7 +16,10 @@ type Props = {
 const HeaderBase: FC<Props> = (props: Props) => (
   <div>
     <nav className={style.navDefault}>
-      <Link to={paths.root}>{words.header.title}</Link>
+      <Link to={paths.root}>
+        <FontAwesomeIcon icon={faCog} />
+        {words.header.title}
+      </Link>
       <div className={style.formLine}>
         <div className={style.navbarText}>
           <span>
@@ -35,23 +38,28 @@ const HeaderBase: FC<Props> = (props: Props) => (
             )}
 
             {props.userId && props.handleLogout && (
-              <button
-                type="button"
-                className={style.loginLink}
-                onClick={() => {
-                  if (props.handleLogout) {
-                    props.handleLogout()
-                  }
-                }}
-              >
-                {words.header.logout}
-              </button>
+              <>
+                <Link to={`${paths.user}${props.userId}`} className={style.icon}>
+                  <FontAwesomeIcon icon={faUser} />
+                </Link>
+
+                <button
+                  type="button"
+                  className={style.loginLink}
+                  onClick={() => {
+                    if (props.handleLogout) {
+                      props.handleLogout()
+                    }
+                  }}
+                >
+                  <FontAwesomeIcon className={style.icon} icon={faSignInAlt} />
+                </button>
+              </>
             )}
           </span>
         </div>
       </div>
     </nav>
-    {props.userId && <b>{words.todoApp.loginMessage(props.userId)}</b>}
   </div>
 )
 

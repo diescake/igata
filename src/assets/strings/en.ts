@@ -6,9 +6,10 @@ export default {
     save: 'save',
     update: 'update',
     cancel: 'cancel',
+    textErrorEmpty: '入力してください。',
   },
   header: {
-    title: 'StackOverFlowClone',
+    title: 'StackOverflow Clone (React)',
     login: 'login',
     logout: 'Logout',
   },
@@ -55,9 +56,11 @@ export default {
     },
   },
   questionCreate: {
-    title: 'Question',
+    title: 'Title',
+    body: 'Body',
     create: 'Submit',
-    notLogin: 'Please login to contribute a question.',
+    postQuestion: 'Post a question',
+    notLoginBody: 'Please login to contribute a question.',
   },
   question: {
     answer: '回答する',

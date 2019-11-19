@@ -1,6 +1,5 @@
 import React, { FC, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { faListAlt } from '@fortawesome/free-solid-svg-icons'
 import { RouteComponentProps, withRouter } from 'react-router'
 
 import { fetchQuestions, QuestionDispatcher } from '@/app/actions/question'
@@ -60,8 +59,12 @@ const mapDispatchToProps = {
 // ユーザー詳細画面
 const User: FC<UserProps> = (props: UserProps) => {
   useEffect(() => {
-    props.fetchQuestions(props.match.params.userId)
-    props.fetchAnswers(`?user_id=${props.match.params.userId}`)
+    props.fetchQuestions({
+      userId: props.match.params.userId,
+    })
+    props.fetchAnswers({
+      userId: props.match.params.userId,
+    })
   }, [])
   const handleLogin = () => {
     props.history.push(paths.login)
@@ -74,13 +77,7 @@ const User: FC<UserProps> = (props: UserProps) => {
   const fetching = props.fetchingAnswer && props.fetchingAnswer
   return (
     <div className={style.container}>
-      <Header
-        title={words.todoApp.title}
-        userId={props.id}
-        icon={faListAlt}
-        handleLogin={handleLogin}
-        handleLogout={handleLogout}
-      />
+      <Header title={words.todoApp.title} userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />
 
       <div className={style.main}>
         <div className={style.pageTitle}>{words.user.title}</div>

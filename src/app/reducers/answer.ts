@@ -1,6 +1,6 @@
 import { Reducer } from 'redux'
 import { Type, AnswerAction } from '@/app/actions/answer'
-import { AnswerState, Answer } from '@/app/models/Answer'
+import { AnswerState } from '@/app/models/Answer'
 
 const defaultState: AnswerState = {
   answers: [],
@@ -12,33 +12,6 @@ export const answerReducer: Reducer<AnswerState, AnswerAction> = (
   action: AnswerAction
 ): AnswerState => {
   switch (action.type) {
-    case Type.ADD_ANSWER: {
-      return state
-    }
-
-    case Type.UPDATE_ANSWER: {
-      if (state.fetching) {
-        return state
-      }
-
-      const index = state.answers.findIndex((answer: Answer) => answer.id === action.payload.id)
-      if (index === -1) {
-        return state
-      }
-
-      return { ...state, answers: Object.assign([...state.answers], { [index]: action.payload }) }
-    }
-
-    case Type.DELETE_ANSWER:
-      if (state.fetching) {
-        return state
-      }
-
-      return {
-        ...state,
-        answers: state.answers.filter(answer => answer.id !== action.payload),
-      }
-
     case Type.FETCH_ANSWERS:
       return {
         ...state,

@@ -1,5 +1,8 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { AxiosResponse, AxiosError } from 'axios'
+import qs from 'qs'
+
+import { paths } from '@/app/common/paths'
 import {
   fetchAnswers as actionFetchAnswers,
   fetchAnswersFailure,
@@ -65,7 +68,12 @@ function* putWithError(error: AxiosError) {
 }
 // GET
 function* fetchAnswers(action: any) {
-  const { res, error }: HttpResponse<unknown> = yield call(get, ANSWER_JSON_URL + (action.payload ? action.payload : ''))
+  const query = qs.stringify({
+    question_id: action.payload.questionId,
+    user_id: action.payload.userId,
+  })
+
+  const { res, error }: HttpResponse<unknown> = yield call(get, `${ANSWER_JSON_URL}${query ? paths.query : ''}${query}`)
   yield res ? putWithResponse(res) : putWithError(error)
 }
 // POST
@@ -75,11 +83,12 @@ function* postAnswer(action: any) {
     body,
     questionId,
   }
+  // TODO: consoleを削除する
   console.log(data)
   const { res }: HttpResponse<unknown> = yield call(get, ANSWER_JSON_URL)
   // const { res }: HttpResponse<unknown> = yield call(post, ANSWER_JSON_URL, true, 'application/json', data)
   if (res) {
-    yield put(actionFetchAnswers(`?question_id=${questionId}`))
+    yield put(actionFetchAnswers({ questionId }))
   }
   yield res ? put(postAnswerSuccess()) : put(postAnswerFailure())
 }
@@ -89,15 +98,15 @@ function* putAnswer(action: any) {
   const data = {
     body,
   }
-
   const url = `${ANSWER_JSON_URL}${path}`
+  // TODO: consoleを削除する
   console.log(data)
   console.log(url)
   const { res }: HttpResponse<unknown> = yield call(get, ANSWER_JSON_URL)
   // const { res }: HttpResponse<unknown> = yield call(put, ANSWER_JSON_URL, true, 'application/json', data)
   if (res) {
     // データ更新
-    yield put(actionFetchAnswers(`?question_id=${questionId}`))
+    yield put(actionFetchAnswers({ questionId }))
   }
   yield res ? put(putAnswerSuccess()) : put(putAnswerFailure())
 }

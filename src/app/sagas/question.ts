@@ -81,25 +81,12 @@ function* putWithQuestionsError(error: AxiosError) {
 }
 
 function* fetchQuestions(action: any) {
-  const { userId, fromId } = action.payload
-
-  let id
-  if (userId) {
-    id = userId
-  }
-
-  let fId
-  if (fromId) {
-    fId = fromId
-  }
-
-  const obj = {
+  const query = qs.stringify({
     limit: 10,
-    user_id: id,
-    from_id: fId,
-  }
+    user_id: action.payload.userId,
+    from_id: action.payload.fromId,
+  })
 
-  const query = qs.stringify(obj)
   const { res, error }: HttpResponse<unknown> = yield call(get, `${QUESTIONS_JSON_URL}${paths.query}${query}`)
   yield res ? putWithQuestionsResponse(res) : putWithQuestionsError(error)
 }

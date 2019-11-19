@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { text, boolean } from '@storybook/addon-knobs'
-import { faListAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { Header } from '@/app/components/Header'
 import { Footer } from '@/app/components/Footer'
 import { ListWrapper } from '@/app/components/ListWrapper'
@@ -12,9 +12,7 @@ import { Modal } from '@/app/components/Modal'
 // storiesOf('Containers|Login', module).add('with no props', () => <Login />)
 
 storiesOf('Components|Header', module)
-  .add('with all', () => (
-    <Header title={text('title', 'TODO Application')} userId={text('userId', 'diescake')} icon={faListAlt} />
-  ))
+  .add('with all', () => <Header title={text('title', 'TODO Application')} userId={text('userId', 'diescake')} />)
   .add('with title and userId', () => <Header title={text('title', 'TODO Application')} userId={text('userId', 'diescake')} />)
   .add('with title only', () => <Header title={text('title', 'TODO Application')} userId={text('userId', '')} />)
   .add('with userId only', () => <Header title={text('title', '')} userId={text('userId', 'diescake')} />)

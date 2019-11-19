@@ -1,11 +1,8 @@
-import { Answer } from '@/app/models/Answer'
+import { Answer, Query } from '@/app/models/Answer'
 import { CreateActionTypes, CreateDispatcherTypes } from '@/app/common/typeHelper'
 
 // action types
 export const Type = {
-  ADD_ANSWER: 'ANSWERS/ADD_ANSWER',
-  UPDATE_ANSWER: 'ANSWERS/UPDATE_ANSWER',
-  DELETE_ANSWER: 'ANSWERS/DELETE_ANSWER',
   FETCH_ANSWERS: 'ANSWERS/FETCH_ANSWERS',
   FETCH_ANSWERS_SUCCESS: 'ANSWERS/FETCH_ANSWERS_SUCCESS',
   FETCH_ANSWERS_FAILURE: 'ANSWERS/FETCH_ANSWERS_FAILURE',
@@ -18,25 +15,11 @@ export const Type = {
 } as const
 
 // action creators
-export const addAnswer = (text: string) => ({
-  type: Type.ADD_ANSWER,
-  payload: { text },
-})
-
-export const updateAnswer = (answer: Answer) => ({
-  type: Type.UPDATE_ANSWER,
-  payload: { ...answer },
-})
-
-export const deleteAnswer = (answerId: string) => ({
-  type: Type.DELETE_ANSWER,
-  payload: answerId,
-})
 
 // GET
-export const fetchAnswers = (id?: string) => ({
+export const fetchAnswers = (obj: Query) => ({
   type: Type.FETCH_ANSWERS,
-  payload: id,
+  payload: obj,
 })
 
 export const fetchAnswersSuccess = (answers: Answer[]) => ({

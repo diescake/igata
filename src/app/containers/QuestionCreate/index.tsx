@@ -1,12 +1,14 @@
 import React, { FC, ChangeEvent, useState } from 'react'
 import { connect } from 'react-redux'
-import { faListAlt } from '@fortawesome/free-solid-svg-icons'
+import { RouteComponentProps } from 'react-router'
 import words from '@/assets/strings'
 import style from '@/app/containers/QuestionCreate/style.scss'
 import { Header } from '@/app/components/Header'
 import { Footer } from '@/app/components/Footer'
 import { RootState } from '@/app/models'
 import { postQuestion, QuestionDispatcher } from '@/app/actions/question'
+import { login, logout, LoginDispatcher } from '@/app/actions/login'
+import { paths } from '@/app/common/paths'
 
 interface StateProps {
   readonly id: string
@@ -15,9 +17,11 @@ interface StateProps {
 
 interface DispatchProps {
   readonly postQuestion: QuestionDispatcher['postQuestion']
+  readonly login: LoginDispatcher['login']
+  readonly logout: LoginDispatcher['logout']
 }
 
-type QuestionCreateProps = StateProps & DispatchProps
+type QuestionCreateProps = StateProps & DispatchProps & RouteComponentProps
 
 const mapStateToProps = (state: RootState): StateProps => ({
   fetching: state.todoState.fetching,
@@ -26,35 +30,50 @@ const mapStateToProps = (state: RootState): StateProps => ({
 
 const mapDispatchToProps = {
   postQuestion,
+  login,
+  logout,
 }
 
 const QuestionCreate: FC<QuestionCreateProps> = (props: QuestionCreateProps) => {
-  const [title, setTitle] = useState<string>('')
-  const [body, setBody] = useState<string>('')
+  const [title, setTitle] = useState<string>()
+  const [body, setBody] = useState<string>()
+  const [isTitleErrorEmpty, setIsTitleErrorEmpty] = useState<boolean>(false)
+  const [isBodyErrorEmpty, setIsBodyErrorEmpty] = useState<boolean>(false)
 
-  const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)
+  const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value)
+  }
   const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => setBody(e.target.value)
   const handlePostQuestion = () => {
-    if (typeof title !== 'undefined' && typeof body !== 'undefined') {
+    if (title && body) {
       props.postQuestion(title, body)
+      return
     }
+    setIsTitleErrorEmpty(!title)
+    setIsBodyErrorEmpty(!body)
+  }
+
+  const handleLogin = () => {
+    props.history.push(paths.login)
+  }
+  const handleLogout = () => {
+    props.history.push(paths.login)
+    props.logout()
   }
 
   return (
     <div className={style.container}>
-      <Header title={words.todoApp.title} userId={props.id} icon={faListAlt} />
+      <Header title={words.todoApp.title} userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />
       <div className={style.main}>
-        {!props.id && (
-          <>
-            <div>質問投稿する</div>
-            <div>質問を投稿するにはログインしてください。</div>
-          </>
-        )}
+        <div>{words.questionCreate.postQuestion}</div>
+
+        {!props.id && <div>{words.questionCreate.notLoginBody}</div>}
 
         {props.id && (
           <>
-            <div>タイトル</div>
+            <div>{words.questionCreate.title}</div>
             <br />
+            {isTitleErrorEmpty && <div className={style.errorEmpty}>{words.common.textErrorEmpty}</div>}
             <form>
               <input
                 id="form-title"
@@ -67,8 +86,9 @@ const QuestionCreate: FC<QuestionCreateProps> = (props: QuestionCreateProps) => 
                 value={title}
               />
               <br />
-              <div>本文</div>
+              <div>{words.questionCreate.body}</div>
               <br />
+              {isBodyErrorEmpty && <div className={style.errorEmpty}>{words.common.textErrorEmpty}</div>}
               <textarea
                 id="form-body"
                 maxLength={3000}

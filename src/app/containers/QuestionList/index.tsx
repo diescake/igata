@@ -1,6 +1,5 @@
 import React, { FC, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { faListAlt } from '@fortawesome/free-solid-svg-icons'
 import { RouteComponentProps, withRouter } from 'react-router'
 
 import { fetchQuestions, QuestionDispatcher } from '@/app/actions/question'
@@ -58,20 +57,13 @@ const QuestionList: FC<QuestionListProps> = (props: QuestionListProps) => {
     props.history.push(paths.login)
   }
   const handleLogout = () => {
-    // サクセスした場合に遷移するように修正する
     props.history.push(paths.login)
     props.logout()
   }
 
   return (
     <div className={style.container}>
-      <Header
-        title={words.todoApp.title}
-        userId={props.id}
-        icon={faListAlt}
-        handleLogin={handleLogin}
-        handleLogout={handleLogout}
-      />
+      <Header title={words.todoApp.title} userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />
       <div className={style.main}>
         <div className={style.pageTitle}>{words.top.title}</div>
         <a

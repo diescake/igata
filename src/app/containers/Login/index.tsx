@@ -1,7 +1,6 @@
 import React, { useEffect, FC } from 'react'
 import { RouteComponentProps } from 'react-router'
 import { connect } from 'react-redux'
-import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 
 import { Header } from '@/app/components/Header'
 import { LoginForm } from '@/app/components/LoginForm'
@@ -39,7 +38,7 @@ const Login: FC<LoginProps> = (props: LoginProps) => {
 
   return (
     <div className={style.container}>
-      <Header title={words.login.title} icon={faSignInAlt} />
+      <Header title={words.login.title} />
       <LoginForm login={props.login} />
       <Footer />
     </div>

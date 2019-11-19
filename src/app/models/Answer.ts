@@ -1,3 +1,8 @@
+export interface Query {
+  readonly questionId?: string
+  readonly userId?: string
+}
+
 export interface Comment {
   readonly id: string
   readonly userId: string

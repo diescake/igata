@@ -64,7 +64,7 @@ function* postCommentAnswer(action: any) {
   const { res }: HttpResponse<unknown> = yield call(get, COMMENT_ANSWER_JSON_URL)
 
   if (res) {
-    yield put(fetchAnswers(`?question_id=${id}`))
+    yield put(fetchAnswers({ questionId: id }))
   }
   yield res ? put(postCommentAnswerSuccess()) : put(postCommentAnswerFailure())
 }
@@ -80,7 +80,7 @@ function* putCommentAnswer(action: any) {
   // const { res }: HttpResponse<unknown> = yield call(put, url, true, 'application/json', data)
   const { res }: HttpResponse<unknown> = yield call(get, COMMENT_ANSWER_JSON_URL)
   if (res) {
-    yield put(fetchAnswers(`?question_id=${id}`))
+    yield put(fetchAnswers({ questionId: id }))
   }
   yield res ? put(putCommentAnswerSuccess()) : put(putCommentAnswerFailure())
 }
