@@ -25,7 +25,7 @@ export const Type = {
 // 複数 GET
 export const fetchQuestions = (obj?: Query) => ({
   type: Type.FETCH_QUESTIONS,
-  payload: { obj },
+  payload: obj,
 })
 
 export const fetchQuestionsSuccess = (questions: Question[]) => ({
