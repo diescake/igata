@@ -3,10 +3,13 @@ export default {
   common: {
     additional: (additional: string) => `Posted at ${additional}  `,
     by: 'by ',
+    save: '保存',
+    update: '更新',
+    cancel: 'キャンセル',
   },
   // ヘッダー
   header: {
-    title: 'StackoverFlowClone',
+    title: 'StackOverFlowClone',
     login: 'ログイン',
     logout: 'ログアウト',
   },

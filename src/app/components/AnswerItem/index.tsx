@@ -82,7 +82,7 @@ export const AnswerItemBase: FC<Props> = (props: Props) => {
                     e.preventDefault()
                   }}
                 >
-                  更新
+                  {words.common.update}
                 </button>
               </span>
             )}
@@ -107,7 +107,7 @@ export const AnswerItemBase: FC<Props> = (props: Props) => {
             />
             <div className={style.formGroup}>
               <button type="button" className={style.btnPrimary} onClick={handlePutClick}>
-                保存
+                {words.common.save}
               </button>
             </div>
           </form>
@@ -119,7 +119,7 @@ export const AnswerItemBase: FC<Props> = (props: Props) => {
               e.preventDefault()
             }}
           >
-            キャンセル
+            {words.common.cancel}
           </button>
         </>
       )}

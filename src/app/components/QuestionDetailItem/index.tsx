@@ -40,9 +40,7 @@ export const QuestionDetailItemBase: FC<Props> = (props: Props) => {
 
   return (
     <div>
-      {/* 質問 */}
       <div className={style.question}>
-        {/* タイトル */}
         {isUpdateQuestion && (
           <>
             <input
@@ -60,11 +58,8 @@ export const QuestionDetailItemBase: FC<Props> = (props: Props) => {
         {!isUpdateQuestion && <div className={style.pageTitle}>{props.question.title}</div>}
         <hr />
 
-        {/* メインエリア */}
         <div className={style.mainArea}>
-          {/* 情報エリア */}
           <div className={style.infoArea}>
-            {/* 評価 */}
             <VoteItem
               userId={props.userId}
               questionId={props.questionId}
@@ -74,14 +69,11 @@ export const QuestionDetailItemBase: FC<Props> = (props: Props) => {
             />
           </div>
 
-          {/* コンテンツエリア */}
           <div className={style.contentArea}>
             {!isUpdateQuestion && (
               <>
-                {/* 本文 */}
                 <div>{props.question.body}</div>
 
-                {/* 追加した日 */}
                 <div className={style.additional}>
                   {words.common.additional(props.question.createdAt)}
                   {words.common.by}
@@ -96,22 +88,26 @@ export const QuestionDetailItemBase: FC<Props> = (props: Props) => {
                   </a>
                 </div>
 
-                <span>
-                  {/* TODO: 同じidなら編集可能にする */}
-                  <button
-                    type="button"
-                    onClick={e => {
-                      setTitle(props.question.title)
-                      setBody(props.question.body)
-                      setIsUpdateQuestion(true)
-                      e.preventDefault()
-                    }}
-                  >
-                    更新
-                  </button>
-                </span>
+                {props.userId === props.question.userId && (
+                  <>
+                    <span>
+                      <button
+                        type="button"
+                        onClick={e => {
+                          setTitle(props.question.title)
+                          setBody(props.question.body)
+                          setIsUpdateQuestion(true)
+                          e.preventDefault()
+                        }}
+                      >
+                        {words.common.update}
+                      </button>
+                    </span>
+                  </>
+                )}
               </>
             )}
+
             {/* 質問のタイトル更新 */}
             {isUpdateQuestion && (
               <>
@@ -126,18 +122,17 @@ export const QuestionDetailItemBase: FC<Props> = (props: Props) => {
                 />
                 <div className={style.formGroup}>
                   <button type="button" className={style.btnPrimary} onClick={handlePutClick}>
-                    保存
+                    {words.common.save}
                   </button>
                 </div>
                 <button
                   type="button"
                   className={style.btnPrimary}
-                  onClick={e => {
+                  onClick={() => {
                     setIsUpdateQuestion(false)
-                    e.preventDefault()
                   }}
                 >
-                  キャンセル
+                  {words.common.cancel}
                 </button>
               </>
             )}

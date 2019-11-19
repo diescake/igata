@@ -3,9 +3,12 @@ export default {
   common: {
     additional: (additional: string) => `Posted at ${additional}  `,
     by: 'by ',
+    save: 'save',
+    update: 'update',
+    cancel: 'cancel',
   },
   header: {
-    title: 'StackoverFlowClone',
+    title: 'StackOverFlowClone',
     login: 'login',
     logout: 'Logout',
   },

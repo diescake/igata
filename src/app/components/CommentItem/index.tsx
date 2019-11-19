@@ -43,20 +43,23 @@ export const CommentItemBase: FC<Props> = (props: Props) => {
             <div className={style.additional}>
               {words.common.additional(props.comment.createdAt)}
               {words.common.by}
-              <Link to={paths.user + props.comment.userId}>{props.comment.userId}</Link>
-              <span>
-                {/* 同じidなら編集可能にする */}
-                <button
-                  type="button"
-                  onClick={e => {
-                    setText(props.comment.body)
-                    setIsUpdateComment(true)
-                    e.preventDefault()
-                  }}
-                >
-                  更新
-                </button>
-              </span>
+              <Link to={`${paths.user}${props.comment.userId}`}>{props.comment.userId}</Link>
+              {props.userId === props.comment.userId && (
+                <>
+                  <span>
+                    <button
+                      type="button"
+                      onClick={e => {
+                        setText(props.comment.body)
+                        setIsUpdateComment(true)
+                        e.preventDefault()
+                      }}
+                    >
+                      {words.common.update}
+                    </button>
+                  </span>
+                </>
+              )}
             </div>
           </div>
         </>
@@ -78,7 +81,7 @@ export const CommentItemBase: FC<Props> = (props: Props) => {
             />
             <div className={style.formGroup}>
               <button type="button" className={style.btnPrimary} onClick={handlePutClick}>
-                保存
+                {words.common.save}
               </button>
             </div>
           </form>
@@ -90,7 +93,7 @@ export const CommentItemBase: FC<Props> = (props: Props) => {
               e.preventDefault()
             }}
           >
-            キャンセル
+            {words.common.cancel}
           </button>
         </>
       )}
