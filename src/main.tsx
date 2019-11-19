@@ -34,9 +34,9 @@ ReactDOM.render(
         <Switch>
           <Route exact path={paths.login} component={Login} />
           <Route exact path={paths.root} component={QuestionList} />
-          <Route exact path={`${paths.user}:userId`} component={User} />
+          <Route exact path={paths.userId} component={User} />
           <Route exact path={paths.questionCreate} component={QuestionCreate} />
-          <Route exact path={`${paths.question}:id`} component={QuestionDetail} />
+          <Route exact path={paths.questionId} component={QuestionDetail} />
 
           {/* FIXME: Following "Not Found" is unreachable and doesn't work. */}
           <Route render={() => <h1>404 Not Found</h1>} />

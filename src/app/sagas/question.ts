@@ -2,6 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects'
 import { AxiosResponse, AxiosError } from 'axios'
 import qs from 'qs'
 
+import { paths } from '@/app/common/paths'
 import {
   fetchQuestionsFailure,
   fetchQuestionsSuccess,
@@ -81,16 +82,16 @@ function* putWithQuestionsError(error: AxiosError) {
 
 function* fetchQuestions(action: any) {
   const { userId, fromId } = action.payload
+
   let id
   if (userId) {
     id = userId
   }
+
   let fId
   if (fromId) {
     fId = fromId
   }
-  console.log(`userId = ${userId}`)
-  console.log(`from_id = ${fromId}`)
 
   const obj = {
     limit: 10,
@@ -99,9 +100,7 @@ function* fetchQuestions(action: any) {
   }
 
   const query = qs.stringify(obj)
-  console.log(`query = ${query}`)
-
-  const { res, error }: HttpResponse<unknown> = yield call(get, `${QUESTIONS_JSON_URL}?${query}`)
+  const { res, error }: HttpResponse<unknown> = yield call(get, `${QUESTIONS_JSON_URL}${paths.query}${query}`)
   yield res ? putWithQuestionsResponse(res) : putWithQuestionsError(error)
 }
 

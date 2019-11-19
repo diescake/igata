@@ -16,7 +16,7 @@ import { Answer } from '@/app/models/Answer'
 
 import words from '@/assets/strings'
 import style from '@/app/containers/User/style.scss'
-import { QuestionItem } from '@/app/components/QuestionItem'
+import { QuestionListItem } from '@/app/components/QuestionListItem'
 import { AnswerItem } from '@/app/components/AnswerItem'
 import { paths } from '@/app/common/paths'
 import { login, logout, LoginDispatcher } from '@/app/actions/login'
@@ -74,7 +74,6 @@ const User: FC<UserProps> = (props: UserProps) => {
   const fetching = props.fetchingAnswer && props.fetchingAnswer
   return (
     <div className={style.container}>
-      {/* ヘッダー */}
       <Header
         title={words.todoApp.title}
         userId={props.id}
@@ -83,29 +82,21 @@ const User: FC<UserProps> = (props: UserProps) => {
         handleLogout={handleLogout}
       />
 
-      {/* 内容 */}
       <div className={style.main}>
         <div className={style.pageTitle}>{words.user.title}</div>
         <hr />
         <ListWrapper loading={fetching}>
-          {/*  
-            質問一覧
-          */}
           <div className={style.pageTitle}>{words.user.questionList}</div>
           {props.questions.map((question: Question) => (
-            <QuestionItem question={question} isUserIdShow={false} />
+            <QuestionListItem question={question} isUserIdShow={false} />
           ))}
 
-          {/*  
-            回答一覧
-          */}
           <div className={style.pageTitle}>{words.user.answerList}</div>
           {props.answers.map((answer: Answer) => (
             <AnswerItem answer={answer} isAnswerLink />
           ))}
         </ListWrapper>
       </div>
-      {/* フッター */}
       <Footer />
     </div>
   )

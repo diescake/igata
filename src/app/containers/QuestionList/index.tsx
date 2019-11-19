@@ -12,7 +12,7 @@ import { RootState } from '@/app/models'
 import { Question } from '@/app/models/Question'
 import words from '@/assets/strings'
 import style from '@/app/containers/QuestionList/style.scss'
-import { QuestionItem } from '@/app/components/QuestionItem'
+import { QuestionListItem } from '@/app/components/QuestionListItem'
 import { QuestionPager } from '@/app/components/QuestionPager'
 
 import { paths } from '@/app/common/paths'
@@ -87,7 +87,7 @@ const QuestionList: FC<QuestionListProps> = (props: QuestionListProps) => {
 
         <ListWrapper loading={props.fetching}>
           {props.questions.map((question: Question) => (
-            <QuestionItem question={question} isUserIdShow />
+            <QuestionListItem question={question} isUserIdShow />
           ))}
         </ListWrapper>
       </div>

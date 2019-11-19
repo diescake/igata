@@ -13,7 +13,6 @@ type Props = {
   readonly handleLogout?: () => void
 } & RouteComponentProps
 
-// aタグをLinkに変更する。
 const HeaderBase: FC<Props> = (props: Props) => (
   <div>
     <nav className={style.navDefault}>
@@ -25,11 +24,10 @@ const HeaderBase: FC<Props> = (props: Props) => (
               <button
                 type="button"
                 className={style.loginLink}
-                onClick={e => {
+                onClick={() => {
                   if (props.handleLogin) {
                     props.handleLogin()
                   }
-                  e.preventDefault()
                 }}
               >
                 {words.header.login}
@@ -40,13 +38,10 @@ const HeaderBase: FC<Props> = (props: Props) => (
               <button
                 type="button"
                 className={style.loginLink}
-                onClick={e => {
-                  console.log('logout')
-                  console.log(props.handleLogout)
+                onClick={() => {
                   if (props.handleLogout) {
                     props.handleLogout()
                   }
-                  e.preventDefault()
                 }}
               >
                 {words.header.logout}

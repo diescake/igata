@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
-import style from '@/app/components/QuestionItem/style.scss'
+import style from '@/app/components/QuestionDetailItem/style.scss'
 import { Question } from '@/app/models/Question'
 import words from '@/assets/strings'
 import { paths } from '@/app/common/paths'

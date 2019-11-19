@@ -22,7 +22,6 @@ export const QuestionPager: FC<Props> = (props: Props) => {
             const backFormId = backPage[backPage.length - 1]
             const copiedBackPage = [...backPage].slice(0, -1)
             setBackPage(copiedBackPage)
-            console.log(backFormId)
             props.fetchQuestions('', backFormId)
           }}
         >
