@@ -1,11 +1,13 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { AxiosResponse, AxiosError } from 'axios'
+import { paths } from '@/app/common/paths'
 import { fetchQuestion } from '@/app/actions/question'
 import { Type, postVoteSuccess, postVoteFailure } from '@/app/actions/vote'
 import { VoteState } from '@/app/models/Vote'
 import { httpGet, HttpResponse } from '@/app/common/http'
 import { VoteState as HttpResVoteState } from '@/app/models/HttpResponse'
 
+// TODO: URLは仮
 const VOTE_JSON_URL = 'https://api.myjson.com/bins/hp7x2'
 
 const isVoteResponse = (props: any): props is HttpResVoteState => {
@@ -36,16 +38,22 @@ function* putWithResponse(res: AxiosResponse<unknown>) {
 function* putWithError(error: AxiosError) {
   yield put(postVoteFailure(error.message))
 }
+
 // POST
 function* postVote(action: any) {
-  console.log(action)
-  const { path, questionId } = action.payload
+  const { questionId, voteType } = action.payload
+  // TODO: /questionは定数に含める予定。
+  const url = `${VOTE_JSON_URL}${paths.addPath(questionId)}${paths.vote}${paths.addPath(voteType)}}`
 
-  console.log(path)
+  // TODO: コメントは削除
+  console.log(`postVote questionId: ${questionId}`)
+  console.log(`postVote voteType: ${voteType}`)
+  console.log(`postVote url: ${url}`)
+
   const { res, error }: HttpResponse<unknown> = yield call(httpGet, VOTE_JSON_URL)
-  // const { res }: HttpResponse<unknown> = yield call(post, ANSWER_JSON_URL, true, 'application/json')
+  // const { res }: HttpResponse<unknown> = yield call(post, url, true, 'application/json')
   if (res) {
-    yield put(fetchQuestion(`/${questionId}`))
+    yield put(fetchQuestion(questionId))
   }
   yield res ? putWithResponse(res) : putWithError(error)
 }

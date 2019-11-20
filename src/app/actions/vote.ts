@@ -10,9 +10,9 @@ export const Type = {
 
 // action creators
 // POST
-export const postVote = (path: string, questionId: string) => ({
+export const postVote = (questionId: string, voteType: string) => ({
   type: Type.POST_VOTE,
-  payload: { path, questionId },
+  payload: { questionId, voteType },
 })
 
 export const postVoteSuccess = ({ dislikeVoterIds, likeVoterIds }: VoteState) => ({

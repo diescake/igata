@@ -8,6 +8,7 @@ export const paths = {
   answer: '/answer/',
   comment: '/comment',
   questionCreate: '/question/create',
+  vote: '/vote',
   query: '?',
   addPath: (id: string) => `/${id}`,
 } as const

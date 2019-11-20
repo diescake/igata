@@ -2,7 +2,6 @@ import clsx from 'clsx'
 import React, { FC } from 'react'
 import style from '@/app/components/VoteItem/style.scss'
 import { VoteDispatcher } from '@/app/actions/vote'
-import { paths } from '@/app/common/paths'
 
 interface Props {
   readonly userId: string
@@ -11,20 +10,24 @@ interface Props {
   readonly dislikeVoterIds: string[]
   readonly postVote: VoteDispatcher['postVote']
 }
+
+const VoteType = {
+  Like: 'like_vote',
+  dislike: 'dislike_vote',
+}
+
 export const VoteItem: FC<Props> = (props: Props) => {
   // 好き
   const handlePostLikeVote = () => {
     if (props.userId && props.questionId && props.postVote) {
-      // 質問のコメントを更新
-      props.postVote(`${paths.question}${props.questionId}/vote/like_vote`, props.questionId)
+      props.postVote(props.questionId, VoteType.Like)
     }
   }
 
   // 嫌い
   const handlePostDislikeVote = () => {
     if (props.userId && props.questionId && props.postVote) {
-      // 質問のコメントを更新
-      props.postVote(`${paths.question}${props.questionId}/vote/dislike_vote`, props.questionId)
+      props.postVote(props.questionId, VoteType.dislike)
     }
   }
 
