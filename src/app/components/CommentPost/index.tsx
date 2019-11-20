@@ -41,7 +41,6 @@ export const CommentPost: FC<Props> = (props: Props) => {
           {isBodyErrorEmpty && <div className={style.errorEmpty}>{words.common.textErrorEmpty}</div>}
           <form>
             <input
-              id="newComment"
               maxLength={3000}
               minLength={1}
               required

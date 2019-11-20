@@ -53,7 +53,7 @@ const mapResponseToState = (res: HttpResAnswer[]): Answer[] =>
     })),
   }))
 
-function* putWithResponse(res: AxiosResponse<unknown>) {
+function* putFetchAnswersWithResponse(res: AxiosResponse<unknown>) {
   if (isAnswersResponse(res.data)) {
     yield put(fetchAnswersSuccess(mapResponseToState(res.data)))
   } else {
@@ -63,7 +63,7 @@ function* putWithResponse(res: AxiosResponse<unknown>) {
   }
 }
 
-function* putWithError(error: AxiosError) {
+function* putFetchAnswersWithError(error: AxiosError) {
   yield put(fetchAnswersFailure(error.message))
 }
 // GET
@@ -74,7 +74,7 @@ function* fetchAnswers(action: any) {
   })
 
   const { res, error }: HttpResponse<unknown> = yield call(httpGet, `${ANSWER_JSON_URL}${query ? paths.query : ''}${query}`)
-  yield res ? putWithResponse(res) : putWithError(error)
+  yield res ? putFetchAnswersWithResponse(res) : putFetchAnswersWithError(error)
 }
 
 // POST

@@ -58,7 +58,6 @@ export const QuestionDetailItemBase: FC<Props> = (props: Props) => {
           <>
             {isTitleErrorEmpty && <div className={style.errorEmpty}>{words.common.textErrorEmpty}</div>}
             <input
-              id="form-title"
               maxLength={3000}
               minLength={1}
               required
@@ -119,7 +118,6 @@ export const QuestionDetailItemBase: FC<Props> = (props: Props) => {
               <>
                 {isBodyErrorEmpty && <div className={style.errorEmpty}>{words.common.textErrorEmpty}</div>}
                 <textarea
-                  id="body"
                   maxLength={3000}
                   minLength={1}
                   required
@@ -149,6 +147,7 @@ export const QuestionDetailItemBase: FC<Props> = (props: Props) => {
             <hr />
             {props.question.comments.map((comment: Comment) => (
               <CommentItem
+                key={comment.id}
                 comment={comment}
                 userId={props.userId}
                 questionId={props.questionId}

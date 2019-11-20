@@ -27,7 +27,7 @@ interface StateProps {
   readonly id: string
   readonly fetchingQuestion: boolean
   readonly fetchingAnswer: boolean
-  readonly key: string
+  readonly token: string
 }
 
 interface DispatchProps {
@@ -46,7 +46,7 @@ const mapStateToProps = (state: RootState): StateProps => ({
   fetchingQuestion: state.questionState.fetching,
   fetchingAnswer: state.answerState.fetching,
   id: state.loginState.id,
-  key: state.loginState.session.key,
+  token: state.loginState.session.key,
 })
 
 const mapDispatchToProps = {
@@ -76,7 +76,7 @@ const User: FC<UserProps> = (props: UserProps) => {
 
   const fetching = props.fetchingAnswer && props.fetchingAnswer
   return (
-    <div className={style.container}>
+    <div>
       <Header title={words.todoApp.title} userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />
 
       <div className={style.main}>
@@ -85,12 +85,12 @@ const User: FC<UserProps> = (props: UserProps) => {
         <ListWrapper loading={fetching}>
           <div className={style.pageTitle}>{words.user.questionList}</div>
           {props.questions.map((question: Question) => (
-            <QuestionListItem question={question} isUserIdShow={false} />
+            <QuestionListItem key={question.id} question={question} isUserIdShow={false} />
           ))}
 
           <div className={style.pageTitle}>{words.user.answerList}</div>
           {props.answers.map((answer: Answer) => (
-            <AnswerItem answer={answer} isAnswerLink />
+            <AnswerItem key={answer.id} answer={answer} isAnswerLink />
           ))}
         </ListWrapper>
       </div>

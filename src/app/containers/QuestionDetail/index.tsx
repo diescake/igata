@@ -92,7 +92,7 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
   const answerNumber = props.answers.length
 
   return (
-    <div className={style.container}>
+    <div>
       <Header title={words.todoApp.title} userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />
       <div className={style.main}>
         <QuestionDetailItem
@@ -111,9 +111,16 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
           <span>
             {props.answers.map((answer: Answer) => (
               <>
-                <AnswerItem answer={answer} isUserIdShow questionId={props.match.params.id} putAnswer={props.putAnswer} />
+                <AnswerItem
+                  key={answer.id}
+                  answer={answer}
+                  isUserIdShow
+                  questionId={props.match.params.id}
+                  putAnswer={props.putAnswer}
+                />
                 {answer.comments.map((comment: Comment) => (
                   <CommentItem
+                    key={comment.id}
                     comment={comment}
                     userId={props.id}
                     putCommentAnswer={props.putCommentAnswer}
@@ -122,6 +129,7 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
                   />
                 ))}
                 <CommentPost
+                  key={answer.id}
                   userId={props.id}
                   postCommentAnswer={props.postCommentAnswer}
                   questionId={props.match.params.id}

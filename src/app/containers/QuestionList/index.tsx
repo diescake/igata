@@ -22,7 +22,7 @@ interface StateProps {
   readonly questions: Question[]
   readonly id: string
   readonly fetching: boolean
-  readonly key: string
+  readonly token: string
 }
 
 interface DispatchProps {
@@ -37,7 +37,7 @@ const mapStateToProps = (state: RootState): StateProps => ({
   questions: state.questionState.questions,
   fetching: state.questionState.fetching,
   id: state.loginState.id,
-  key: state.loginState.session.key,
+  token: state.loginState.session.key,
 })
 
 const mapDispatchToProps = {
@@ -45,14 +45,13 @@ const mapDispatchToProps = {
   login,
   logout,
 }
-// handle -> handleに修正する
 const QuestionList: FC<QuestionListProps> = (props: QuestionListProps) => {
   useEffect(() => {
-    if (props.key) {
+    if (props.token) {
       props.history.push(paths.root)
     }
     props.fetchQuestions()
-  }, [props.key])
+  }, [props.token])
 
   const handleLogin = () => {
     props.history.push(paths.login)
@@ -63,7 +62,7 @@ const QuestionList: FC<QuestionListProps> = (props: QuestionListProps) => {
   }
 
   return (
-    <div className={style.container}>
+    <div>
       <Header title={words.todoApp.title} userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />
       <div className={style.main}>
         <div className={style.pageTitle}>{words.top.title}</div>
@@ -73,7 +72,7 @@ const QuestionList: FC<QuestionListProps> = (props: QuestionListProps) => {
 
         <ListWrapper loading={props.fetching}>
           {props.questions.map((question: Question) => (
-            <QuestionListItem question={question} isUserIdShow />
+            <QuestionListItem key={question.id} question={question} isUserIdShow />
           ))}
         </ListWrapper>
       </div>

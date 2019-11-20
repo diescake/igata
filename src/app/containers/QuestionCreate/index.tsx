@@ -62,7 +62,7 @@ const QuestionCreate: FC<QuestionCreateProps> = (props: QuestionCreateProps) => 
   }
 
   return (
-    <div className={style.container}>
+    <div>
       <Header title={words.todoApp.title} userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />
       <div className={style.main}>
         <div>{words.questionCreate.postQuestion}</div>
@@ -76,7 +76,6 @@ const QuestionCreate: FC<QuestionCreateProps> = (props: QuestionCreateProps) => 
             {isTitleErrorEmpty && <div className={style.errorEmpty}>{words.common.textErrorEmpty}</div>}
             <form>
               <input
-                id="form-title"
                 maxLength={100}
                 minLength={1}
                 required
@@ -90,7 +89,6 @@ const QuestionCreate: FC<QuestionCreateProps> = (props: QuestionCreateProps) => 
               <br />
               {isBodyErrorEmpty && <div className={style.errorEmpty}>{words.common.textErrorEmpty}</div>}
               <textarea
-                id="form-body"
                 maxLength={3000}
                 minLength={1}
                 required

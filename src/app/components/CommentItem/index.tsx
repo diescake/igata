@@ -19,7 +19,6 @@ export const CommentItemBase: FC<Props> = (props: Props) => {
   const [body, setBody] = useState<string>('')
   const [isUpdateComment, setIsUpdateComment] = useState<boolean>(false)
   const [isBodyErrorEmpty, setIsBodyErrorEmpty] = useState<boolean>(false)
-
   const handleBodyChange = (e: ChangeEvent<HTMLInputElement>) => setBody(e.target.value)
   const handlePutClick = () => {
     if (props.putCommentQuestion && body && props.comment.id) {
@@ -74,7 +73,6 @@ export const CommentItemBase: FC<Props> = (props: Props) => {
           {isBodyErrorEmpty && <div className={style.errorEmpty}>{words.common.textErrorEmpty}</div>}
           <form>
             <input
-              id="updateComment"
               maxLength={3000}
               minLength={1}
               required

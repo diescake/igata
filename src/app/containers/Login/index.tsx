@@ -9,7 +9,6 @@ import { login, LoginDispatcher } from '@/app/actions/login'
 import { RootState } from '@/app/models'
 import { paths } from '@/app/common/paths'
 import words from '@/assets/strings'
-import style from '@/app/containers/Login/style.scss'
 
 interface StateProps {
   readonly key: string
@@ -37,7 +36,7 @@ const Login: FC<LoginProps> = (props: LoginProps) => {
   }, [props.key])
 
   return (
-    <div className={style.container}>
+    <div>
       <Header title={words.login.title} />
       <LoginForm login={props.login} />
       <Footer />

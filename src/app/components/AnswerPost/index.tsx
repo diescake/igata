@@ -1,4 +1,5 @@
 import React, { FC, useState, ChangeEvent } from 'react'
+import clsx from 'clsx'
 import style from '@/app/components/AnswerPost/style.scss'
 import words from '@/assets/strings'
 import { AnswerDispatcher } from '@/app/actions/answer'
@@ -39,7 +40,6 @@ export const AnswerPost: FC<Props> = (props: Props) => {
             {isBodyErrorEmpty && <div className={style.errorEmpty}>{words.common.textErrorEmpty}</div>}
             <form>
               <input
-                id="newAnswer"
                 maxLength={3000}
                 minLength={1}
                 required
@@ -49,7 +49,7 @@ export const AnswerPost: FC<Props> = (props: Props) => {
                 value={body}
               />
               <div className={style.formGroup}>
-                <button type="button" className={style.btnPrimary} onClick={handlePostClick}>
+                <button type="button" className={clsx(style.btnSquareSoPop)} onClick={handlePostClick}>
                   {words.todoApp.addTodo}
                 </button>
               </div>

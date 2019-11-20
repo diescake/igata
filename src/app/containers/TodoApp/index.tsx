@@ -94,7 +94,7 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
   }
 
   return (
-    <div className={style.container}>
+    <div>
       <Header title={words.todoApp.title} userId={props.userId} />
 
       <div>
