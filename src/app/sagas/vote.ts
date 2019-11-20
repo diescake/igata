@@ -45,13 +45,14 @@ function* postVote(action: any) {
   // TODO: /questionは定数に含める予定。
   const url = `${VOTE_JSON_URL}${paths.addPath(questionId)}${paths.vote}${paths.addPath(voteType)}}`
 
-  // TODO: コメントは削除
+  // TODO: ログは削除する
   console.log(`postVote questionId: ${questionId}`)
   console.log(`postVote voteType: ${voteType}`)
   console.log(`postVote url: ${url}`)
 
+  // TODO: 本番環境に切り替えたら修正する。
+  // const { res, error }: HttpResponse<unknown> = yield call(httpPost, url, true, 'application/json')
   const { res, error }: HttpResponse<unknown> = yield call(httpGet, VOTE_JSON_URL)
-  // const { res }: HttpResponse<unknown> = yield call(post, url, true, 'application/json')
   if (res) {
     yield put(fetchQuestion(questionId))
   }
