@@ -8,29 +8,32 @@ import { CommentDispatcher } from '@/app/actions/comment'
 
 type Props = {
   readonly comment: Comment
-  readonly id: string
   readonly userId: string
-  readonly questionId?: string
+  readonly questionId: string
   readonly answerId?: string
   readonly putCommentQuestion?: CommentDispatcher['putCommentQuestion']
   readonly putCommentAnswer?: CommentDispatcher['putCommentAnswer']
 } & RouteComponentProps
 
 export const CommentItemBase: FC<Props> = (props: Props) => {
-  const [text, setText] = useState<string>('')
+  const [body, setBody] = useState<string>('')
   const [isUpdateComment, setIsUpdateComment] = useState<boolean>(false)
+  const [isBodyErrorEmpty, setIsBodyErrorEmpty] = useState<boolean>(false)
 
-  const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => setText(e.target.value)
+  const handleBodyChange = (e: ChangeEvent<HTMLInputElement>) => setBody(e.target.value)
   const handlePutClick = () => {
-    if (typeof props.putCommentQuestion !== 'undefined' && props.questionId) {
+    if (props.putCommentQuestion && body && props.comment.id) {
       // 質問のコメントを更新
-      props.putCommentQuestion(`${paths.question}${props.questionId}${paths.answer}/${props.comment.id}`, text, props.id)
-    } else if (typeof props.putCommentAnswer !== 'undefined' && props.answerId) {
+      props.putCommentQuestion(body, props.questionId, props.comment.id)
+      setIsUpdateComment(false)
+      setBody('')
+    } else if (props.putCommentAnswer && body && props.answerId && props.comment.id) {
       // 回答のコメントを更新
-      props.putCommentAnswer(`${paths.answer}${props.answerId}${paths.answer}/${props.comment.id}`, text, props.id)
+      props.putCommentAnswer(body, props.answerId, props.comment.id, props.questionId)
+      setIsUpdateComment(false)
+      setBody('')
     }
-    setIsUpdateComment(false)
-    setText('')
+    setIsBodyErrorEmpty(!body)
   }
 
   return (
@@ -50,7 +53,7 @@ export const CommentItemBase: FC<Props> = (props: Props) => {
                     <button
                       type="button"
                       onClick={e => {
-                        setText(props.comment.body)
+                        setBody(props.comment.body)
                         setIsUpdateComment(true)
                         e.preventDefault()
                       }}
@@ -68,6 +71,7 @@ export const CommentItemBase: FC<Props> = (props: Props) => {
       {/* コメントを更新 */}
       {isUpdateComment && (
         <>
+          {isBodyErrorEmpty && <div className={style.errorEmpty}>{words.common.textErrorEmpty}</div>}
           <form>
             <input
               id="updateComment"
@@ -76,8 +80,8 @@ export const CommentItemBase: FC<Props> = (props: Props) => {
               required
               className={`${style.titleEdit} ${style.formControl}`}
               type="text"
-              onChange={handleTextChange}
-              value={text}
+              onChange={handleBodyChange}
+              value={body}
             />
             <div className={style.formGroup}>
               <button type="button" className={style.btnPrimary} onClick={handlePutClick}>
@@ -90,6 +94,7 @@ export const CommentItemBase: FC<Props> = (props: Props) => {
             className={style.btnPrimary}
             onClick={e => {
               setIsUpdateComment(false)
+              setIsBodyErrorEmpty(false)
               e.preventDefault()
             }}
           >

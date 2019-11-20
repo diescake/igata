@@ -21,9 +21,9 @@ export const Type = {
 
 // action creators
 // コメント 質問
-export const postCommentQuestion = (path: string, body: string, id: string) => ({
+export const postCommentQuestion = (body: string, questionId: string) => ({
   type: Type.POST_COMMENT_QUESTION,
-  payload: { path, body, id },
+  payload: { body, questionId },
 })
 export const postCommentQuestionSuccess = () => ({
   type: Type.POST_COMMENT_QUESTION_SUCCESS,
@@ -31,9 +31,9 @@ export const postCommentQuestionSuccess = () => ({
 export const postCommentQuestionFailure = () => ({
   type: Type.POST_COMMENT_QUESTION_FAILURE,
 })
-export const putCommentQuestion = (path: string, body: string, id: string) => ({
+export const putCommentQuestion = (body: string, questionId: string, commentId: string) => ({
   type: Type.PUT_COMMENT_QUESTION,
-  payload: { path, body, id },
+  payload: { body, questionId, commentId },
 })
 export const putCommentQuestionSuccess = () => ({
   type: Type.PUT_COMMENT_QUESTION_SUCCESS,
@@ -43,9 +43,9 @@ export const putCommentQuestionFailure = () => ({
 })
 
 // コメント 回答
-export const postCommentAnswer = (path: string, body: string, id: string) => ({
+export const postCommentAnswer = (body: string, answerId: string, questionId: string) => ({
   type: Type.POST_COMMENT_ANSWER,
-  payload: { path, body, id },
+  payload: { body, answerId, questionId },
 })
 export const postCommentAnswerSuccess = () => ({
   type: Type.POST_COMMENT_ANSWER_SUCCESS,
@@ -53,9 +53,9 @@ export const postCommentAnswerSuccess = () => ({
 export const postCommentAnswerFailure = () => ({
   type: Type.POST_COMMENT_ANSWER_FAILURE,
 })
-export const putCommentAnswer = (path: string, body: string, id: string) => ({
+export const putCommentAnswer = (body: string, answerId: string, commentId: string, questionId: string) => ({
   type: Type.PUT_COMMENT_ANSWER,
-  payload: { path, body, id },
+  payload: { body, answerId, commentId, questionId },
 })
 export const putCommentAnswerSuccess = () => ({
   type: Type.PUT_COMMENT_ANSWER_SUCCESS,

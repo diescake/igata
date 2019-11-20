@@ -1,5 +1,6 @@
 import React, { FC, useState, ChangeEvent } from 'react'
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
+import { Loading } from '@/app/components/Loading'
 import { VoteItem } from '@/app/components/VoteItem'
 import style from '@/app/components/QuestionDetailItem/style.scss'
 import { Question, Comment } from '@/app/models/Question'
@@ -25,24 +26,37 @@ export const QuestionDetailItemBase: FC<Props> = (props: Props) => {
   const [title, setTitle] = useState<string>('')
   const [body, setBody] = useState<string>('')
   const [isUpdateQuestion, setIsUpdateQuestion] = useState<boolean>(false)
+  const [isTitleErrorEmpty, setIsTitleErrorEmpty] = useState<boolean>(false)
+  const [isBodyErrorEmpty, setIsBodyErrorEmpty] = useState<boolean>(false)
+
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)
   const handleBodyChange = (e: ChangeEvent<HTMLTextAreaElement>) => setBody(e.target.value)
 
   const handlePutClick = () => {
     // 質問のタイトルと本文を更新
-    if (typeof title !== 'undefined' && typeof body !== 'undefined') {
+    if (title && body) {
       props.putQuestion(title, body, props.questionId)
+      setIsUpdateQuestion(false)
+      setTitle('')
+      setBody('')
     }
-    setIsUpdateQuestion(false)
-    setTitle('')
-    setBody('')
+    setIsTitleErrorEmpty(!title)
+    setIsBodyErrorEmpty(!body)
   }
-
+  if (!props.question.id) {
+    // 読み込み演出
+    return (
+      <div className={style.loading}>
+        <Loading visible={false} />
+      </div>
+    )
+  }
   return (
     <div>
       <div className={style.question}>
         {isUpdateQuestion && (
           <>
+            {isTitleErrorEmpty && <div className={style.errorEmpty}>{words.common.textErrorEmpty}</div>}
             <input
               id="form-title"
               maxLength={3000}
@@ -100,9 +114,10 @@ export const QuestionDetailItemBase: FC<Props> = (props: Props) => {
               </>
             )}
 
-            {/* 質問のタイトル更新 */}
+            {/* 質問のタイトルと本文を更新 */}
             {isUpdateQuestion && (
               <>
+                {isBodyErrorEmpty && <div className={style.errorEmpty}>{words.common.textErrorEmpty}</div>}
                 <textarea
                   id="body"
                   maxLength={3000}
@@ -122,6 +137,8 @@ export const QuestionDetailItemBase: FC<Props> = (props: Props) => {
                   className={style.btnPrimary}
                   onClick={() => {
                     setIsUpdateQuestion(false)
+                    setIsTitleErrorEmpty(false)
+                    setIsBodyErrorEmpty(false)
                   }}
                 >
                   {words.common.cancel}
@@ -134,18 +151,11 @@ export const QuestionDetailItemBase: FC<Props> = (props: Props) => {
               <CommentItem
                 comment={comment}
                 userId={props.userId}
-                questionId={props.question.id}
+                questionId={props.questionId}
                 putCommentQuestion={props.putCommentQuestion}
-                id={props.questionId}
               />
             ))}
-
-            <CommentForm
-              userId={props.userId}
-              postCommentQuestion={props.postCommentQuestion}
-              questionId={props.question.id}
-              id={props.questionId}
-            />
+            <CommentForm userId={props.userId} postCommentQuestion={props.postCommentQuestion} questionId={props.questionId} />
           </div>
         </div>
       </div>

@@ -117,14 +117,14 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
                     comment={comment}
                     userId={props.id}
                     putCommentAnswer={props.putCommentAnswer}
-                    id={props.match.params.id}
+                    questionId={props.match.params.id}
                     answerId={answer.id}
                   />
                 ))}
                 <CommentForm
                   userId={props.id}
                   postCommentAnswer={props.postCommentAnswer}
-                  id={props.match.params.id}
+                  questionId={props.match.params.id}
                   answerId={answer.id}
                 />
               </>
