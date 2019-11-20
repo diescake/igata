@@ -12,8 +12,8 @@ import { Question as QuestionModel, Comment } from '@/app/models/Question'
 import { CommentItem } from '@/app/components/CommentItem'
 import { Answer } from '@/app/models/Answer'
 import { AnswerItem } from '@/app/components/AnswerItem'
-import { CommentForm } from '@/app/components/CommentForm'
-import { AnswerForm } from '@/app/components/AnswerForm'
+import { CommentPost } from '@/app/components/CommentPost'
+import { AnswerPost } from '@/app/components/AnswerPost'
 import {
   postCommentQuestion,
   putCommentQuestion,
@@ -121,7 +121,7 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
                     answerId={answer.id}
                   />
                 ))}
-                <CommentForm
+                <CommentPost
                   userId={props.id}
                   postCommentAnswer={props.postCommentAnswer}
                   questionId={props.match.params.id}
@@ -131,7 +131,7 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
             ))}
           </span>
         </div>
-        <AnswerForm userId={props.id} questionId={props.match.params.id} postAnswer={props.postAnswer} />
+        <AnswerPost userId={props.id} questionId={props.match.params.id} postAnswer={props.postAnswer} />
       </div>
     </div>
   )

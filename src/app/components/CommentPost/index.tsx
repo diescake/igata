@@ -1,5 +1,5 @@
 import React, { FC, useState, ChangeEvent } from 'react'
-import style from '@/app/components/CommentForm/style.scss'
+import style from '@/app/components/CommentPost/style.scss'
 import words from '@/assets/strings'
 import { CommentDispatcher } from '@/app/actions/comment'
 
@@ -10,7 +10,7 @@ export interface Props {
   readonly postCommentQuestion?: CommentDispatcher['postCommentQuestion']
   readonly postCommentAnswer?: CommentDispatcher['postCommentAnswer']
 }
-export const CommentForm: FC<Props> = (props: Props) => {
+export const CommentPost: FC<Props> = (props: Props) => {
   const [body, setBody] = useState<string>('')
   const [isBodyErrorEmpty, setIsBodyErrorEmpty] = useState<boolean>(false)
   const handleBodyChange = (e: ChangeEvent<HTMLInputElement>) => setBody(e.target.value)

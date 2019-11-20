@@ -8,7 +8,7 @@ import words from '@/assets/strings'
 import { paths } from '@/app/common/paths'
 import { QuestionDispatcher } from '@/app/actions/question'
 import { CommentItem } from '@/app/components/CommentItem'
-import { CommentForm } from '@/app/components/CommentForm'
+import { CommentPost } from '@/app/components/CommentPost'
 import { VoteDispatcher } from '@/app/actions/vote'
 import { CommentDispatcher } from '@/app/actions/comment'
 
@@ -155,7 +155,7 @@ export const QuestionDetailItemBase: FC<Props> = (props: Props) => {
                 putCommentQuestion={props.putCommentQuestion}
               />
             ))}
-            <CommentForm userId={props.userId} postCommentQuestion={props.postCommentQuestion} questionId={props.questionId} />
+            <CommentPost userId={props.userId} postCommentQuestion={props.postCommentQuestion} questionId={props.questionId} />
           </div>
         </div>
       </div>

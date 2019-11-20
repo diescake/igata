@@ -1,5 +1,5 @@
 import React, { FC, useState, ChangeEvent } from 'react'
-import style from '@/app/components/CommentForm/style.scss'
+import style from '@/app/components/AnswerPost/style.scss'
 import words from '@/assets/strings'
 import { AnswerDispatcher } from '@/app/actions/answer'
 
@@ -9,7 +9,7 @@ export interface Props {
   readonly postAnswer: AnswerDispatcher['postAnswer']
 }
 
-export const AnswerForm: FC<Props> = (props: Props) => {
+export const AnswerPost: FC<Props> = (props: Props) => {
   const [body, setBody] = useState<string>('')
   const [isBodyErrorEmpty, setIsBodyErrorEmpty] = useState<boolean>(false)
 
@@ -39,7 +39,7 @@ export const AnswerForm: FC<Props> = (props: Props) => {
             {isBodyErrorEmpty && <div className={style.errorEmpty}>{words.common.textErrorEmpty}</div>}
             <form>
               <input
-                id="new-comment"
+                id="newAnswer"
                 maxLength={3000}
                 minLength={1}
                 required
