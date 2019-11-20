@@ -1,5 +1,5 @@
 import React, { FC, useState, ChangeEvent } from 'react'
-import { withRouter, RouteComponentProps } from 'react-router-dom'
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
 import style from '@/app/components/AnswerItem/style.scss'
 import { Answer } from '@/app/models/Answer'
 import words from '@/assets/strings'
@@ -39,15 +39,7 @@ export const AnswerItemBase: FC<Props> = (props: Props) => {
       {props.isAnswerLink && (
         <>
           <h5 className={style.title}>
-            <a
-              href="/"
-              onClick={e => {
-                props.history.push(paths.question + props.answer.id)
-                e.preventDefault()
-              }}
-            >
-              {props.answer.body}
-            </a>
+            <Link to={`${paths.question}${props.answer.id}`}>{props.answer.body}</Link>
           </h5>
         </>
       )}
@@ -61,15 +53,7 @@ export const AnswerItemBase: FC<Props> = (props: Props) => {
         {props.isUserIdShow === true && (
           <>
             {words.common.by}
-            <a
-              href="/"
-              onClick={e => {
-                props.history.push(paths.user + props.answer.userId)
-                e.preventDefault()
-              }}
-            >
-              {props.answer.userId}
-            </a>
+            <Link to={`${paths.user}${props.answer.userId}`}>{props.answer.userId}</Link>
 
             {/* 同じidなら編集可能にする */}
             {props.userId === props.answer.userId && (

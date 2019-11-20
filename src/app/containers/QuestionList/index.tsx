@@ -2,6 +2,7 @@ import React, { FC, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps, withRouter } from 'react-router'
 
+import { Link } from 'react-router-dom'
 import { fetchQuestions, QuestionDispatcher } from '@/app/actions/question'
 import { Header } from '@/app/components/Header'
 import { ListWrapper } from '@/app/components/ListWrapper'
@@ -66,15 +67,8 @@ const QuestionList: FC<QuestionListProps> = (props: QuestionListProps) => {
       <Header title={words.todoApp.title} userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />
       <div className={style.main}>
         <div className={style.pageTitle}>{words.top.title}</div>
-        <a
-          href="/"
-          onClick={e => {
-            props.history.push(paths.questionCreate)
-            e.preventDefault()
-          }}
-        >
-          {words.top.question}
-        </a>
+
+        <Link to={`${paths.questionCreate}`}>{words.top.question}</Link>
         <hr />
 
         <ListWrapper loading={props.fetching}>

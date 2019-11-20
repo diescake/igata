@@ -1,5 +1,5 @@
 import React, { FC, useState, ChangeEvent } from 'react'
-import { withRouter, RouteComponentProps } from 'react-router-dom'
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
 import { VoteItem } from '@/app/components/VoteItem'
 import style from '@/app/components/QuestionDetailItem/style.scss'
 import { Question, Comment } from '@/app/models/Question'
@@ -77,15 +77,7 @@ export const QuestionDetailItemBase: FC<Props> = (props: Props) => {
                 <div className={style.additional}>
                   {words.common.additional(props.question.createdAt)}
                   {words.common.by}
-                  <a
-                    href="/"
-                    onClick={e => {
-                      props.history.push(paths.user + props.question.userId)
-                      e.preventDefault()
-                    }}
-                  >
-                    {props.question.userId}
-                  </a>
+                  <Link to={`${paths.user}${props.question.userId}`}>{props.question.userId}</Link>
                 </div>
 
                 {props.userId === props.question.userId && (
