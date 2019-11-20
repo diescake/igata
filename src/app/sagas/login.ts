@@ -4,7 +4,7 @@ import { push } from 'connected-react-router'
 import { loginFailure, loginSuccess, logoutFailure, logoutSuccess, Type } from '@/app/actions/login'
 import { LoginState } from '@/app/models/Login'
 import { LoginResponse as HttpResLogin } from '@/app/models/HttpResponse'
-import { get, HttpResponse } from '@/app/common/http'
+import { httpGet, HttpResponse } from '@/app/common/http'
 import { paths } from '@/app/common/paths'
 
 // const LOGIN_JSON_URL = 'https://raw.githubusercontent.com/diescake/igata/master/data/login.json'
@@ -54,7 +54,7 @@ function* login() {
   // NOTE: Actually the login request should be POST
   // function* login(actions: any) {
   // const { res, error }: HttpResponse<unknown> = yield call(post, LOGIN_JSON_URL, actions.payload)
-  const { res, error }: HttpResponse<unknown> = yield call(get, LOGIN_JSON_URL, false)
+  const { res, error }: HttpResponse<unknown> = yield call(httpGet, LOGIN_JSON_URL, false)
   yield res ? putWithResponse(res) : putWithError(error)
 }
 
@@ -64,7 +64,7 @@ function* putWithResponseLogout() {
 }
 
 function* logout() {
-  const { res, error }: HttpResponse<unknown> = yield call(get, LOGOUT_JSON_URL, false)
+  const { res, error }: HttpResponse<unknown> = yield call(httpGet, LOGOUT_JSON_URL, false)
   yield res ? putWithResponseLogout() : put(logoutFailure(error.message))
 }
 

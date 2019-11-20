@@ -15,7 +15,7 @@ import {
 } from '@/app/actions/answer'
 
 import { Answer } from '@/app/models/Answer'
-import { get, HttpResponse } from '@/app/common/http'
+import { httpGet, HttpResponse } from '@/app/common/http'
 import { Answer as HttpResAnswer } from '@/app/models/HttpResponse'
 
 const ANSWER_JSON_URL = 'https://api.myjson.com/bins/hp7x2'
@@ -73,7 +73,7 @@ function* fetchAnswers(action: any) {
     user_id: action.payload ? action.payload.userId : action.payload,
   })
 
-  const { res, error }: HttpResponse<unknown> = yield call(get, `${ANSWER_JSON_URL}${query ? paths.query : ''}${query}`)
+  const { res, error }: HttpResponse<unknown> = yield call(httpGet, `${ANSWER_JSON_URL}${query ? paths.query : ''}${query}`)
   yield res ? putWithResponse(res) : putWithError(error)
 }
 // POST
@@ -85,7 +85,7 @@ function* postAnswer(action: any) {
   }
   // TODO: consoleを削除する
   console.log(data)
-  const { res }: HttpResponse<unknown> = yield call(get, ANSWER_JSON_URL)
+  const { res }: HttpResponse<unknown> = yield call(httpGet, ANSWER_JSON_URL)
   // const { res }: HttpResponse<unknown> = yield call(post, ANSWER_JSON_URL, true, 'application/json', data)
   if (res) {
     yield put(actionFetchAnswers({ questionId }))
@@ -102,7 +102,7 @@ function* putAnswer(action: any) {
   // TODO: consoleを削除する
   console.log(data)
   console.log(url)
-  const { res }: HttpResponse<unknown> = yield call(get, ANSWER_JSON_URL)
+  const { res }: HttpResponse<unknown> = yield call(httpGet, ANSWER_JSON_URL)
   // const { res }: HttpResponse<unknown> = yield call(put, ANSWER_JSON_URL, true, 'application/json', data)
   if (res) {
     // データ更新

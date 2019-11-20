@@ -9,6 +9,7 @@ export const paths = {
   comment: '/comment',
   questionCreate: '/question/create',
   query: '?',
+  addPath: (id: string) => `/${id}`,
 } as const
 
 export type ScreenName = keyof typeof paths

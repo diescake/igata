@@ -3,7 +3,7 @@ import { AxiosResponse, AxiosError } from 'axios'
 import { fetchQuestion } from '@/app/actions/question'
 import { Type, postVoteSuccess, postVoteFailure } from '@/app/actions/vote'
 import { VoteState } from '@/app/models/Vote'
-import { get, HttpResponse } from '@/app/common/http'
+import { httpGet, HttpResponse } from '@/app/common/http'
 import { VoteState as HttpResVoteState } from '@/app/models/HttpResponse'
 
 const VOTE_JSON_URL = 'https://api.myjson.com/bins/hp7x2'
@@ -42,7 +42,7 @@ function* postVote(action: any) {
   const { path, questionId } = action.payload
 
   console.log(path)
-  const { res, error }: HttpResponse<unknown> = yield call(get, VOTE_JSON_URL)
+  const { res, error }: HttpResponse<unknown> = yield call(httpGet, VOTE_JSON_URL)
   // const { res }: HttpResponse<unknown> = yield call(post, ANSWER_JSON_URL, true, 'application/json')
   if (res) {
     yield put(fetchQuestion(`/${questionId}`))

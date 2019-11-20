@@ -39,9 +39,9 @@ export const fetchQuestionsFailure = (errorText: string) => ({
 })
 
 // 単体 GET
-export const fetchQuestion = (id: string) => ({
+export const fetchQuestion = (questionId: string) => ({
   type: Type.FETCH_QUESTION,
-  payload: id,
+  payload: questionId,
 })
 
 export const fetchQuestionSuccess = (question: Question) => ({
@@ -60,8 +60,9 @@ export const postQuestion = (title: string, body: string) => ({
   payload: { title, body },
 })
 
-export const postQuestionSuccess = () => ({
+export const postQuestionSuccess = (questions: Question[]) => ({
   type: Type.POST_QUESTION_SUCCESS,
+  payload: { questions },
 })
 
 export const postQuestionFailure = (errorText: string) => ({
@@ -70,9 +71,9 @@ export const postQuestionFailure = (errorText: string) => ({
 })
 
 // PUT
-export const putQuestion = (title: string, body: string, id: string) => ({
+export const putQuestion = (title: string, body: string, questionId: string) => ({
   type: Type.PUT_QUESTION,
-  payload: { title, body, id },
+  payload: { title, body, questionId },
 })
 
 export const putQuestionSuccess = (question: Question) => ({

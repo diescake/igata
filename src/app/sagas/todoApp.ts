@@ -3,7 +3,7 @@ import { AxiosResponse, AxiosError } from 'axios'
 import { fetchTodosFailure, fetchTodosSuccess, Type } from '@/app/actions/todo'
 import { TodosResponse } from '@/app/models/HttpResponse'
 import { Todo } from '@/app/models/Todo'
-import { get, HttpResponse } from '@/app/common/http'
+import { httpGet, HttpResponse } from '@/app/common/http'
 
 // NOTE: "myjson.com" supports CORS and allows basic headers and methods.
 const TODOS_JSON_URL = 'https://api.myjson.com/bins/17rf2l'
@@ -37,7 +37,7 @@ function* putWithError(error: AxiosError) {
 }
 
 function* fetchTodos() {
-  const { res, error }: HttpResponse<unknown> = yield call(get, TODOS_JSON_URL)
+  const { res, error }: HttpResponse<unknown> = yield call(httpGet, TODOS_JSON_URL)
   yield res ? putWithResponse(res) : putWithError(error)
 }
 

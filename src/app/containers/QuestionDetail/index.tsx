@@ -76,7 +76,7 @@ const mapDispatchToProps: DispatchProps = {
 
 const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
   useEffect(() => {
-    props.fetchQuestion(`/${props.match.params.id}`)
+    props.fetchQuestion(props.match.params.id)
     props.fetchAnswers({
       questionId: props.match.params.id,
     })
