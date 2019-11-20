@@ -111,7 +111,7 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
           <span>
             {props.answers.map((answer: Answer) => (
               <>
-                <AnswerItem answer={answer} isUserIdShow />
+                <AnswerItem answer={answer} isUserIdShow questionId={props.match.params.id} putAnswer={props.putAnswer} />
                 {answer.comments.map((comment: Comment) => (
                   <CommentItem
                     comment={comment}
@@ -131,12 +131,7 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
             ))}
           </span>
         </div>
-
-        <div className={style.newAnswer}>
-          <div>{words.question.answer}</div>
-          <hr />
-          <AnswerForm userId={props.id} questionId={props.match.params.id} postAnswer={props.postAnswer} />
-        </div>
+        <AnswerForm userId={props.id} questionId={props.match.params.id} postAnswer={props.postAnswer} />
       </div>
     </div>
   )

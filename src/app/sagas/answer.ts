@@ -76,34 +76,42 @@ function* fetchAnswers(action: any) {
   const { res, error }: HttpResponse<unknown> = yield call(httpGet, `${ANSWER_JSON_URL}${query ? paths.query : ''}${query}`)
   yield res ? putWithResponse(res) : putWithError(error)
 }
+
 // POST
 function* postAnswer(action: any) {
   const { body, questionId } = action.payload
   const data = {
     body,
-    questionId,
+    question_id: questionId,
   }
-  // TODO: consoleを削除する
-  console.log(data)
+  // TODO: ログは削除する
+  console.log(`postAnswer data: ${data}`)
   const { res }: HttpResponse<unknown> = yield call(httpGet, ANSWER_JSON_URL)
-  // const { res }: HttpResponse<unknown> = yield call(post, ANSWER_JSON_URL, true, 'application/json', data)
+  // const { res }: HttpResponse<unknown> = yield call(httpPost, ANSWER_JSON_URL, true, 'application/json', data)
   if (res) {
     yield put(actionFetchAnswers({ questionId }))
   }
   yield res ? put(postAnswerSuccess()) : put(postAnswerFailure())
 }
+
 // PUT
 function* putAnswer(action: any) {
-  const { path, body, questionId } = action.payload
+  const { body, answerId, questionId } = action.payload
   const data = {
     body,
   }
-  const url = `${ANSWER_JSON_URL}${path}`
-  // TODO: consoleを削除する
-  console.log(data)
-  console.log(url)
+
+  // TODO: /answerはANSWER_JSON_URLに追加する予定
+  const url = `${ANSWER_JSON_URL}${paths.addPath(answerId)}`
+
+  // TODO: ログは削除する
+  console.log(`putAnswer body: ${body}`)
+  console.log(`putAnswer answerId: ${answerId}`)
+  console.log(`putAnswer questionId: ${questionId}`)
+  console.log(`putAnswer data: ${data}`)
+  console.log(`putAnswer url: ${url}`)
   const { res }: HttpResponse<unknown> = yield call(httpGet, ANSWER_JSON_URL)
-  // const { res }: HttpResponse<unknown> = yield call(put, ANSWER_JSON_URL, true, 'application/json', data)
+  // const { res }: HttpResponse<unknown> = yield call(httpPut, ANSWER_JSON_URL, true, 'application/json', data)
   if (res) {
     // データ更新
     yield put(actionFetchAnswers({ questionId }))

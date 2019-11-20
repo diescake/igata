@@ -10,44 +10,53 @@ export interface Props {
 }
 
 export const AnswerForm: FC<Props> = (props: Props) => {
-  const [text, setText] = useState<string>('')
-  const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => setText(e.target.value)
+  const [body, setBody] = useState<string>('')
+  const [isBodyErrorEmpty, setIsBodyErrorEmpty] = useState<boolean>(false)
+
+  const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => setBody(e.target.value)
   const handlePostClick = () => {
-    if (typeof props.postAnswer !== 'undefined' && props.questionId) {
+    if (props.postAnswer && body && props.questionId) {
       // 回答
-      props.postAnswer(text, props.questionId)
-      setText('')
+      props.postAnswer(body, props.questionId)
+      setBody('')
     }
+    setIsBodyErrorEmpty(!body)
   }
+
   return (
     <div>
-      {!props.userId && (
-        <>
-          <div>{words.question.loginToAnswer}</div>
-        </>
-      )}
+      <div className={style.newAnswer}>
+        <div>{words.question.answer}</div>
+        <hr />
+        {!props.userId && (
+          <>
+            <div>{words.question.loginToAnswer}</div>
+          </>
+        )}
 
-      {props.userId && (
-        <>
-          <form>
-            <input
-              id="new-comment"
-              maxLength={3000}
-              minLength={1}
-              required
-              className={`${style.titleEdit} ${style.formControl}`}
-              type="text"
-              onChange={handleTextChange}
-              value={text}
-            />
-            <div className={style.formGroup}>
-              <button type="button" className={style.btnPrimary} onClick={handlePostClick}>
-                {words.todoApp.addTodo}
-              </button>
-            </div>
-          </form>
-        </>
-      )}
+        {props.userId && (
+          <>
+            {isBodyErrorEmpty && <div className={style.errorEmpty}>{words.common.textErrorEmpty}</div>}
+            <form>
+              <input
+                id="new-comment"
+                maxLength={3000}
+                minLength={1}
+                required
+                className={`${style.titleEdit} ${style.formControl}`}
+                type="text"
+                onChange={handleTextChange}
+                value={body}
+              />
+              <div className={style.formGroup}>
+                <button type="button" className={style.btnPrimary} onClick={handlePostClick}>
+                  {words.todoApp.addTodo}
+                </button>
+              </div>
+            </form>
+          </>
+        )}
+      </div>
     </div>
   )
 }

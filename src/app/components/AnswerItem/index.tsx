@@ -7,6 +7,8 @@ import { paths } from '@/app/common/paths'
 import { AnswerDispatcher } from '@/app/actions/answer'
 
 type Props = {
+  // 質問ID
+  readonly questionId?: string
   // 回答データ
   readonly answer: Answer
   // ユーザーIDを表示する
@@ -21,63 +23,69 @@ type Props = {
 
 export const AnswerItemBase: FC<Props> = (props: Props) => {
   // 回答更新時に使用
-  const [text, setText] = useState<string>('')
+  const [body, setBody] = useState<string>('')
   const [isUpdateAnswer, setIsUpdateAnswer] = useState<boolean>(false)
-  const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => setText(e.target.value)
+  const [isBodyErrorEmpty, setIsBodyErrorEmpty] = useState<boolean>(false)
+
+  const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => setBody(e.target.value)
   const handlePutClick = () => {
-    if (typeof props.putAnswer !== 'undefined' && props.answer.id && props.answer.questionId) {
+    if (props.putAnswer && body && props.answer.id && props.questionId) {
       // 回答を更新
-      props.putAnswer(`${paths.answer}/${props.answer.id}`, text, props.answer.questionId)
+      props.putAnswer(body, props.answer.id, props.questionId)
+
+      setIsUpdateAnswer(false)
+      setBody('')
     }
-    setIsUpdateAnswer(false)
-    setText('')
+    setIsBodyErrorEmpty(!body)
   }
 
   return (
     <div>
-      {/* リンクあり */}
-      {props.isAnswerLink && (
+      {!isUpdateAnswer && (
         <>
-          <h5 className={style.title}>
-            <Link to={`${paths.question}${props.answer.id}`}>{props.answer.body}</Link>
-          </h5>
+          {/* リンクあり */}
+          {props.isAnswerLink && (
+            <>
+              <h5 className={style.title}>
+                <Link to={`${paths.question}${props.answer.id}`}>{props.answer.body}</Link>
+              </h5>
+            </>
+          )}
+          {/* リンクがない場合 */}
+          {!props.isAnswerLink && <div>{props.answer.body}</div>}
+
+          <div className={style.additional}>
+            {words.common.additional(props.answer.createdAt)}
+            {/* 投稿したユーザーID */}
+            {props.isUserIdShow && (
+              <>
+                {words.common.by}
+                <Link to={`${paths.user}${props.answer.userId}`}>{props.answer.userId}</Link>
+
+                {/* 同じidで質問画面なら編集可能にする */}
+                {props.userId === props.answer.userId && props.questionId && (
+                  <span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setBody(props.answer.body)
+                        setIsUpdateAnswer(true)
+                      }}
+                    >
+                      {words.common.update}
+                    </button>
+                  </span>
+                )}
+              </>
+            )}
+          </div>
         </>
       )}
-
-      {/* リンクがない場合 */}
-      {!props.isAnswerLink && <div>{props.answer.body}</div>}
-
-      <div className={style.additional}>
-        {words.common.additional(props.answer.createdAt)}
-        {/* 投稿したユーザーID */}
-        {props.isUserIdShow === true && (
-          <>
-            {words.common.by}
-            <Link to={`${paths.user}${props.answer.userId}`}>{props.answer.userId}</Link>
-
-            {/* 同じidなら編集可能にする */}
-            {props.userId === props.answer.userId && (
-              <span>
-                <button
-                  type="button"
-                  onClick={e => {
-                    setText(props.answer.body)
-                    setIsUpdateAnswer(true)
-                    e.preventDefault()
-                  }}
-                >
-                  {words.common.update}
-                </button>
-              </span>
-            )}
-          </>
-        )}
-        <hr />
-      </div>
 
       {/* 回答を更新 */}
       {isUpdateAnswer && (
         <>
+          {isBodyErrorEmpty && <div className={style.errorEmpty}>{words.common.textErrorEmpty}</div>}
           <form>
             <input
               id="updateAnswer"
@@ -87,7 +95,7 @@ export const AnswerItemBase: FC<Props> = (props: Props) => {
               className={`${style.titleEdit} ${style.formControl}`}
               type="text"
               onChange={handleTextChange}
-              value={text}
+              value={body}
             />
             <div className={style.formGroup}>
               <button type="button" className={style.btnPrimary} onClick={handlePutClick}>
@@ -98,15 +106,16 @@ export const AnswerItemBase: FC<Props> = (props: Props) => {
           <button
             type="button"
             className={style.btnPrimary}
-            onClick={e => {
+            onClick={() => {
               setIsUpdateAnswer(false)
-              e.preventDefault()
+              setIsBodyErrorEmpty(false)
             }}
           >
             {words.common.cancel}
           </button>
         </>
       )}
+      <hr />
     </div>
   )
 }
