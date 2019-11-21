@@ -1,7 +1,8 @@
 import React, { FC } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { LoginDispatcher } from '@/app/actions/login'
+import clsx from 'clsx'
 
+import { LoginDispatcher } from '@/app/actions/login'
 import words from '@/assets/strings'
 import style from '@/app/components/LoginForm/style.scss'
 import { isValidEmail, isValidPassword } from '@/app/common/utils'
@@ -46,24 +47,32 @@ export const LoginForm: FC<Props> = (props: Props) => (
       const { login } = words
 
       return (
-        <Form>
-          <label className={style.label}>{login.id}</label>
-          <ErrorMessage className={style.errorLabel} name="email" component="div" />
-          <Field className={style.input} type="email" name="email" autoComplete="username" placeholder={login.idPlaceholder} />
+        <Form className={style.main}>
+          <div className={clsx(style.marginLeft)}>
+            <label className={clsx(style.label)}>{login.id}</label>
+            <ErrorMessage className={clsx(style.errorLabel)} name="email" component="div" />
+            <Field
+              className={clsx(style.input)}
+              type="email"
+              name="email"
+              autoComplete="username"
+              placeholder={login.idPlaceholder}
+            />
 
-          <label className={style.label}>{login.password}</label>
-          <ErrorMessage className={style.errorLabel} name="password" component="div" />
-          <Field
-            className={style.input}
-            type="password"
-            name="password"
-            autoComplete="current-password"
-            placeholder={login.passwordPlaceholder}
-          />
+            <label className={clsx(style.label)}>{login.password}</label>
+            <ErrorMessage className={style.errorLabel} name="password" component="div" />
+            <Field
+              className={clsx(style.input)}
+              type="password"
+              name="password"
+              autoComplete="current-password"
+              placeholder={login.passwordPlaceholder}
+            />
 
-          <button type="submit" className={style.loginButton}>
-            {login.login}
-          </button>
+            <button type="submit" className={clsx(style.loginButton)}>
+              {login.login}
+            </button>
+          </div>
         </Form>
       )
     }}

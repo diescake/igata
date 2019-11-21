@@ -1,7 +1,3 @@
-.header {
-  font-size: 4.6rem;
-}
-
 .icon {
   margin-right: 12px;
   font-size: 2.2rem;
@@ -61,15 +57,8 @@
   border: solid 2px #0252a8;
   border-radius: 4px;
   box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
-
-  /* 色 */
-
-  /* 角の丸み */
-
-  /* 線色 */
 }
 
 .loginLink:active {
-  /* 押したとき */
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
 }
