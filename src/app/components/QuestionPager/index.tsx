@@ -31,12 +31,14 @@ export const QuestionPager: FC<Props> = (props: Props) => {
       )}
       <div className={style.inline}>{fromIds.length + 1}</div>
 
-      {props.questions.length >= 10 && (
+      {/* 11件以上ある場合だけ次のページに遷移できる */}
+      {props.questions.length >= 11 && (
         <button
           type="button"
           className={style.inline}
           onClick={() => {
-            const nextFromId = props.questions[props.questions.length - 1].id
+            // 10件目の値を使用する
+            const nextFromId = props.questions[props.questions.length - 2].id
             const copiedBackPage = [...fromIds]
             copiedBackPage.push(nextFromId)
             setFromIds(copiedBackPage)

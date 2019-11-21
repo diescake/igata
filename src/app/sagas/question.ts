@@ -109,7 +109,7 @@ function* putWithQuestionsError(error: AxiosError, type: string) {
 
 function* fetchQuestions(action: any) {
   const query = qs.stringify({
-    limit: 10,
+    limit: 11,
     user_id: action.payload ? action.payload.userId : action.payload,
     from_id: action.payload ? action.payload.fromId : action.payload,
   })

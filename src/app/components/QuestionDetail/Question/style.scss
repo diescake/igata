@@ -1,26 +1,20 @@
-div {
-  display: block;
-}
-
-.main {
-  width: 80%;
-  margin: 30px auto auto;
-}
-
 .pageTitle {
   margin-bottom: 20px;
   overflow: hidden;
-  font-size: 1.5rem;
+  font-weight: bold;
+  font-size: 2.5rem;
   text-overflow: ellipsis;
+}
+
+.hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .contentArea {
   flex-grow: 1;
-}
-
-.body {
-  white-space: pre-wrap;
-  word-break: break-all;
 }
 
 .additional {
@@ -28,17 +22,8 @@ div {
   font-size: small;
 }
 
-.commentList {
-  margin-left: 10px;
-}
-
-.question,
-.answerList {
-  margin-bottom: 20px;
-}
-
-.answerListTitle {
-  font-size: var(--page-sub-title-font-size);
+.question {
+  margin-bottom: 2rem;
 }
 
 .infoArea {
@@ -54,4 +39,11 @@ div {
   width: 60px;
   margin: auto;
   margin-top: 100px;
+}
+
+.errorEmpty {
+  display: inline-block;
+  margin-left: 10px;
+  color: tomato;
+  font-size: 1.3rem;
 }

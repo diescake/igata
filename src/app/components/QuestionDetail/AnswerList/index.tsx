@@ -34,7 +34,7 @@ export const AnswerList: FC<Props> = (props: Props) => {
   return (
     <div className={style.answerList}>
       <div className={style.answerListTitle}>{words.question.answerNumber(props.answers.length)}</div>
-      <hr />
+      <hr className={style.hr} />
       <span>
         {props.answers.map((answer: Answer) => (
           <>

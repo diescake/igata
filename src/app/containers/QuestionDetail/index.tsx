@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useLayoutEffect } from 'react'
 import { RouteComponentProps } from 'react-router'
 import { connect } from 'react-redux'
 
@@ -81,7 +81,7 @@ const mapDispatchToProps: DispatchProps = {
 }
 
 const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     props.loadingQuestion()
     props.loadingAnswer()
     props.fetchQuestion(props.match.params.id)
@@ -89,13 +89,15 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
       questionId: props.match.params.id,
     })
   }, [])
-
   const handleLogin = () => {
     props.history.push(paths.login)
   }
   const handleLogout = () => {
     props.history.push(paths.login)
     props.logout()
+  }
+  if (!props.question.id) {
+    return null
   }
 
   return (

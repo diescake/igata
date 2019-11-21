@@ -1,5 +1,13 @@
-div {
-  display: block;
+.hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.answerListTitle {
+  font-weight: bold;
+  font-size: 1.8rem;
 }
 
 .main {
@@ -35,10 +43,6 @@ div {
 .question,
 .answerList {
   margin-bottom: 20px;
-}
-
-.answerListTitle {
-  font-size: var(--page-sub-title-font-size);
 }
 
 .infoArea {

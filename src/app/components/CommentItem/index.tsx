@@ -100,7 +100,7 @@ export const CommentItemBase: FC<Props> = (props: Props) => {
           </button>
         </>
       )}
-      <hr />
+      <hr className={style.hr} />
     </div>
   )
 }

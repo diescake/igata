@@ -17,17 +17,6 @@ export interface LoginResponse {
   readonly expires_at: string
 }
 
-// TODO
-interface Todo {
-  readonly id: string
-  readonly done: boolean
-  readonly text: string
-}
-
-export interface TodosResponse {
-  readonly todos: Todo[]
-}
-
 // Questionレスポンス
 export interface Comment {
   readonly body: string

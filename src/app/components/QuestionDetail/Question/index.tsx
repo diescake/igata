@@ -69,7 +69,7 @@ export const QuestionBase: FC<Props> = (props: Props) => {
           </>
         )}
         {!isUpdateQuestion && <div className={style.pageTitle}>{props.question.title}</div>}
-        <hr />
+        <hr className={style.hr} />
 
         <div className={style.mainArea}>
           <div className={style.infoArea}>
@@ -144,7 +144,7 @@ export const QuestionBase: FC<Props> = (props: Props) => {
               </>
             )}
 
-            <hr />
+            <hr className={style.hr} />
             {props.question.comments.map((comment: Comment) => (
               <CommentItem
                 key={comment.id}

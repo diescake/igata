@@ -12,7 +12,6 @@ import { paths } from '@/app/common/paths'
 
 interface StateProps {
   readonly id: string
-  readonly fetching: boolean
 }
 
 interface DispatchProps {
@@ -24,7 +23,6 @@ interface DispatchProps {
 type QuestionCreateProps = StateProps & DispatchProps & RouteComponentProps
 
 const mapStateToProps = (state: RootState): StateProps => ({
-  fetching: state.todoState.fetching,
   id: state.loginState.id,
 })
 
