@@ -73,7 +73,7 @@ const QuestionList: FC<QuestionListProps> = (props: QuestionListProps) => {
         <div className={style.pageTitle}>{words.top.title}</div>
 
         <Link to={`${paths.questionCreate}`}>{words.top.question}</Link>
-        <hr />
+        <hr className={style.hr} />
 
         <ListWrapper loading={props.fetching}>
           {props.questions.map((question: Question) => (

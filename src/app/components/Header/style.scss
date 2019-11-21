@@ -1,5 +1,5 @@
 .icon {
-  margin-right: 12px;
+  margin-right: 1.2rem;
   font-size: 2.2rem;
 }
 
@@ -15,16 +15,18 @@
 }
 
 .navbarBrand {
-  margin-right: 1rem;
+  margin: 1rem;
   padding-top: 0.3125rem;
+  padding-top: 0.5rem;
   padding-bottom: 0.3125rem;
+  padding-bottom: 0.5rem;
   line-height: inherit;
   white-space: nowrap;
 }
 
 .navbarText {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
