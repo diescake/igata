@@ -3,15 +3,21 @@ import { CreateActionTypes, CreateDispatcherTypes } from '@/app/common/typeHelpe
 
 // action types
 export const Type = {
+  // GET
   FETCH_ANSWERS: 'ANSWERS/FETCH_ANSWERS',
   FETCH_ANSWERS_SUCCESS: 'ANSWERS/FETCH_ANSWERS_SUCCESS',
   FETCH_ANSWERS_FAILURE: 'ANSWERS/FETCH_ANSWERS_FAILURE',
+  // POST
   POST_ANSWER: 'ANSWERS/POST_ANSWER',
   POST_ANSWER_SUCCESS: 'ANSWERS/POST_ANSWER_SUCCESS',
   POST_ANSWER_FAILURE: 'ANSWERS/POST_ANSWER_FAILURE',
+  // PUT
   PUT_ANSWER: 'ANSWERS/PUT_ANSWER',
   PUT_ANSWER_SUCCESS: 'ANSWERS/PUT_ANSWER_SUCCESS',
   PUT_ANSWER_FAILURE: 'ANSWERS/PUT_ANSWER_FAILURE',
+
+  // 読み込み中
+  LOADING_ANSWER: 'ANSWERS/LOADING_ANSWER',
 } as const
 
 // action creators
@@ -58,6 +64,10 @@ export const putAnswerSuccess = () => ({
 
 export const putAnswerFailure = () => ({
   type: Type.PUT_ANSWER_FAILURE,
+})
+
+export const loadingAnswer = () => ({
+  type: Type.LOADING_ANSWER,
 })
 
 export type AnswerAction = CreateActionTypes<Omit<typeof import('./answer'), 'Type'>>

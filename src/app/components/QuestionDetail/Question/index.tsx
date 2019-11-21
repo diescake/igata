@@ -2,8 +2,8 @@ import React, { FC, useState, ChangeEvent } from 'react'
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
 import { Loading } from '@/app/components/Loading'
 import { VoteItem } from '@/app/components/VoteItem'
-import style from '@/app/components/QuestionDetailItem/style.scss'
-import { Question, Comment } from '@/app/models/Question'
+import style from '@/app/components/QuestionDetail/Question/style.scss'
+import { Question as QuestionModels, Comment } from '@/app/models/Question'
 import words from '@/assets/strings'
 import { paths } from '@/app/common/paths'
 import { QuestionDispatcher } from '@/app/actions/question'
@@ -15,20 +15,20 @@ import { CommentDispatcher } from '@/app/actions/comment'
 type Props = {
   readonly userId: string
   readonly questionId: string
-  readonly question: Question
+  readonly question: QuestionModels
   readonly putQuestion: QuestionDispatcher['putQuestion']
   readonly postCommentQuestion: CommentDispatcher['postCommentQuestion']
   readonly putCommentQuestion: CommentDispatcher['putCommentQuestion']
   readonly postVote: VoteDispatcher['postVote']
+  readonly isLoading: boolean
 } & RouteComponentProps
 
-export const QuestionDetailItemBase: FC<Props> = (props: Props) => {
+export const QuestionBase: FC<Props> = (props: Props) => {
   const [title, setTitle] = useState<string>('')
   const [body, setBody] = useState<string>('')
   const [isUpdateQuestion, setIsUpdateQuestion] = useState<boolean>(false)
   const [isTitleErrorEmpty, setIsTitleErrorEmpty] = useState<boolean>(false)
   const [isBodyErrorEmpty, setIsBodyErrorEmpty] = useState<boolean>(false)
-
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)
   const handleBodyChange = (e: ChangeEvent<HTMLTextAreaElement>) => setBody(e.target.value)
 
@@ -43,7 +43,7 @@ export const QuestionDetailItemBase: FC<Props> = (props: Props) => {
     setIsTitleErrorEmpty(!title)
     setIsBodyErrorEmpty(!body)
   }
-  if (!props.question.id) {
+  if (props.isLoading) {
     // 読み込み演出
     return (
       <div className={style.loading}>
@@ -161,4 +161,4 @@ export const QuestionDetailItemBase: FC<Props> = (props: Props) => {
     </div>
   )
 }
-export const QuestionDetailItem = withRouter(QuestionDetailItemBase)
+export const Question = withRouter(QuestionBase)

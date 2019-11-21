@@ -24,7 +24,7 @@ const QuestionListItemBase: FC<Props> = (props: Props) => (
           <Link to={`${paths.user}${props.question.userId}`}>{props.question.userId}</Link>
         </>
       )}
-      <hr />
+      <hr className={style.hr} />
     </div>
   </div>
 )

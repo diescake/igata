@@ -4,33 +4,26 @@
 
 .icon {
   margin-right: 12px;
-  font-size: 4.2rem;
+  font-size: 2.2rem;
 }
 
-.navDefault {
+.navbarDefault {
   position: relative;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
   background-color: #fafafa;
   border-bottom: 1px solid #dadada;
-  -ms-flex-align: center;
-  -ms-flex-pack: justify;
 }
 
-.formInline {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  flex-flow: row wrap;
-  align-items: center;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  -ms-flex-align: center;
+.navbarBrand {
+  margin-right: 1rem;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  line-height: inherit;
+  white-space: nowrap;
 }
 
 .navbarText {
@@ -38,4 +31,45 @@
   margin: 0 10px;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.button {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  color: #0056b3;
+  font-size: 0;
+  line-height: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: #007bff;
+}
+
+.loginLink {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  background: #0252a8;
+  border: solid 2px #0252a8;
+  border-radius: 4px;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+
+  /* 色 */
+
+  /* 角の丸み */
+
+  /* 線色 */
+}
+
+.loginLink:active {
+  /* 押したとき */
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
 }

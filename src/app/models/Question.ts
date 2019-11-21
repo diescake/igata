@@ -25,4 +25,5 @@ export interface QuestionState {
   readonly questions: Question[]
   readonly question: Question
   readonly fetching: boolean
+  readonly loading: boolean
 }

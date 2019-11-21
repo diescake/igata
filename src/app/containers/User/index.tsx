@@ -81,14 +81,14 @@ const User: FC<UserProps> = (props: UserProps) => {
 
       <div className={style.main}>
         <div className={style.pageTitle}>{words.user.title}</div>
-        <hr />
+        <hr className={style.hr} />
         <ListWrapper loading={fetching}>
-          <div className={style.pageTitle}>{words.user.questionList}</div>
+          <div className={style.listTitle}>{words.user.questionList}</div>
           {props.questions.map((question: Question) => (
             <QuestionListItem key={question.id} question={question} isUserIdShow={false} />
           ))}
 
-          <div className={style.pageTitle}>{words.user.answerList}</div>
+          <div className={style.listTitle}>{words.user.answerList}</div>
           {props.answers.map((answer: Answer) => (
             <AnswerItem key={answer.id} answer={answer} isAnswerLink />
           ))}

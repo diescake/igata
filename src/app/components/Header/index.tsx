@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
 import { faSignInAlt, faUser, faCog } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import clsx from 'clsx'
 import words from '@/assets/strings'
 import style from '@/app/components/Header/style.scss'
 import { paths } from '@/app/common/paths'
@@ -15,8 +16,8 @@ type Props = {
 
 const HeaderBase: FC<Props> = (props: Props) => (
   <div>
-    <nav className={style.navDefault}>
-      <Link to={paths.root}>
+    <nav className={style.navbarDefault}>
+      <Link to={paths.root} className={clsx(style.navbarBrand)}>
         <FontAwesomeIcon icon={faCog} />
         {words.header.title}
       </Link>
@@ -39,13 +40,13 @@ const HeaderBase: FC<Props> = (props: Props) => (
 
             {props.userId && props.handleLogout && (
               <>
-                <Link to={`${paths.user}${props.userId}`} className={style.icon}>
-                  <FontAwesomeIcon icon={faUser} />
+                <Link to={`${paths.user}${props.userId}`} className={clsx(style.navbarText, style.button)}>
+                  <FontAwesomeIcon className={style.icon} icon={faUser} />
                 </Link>
 
                 <button
                   type="button"
-                  className={style.loginLink}
+                  className={clsx(style.navbarText, style.button)}
                   onClick={() => {
                     if (props.handleLogout) {
                       props.handleLogout()

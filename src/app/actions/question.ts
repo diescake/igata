@@ -19,6 +19,8 @@ export const Type = {
   PUT_QUESTION: 'QUESTIONS/PUT_QUESTION',
   PUT_QUESTION_SUCCESS: 'QUESTIONS/PUT_QUESTION_SUCCESS',
   PUT_QUESTION_FAILURE: 'QUESTIONS/PUT_QUESTION_FAILURE',
+  // 読み込み中
+  LOADING_QUESTION: 'QUESTIONS/LOADING_QUESTION',
 } as const
 
 // action creators
@@ -84,6 +86,10 @@ export const putQuestionSuccess = (question: Question) => ({
 export const putQuestionFailure = (errorText: string) => ({
   type: Type.PUT_QUESTION_FAILURE,
   payload: { errorText },
+})
+
+export const loadingQuestion = () => ({
+  type: Type.LOADING_QUESTION,
 })
 
 export type QuestionAction = CreateActionTypes<Omit<typeof import('./question'), 'Type'>>

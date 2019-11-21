@@ -15,6 +15,7 @@ const defaultState: QuestionState = {
     userId: '',
   },
   fetching: false,
+  loading: false,
 }
 
 export const questionReducer: Reducer<QuestionState, QuestionAction> = (
@@ -42,11 +43,13 @@ export const questionReducer: Reducer<QuestionState, QuestionAction> = (
           userId: '',
         },
         fetching: false,
+        loading: false,
       }
     case Type.FETCH_QUESTIONS_FAILURE:
       return {
         ...state,
         fetching: false,
+        loading: false,
       }
 
     // 単体
@@ -56,12 +59,13 @@ export const questionReducer: Reducer<QuestionState, QuestionAction> = (
         fetching: true,
       }
     case Type.FETCH_QUESTION_SUCCESS:
-      return { questions: [], question: action.payload.question, fetching: false }
+      return { questions: [], question: action.payload.question, fetching: false, loading: false }
 
     case Type.FETCH_QUESTION_FAILURE:
       return {
         ...state,
         fetching: false,
+        loading: false,
       }
 
     // Post
@@ -81,23 +85,28 @@ export const questionReducer: Reducer<QuestionState, QuestionAction> = (
           userId: '',
         },
         fetching: state.fetching,
+        loading: state.loading,
       }
     case Type.POST_QUESTION_FAILURE:
       return {
         ...state,
         fetching: state.fetching,
+        loading: state.loading,
       }
 
     // Put
     case Type.PUT_QUESTION:
       return state
     case Type.PUT_QUESTION_SUCCESS:
-      return { questions: [], question: action.payload.question, fetching: state.fetching }
+      return { questions: [], question: action.payload.question, fetching: state.fetching, loading: state.loading }
     case Type.PUT_QUESTION_FAILURE:
       return {
         ...state,
         fetching: state.fetching,
       }
+
+    case Type.LOADING_QUESTION:
+      return { ...state, loading: true }
     default:
       return state
   }

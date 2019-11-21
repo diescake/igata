@@ -114,7 +114,7 @@ export const AnswerItemBase: FC<Props> = (props: Props) => {
           </button>
         </>
       )}
-      <hr />
+      <hr className={style.hr} />
     </div>
   )
 }

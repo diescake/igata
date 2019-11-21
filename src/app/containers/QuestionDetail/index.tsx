@@ -3,16 +3,13 @@ import { RouteComponentProps } from 'react-router'
 import { connect } from 'react-redux'
 
 import { Header } from '@/app/components/Header'
-import { fetchQuestion, putQuestion, QuestionDispatcher } from '@/app/actions/question'
-import { fetchAnswers, postAnswer, putAnswer, AnswerDispatcher } from '@/app/actions/answer'
+import { fetchQuestion, putQuestion, loadingQuestion, QuestionDispatcher } from '@/app/actions/question'
+import { fetchAnswers, postAnswer, putAnswer, loadingAnswer, AnswerDispatcher } from '@/app/actions/answer'
 import { RootState } from '@/app/models'
 import words from '@/assets/strings'
 import style from '@/app/containers/QuestionDetail/style.scss'
-import { Question as QuestionModel, Comment } from '@/app/models/Question'
-import { CommentItem } from '@/app/components/CommentItem'
+import { Question as QuestionModel } from '@/app/models/Question'
 import { Answer } from '@/app/models/Answer'
-import { AnswerItem } from '@/app/components/AnswerItem'
-import { CommentPost } from '@/app/components/CommentPost'
 import { AnswerPost } from '@/app/components/AnswerPost'
 import {
   postCommentQuestion,
@@ -22,9 +19,10 @@ import {
   CommentDispatcher,
 } from '@/app/actions/comment'
 import { postVote, VoteDispatcher } from '@/app/actions/vote'
-import { QuestionDetailItem } from '@/app/components/QuestionDetailItem'
+import { Question } from '@/app/components/QuestionDetail/Question'
 import { login, logout, LoginDispatcher } from '@/app/actions/login'
 import { paths } from '@/app/common/paths'
+import { AnswerList } from '@/app/components/QuestionDetail/AnswerList'
 
 interface StateProps {
   readonly question: QuestionModel
@@ -32,12 +30,16 @@ interface StateProps {
   readonly id: string
   readonly fetchingQuestion: boolean
   readonly fetchingAnswer: boolean
+  readonly isLoadingQuestion: boolean
+  readonly isLoadingAnswer: boolean
 }
 
 interface DispatchProps {
   readonly fetchQuestion: QuestionDispatcher['fetchQuestion']
+  readonly loadingQuestion: QuestionDispatcher['loadingQuestion']
   readonly putQuestion: QuestionDispatcher['putQuestion']
   readonly fetchAnswers: AnswerDispatcher['fetchAnswers']
+  readonly loadingAnswer: AnswerDispatcher['loadingAnswer']
   readonly postCommentQuestion: CommentDispatcher['postCommentQuestion']
   readonly putCommentQuestion: CommentDispatcher['putCommentQuestion']
   readonly postCommentAnswer: CommentDispatcher['postCommentAnswer']
@@ -55,14 +57,18 @@ const mapStateToProps = (state: RootState): StateProps => ({
   question: state.questionState.question,
   answers: state.answerState.answers,
   fetchingQuestion: state.questionState.fetching,
+  isLoadingQuestion: state.questionState.loading,
   fetchingAnswer: state.answerState.fetching,
+  isLoadingAnswer: state.answerState.loading,
   id: state.loginState.id,
 })
 
 const mapDispatchToProps: DispatchProps = {
   fetchQuestion,
+  loadingQuestion,
   putQuestion,
   fetchAnswers,
+  loadingAnswer,
   postCommentQuestion,
   putCommentQuestion,
   postCommentAnswer,
@@ -76,6 +82,8 @@ const mapDispatchToProps: DispatchProps = {
 
 const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
   useEffect(() => {
+    props.loadingQuestion()
+    props.loadingAnswer()
     props.fetchQuestion(props.match.params.id)
     props.fetchAnswers({
       questionId: props.match.params.id,
@@ -89,13 +97,12 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
     props.history.push(paths.login)
     props.logout()
   }
-  const answerNumber = props.answers.length
 
   return (
     <div>
       <Header title={words.todoApp.title} userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />
       <div className={style.main}>
-        <QuestionDetailItem
+        <Question
           userId={props.id}
           questionId={props.match.params.id}
           question={props.question}
@@ -103,42 +110,18 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
           postCommentQuestion={props.postCommentQuestion}
           putCommentQuestion={props.putCommentQuestion}
           postVote={props.postVote}
+          isLoading={props.isLoadingQuestion}
         />
-
-        <div className={style.answerList}>
-          <div className={style.answerListTitle}>{words.question.answerNumber(answerNumber)}</div>
-          <hr />
-          <span>
-            {props.answers.map((answer: Answer) => (
-              <>
-                <AnswerItem
-                  key={answer.id}
-                  answer={answer}
-                  isUserIdShow
-                  questionId={props.match.params.id}
-                  putAnswer={props.putAnswer}
-                />
-                {answer.comments.map((comment: Comment) => (
-                  <CommentItem
-                    key={comment.id}
-                    comment={comment}
-                    userId={props.id}
-                    putCommentAnswer={props.putCommentAnswer}
-                    questionId={props.match.params.id}
-                    answerId={answer.id}
-                  />
-                ))}
-                <CommentPost
-                  key={answer.id}
-                  userId={props.id}
-                  postCommentAnswer={props.postCommentAnswer}
-                  questionId={props.match.params.id}
-                  answerId={answer.id}
-                />
-              </>
-            ))}
-          </span>
-        </div>
+        <AnswerList
+          userId={props.id}
+          questionId={props.match.params.id}
+          answers={props.answers}
+          postCommentAnswer={props.postCommentAnswer}
+          putCommentAnswer={props.putCommentAnswer}
+          postAnswer={props.postAnswer}
+          putAnswer={props.putAnswer}
+          isLoading={props.isLoadingAnswer}
+        />
         <AnswerPost userId={props.id} questionId={props.match.params.id} postAnswer={props.postAnswer} />
       </div>
     </div>
