@@ -14,8 +14,8 @@ const defaultState: QuestionState = {
     title: '',
     userId: '',
   },
-  fetching: false,
-  loading: false,
+  isFetching: false,
+  isLoading: false,
 }
 
 export const questionReducer: Reducer<QuestionState, QuestionAction> = (
@@ -27,7 +27,7 @@ export const questionReducer: Reducer<QuestionState, QuestionAction> = (
     case Type.FETCH_QUESTIONS:
       return {
         ...state,
-        fetching: true,
+        isFetching: true,
       }
     case Type.FETCH_QUESTIONS_SUCCESS:
       return {
@@ -42,30 +42,31 @@ export const questionReducer: Reducer<QuestionState, QuestionAction> = (
           title: '',
           userId: '',
         },
-        fetching: false,
-        loading: false,
+        isFetching: false,
+        isLoading: false,
       }
     case Type.FETCH_QUESTIONS_FAILURE:
       return {
         ...state,
-        fetching: false,
-        loading: false,
+        isFetching: false,
+        isLoading: false,
       }
 
     // 単体
     case Type.FETCH_QUESTION:
       return {
         ...state,
-        fetching: true,
+        isFetching: true,
+        isLoading: action.payload.isLoading ? action.payload.isLoading : false,
       }
     case Type.FETCH_QUESTION_SUCCESS:
-      return { questions: [], question: action.payload.question, fetching: false, loading: false }
+      return { questions: [], question: action.payload.question, isFetching: false, isLoading: false }
 
     case Type.FETCH_QUESTION_FAILURE:
       return {
         ...state,
-        fetching: false,
-        loading: false,
+        isFetching: false,
+        isLoading: false,
       }
 
     // Post
@@ -84,29 +85,27 @@ export const questionReducer: Reducer<QuestionState, QuestionAction> = (
           title: '',
           userId: '',
         },
-        fetching: state.fetching,
-        loading: state.loading,
+        isFetching: state.isFetching,
+        isLoading: state.isLoading,
       }
     case Type.POST_QUESTION_FAILURE:
       return {
         ...state,
-        fetching: state.fetching,
-        loading: state.loading,
+        isFetching: state.isFetching,
+        isLoading: state.isLoading,
       }
 
     // Put
     case Type.PUT_QUESTION:
       return state
     case Type.PUT_QUESTION_SUCCESS:
-      return { questions: [], question: action.payload.question, fetching: state.fetching, loading: state.loading }
+      return { questions: [], question: action.payload.question, isFetching: state.isFetching, isLoading: state.isLoading }
     case Type.PUT_QUESTION_FAILURE:
       return {
         ...state,
-        fetching: state.fetching,
+        isFetching: state.isFetching,
       }
 
-    case Type.LOADING_QUESTION:
-      return { ...state, loading: true }
     default:
       return state
   }

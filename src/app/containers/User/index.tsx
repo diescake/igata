@@ -1,8 +1,8 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useLayoutEffect } from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps, withRouter } from 'react-router'
 
-import { fetchQuestions, loadingQuestion, QuestionDispatcher } from '@/app/actions/question'
+import { fetchQuestions, QuestionDispatcher } from '@/app/actions/question'
 import { fetchAnswers, loadingAnswer, AnswerDispatcher } from '@/app/actions/answer'
 
 import { Header } from '@/app/components/Header'
@@ -33,7 +33,6 @@ interface StateProps {
 interface DispatchProps {
   readonly fetchQuestions: QuestionDispatcher['fetchQuestions']
   readonly fetchAnswers: AnswerDispatcher['fetchAnswers']
-  readonly loadingQuestion: QuestionDispatcher['loadingQuestion']
   readonly loadingAnswer: AnswerDispatcher['loadingAnswer']
   readonly login: LoginDispatcher['login']
   readonly logout: LoginDispatcher['logout']
@@ -44,7 +43,7 @@ type UserProps = StateProps & DispatchProps & RouteComponentProps<{ userId: stri
 const mapStateToProps = (state: RootState): StateProps => ({
   questions: state.questionState.questions,
   answers: state.answerState.answers,
-  fetchingQuestion: state.questionState.fetching,
+  fetchingQuestion: state.questionState.isFetching,
   fetchingAnswer: state.answerState.fetching,
   id: state.loginState.id,
   token: state.loginState.session.key,
@@ -53,7 +52,6 @@ const mapStateToProps = (state: RootState): StateProps => ({
 const mapDispatchToProps = {
   fetchQuestions,
   fetchAnswers,
-  loadingQuestion,
   loadingAnswer,
   login,
   logout,
@@ -61,7 +59,7 @@ const mapDispatchToProps = {
 
 // ユーザー詳細画面
 const User: FC<UserProps> = (props: UserProps) => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     props.fetchQuestions({
       userId: props.match.params.userId,
     })
@@ -69,6 +67,7 @@ const User: FC<UserProps> = (props: UserProps) => {
       userId: props.match.params.userId,
     })
   }, [])
+
   const handleLogin = () => {
     props.history.push(paths.login)
   }
@@ -88,13 +87,7 @@ const User: FC<UserProps> = (props: UserProps) => {
         <ListWrapper loading={fetching}>
           <div className={style.listTitle}>{words.user.questionList}</div>
           {props.questions.map((question: Question) => (
-            <QuestionListItem
-              key={question.id}
-              question={question}
-              isUserIdShow={false}
-              loadingQuestion={props.loadingQuestion}
-              loadingAnswer={props.loadingAnswer}
-            />
+            <QuestionListItem key={question.id} question={question} isUserIdShow={false} />
           ))}
 
           <div className={style.listTitle}>{words.user.answerList}</div>

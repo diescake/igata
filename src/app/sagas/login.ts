@@ -7,11 +7,11 @@ import { LoginResponse as HttpResLogin } from '@/app/models/HttpResponse'
 import { httpGet, HttpResponse } from '@/app/common/http'
 import { paths } from '@/app/common/paths'
 
+// TODO: URLは仮
 // const LOGIN_JSON_URL = 'https://raw.githubusercontent.com/diescake/igata/master/data/login.json'
 const LOGIN_JSON_URL = 'https://api.myjson.com/bins/ne4gm'
 const LOGOUT_JSON_URL = 'https://api.myjson.com/bins/ne4gm'
 
-//
 const isLoginResponse = (props: any): props is HttpResLogin => {
   try {
     const { id, email, created_at, session } = props

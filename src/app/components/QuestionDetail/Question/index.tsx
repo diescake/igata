@@ -1,6 +1,5 @@
 import React, { FC, useState, ChangeEvent } from 'react'
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
-import { Loading } from '@/app/components/Loading'
 import { VoteItem } from '@/app/components/VoteItem'
 import style from '@/app/components/QuestionDetail/Question/style.scss'
 import { Question as QuestionModels, Comment } from '@/app/models/Question'
@@ -20,7 +19,6 @@ type Props = {
   readonly postCommentQuestion: CommentDispatcher['postCommentQuestion']
   readonly putCommentQuestion: CommentDispatcher['putCommentQuestion']
   readonly postVote: VoteDispatcher['postVote']
-  readonly isLoading: boolean
 } & RouteComponentProps
 
 export const QuestionBase: FC<Props> = (props: Props) => {
@@ -42,14 +40,6 @@ export const QuestionBase: FC<Props> = (props: Props) => {
     }
     setIsTitleErrorEmpty(!title)
     setIsBodyErrorEmpty(!body)
-  }
-  if (props.isLoading) {
-    // 読み込み演出
-    return (
-      <div className={style.loading}>
-        <Loading visible={false} />
-      </div>
-    )
   }
   return (
     <div>

@@ -4,6 +4,8 @@ import qs from 'qs'
 
 import { push } from 'connected-react-router'
 import { paths } from '@/app/common/paths'
+import { constants } from '@/app/common/constants'
+
 import {
   fetchQuestionsFailure,
   fetchQuestionsSuccess,
@@ -109,7 +111,7 @@ function* putWithQuestionsError(error: AxiosError, type: string) {
 
 function* fetchQuestions(action: any) {
   const query = qs.stringify({
-    limit: 11,
+    limit: constants.QUESTION_LIMIT,
     user_id: action.payload ? action.payload.userId : action.payload,
     from_id: action.payload ? action.payload.fromId : action.payload,
   })
@@ -190,7 +192,7 @@ function* putWithQuestionError(error: AxiosError, type: string) {
 }
 
 function* fetchQuestion(action: any) {
-  const [questionId] = action.payload
+  const { questionId } = action.payload
 
   // TODO: ログは削除する
   console.log(`fetchQuestion questionId = ${questionId}`)
