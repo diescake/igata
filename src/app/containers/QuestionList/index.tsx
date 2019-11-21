@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { RouteComponentProps, withRouter } from 'react-router'
 
 import { Link } from 'react-router-dom'
-import { fetchQuestions, QuestionDispatcher } from '@/app/actions/question'
+import { fetchQuestions, loadingQuestion, QuestionDispatcher } from '@/app/actions/question'
 import { Header } from '@/app/components/Header'
 import { ListWrapper } from '@/app/components/ListWrapper'
 import { Footer } from '@/app/components/Footer'
@@ -17,6 +17,7 @@ import { QuestionPager } from '@/app/components/QuestionPager'
 
 import { paths } from '@/app/common/paths'
 import { login, logout, LoginDispatcher } from '@/app/actions/login'
+import { loadingAnswer, AnswerDispatcher } from '@/app/actions/answer'
 
 interface StateProps {
   readonly questions: Question[]
@@ -29,6 +30,8 @@ interface DispatchProps {
   readonly fetchQuestions: QuestionDispatcher['fetchQuestions']
   readonly login: LoginDispatcher['login']
   readonly logout: LoginDispatcher['logout']
+  readonly loadingQuestion: QuestionDispatcher['loadingQuestion']
+  readonly loadingAnswer: AnswerDispatcher['loadingAnswer']
 }
 
 type QuestionListProps = StateProps & DispatchProps & RouteComponentProps
@@ -42,6 +45,8 @@ const mapStateToProps = (state: RootState): StateProps => ({
 
 const mapDispatchToProps = {
   fetchQuestions,
+  loadingQuestion,
+  loadingAnswer,
   login,
   logout,
 }
@@ -72,7 +77,13 @@ const QuestionList: FC<QuestionListProps> = (props: QuestionListProps) => {
 
         <ListWrapper loading={props.fetching}>
           {props.questions.map((question: Question) => (
-            <QuestionListItem key={question.id} question={question} isUserIdShow />
+            <QuestionListItem
+              key={question.id}
+              question={question}
+              isUserIdShow
+              loadingQuestion={props.loadingQuestion}
+              loadingAnswer={props.loadingAnswer}
+            />
           ))}
         </ListWrapper>
       </div>
