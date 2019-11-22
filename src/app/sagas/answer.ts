@@ -68,9 +68,10 @@ function* putFetchAnswersWithError(error: AxiosError) {
 }
 // GET
 function* fetchAnswers(action: any) {
+  const { obj } = action.payload
   const query = qs.stringify({
-    question_id: action.payload ? action.payload.questionId : action.payload,
-    user_id: action.payload ? action.payload.userId : action.payload,
+    question_id: obj ? obj.questionId : obj,
+    user_id: obj ? obj.userId : obj,
   })
 
   const { res, error }: HttpResponse<unknown> = yield call(httpGet, `${ANSWER_JSON_URL}${query ? paths.query : ''}${query}`)

@@ -1,23 +1,19 @@
 import React, { FC, useLayoutEffect } from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps, withRouter } from 'react-router'
-
 import { Link } from 'react-router-dom'
 import { fetchQuestions, QuestionDispatcher } from '@/app/actions/question'
 import { Header } from '@/app/components/Header'
 import { ListWrapper } from '@/app/components/ListWrapper'
 import { Footer } from '@/app/components/Footer'
-
 import { RootState } from '@/app/models'
 import { Question } from '@/app/models/Question'
 import words from '@/assets/strings'
 import style from '@/app/containers/QuestionList/style.scss'
 import { QuestionListItem } from '@/app/components/QuestionListItem'
 import { QuestionPager } from '@/app/components/QuestionPager'
-
 import { paths } from '@/app/common/paths'
 import { login, logout, LoginDispatcher } from '@/app/actions/login'
-import { loadingAnswer, AnswerDispatcher } from '@/app/actions/answer'
 
 interface StateProps {
   readonly questions: Question[]
@@ -30,7 +26,6 @@ interface DispatchProps {
   readonly fetchQuestions: QuestionDispatcher['fetchQuestions']
   readonly login: LoginDispatcher['login']
   readonly logout: LoginDispatcher['logout']
-  readonly loadingAnswer: AnswerDispatcher['loadingAnswer']
 }
 
 type QuestionListProps = StateProps & DispatchProps & RouteComponentProps
@@ -44,7 +39,6 @@ const mapStateToProps = (state: RootState): StateProps => ({
 
 const mapDispatchToProps = {
   fetchQuestions,
-  loadingAnswer,
   login,
   logout,
 }

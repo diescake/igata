@@ -4,8 +4,8 @@ import { AnswerState } from '@/app/models/Answer'
 
 const defaultState: AnswerState = {
   answers: [],
-  fetching: false,
-  loading: false,
+  isFetching: false,
+  isLoading: false,
 }
 
 export const answerReducer: Reducer<AnswerState, AnswerAction> = (
@@ -16,17 +16,18 @@ export const answerReducer: Reducer<AnswerState, AnswerAction> = (
     case Type.FETCH_ANSWERS:
       return {
         ...state,
-        fetching: true,
+        isFetching: true,
+        isLoading: action.payload.isLoading ? action.payload.isLoading : false,
       }
 
     case Type.FETCH_ANSWERS_SUCCESS:
-      return { answers: action.payload.answers, fetching: false, loading: false }
+      return { answers: action.payload.answers, isFetching: false, isLoading: false }
 
     case Type.FETCH_ANSWERS_FAILURE:
       return {
         ...state,
-        fetching: false,
-        loading: false,
+        isFetching: false,
+        isLoading: false,
       }
 
     case Type.POST_ANSWER:
@@ -46,9 +47,6 @@ export const answerReducer: Reducer<AnswerState, AnswerAction> = (
 
     case Type.PUT_ANSWER_FAILURE:
       return state
-
-    case Type.LOADING_ANSWER:
-      return { ...state, loading: true }
     default:
       return state
   }

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Loading } from '@/app/components/Loading'
 import { Header } from '@/app/components/Header'
 import { fetchQuestion, putQuestion, QuestionDispatcher } from '@/app/actions/question'
-import { fetchAnswers, postAnswer, putAnswer, loadingAnswer, AnswerDispatcher } from '@/app/actions/answer'
+import { fetchAnswers, postAnswer, putAnswer, AnswerDispatcher } from '@/app/actions/answer'
 import { RootState } from '@/app/models'
 import words from '@/assets/strings'
 import style from '@/app/containers/QuestionDetail/style.scss'
@@ -28,8 +28,6 @@ interface StateProps {
   readonly question: QuestionModel
   readonly answers: Answer[]
   readonly id: string
-  readonly fetchingQuestion: boolean
-  readonly fetchingAnswer: boolean
   readonly isLoadingQuestion: boolean
   readonly isLoadingAnswer: boolean
 }
@@ -38,7 +36,6 @@ interface DispatchProps {
   readonly fetchQuestion: QuestionDispatcher['fetchQuestion']
   readonly putQuestion: QuestionDispatcher['putQuestion']
   readonly fetchAnswers: AnswerDispatcher['fetchAnswers']
-  readonly loadingAnswer: AnswerDispatcher['loadingAnswer']
   readonly postCommentQuestion: CommentDispatcher['postCommentQuestion']
   readonly putCommentQuestion: CommentDispatcher['putCommentQuestion']
   readonly postCommentAnswer: CommentDispatcher['postCommentAnswer']
@@ -55,10 +52,8 @@ type QuestionProps = StateProps & DispatchProps & RouteComponentProps<{ id: stri
 const mapStateToProps = (state: RootState): StateProps => ({
   question: state.questionState.question,
   answers: state.answerState.answers,
-  fetchingQuestion: state.questionState.isFetching,
-  isLoadingQuestion: state.questionState.isFetching,
-  fetchingAnswer: state.answerState.fetching,
-  isLoadingAnswer: state.answerState.loading,
+  isLoadingQuestion: state.questionState.isLoading,
+  isLoadingAnswer: state.answerState.isLoading,
   id: state.loginState.id,
 })
 
@@ -66,7 +61,6 @@ const mapDispatchToProps: DispatchProps = {
   fetchQuestion,
   putQuestion,
   fetchAnswers,
-  loadingAnswer,
   postCommentQuestion,
   putCommentQuestion,
   postCommentAnswer,
@@ -80,11 +74,13 @@ const mapDispatchToProps: DispatchProps = {
 
 const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
   useLayoutEffect(() => {
-    props.loadingAnswer()
     props.fetchQuestion(props.match.params.id, true)
-    props.fetchAnswers({
-      questionId: props.match.params.id,
-    })
+    props.fetchAnswers(
+      {
+        questionId: props.match.params.id,
+      },
+      true
+    )
   }, [])
 
   const handleLogin = () => {
@@ -94,7 +90,7 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
     props.history.push(paths.login)
     props.logout()
   }
-  const isLoading = props.isLoadingQuestion
+  const isLoading = props.isLoadingQuestion || props.isLoadingAnswer
 
   return (
     <div>

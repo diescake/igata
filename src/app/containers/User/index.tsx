@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { RouteComponentProps, withRouter } from 'react-router'
 
 import { fetchQuestions, QuestionDispatcher } from '@/app/actions/question'
-import { fetchAnswers, loadingAnswer, AnswerDispatcher } from '@/app/actions/answer'
+import { fetchAnswers, AnswerDispatcher } from '@/app/actions/answer'
 
 import { Header } from '@/app/components/Header'
 import { ListWrapper } from '@/app/components/ListWrapper'
@@ -25,15 +25,14 @@ interface StateProps {
   readonly answers: Answer[]
 
   readonly id: string
-  readonly fetchingQuestion: boolean
-  readonly fetchingAnswer: boolean
+  readonly isFetchingQuestion: boolean
+  readonly isFetchingAnswer: boolean
   readonly token: string
 }
 
 interface DispatchProps {
   readonly fetchQuestions: QuestionDispatcher['fetchQuestions']
   readonly fetchAnswers: AnswerDispatcher['fetchAnswers']
-  readonly loadingAnswer: AnswerDispatcher['loadingAnswer']
   readonly login: LoginDispatcher['login']
   readonly logout: LoginDispatcher['logout']
 }
@@ -43,8 +42,8 @@ type UserProps = StateProps & DispatchProps & RouteComponentProps<{ userId: stri
 const mapStateToProps = (state: RootState): StateProps => ({
   questions: state.questionState.questions,
   answers: state.answerState.answers,
-  fetchingQuestion: state.questionState.isFetching,
-  fetchingAnswer: state.answerState.fetching,
+  isFetchingQuestion: state.questionState.isFetching,
+  isFetchingAnswer: state.answerState.isFetching,
   id: state.loginState.id,
   token: state.loginState.session.key,
 })
@@ -52,7 +51,6 @@ const mapStateToProps = (state: RootState): StateProps => ({
 const mapDispatchToProps = {
   fetchQuestions,
   fetchAnswers,
-  loadingAnswer,
   login,
   logout,
 }
@@ -76,7 +74,8 @@ const User: FC<UserProps> = (props: UserProps) => {
     props.logout()
   }
 
-  const fetching = props.fetchingAnswer && props.fetchingAnswer
+  const fetching = props.isFetchingQuestion || props.isFetchingAnswer
+
   return (
     <div>
       <Header title={words.todoApp.title} userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />

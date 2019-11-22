@@ -15,17 +15,14 @@ export const Type = {
   PUT_ANSWER: 'ANSWERS/PUT_ANSWER',
   PUT_ANSWER_SUCCESS: 'ANSWERS/PUT_ANSWER_SUCCESS',
   PUT_ANSWER_FAILURE: 'ANSWERS/PUT_ANSWER_FAILURE',
-
-  // 読み込み中
-  LOADING_ANSWER: 'ANSWERS/LOADING_ANSWER',
 } as const
 
 // action creators
 
 // GET
-export const fetchAnswers = (obj: Query) => ({
+export const fetchAnswers = (obj: Query, isLoading?: boolean) => ({
   type: Type.FETCH_ANSWERS,
-  payload: obj,
+  payload: { obj, isLoading },
 })
 
 export const fetchAnswersSuccess = (answers: Answer[]) => ({
@@ -64,10 +61,6 @@ export const putAnswerSuccess = () => ({
 
 export const putAnswerFailure = () => ({
   type: Type.PUT_ANSWER_FAILURE,
-})
-
-export const loadingAnswer = () => ({
-  type: Type.LOADING_ANSWER,
 })
 
 export type AnswerAction = CreateActionTypes<Omit<typeof import('./answer'), 'Type'>>
