@@ -10,7 +10,7 @@ import { RootState } from '@/app/models'
 import { paths } from '@/app/common/paths'
 
 interface StateProps {
-  readonly key: string
+  readonly token: string
 }
 
 interface DispatchProps {
@@ -20,7 +20,7 @@ interface DispatchProps {
 type LoginProps = StateProps & DispatchProps & RouteComponentProps
 
 const mapStateToProps = (state: RootState): StateProps => ({
-  key: state.loginState.session.key,
+  token: state.loginState.session.token,
 })
 
 const mapDispatchToProps: DispatchProps = {
@@ -29,10 +29,10 @@ const mapDispatchToProps: DispatchProps = {
 
 const Login: FC<LoginProps> = (props: LoginProps) => {
   useEffect(() => {
-    if (props.key) {
-      props.history.push(paths.root)
+    if (props.token) {
+      props.history.replace(paths.root)
     }
-  }, [props.key])
+  }, [props.token])
 
   return (
     <div>

@@ -27,7 +27,7 @@ const mapResponseToState = (res: HttpResLogin): LoginState => ({
   email: res.email,
   createdAt: res.created_at,
   session: {
-    key: res.session.key,
+    token: res.session.token,
     expiresAt: res.session.expires_at,
     passwordSetAt: res.session.password_set_at,
     passwordExpiresAt: res.session.password_expires_at,

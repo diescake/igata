@@ -35,7 +35,7 @@ const mapStateToProps = (state: RootState): StateProps => ({
   questions: state.questionState.questions,
   isFetching: state.questionState.isFetching,
   id: state.loginState.id,
-  token: state.loginState.session.key,
+  token: state.loginState.session.token,
 })
 
 const mapDispatchToProps = {
@@ -45,9 +45,6 @@ const mapDispatchToProps = {
 }
 const QuestionList: FC<QuestionListProps> = (props: QuestionListProps) => {
   useLayoutEffect(() => {
-    if (props.token) {
-      props.history.push(paths.root)
-    }
     props.fetchQuestions()
   }, [props.token])
 

@@ -1,5 +1,5 @@
 export interface Session {
-  readonly key: string
+  readonly token: string
   readonly expiresAt: string
   readonly passwordSetAt: string
   readonly passwordExpiresAt: string

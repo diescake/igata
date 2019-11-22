@@ -7,7 +7,7 @@ const defaultState: LoginState = {
   email: localStorage.getItem('email') || '',
   createdAt: '',
   session: {
-    key: localStorage.getItem('key') || '',
+    token: localStorage.getItem('token') || '',
     expiresAt: localStorage.getItem('expiresAt') || '',
     passwordSetAt: '',
     passwordExpiresAt: '',
@@ -23,7 +23,7 @@ export const loginReducer: Reducer<LoginState, LoginAction> = (state: LoginState
       const { id, email, createdAt, session } = action.payload
       localStorage.setItem('id', id)
       localStorage.setItem('email', email)
-      localStorage.setItem('key', session.key)
+      localStorage.setItem('token', session.token)
       localStorage.setItem('expiresAt', session.expiresAt)
       return {
         ...state,
@@ -43,7 +43,7 @@ export const loginReducer: Reducer<LoginState, LoginAction> = (state: LoginState
     case Type.LOGOUT_SUCCESS:
       localStorage.removeItem('id')
       localStorage.removeItem('email')
-      localStorage.removeItem('key')
+      localStorage.removeItem('token')
       localStorage.removeItem('expiresAt')
 
       return {
@@ -51,7 +51,7 @@ export const loginReducer: Reducer<LoginState, LoginAction> = (state: LoginState
         id: '',
         email: '',
         createdAt: '',
-        session: { key: '', expiresAt: '', passwordSetAt: '', passwordExpiresAt: '' },
+        session: { token: '', expiresAt: '', passwordSetAt: '', passwordExpiresAt: '' },
       }
 
     case Type.LOGOUT_FAILURE:

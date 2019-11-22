@@ -47,7 +47,7 @@ const mapStateToProps = (state: RootState): StateProps => ({
   isFetchingQuestion: state.questionState.isFetching,
   isFetchingAnswer: state.answerState.isFetching,
   id: state.loginState.id,
-  token: state.loginState.session.key,
+  token: state.loginState.session.token,
 })
 
 const mapDispatchToProps = {
