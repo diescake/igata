@@ -1,14 +1,12 @@
 // ログイン
 export interface Session {
-  readonly token: string
+  readonly key: string
   readonly expires_at: string
   readonly password_set_at: string
   readonly password_expires_at: string
 }
 
 export interface LoginResponse {
-  readonly token: string
-  readonly user_id: string
   readonly id: string
   readonly email: string
   readonly created_at: string
