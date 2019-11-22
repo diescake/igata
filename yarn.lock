@@ -2262,10 +2262,10 @@
   resolved "https://registry.yarnpkg.com/@types/storybook__addon-actions/-/storybook__addon-actions-3.4.3.tgz#bb0c3fd066e1f495d3f2b724487e2b99194b3f1a"
   integrity sha512-RSFFfruUHL7La4CZpuiKZ0mZvr5orjenFA2jc31tfPwvA3fYNH4/9XSfA2MB08IpJbF3aErtYWT5Dtigkxnltg==
 
-"@types/storybook__addon-info@^5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@types/storybook__addon-info/-/storybook__addon-info-5.2.0.tgz#f832c54d2ba174c75a48ea6dccd54f8898273f5c"
-  integrity sha512-VlHZIMzm+NPr81UHK1h6l3FSqqc/Po0Pm9wKpSMo/rJ8JcZbP8tf4ahQItlyGwBuyG1LwfRNAJx7AIRqjQX/ew==
+"@types/storybook__addon-info@^5.2.1":
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/@types/storybook__addon-info/-/storybook__addon-info-5.2.1.tgz#be6fb8c670ec6afc1fa36f313fb7978040e10618"
+  integrity sha512-sUP6gXXNu7VPYhacysIptr6bLTJyJfZWdvFyd80cPNfDoAzFzGM0oMn4ENfTeZcezikO+1Lu7gJKLgheS5H2og==
   dependencies:
     "@storybook/addons" "^5.2.0"
     "@storybook/react" "^5.2.0"
