@@ -1,7 +1,9 @@
 import React, { FC, useState } from 'react'
+import clsx from 'clsx'
 import style from '@/app/components/QuestionPager/style.scss'
 import { Question } from '@/app/models/Question'
 import { QuestionDispatcher } from '@/app/actions/question'
+import { constants } from '@/app/common/constants'
 
 export interface Props {
   readonly questions: Question[]
@@ -16,7 +18,7 @@ export const QuestionPager: FC<Props> = (props: Props) => {
       {fromIds.length > 0 && (
         <button
           type="button"
-          className={style.inline}
+          className={clsx(style.inline, style.button, style.rightPos)}
           onClick={() => {
             const copiedBackPage = [...fromIds]
             const backFromId = copiedBackPage.pop()
@@ -32,10 +34,10 @@ export const QuestionPager: FC<Props> = (props: Props) => {
       <div className={style.inline}>{fromIds.length + 1}</div>
 
       {/* 11件以上ある場合だけ次のページに遷移できる */}
-      {props.questions.length >= 11 && (
+      {props.questions.length >= constants.QUESTION_LIMIT && (
         <button
           type="button"
-          className={style.inline}
+          className={clsx(style.inline, style.button, style.leftPos)}
           onClick={() => {
             // 10件目の値を使用する
             const nextFromId = props.questions[props.questions.length - 2].id

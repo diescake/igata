@@ -37,27 +37,6 @@ export default {
     passwordErrorEmpty: '入力必須項目です',
     passwordErrorInvalid: '無効なパスワードです',
   },
-  todoApp: {
-    title: 'TODO アプリ',
-    name: 'TOP',
-    newTodo: 'TODO を追加',
-    addTodo: '追加',
-    placeholder: 'TODO を入力してください',
-    fetchTodos: 'TODO を取得',
-    logout: 'ログアウト',
-    loginMessage: (userId: string) => `ログインユーザ: ${userId}`,
-    dateMessage: '時刻',
-  },
-  footer: {
-    twitter: {
-      label: 'Twitter',
-      url: 'https://twitter.com/diescake',
-    },
-    github: {
-      label: 'GitHub',
-      url: 'https://github.com/diescake/igata',
-    },
-  },
   questionCreate: {
     title: 'タイトル',
     body: '本文',
@@ -70,5 +49,7 @@ export default {
     answerNumber: (number: number) => `${number}件の回答`,
     loginToComment: 'コメントするにはログインしてください。',
     loginToAnswer: '回答するにはログインしてください。',
+    commentAdd: 'コメントを追加',
+    post: '投稿',
   },
 } as const

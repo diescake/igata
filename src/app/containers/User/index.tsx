@@ -78,7 +78,7 @@ const User: FC<UserProps> = (props: UserProps) => {
 
   return (
     <div>
-      <Header title={words.todoApp.title} userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />
+      <Header userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />
 
       <div className={style.main}>
         <div className={style.pageTitle}>{words.user.title}</div>

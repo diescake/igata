@@ -1,5 +1,6 @@
 import React, { FC, useState, ChangeEvent } from 'react'
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
+import clsx from 'clsx'
 import style from '@/app/components/CommentItem/style.scss'
 import { Comment } from '@/app/models/Question'
 import words from '@/assets/strings'
@@ -36,13 +37,13 @@ export const CommentItemBase: FC<Props> = (props: Props) => {
   }
 
   return (
-    <div>
+    <div className={style.main}>
       {/* コメントの表示 */}
       {!isUpdateComment && (
         <>
           <div>
-            <div className={style.body}>{props.comment.body}</div>
-            <div className={style.additional}>
+            <span className={style.body}>{`${props.comment.body} `}</span>
+            <span className={style.additional}>
               {words.common.additional(props.comment.createdAt)}
               {words.common.by}
               <Link to={`${paths.user}${props.comment.userId}`}>{props.comment.userId}</Link>
@@ -51,6 +52,7 @@ export const CommentItemBase: FC<Props> = (props: Props) => {
                   <span>
                     <button
                       type="button"
+                      className={style.buttonUpdate}
                       onClick={e => {
                         setBody(props.comment.body)
                         setIsUpdateComment(true)
@@ -62,7 +64,7 @@ export const CommentItemBase: FC<Props> = (props: Props) => {
                   </span>
                 </>
               )}
-            </div>
+            </span>
           </div>
         </>
       )}
@@ -76,28 +78,28 @@ export const CommentItemBase: FC<Props> = (props: Props) => {
               maxLength={3000}
               minLength={1}
               required
-              className={`${style.titleEdit} ${style.formControl}`}
+              className={clsx(style.edit, style.formControl)}
               type="text"
               onChange={handleBodyChange}
               value={body}
             />
-            <div className={style.formGroup}>
-              <button type="button" className={style.btnPrimary} onClick={handlePutClick}>
-                {words.common.save}
-              </button>
-            </div>
           </form>
-          <button
-            type="button"
-            className={style.btnPrimary}
-            onClick={e => {
-              setIsUpdateComment(false)
-              setIsBodyErrorEmpty(false)
-              e.preventDefault()
-            }}
-          >
-            {words.common.cancel}
-          </button>
+          <div className={style.formGroup}>
+            <button type="button" className={style.buttonSave} onClick={handlePutClick}>
+              {words.common.save}
+            </button>
+            <button
+              type="button"
+              className={style.buttonCancel}
+              onClick={e => {
+                setIsUpdateComment(false)
+                setIsBodyErrorEmpty(false)
+                e.preventDefault()
+              }}
+            >
+              {words.common.cancel}
+            </button>
+          </div>
         </>
       )}
       <hr className={style.hr} />

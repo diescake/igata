@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { Loading } from '@/app/components/Loading'
 import style from '@/app/components/QuestionDetail/AnswerList/style.scss'
 import { Comment } from '@/app/models/Question'
 import words from '@/assets/strings'
@@ -18,47 +17,46 @@ export interface Props {
   readonly putCommentAnswer: CommentDispatcher['putCommentAnswer']
   readonly postAnswer: AnswerDispatcher['postAnswer']
   readonly putAnswer: AnswerDispatcher['putAnswer']
-  readonly isLoading: boolean
 }
 
 export const AnswerList: FC<Props> = (props: Props) => {
-  if (props.isLoading) {
-    // 読み込み演出
-    return (
-      <div className={style.loading}>
-        <Loading visible={false} />
-      </div>
-    )
-  }
-
   return (
-    <div className={style.answerList}>
+    <div>
       <div className={style.answerListTitle}>{words.question.answerNumber(props.answers.length)}</div>
       <hr className={style.hr} />
-      <span>
-        {props.answers.map((answer: Answer) => (
-          <>
-            <AnswerItem key={answer.id} answer={answer} isUserIdShow questionId={props.questionId} putAnswer={props.putAnswer} />
-            {answer.comments.map((comment: Comment) => (
-              <CommentItem
-                key={comment.id}
-                comment={comment}
+      <div className={style.mainArea}>
+        <div className={style.infoArea} />
+        <span className={style.contentArea}>
+          {props.answers.map((answer: Answer) => (
+            <>
+              <AnswerItem
+                key={answer.id}
+                answer={answer}
+                isUserIdShow
+                questionId={props.questionId}
+                putAnswer={props.putAnswer}
+              />
+              {answer.comments.map((comment: Comment) => (
+                <CommentItem
+                  key={comment.id}
+                  comment={comment}
+                  userId={props.userId}
+                  putCommentAnswer={props.putCommentAnswer}
+                  questionId={props.questionId}
+                  answerId={answer.id}
+                />
+              ))}
+              <CommentPost
+                key={answer.id}
                 userId={props.userId}
-                putCommentAnswer={props.putCommentAnswer}
+                postCommentAnswer={props.postCommentAnswer}
                 questionId={props.questionId}
                 answerId={answer.id}
               />
-            ))}
-            <CommentPost
-              key={answer.id}
-              userId={props.userId}
-              postCommentAnswer={props.postCommentAnswer}
-              questionId={props.questionId}
-              answerId={answer.id}
-            />
-          </>
-        ))}
-      </span>
+            </>
+          ))}
+        </span>
+      </div>
     </div>
   )
 }

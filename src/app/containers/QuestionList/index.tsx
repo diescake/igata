@@ -60,7 +60,7 @@ const QuestionList: FC<QuestionListProps> = (props: QuestionListProps) => {
 
   return (
     <div>
-      <Header title={words.todoApp.title} userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />
+      <Header userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />
       <div className={style.main}>
         <div className={style.pageTitle}>{words.top.title}</div>
 

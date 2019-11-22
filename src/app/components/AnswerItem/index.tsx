@@ -1,5 +1,6 @@
 import React, { FC, useState, ChangeEvent } from 'react'
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
+import clsx from 'clsx'
 import style from '@/app/components/AnswerItem/style.scss'
 import { Answer } from '@/app/models/Answer'
 import words from '@/assets/strings'
@@ -52,7 +53,7 @@ export const AnswerItemBase: FC<Props> = (props: Props) => {
             </>
           )}
           {/* リンクがない場合 */}
-          {!props.isAnswerLink && <div>{props.answer.body}</div>}
+          {!props.isAnswerLink && <div className={style.body}> {` ${props.answer.body}`}</div>}
 
           <div className={style.additional}>
             {words.common.additional(props.answer.createdAt)}
@@ -67,6 +68,7 @@ export const AnswerItemBase: FC<Props> = (props: Props) => {
                   <span>
                     <button
                       type="button"
+                      className={style.buttonUpdate}
                       onClick={() => {
                         setBody(props.answer.body)
                         setIsUpdateAnswer(true)
@@ -91,27 +93,28 @@ export const AnswerItemBase: FC<Props> = (props: Props) => {
               maxLength={3000}
               minLength={1}
               required
-              className={`${style.titleEdit} ${style.formControl}`}
+              className={clsx(style.edit, style.formControl)}
               type="text"
               onChange={handleTextChange}
               value={body}
             />
             <div className={style.formGroup}>
-              <button type="button" className={style.btnPrimary} onClick={handlePutClick}>
+              <button type="button" className={style.buttonSave} onClick={handlePutClick}>
                 {words.common.save}
+              </button>
+
+              <button
+                type="button"
+                className={style.buttonCancel}
+                onClick={() => {
+                  setIsUpdateAnswer(false)
+                  setIsBodyErrorEmpty(false)
+                }}
+              >
+                {words.common.cancel}
               </button>
             </div>
           </form>
-          <button
-            type="button"
-            className={style.btnPrimary}
-            onClick={() => {
-              setIsUpdateAnswer(false)
-              setIsBodyErrorEmpty(false)
-            }}
-          >
-            {words.common.cancel}
-          </button>
         </>
       )}
       <hr className={style.hr} />

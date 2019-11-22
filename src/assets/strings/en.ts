@@ -45,16 +45,6 @@ export default {
     loginMessage: (userId: string) => `Login user: ${userId}`,
     dateMessage: 'Date',
   },
-  footer: {
-    twitter: {
-      label: 'Twitter',
-      url: 'https://twitter.com/diescake',
-    },
-    github: {
-      label: 'GitHub',
-      url: 'https://github.com/diescake/igata',
-    },
-  },
   questionCreate: {
     title: 'Title',
     body: 'Body',
@@ -67,5 +57,7 @@ export default {
     answerNumber: (number: number) => `${number}件の回答`,
     loginToComment: 'コメントするにはログインしてください。',
     loginToAnswer: '回答するにはログインしてください。',
+    commentAdd: 'コメントを追加',
+    post: 'post',
   },
 } as const

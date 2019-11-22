@@ -12,11 +12,11 @@ import { Modal } from '@/app/components/Modal'
 // storiesOf('Containers|Login', module).add('with no props', () => <Login />)
 
 storiesOf('Components|Header', module)
-  .add('with all', () => <Header title={text('title', 'TODO Application')} userId={text('userId', 'diescake')} />)
-  .add('with title and userId', () => <Header title={text('title', 'TODO Application')} userId={text('userId', 'diescake')} />)
-  .add('with title only', () => <Header title={text('title', 'TODO Application')} userId={text('userId', '')} />)
-  .add('with userId only', () => <Header title={text('title', '')} userId={text('userId', 'diescake')} />)
-  .add('with empty strings', () => <Header title={text('title', '')} userId={text('userId', '')} />)
+  .add('with all', () => <Header userId={text('userId', 'diescake')} />)
+  .add('with title and userId', () => <Header userId={text('userId', 'diescake')} />)
+  .add('with title only', () => <Header userId={text('userId', '')} />)
+  .add('with userId only', () => <Header userId={text('userId', 'diescake')} />)
+  .add('with empty strings', () => <Header userId={text('userId', '')} />)
 
 storiesOf('Components|Footer', module).add('with no props', () => <Footer />)
 

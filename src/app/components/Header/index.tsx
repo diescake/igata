@@ -8,7 +8,6 @@ import style from '@/app/components/Header/style.scss'
 import { paths } from '@/app/common/paths'
 
 type Props = {
-  readonly title: string
   readonly userId?: string
   readonly handleLogin?: () => void
   readonly handleLogout?: () => void

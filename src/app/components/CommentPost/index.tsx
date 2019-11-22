@@ -1,4 +1,5 @@
 import React, { FC, useState, ChangeEvent } from 'react'
+import clsx from 'clsx'
 import style from '@/app/components/CommentPost/style.scss'
 import words from '@/assets/strings'
 import { CommentDispatcher } from '@/app/actions/comment'
@@ -37,21 +38,21 @@ export const CommentPost: FC<Props> = (props: Props) => {
 
       {props.userId && (
         <>
-          <div>コメント追加</div>
+          <div className={style.title}>{words.question.commentAdd}</div>
           {isBodyErrorEmpty && <div className={style.errorEmpty}>{words.common.textErrorEmpty}</div>}
           <form>
             <input
               maxLength={3000}
               minLength={1}
               required
-              className={`${style.titleEdit} ${style.formControl}`}
+              className={clsx(style.edit, style.formControl)}
               type="text"
               onChange={handleBodyChange}
               value={body}
             />
             <div className={style.formGroup}>
-              <button type="button" className={style.btnPrimary} onClick={handlePostClick}>
-                {words.todoApp.addTodo}
+              <button type="button" className={style.button} onClick={handlePostClick}>
+                {words.question.post}
               </button>
             </div>
           </form>

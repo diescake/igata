@@ -1,5 +1,6 @@
 import React, { FC, useState, ChangeEvent } from 'react'
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
+import clsx from 'clsx'
 import { VoteItem } from '@/app/components/VoteItem'
 import style from '@/app/components/QuestionDetail/Question/style.scss'
 import { Question as QuestionModels, Comment } from '@/app/models/Question'
@@ -51,7 +52,7 @@ export const QuestionBase: FC<Props> = (props: Props) => {
               maxLength={3000}
               minLength={1}
               required
-              className={`${style.titleEdit} ${style.formControl}`}
+              className={clsx(style.titleEdit, style.formControl)}
               type="text"
               onChange={handleTitleChange}
               value={title}
@@ -60,7 +61,6 @@ export const QuestionBase: FC<Props> = (props: Props) => {
         )}
         {!isUpdateQuestion && <div className={style.pageTitle}>{props.question.title}</div>}
         <hr className={style.hr} />
-
         <div className={style.mainArea}>
           <div className={style.infoArea}>
             <VoteItem
@@ -75,31 +75,32 @@ export const QuestionBase: FC<Props> = (props: Props) => {
           <div className={style.contentArea}>
             {!isUpdateQuestion && (
               <>
-                <div>{props.question.body}</div>
+                <div className={style.body}>{`  ${props.question.body}`}</div>
 
                 <div className={style.additional}>
                   {words.common.additional(props.question.createdAt)}
                   {words.common.by}
                   <Link to={`${paths.user}${props.question.userId}`}>{props.question.userId}</Link>
-                </div>
 
-                {props.userId === props.question.userId && (
-                  <>
-                    <span>
-                      <button
-                        type="button"
-                        onClick={e => {
-                          setTitle(props.question.title)
-                          setBody(props.question.body)
-                          setIsUpdateQuestion(true)
-                          e.preventDefault()
-                        }}
-                      >
-                        {words.common.update}
-                      </button>
-                    </span>
-                  </>
-                )}
+                  {props.userId === props.question.userId && (
+                    <>
+                      <span>
+                        <button
+                          type="button"
+                          className={style.buttonUpdate}
+                          onClick={e => {
+                            setTitle(props.question.title)
+                            setBody(props.question.body)
+                            setIsUpdateQuestion(true)
+                            e.preventDefault()
+                          }}
+                        >
+                          {words.common.update}
+                        </button>
+                      </span>
+                    </>
+                  )}
+                </div>
               </>
             )}
 
@@ -111,26 +112,26 @@ export const QuestionBase: FC<Props> = (props: Props) => {
                   maxLength={3000}
                   minLength={1}
                   required
-                  className={`${style.bodyEdit} ${style.formControl}`}
+                  className={clsx(style.bodyEdit, style.formControl)}
                   onChange={handleBodyChange}
                   value={body}
                 />
                 <div className={style.formGroup}>
-                  <button type="button" className={style.btnPrimary} onClick={handlePutClick}>
+                  <button type="button" className={style.buttonSave} onClick={handlePutClick}>
                     {words.common.save}
                   </button>
+                  <button
+                    type="button"
+                    className={style.buttonCancel}
+                    onClick={() => {
+                      setIsUpdateQuestion(false)
+                      setIsTitleErrorEmpty(false)
+                      setIsBodyErrorEmpty(false)
+                    }}
+                  >
+                    {words.common.cancel}
+                  </button>
                 </div>
-                <button
-                  type="button"
-                  className={style.btnPrimary}
-                  onClick={() => {
-                    setIsUpdateQuestion(false)
-                    setIsTitleErrorEmpty(false)
-                    setIsBodyErrorEmpty(false)
-                  }}
-                >
-                  {words.common.cancel}
-                </button>
               </>
             )}
 

@@ -6,7 +6,6 @@ import { Header } from '@/app/components/Header'
 import { fetchQuestion, putQuestion, QuestionDispatcher } from '@/app/actions/question'
 import { fetchAnswers, postAnswer, putAnswer, AnswerDispatcher } from '@/app/actions/answer'
 import { RootState } from '@/app/models'
-import words from '@/assets/strings'
 import style from '@/app/containers/QuestionDetail/style.scss'
 import { Question as QuestionModel } from '@/app/models/Question'
 import { Answer } from '@/app/models/Answer'
@@ -94,7 +93,7 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
 
   return (
     <div>
-      <Header title={words.todoApp.title} userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />
+      <Header userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />
 
       {/* 読み込み中 */}
       {isLoading && (
@@ -126,7 +125,6 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
               putCommentAnswer={props.putCommentAnswer}
               postAnswer={props.postAnswer}
               putAnswer={props.putAnswer}
-              isLoading={props.isLoadingAnswer}
             />
             <AnswerPost userId={props.id} questionId={props.match.params.id} postAnswer={props.postAnswer} />
           </div>

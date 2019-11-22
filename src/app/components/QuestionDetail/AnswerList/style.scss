@@ -5,6 +5,10 @@
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.answerList {
+  display: flex;
+}
+
 .answerListTitle {
   font-weight: bold;
   font-size: 1.8rem;
@@ -46,7 +50,6 @@
 }
 
 .infoArea {
-  width: 30px;
   margin: 0 20px 0 10px;
 }
 

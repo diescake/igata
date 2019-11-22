@@ -8,7 +8,6 @@ import { Footer } from '@/app/components/Footer'
 import { login, LoginDispatcher } from '@/app/actions/login'
 import { RootState } from '@/app/models'
 import { paths } from '@/app/common/paths'
-import words from '@/assets/strings'
 
 interface StateProps {
   readonly key: string
@@ -37,7 +36,7 @@ const Login: FC<LoginProps> = (props: LoginProps) => {
 
   return (
     <div>
-      <Header title={words.login.title} />
+      <Header />
       <LoginForm login={props.login} />
       <Footer />
     </div>
