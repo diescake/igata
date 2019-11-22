@@ -14,6 +14,7 @@ import { QuestionListItem } from '@/app/components/QuestionListItem'
 import { QuestionPager } from '@/app/components/QuestionPager'
 import { paths } from '@/app/common/paths'
 import { login, logout, LoginDispatcher } from '@/app/actions/login'
+import { constants } from '@/app/common/constants'
 
 interface StateProps {
   readonly questions: Question[]
@@ -57,6 +58,15 @@ const QuestionList: FC<QuestionListProps> = (props: QuestionListProps) => {
     props.history.push(paths.login)
     props.logout()
   }
+  // コピーする
+  const copyQuestions = JSON.parse(JSON.stringify(props.questions))
+  console.log(copyQuestions)
+
+  // 数が11以上だと一つ削除する。」
+  if (copyQuestions.length >= constants.QUESTION_LIMIT) {
+    // 末尾を削除する
+    copyQuestions.pop()
+  }
 
   return (
     <div>
@@ -68,7 +78,7 @@ const QuestionList: FC<QuestionListProps> = (props: QuestionListProps) => {
         <hr className={style.hr} />
 
         <ListWrapper loading={props.isFetching}>
-          {props.questions.map((question: Question) => (
+          {copyQuestions.map((question: Question) => (
             <QuestionListItem key={question.id} question={question} isUserIdShow />
           ))}
         </ListWrapper>
