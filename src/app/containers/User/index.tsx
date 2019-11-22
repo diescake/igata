@@ -19,6 +19,8 @@ import { QuestionListItem } from '@/app/components/QuestionListItem'
 import { AnswerItem } from '@/app/components/AnswerItem'
 import { paths } from '@/app/common/paths'
 import { login, logout, LoginDispatcher } from '@/app/actions/login'
+import { QuestionPager } from '@/app/components/QuestionPager'
+import { constants } from '@/app/common/constants'
 
 interface StateProps {
   readonly questions: Question[]
@@ -76,6 +78,15 @@ const User: FC<UserProps> = (props: UserProps) => {
 
   const fetching = props.isFetchingQuestion || props.isFetchingAnswer
 
+  // コピーする
+  const copyQuestions = [...props.questions]
+  console.log(copyQuestions)
+  // 数が11以上だと一つ削除する。
+  if (copyQuestions.length >= constants.QUESTION_LIMIT) {
+    // 末尾を削除する
+    copyQuestions.pop()
+  }
+
   return (
     <div>
       <Header userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />
@@ -84,17 +95,21 @@ const User: FC<UserProps> = (props: UserProps) => {
         <div className={style.pageTitle}>{words.user.title}</div>
         <hr className={style.hr} />
         <ListWrapper loading={fetching}>
+          {/* 質問一覧 */}
           <div className={style.listTitle}>{words.user.questionList}</div>
           {props.questions.map((question: Question) => (
             <QuestionListItem key={question.id} question={question} isUserIdShow={false} />
           ))}
 
+          {/* 回答一覧 */}
           <div className={style.listTitle}>{words.user.answerList}</div>
           {props.answers.map((answer: Answer) => (
             <AnswerItem key={answer.id} answer={answer} isAnswerLink />
           ))}
         </ListWrapper>
       </div>
+
+      <QuestionPager userId={props.id} questions={props.questions} fetchQuestions={props.fetchQuestions} />
       <Footer />
     </div>
   )

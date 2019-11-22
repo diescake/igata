@@ -1,11 +1,9 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { text, boolean } from '@storybook/addon-knobs'
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { Header } from '@/app/components/Header'
 import { Footer } from '@/app/components/Footer'
 import { ListWrapper } from '@/app/components/ListWrapper'
-import { Modal } from '@/app/components/Modal'
 // import Login from '@/app/containers/Login'
 
 // FIXME: Preparing connect I/Fs to import container components
@@ -19,25 +17,6 @@ storiesOf('Components|Header', module)
   .add('with empty strings', () => <Header userId={text('userId', '')} />)
 
 storiesOf('Components|Footer', module).add('with no props', () => <Footer />)
-
-const createModal = (hidden: boolean) => (
-  <>
-    <p>--- outside of modal ---</p>
-    <Modal
-      hidden={boolean('hidden', hidden)}
-      icon={faPlusCircle}
-      name={text('name', 'Sample dialog')}
-      close={() => console.log('close')}
-    >
-      <p>This is a sample modal description.</p>
-    </Modal>
-    <p>--- outside of modal ---</p>
-  </>
-)
-
-storiesOf('Components|Modal', module)
-  .add('hidden', () => createModal(true))
-  .add('not hidden', () => createModal(false))
 
 storiesOf('Components|ListWrapper', module)
   .add('with lists', () => (

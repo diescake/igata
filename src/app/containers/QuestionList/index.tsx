@@ -59,7 +59,7 @@ const QuestionList: FC<QuestionListProps> = (props: QuestionListProps) => {
     props.logout()
   }
   // コピーする
-  const copyQuestions = JSON.parse(JSON.stringify(props.questions))
+  const copyQuestions = [...props.questions]
   console.log(copyQuestions)
 
   // 数が11以上だと一つ削除する。」

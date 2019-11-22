@@ -6,6 +6,7 @@ import { QuestionDispatcher } from '@/app/actions/question'
 import { constants } from '@/app/common/constants'
 
 export interface Props {
+  readonly userId?: string
   readonly questions: Question[]
   readonly fetchQuestions: QuestionDispatcher['fetchQuestions']
 }
@@ -24,6 +25,7 @@ export const QuestionPager: FC<Props> = (props: Props) => {
             const backFromId = copiedBackPage.pop()
             setFromIds(copiedBackPage)
             props.fetchQuestions({
+              userId: props.userId,
               fromId: backFromId,
             })
           }}
@@ -45,6 +47,7 @@ export const QuestionPager: FC<Props> = (props: Props) => {
             copiedBackPage.push(nextFromId)
             setFromIds(copiedBackPage)
             props.fetchQuestions({
+              userId: props.userId,
               fromId: nextFromId,
             })
           }}
