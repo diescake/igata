@@ -1,8 +1,6 @@
 import React from 'react'
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { storiesOf } from '@storybook/react'
 import { createBrowserHistory } from 'history'
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { text } from '@storybook/addon-knobs'
 import { CommentPost } from '@/app/components/CommentPost'
 import { configureStore } from '@/app/store'

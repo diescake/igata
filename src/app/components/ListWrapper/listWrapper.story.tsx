@@ -1,7 +1,5 @@
 import React from 'react'
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { storiesOf } from '@storybook/react'
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { text, boolean } from '@storybook/addon-knobs'
 import { ListWrapper } from '@/app/components/ListWrapper'
 

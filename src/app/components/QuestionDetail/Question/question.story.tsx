@@ -1,9 +1,7 @@
 import React from 'react'
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { storiesOf } from '@storybook/react'
 import { MemoryRouter } from 'react-router'
 import { createBrowserHistory } from 'history'
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { text } from '@storybook/addon-knobs'
 import { configureStore } from '@/app/store'
 import { Question } from '@/app/components/QuestionDetail/Question'
