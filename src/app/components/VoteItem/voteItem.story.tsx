@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { MemoryRouter } from 'react-router'
 import { createBrowserHistory } from 'history'
-import { text } from '@storybook/addon-knobs'
+import { text, array } from '@storybook/addon-knobs'
 import { configureStore } from '@/app/store'
 import { VoteItem } from '@/app/components/VoteItem'
 
@@ -45,7 +45,7 @@ storiesOf('Components|VoteItem', module)
       <VoteItem
         userId={text('userId', 'userId')}
         questionId={text('questionId', 'questionId')}
-        likeVoterIds={['userId']}
+        likeVoterIds={array('likeVoterIds', ['userId'])}
         dislikeVoterIds={[]}
         postVote={dispatch}
       />
@@ -57,7 +57,7 @@ storiesOf('Components|VoteItem', module)
         userId={text('userId', 'userId')}
         questionId={text('questionId', 'questionId')}
         likeVoterIds={[]}
-        dislikeVoterIds={['userId']}
+        dislikeVoterIds={array('dislikeVoterIds', ['userId'])}
         postVote={dispatch}
       />
     </MemoryRouter>
