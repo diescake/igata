@@ -6,7 +6,7 @@ import { fetchQuestions, QuestionDispatcher } from '@/app/actions/question'
 import { fetchAnswers, AnswerDispatcher } from '@/app/actions/answer'
 
 import { Header } from '@/app/components/Header'
-import { ListWrapper } from '@/app/components/ListWrapper'
+import { LoadingWrapper } from '@/app/components/LoadingWrapper'
 import { Footer } from '@/app/components/Footer'
 
 import { RootState } from '@/app/models'
@@ -14,8 +14,8 @@ import { Question } from '@/app/models/Question'
 import { Answer } from '@/app/models/Answer'
 
 import words from '@/assets/strings'
-import style from '@/app/containers/User/style.scss'
-import { QuestionListItem } from '@/app/components/QuestionListItem'
+import style from '@/app/containers/UserDetail/style.scss'
+import { QuestionItem } from '@/app/components/QuestionItem'
 import { AnswerItem } from '@/app/components/AnswerItem'
 import { paths } from '@/app/common/paths'
 import { login, logout, LoginDispatcher } from '@/app/actions/login'
@@ -39,7 +39,7 @@ interface DispatchProps {
   readonly logout: LoginDispatcher['logout']
 }
 
-type UserProps = StateProps & DispatchProps & RouteComponentProps<{ userId: string }>
+type UserDetailProps = StateProps & DispatchProps & RouteComponentProps<{ userId: string }>
 
 const mapStateToProps = (state: RootState): StateProps => ({
   questions: state.questionState.questions,
@@ -58,7 +58,7 @@ const mapDispatchToProps = {
 }
 
 // ユーザー詳細画面
-const User: FC<UserProps> = (props: UserProps) => {
+const UserDetail: FC<UserDetailProps> = (props: UserDetailProps) => {
   useLayoutEffect(() => {
     props.fetchQuestions({
       userId: props.match.params.userId,
@@ -94,11 +94,11 @@ const User: FC<UserProps> = (props: UserProps) => {
       <div className={style.main}>
         <div className={style.pageTitle}>{words.user.title}</div>
         <hr className={style.hr} />
-        <ListWrapper loading={fetching}>
+        <LoadingWrapper loading={fetching}>
           {/* 質問一覧 */}
           <div className={style.listTitle}>{words.user.questionList}</div>
           {props.questions.map((question: Question) => (
-            <QuestionListItem key={question.id} question={question} isUserIdShow={false} />
+            <QuestionItem key={question.id} question={question} isUserIdShow={false} />
           ))}
 
           {/* 回答一覧 */}
@@ -106,10 +106,15 @@ const User: FC<UserProps> = (props: UserProps) => {
           {props.answers.map((answer: Answer) => (
             <AnswerItem key={answer.id} answer={answer} isUserDetail />
           ))}
-        </ListWrapper>
+        </LoadingWrapper>
       </div>
 
-      <QuestionPager userId={props.id} questions={props.questions} fetchQuestions={props.fetchQuestions} />
+      <QuestionPager
+        userId={props.id}
+        questions={props.questions}
+        fetchQuestions={props.fetchQuestions}
+        isFetching={props.isFetchingQuestion}
+      />
       <Footer />
     </div>
   )
@@ -119,5 +124,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(User)
+  )(UserDetail)
 )

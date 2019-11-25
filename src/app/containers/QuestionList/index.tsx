@@ -4,13 +4,13 @@ import { RouteComponentProps, withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 import { fetchQuestions, QuestionDispatcher } from '@/app/actions/question'
 import { Header } from '@/app/components/Header'
-import { ListWrapper } from '@/app/components/ListWrapper'
+import { LoadingWrapper } from '@/app/components/LoadingWrapper'
 import { Footer } from '@/app/components/Footer'
 import { RootState } from '@/app/models'
 import { Question } from '@/app/models/Question'
 import words from '@/assets/strings'
 import style from '@/app/containers/QuestionList/style.scss'
-import { QuestionListItem } from '@/app/components/QuestionListItem'
+import { QuestionItem } from '@/app/components/QuestionItem'
 import { QuestionPager } from '@/app/components/QuestionPager'
 import { paths } from '@/app/common/paths'
 import { login, logout, LoginDispatcher } from '@/app/actions/login'
@@ -74,13 +74,13 @@ const QuestionList: FC<QuestionListProps> = (props: QuestionListProps) => {
         <Link to={`${paths.questionCreate}`}>{words.top.question}</Link>
         <hr className={style.hr} />
 
-        <ListWrapper loading={props.isFetching}>
+        <LoadingWrapper loading={props.isFetching}>
           {copyQuestions.map((question: Question) => (
-            <QuestionListItem key={question.id} question={question} isUserIdShow />
+            <QuestionItem key={question.id} question={question} isUserIdShow />
           ))}
-        </ListWrapper>
+        </LoadingWrapper>
       </div>
-      <QuestionPager questions={props.questions} fetchQuestions={props.fetchQuestions} />
+      <QuestionPager questions={props.questions} fetchQuestions={props.fetchQuestions} isFetching={props.isFetching} />
       <Footer />
     </div>
   )

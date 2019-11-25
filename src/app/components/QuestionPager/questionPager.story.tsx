@@ -128,11 +128,11 @@ const questionList = [
 storiesOf('Components|QuestionPager', module)
   .add('not pager ', () => (
     <MemoryRouter initialEntries={['/', '']}>
-      <QuestionPager questions={[]} fetchQuestions={dispatch} />
+      <QuestionPager questions={[]} fetchQuestions={dispatch} isFetching={false} />
     </MemoryRouter>
   ))
   .add('pager', () => (
     <MemoryRouter initialEntries={['/', '']}>
-      <QuestionPager questions={questionList} fetchQuestions={dispatch} />
+      <QuestionPager questions={questionList} fetchQuestions={dispatch} isFetching={false} />
     </MemoryRouter>
   ))

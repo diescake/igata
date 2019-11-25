@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import style from '@/app/components/ListWrapper/style.scss'
+import style from '@/app/components/LoadingWrapper/style.scss'
 import { Loading } from '@/app/components/Loading'
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
   readonly children?: React.ReactNode
 }
 
-export const ListWrapper: FC<Props> = (props: Props) => {
+export const LoadingWrapper: FC<Props> = (props: Props) => {
   if (props.loading) {
     return (
       <div className={style.loading}>
@@ -16,5 +16,5 @@ export const ListWrapper: FC<Props> = (props: Props) => {
     )
   }
 
-  return <ul className={style.listWrapperUl}>{props.children}</ul>
+  return <div>{props.children}</div>
 }

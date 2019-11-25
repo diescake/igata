@@ -9,6 +9,7 @@ export interface Props {
   readonly userId?: string
   readonly questions: Question[]
   readonly fetchQuestions: QuestionDispatcher['fetchQuestions']
+  readonly isFetching: boolean
 }
 
 export const QuestionPager: FC<Props> = (props: Props) => {
@@ -21,6 +22,9 @@ export const QuestionPager: FC<Props> = (props: Props) => {
           type="button"
           className={clsx(style.inline, style.button, style.rightPos)}
           onClick={() => {
+            if (props.isFetching) {
+              return
+            }
             const copiedBackPage = [...fromIds]
             const backFromId = copiedBackPage.pop()
             setFromIds(copiedBackPage)
@@ -41,6 +45,9 @@ export const QuestionPager: FC<Props> = (props: Props) => {
           type="button"
           className={clsx(style.inline, style.button, style.leftPos)}
           onClick={() => {
+            if (props.isFetching) {
+              return
+            }
             // 10件目の値を使用する
             const nextFromId = props.questions[props.questions.length - 2].id
             const copiedBackPage = [...fromIds]

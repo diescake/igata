@@ -1,12 +1,12 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { MemoryRouter } from 'react-router'
-import { QuestionListItem } from '@/app/components/QuestionListItem'
+import { QuestionItem } from '@/app/components/QuestionItem'
 
-storiesOf('Components|QuestionListItem', module)
+storiesOf('Components|QuestionItem', module)
   .add('user id show', () => (
     <MemoryRouter initialEntries={['/', '']}>
-      <QuestionListItem
+      <QuestionItem
         question={{
           body: 'body',
           comments: [],
@@ -23,7 +23,7 @@ storiesOf('Components|QuestionListItem', module)
   ))
   .add('user id hide', () => (
     <MemoryRouter initialEntries={['/', '']}>
-      <QuestionListItem
+      <QuestionItem
         question={{
           body: 'body',
           comments: [],

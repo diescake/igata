@@ -1,7 +1,6 @@
 import React, { FC, useLayoutEffect } from 'react'
 import { RouteComponentProps } from 'react-router'
 import { connect } from 'react-redux'
-import { Loading } from '@/app/components/Loading'
 import { Header } from '@/app/components/Header'
 import { fetchQuestion, putQuestion, QuestionDispatcher } from '@/app/actions/question'
 import { fetchAnswers, postAnswer, putAnswer, AnswerDispatcher } from '@/app/actions/answer'
@@ -22,6 +21,7 @@ import { Question } from '@/app/components/QuestionDetail/Question'
 import { login, logout, LoginDispatcher } from '@/app/actions/login'
 import { paths } from '@/app/common/paths'
 import { AnswerList } from '@/app/components/QuestionDetail/AnswerList'
+import { LoadingWrapper } from '@/app/components/LoadingWrapper'
 
 interface StateProps {
   readonly question: QuestionModel
@@ -95,41 +95,29 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
     <div>
       <Header userId={props.id} handleLogin={handleLogin} handleLogout={handleLogout} />
 
-      {/* 読み込み中 */}
-      {isLoading && (
-        <>
-          <div className={style.loading}>
-            <Loading visible={false} />
-          </div>
-        </>
-      )}
-
-      {/* 読み込み完了後 */}
-      {!isLoading && (
-        <>
-          <div className={style.main}>
-            <Question
-              userId={props.id}
-              questionId={props.match.params.id}
-              question={props.question}
-              putQuestion={props.putQuestion}
-              postCommentQuestion={props.postCommentQuestion}
-              putCommentQuestion={props.putCommentQuestion}
-              postVote={props.postVote}
-            />
-            <AnswerList
-              userId={props.id}
-              questionId={props.match.params.id}
-              answers={props.answers}
-              postCommentAnswer={props.postCommentAnswer}
-              putCommentAnswer={props.putCommentAnswer}
-              postAnswer={props.postAnswer}
-              putAnswer={props.putAnswer}
-            />
-            <AnswerPost userId={props.id} questionId={props.match.params.id} postAnswer={props.postAnswer} />
-          </div>
-        </>
-      )}
+      <LoadingWrapper loading={isLoading}>
+        <div className={style.main}>
+          <Question
+            userId={props.id}
+            questionId={props.match.params.id}
+            question={props.question}
+            putQuestion={props.putQuestion}
+            postCommentQuestion={props.postCommentQuestion}
+            putCommentQuestion={props.putCommentQuestion}
+            postVote={props.postVote}
+          />
+          <AnswerList
+            userId={props.id}
+            questionId={props.match.params.id}
+            answers={props.answers}
+            postCommentAnswer={props.postCommentAnswer}
+            putCommentAnswer={props.putCommentAnswer}
+            postAnswer={props.postAnswer}
+            putAnswer={props.putAnswer}
+          />
+          <AnswerPost userId={props.id} questionId={props.match.params.id} postAnswer={props.postAnswer} />
+        </div>
+      </LoadingWrapper>
     </div>
   )
 }
