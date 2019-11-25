@@ -34,17 +34,6 @@ export default {
     passwordErrorEmpty: 'Required',
     passwordErrorInvalid: 'Invalid password',
   },
-  todoApp: {
-    title: 'TODO Application',
-    name: 'TOP',
-    newTodo: 'Add TODO',
-    addTodo: 'Add',
-    placeholder: 'Enter your TODO',
-    fetchTodos: 'Fetch TODOs',
-    logout: 'Logout',
-    loginMessage: (userId: string) => `Login user: ${userId}`,
-    dateMessage: 'Date',
-  },
   questionCreate: {
     title: 'Title',
     body: 'Body',
