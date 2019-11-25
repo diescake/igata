@@ -104,7 +104,7 @@ const User: FC<UserProps> = (props: UserProps) => {
           {/* 回答一覧 */}
           <div className={style.listTitle}>{words.user.answerList}</div>
           {props.answers.map((answer: Answer) => (
-            <AnswerItem key={answer.id} answer={answer} isAnswerLink />
+            <AnswerItem key={answer.id} answer={answer} isUserDetail />
           ))}
         </ListWrapper>
       </div>

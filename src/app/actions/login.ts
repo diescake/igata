@@ -13,9 +13,9 @@ export const Type = {
 
 // action creators
 // ログイン
-export const login = (address: string, pw: string) => ({
+export const login = (email: string, password: string) => ({
   type: Type.LOGIN,
-  payload: { email: address, password: pw },
+  payload: { email, password },
 })
 
 export const loginSuccess = ({ id, email, createdAt, session }: LoginState) => ({

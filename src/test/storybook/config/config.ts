@@ -6,7 +6,7 @@ import { withInfo } from '@storybook/addon-info'
 import { withKnobs } from '@storybook/addon-knobs'
 
 // automatically import all files ending in *.stories.tsx
-const req = require.context('../stories', true, /\.story\.(ts|tsx)$/)
+const req = require.context('@/app', true, /\.story\.(ts|tsx)$/)
 
 function loadStories() {
   // NOTE: Probably, that type definition is wrong.

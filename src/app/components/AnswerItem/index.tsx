@@ -8,14 +8,14 @@ import { paths } from '@/app/common/paths'
 import { AnswerDispatcher } from '@/app/actions/answer'
 
 type Props = {
-  // 質問ID
-  readonly questionId?: string
   // 回答データ
   readonly answer: Answer
-  // ユーザーIDを表示する
-  readonly isUserIdShow?: boolean
-  // 回答をリンクにする
-  readonly isAnswerLink?: boolean
+  // 質問ID
+  readonly questionId?: string
+  // 質問の詳細画面
+  readonly isQuestionDetail?: boolean
+  //  ユーザー詳細画面
+  readonly isUserDetail?: boolean
   // ログインユーザーID
   readonly userId?: string
   // 回答を更新
@@ -45,7 +45,7 @@ export const AnswerItemBase: FC<Props> = (props: Props) => {
       {!isUpdateAnswer && (
         <>
           {/* リンクあり */}
-          {props.isAnswerLink && (
+          {props.isUserDetail && (
             <>
               <h5 className={style.title}>
                 <Link to={`${paths.question}${props.answer.id}`}>{props.answer.body}</Link>
@@ -53,12 +53,12 @@ export const AnswerItemBase: FC<Props> = (props: Props) => {
             </>
           )}
           {/* リンクがない場合 */}
-          {!props.isAnswerLink && <div className={style.body}> {` ${props.answer.body}`}</div>}
+          {!props.isUserDetail && <div className={style.body}> {` ${props.answer.body}`}</div>}
 
           <div className={style.additional}>
             {words.common.additional(props.answer.createdAt)}
             {/* 投稿したユーザーID */}
-            {props.isUserIdShow && (
+            {props.isQuestionDetail && (
               <>
                 {words.common.by}
                 <Link to={`${paths.user}${props.answer.userId}`}>{props.answer.userId}</Link>

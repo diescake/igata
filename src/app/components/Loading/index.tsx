@@ -4,7 +4,6 @@ import style from '@/app/components/Loading/style.scss'
 
 interface Props {
   visible: boolean
-  type?: string
 }
 
 export const Loading = (props: Props) => {

@@ -32,7 +32,8 @@ export const AnswerList: FC<Props> = (props: Props) => {
               <AnswerItem
                 key={answer.id}
                 answer={answer}
-                isUserIdShow
+                userId={props.userId}
+                isQuestionDetail
                 questionId={props.questionId}
                 putAnswer={props.putAnswer}
               />
