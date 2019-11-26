@@ -46,7 +46,4 @@ const Login: FC<LoginProps> = (props: LoginProps) => {
   )
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

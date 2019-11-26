@@ -134,7 +134,4 @@ const TodoApp: FC<TodoAppProps> = (props: TodoAppProps) => {
   )
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TodoApp)
+export default connect(mapStateToProps, mapDispatchToProps)(TodoApp)
