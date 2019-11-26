@@ -86,9 +86,4 @@ const QuestionList: FC<QuestionListProps> = (props: QuestionListProps) => {
   )
 }
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(QuestionList)
-)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(QuestionList))

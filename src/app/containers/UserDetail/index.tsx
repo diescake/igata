@@ -120,9 +120,4 @@ const UserDetail: FC<UserDetailProps> = (props: UserDetailProps) => {
   )
 }
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(UserDetail)
-)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserDetail))

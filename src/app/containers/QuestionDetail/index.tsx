@@ -122,7 +122,4 @@ const QuestionDetail: FC<QuestionProps> = (props: QuestionProps) => {
   )
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(QuestionDetail)
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionDetail)
