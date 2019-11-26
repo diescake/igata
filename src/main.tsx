@@ -13,6 +13,7 @@ import QuestionCreate from '@/app/containers/QuestionCreate'
 import QuestionDetail from '@/app/containers/QuestionDetail'
 
 import AppController from '@/app/components/AppController'
+import { Authenticated } from '@/app/components/Authenticated'
 
 import { configureStore } from '@/app/store'
 import { paths } from '@/app/common/paths'
@@ -37,6 +38,9 @@ ReactDOM.render(
           <Route exact path={paths.userId} component={UserDetail} />
           <Route exact path={paths.questionCreate} component={QuestionCreate} />
           <Route exact path={paths.questionId} component={QuestionDetail} />
+          <Authenticated>
+            <Route exact path={paths.authenticatedSample} render={() => <p>Authenticated !!</p>} />
+          </Authenticated>
 
           {/* FIXME: Following "Not Found" is unreachable and doesn't work. */}
           <Route render={() => <h1>404 Not Found</h1>} />
