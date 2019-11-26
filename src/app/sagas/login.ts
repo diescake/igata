@@ -63,6 +63,7 @@ function* putWithResponseLogout() {
   yield put(push(paths.login))
 }
 
+// TODO: 通信先を変更したら修正する。
 function* logout() {
   const { res, error }: HttpResponse<unknown> = yield call(httpGet, LOGOUT_JSON_URL, false)
   yield res ? putWithResponseLogout() : put(logoutFailure(error.message))

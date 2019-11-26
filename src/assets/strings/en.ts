@@ -3,6 +3,7 @@ export default {
   common: {
     additional: (additional: string) => `Posted at ${additional}  `,
     by: 'by ',
+    hyphen: '-- ',
     save: 'save',
     update: 'update',
     cancel: 'cancel',

@@ -3,6 +3,7 @@ export default {
   common: {
     additional: (additional: string) => `Posted at ${additional}  `,
     by: 'by ',
+    hyphen: '-- ',
     save: '保存',
     update: '更新',
     cancel: 'キャンセル',

@@ -44,6 +44,7 @@ export const CommentItemBase: FC<Props> = (props: Props) => {
           <div>
             <span className={style.body}>{`${props.comment.body} `}</span>
             <span className={style.additional}>
+              {words.common.hyphen}
               {words.common.additional(props.comment.createdAt)}
               {words.common.by}
               <Link to={`${paths.user}${props.comment.userId}`}>{props.comment.userId}</Link>
