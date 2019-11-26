@@ -10,7 +10,7 @@ jobs:
       ignore: /doc_.*/
     docker:
       # Image version list, see https://hub.docker.com/r/circleci/node/tags
-      - image: circleci/node:8-stretch-browsers
+      - image: circleci/node:10.17.0-browsers
     working_directory: ~/workspace
     steps:
       - checkout

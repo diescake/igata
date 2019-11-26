@@ -37,7 +37,7 @@ $ yarn start # npm start
 
 ## Requirements
 
-- Node.js v8.xx
+- Node.js v10.17.0
   - Probably the newer version is also fine.
 - Recommend to use version manager [asdf](https://github.com/asdf-vm/asdf).
 
