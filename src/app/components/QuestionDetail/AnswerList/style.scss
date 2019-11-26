@@ -1,0 +1,65 @@
+.hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.answerList {
+  display: flex;
+}
+
+.answerListTitle {
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.main {
+  width: 80%;
+  margin: 30px auto auto;
+}
+
+.pageTitle {
+  margin-bottom: 20px;
+  overflow: hidden;
+  font-size: 1.5rem;
+  text-overflow: ellipsis;
+}
+
+.contentArea {
+  flex-grow: 1;
+}
+
+.body {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.additional {
+  color: #aaa;
+  font-size: small;
+}
+
+.commentList {
+  margin-left: 10px;
+}
+
+.question,
+.answerList {
+  margin-bottom: 20px;
+}
+
+.infoArea {
+  margin: 0 20px 0 10px;
+}
+
+.mainArea {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.loading {
+  width: 60px;
+  margin: auto;
+  margin-top: 100px;
+}

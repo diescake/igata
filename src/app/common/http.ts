@@ -32,8 +32,8 @@ axios.interceptors.response.use(
   // Except for 2xx
   (error: AxiosError) => {
     if (error.response && error.response.status === 401) {
-      localStorage.removeItem('token')
-      window.location.href = paths.login
+      localStorage.removeItem('key')
+      window.location.href = paths.root
     }
 
     return Promise.reject(error)
@@ -50,7 +50,7 @@ function* inspect(promise: Promise<unknown>) {
 }
 
 function* selectToken() {
-  return yield select((state: RootState) => state.loginState.token)
+  return yield select((state: RootState) => state.loginState.session.token)
 }
 
 const authorizationHeader = (token: string) => (token ? { Authorization: token } : {})
@@ -111,23 +111,23 @@ const internalPatch = (url: string, token: string, contentType?: ContentType, bo
     .then((res: AxiosResponse) => ({ res }))
     .catch((error: AxiosError) => ({ error }))
 
-export function* get(url: string, isAuth = true, params: object = {}) {
+export function* httpGet(url: string, isAuth = true, params: object = {}) {
   return yield inspect(internalGet(url, isAuth ? yield selectToken() : '', params))
 }
 
-export function* post(url: string, isAuth = true, contentType?: ContentType, data?: object) {
+export function* httpPost(url: string, isAuth = true, contentType?: ContentType, data?: object) {
   return yield inspect(internalPost(url, isAuth ? yield selectToken() : '', contentType, data))
 }
 
 // NOTE: Unfortunately, 'delete' is reserved
-export function* del(url: string, isAuth = true, data: object = {}) {
+export function* httpDel(url: string, isAuth = true, data: object = {}) {
   return yield inspect(internalDelete(url, isAuth ? yield selectToken() : '', data))
 }
 
-export function* put(url: string, isAuth = true, contentType?: ContentType, data?: object) {
+export function* httpPut(url: string, isAuth = true, contentType?: ContentType, data?: object) {
   return yield inspect(internalPut(url, isAuth ? yield selectToken() : '', contentType, data))
 }
 
-export function* patch(url: string, isAuth = true, contentType?: ContentType, data?: object) {
+export function* httpPatch(url: string, isAuth = true, contentType?: ContentType, data?: object) {
   return yield inspect(internalPatch(url, isAuth ? yield selectToken() : '', contentType, data))
 }

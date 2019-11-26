@@ -5,11 +5,15 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
 
-import ProgressBar from '@/app/containers/ProgressBar'
+import QuestionList from '@/app/containers/QuestionList'
 import Login from '@/app/containers/Login'
-import TodoApp from '@/app/containers/TodoApp'
+import UserDetail from '@/app/containers/UserDetail'
+import ProgressBar from '@/app/containers/ProgressBar'
+import QuestionCreate from '@/app/containers/QuestionCreate'
+import QuestionDetail from '@/app/containers/QuestionDetail'
+
 import AppController from '@/app/components/AppController'
-import { Authenticated } from '@/app/components/Authenticated'
+
 import { configureStore } from '@/app/store'
 import { paths } from '@/app/common/paths'
 import '@/assets/css/reboot.css'
@@ -29,11 +33,11 @@ ReactDOM.render(
       <AppController>
         <Switch>
           <Route exact path={paths.login} component={Login} />
-          <Authenticated>
-            <Switch>
-              <Route exact path={paths.root} component={TodoApp} />
-            </Switch>
-          </Authenticated>
+          <Route exact path={paths.root} component={QuestionList} />
+          <Route exact path={paths.userId} component={UserDetail} />
+          <Route exact path={paths.questionCreate} component={QuestionCreate} />
+          <Route exact path={paths.questionId} component={QuestionDetail} />
+
           {/* FIXME: Following "Not Found" is unreachable and doesn't work. */}
           <Route render={() => <h1>404 Not Found</h1>} />
         </Switch>

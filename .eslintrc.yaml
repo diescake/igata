@@ -142,6 +142,7 @@ rules:
   import/no-extraneous-dependencies:
     - error
     - devDependencies:
+        - '**/*.story.*'
         - '**/test/**'
 
   # jsx-a11y

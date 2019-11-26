@@ -1,4 +1,31 @@
 export default {
+  // 共通
+  common: {
+    additional: (additional: string) => `Posted at ${additional}  `,
+    by: 'by ',
+    hyphen: '-- ',
+    save: '保存',
+    update: '更新',
+    cancel: 'キャンセル',
+    textErrorEmpty: '入力してください。',
+  },
+  // ヘッダー
+  header: {
+    title: 'StackOverflow Clone (React)',
+    login: 'ログイン',
+    logout: 'ログアウト',
+  },
+  // トップ
+  top: {
+    title: '質問を見る',
+    question: '質問する',
+  },
+  // ユーザー詳細
+  user: {
+    title: 'ユーザー詳細',
+    questionList: '質問一覧',
+    answerList: '回答一覧',
+  },
   login: {
     title: 'ログイン',
     login: 'ログイン',
@@ -11,25 +38,19 @@ export default {
     passwordErrorEmpty: '入力必須項目です',
     passwordErrorInvalid: '無効なパスワードです',
   },
-  todoApp: {
-    title: 'TODO アプリ',
-    name: 'TOP',
-    newTodo: 'TODO を追加',
-    addTodo: '追加',
-    placeholder: 'TODO を入力してください',
-    fetchTodos: 'TODO を取得',
-    logout: 'ログアウト',
-    loginMessage: (userId: string) => `ログインユーザ: ${userId}`,
-    dateMessage: '時刻',
+  questionCreate: {
+    title: 'タイトル',
+    body: '本文',
+    create: '投稿する',
+    postQuestion: '質問投稿する',
+    notLoginBody: '質問を投稿するにはログインしてください。',
   },
-  footer: {
-    twitter: {
-      label: 'Twitter',
-      url: 'https://twitter.com/diescake',
-    },
-    github: {
-      label: 'GitHub',
-      url: 'https://github.com/diescake/igata',
-    },
+  question: {
+    answer: '回答する',
+    answerNumber: (number: number) => `${number}件の回答`,
+    loginToComment: 'コメントするにはログインしてください。',
+    loginToAnswer: '回答するにはログインしてください。',
+    commentAdd: 'コメントを追加',
+    post: '投稿',
   },
 } as const

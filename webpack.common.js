@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 /* eslint-enable */
 
 const param = {
-  title: 'igata',
+  title: 'StackOverflow Clone (React)',
   entryPath: './src/main.tsx',
   distPath: './public',
   faviconPath: './src/assets/images/favicon.ico',

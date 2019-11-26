@@ -1,0 +1,51 @@
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.edit {
+  height: calc(1.5em + 0.75rem + 2px);
+}
+
+.formControl {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  margin-bottom: 1rem;
+  padding: 0.375rem 0.75rem;
+  color: #495057;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.5;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.errorEmpty {
+  display: inline-block;
+  color: tomato;
+  font-size: 1.5rem;
+}
+
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  background: #007bff;
+  border: solid 2px #007bff;
+  border-radius: 4px;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.button:active {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
