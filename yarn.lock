@@ -1445,17 +1445,17 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
   integrity sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==
 
-"@storybook/addon-a11y@^5.2.6":
-  version "5.2.6"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-5.2.6.tgz#8aa603cac1eaa92ef53c51b842e502101dc5d074"
-  integrity sha512-LlY5TaZNDxl5MP8u2qCJmg8GhvbtYGXmWJv0GMof0cw1fuLMEBHKAa5vK2oWQdPjGpoSAYN80dqn3TyCqsoGnQ==
+"@storybook/addon-a11y@^5.2.7":
+  version "5.2.7"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-5.2.7.tgz#0e35a9bc745e07b86cb70d8075ede5de76711ad6"
+  integrity sha512-DC9edBEt0zA92ZaoUpROvfZFk9gVrMefhEvyDrGvVpmbyI0VTgAL+iCyA0t+YelghkidqNoIIQhA0U9op/HJQw==
   dependencies:
-    "@storybook/addons" "5.2.6"
-    "@storybook/api" "5.2.6"
-    "@storybook/client-logger" "5.2.6"
-    "@storybook/components" "5.2.6"
-    "@storybook/core-events" "5.2.6"
-    "@storybook/theming" "5.2.6"
+    "@storybook/addons" "5.2.7"
+    "@storybook/api" "5.2.7"
+    "@storybook/client-logger" "5.2.7"
+    "@storybook/components" "5.2.7"
+    "@storybook/core-events" "5.2.7"
+    "@storybook/theming" "5.2.7"
     axe-core "^3.3.2"
     common-tags "^1.8.0"
     core-js "^3.0.1"
@@ -1561,7 +1561,7 @@
     global "^4.3.2"
     util-deprecate "^1.0.2"
 
-"@storybook/addons@^5.2.0", "@storybook/addons@^5.2.7":
+"@storybook/addons@5.2.7", "@storybook/addons@^5.2.0", "@storybook/addons@^5.2.7":
   version "5.2.7"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-5.2.7.tgz#a868ca0a209aefa8a17718b58327dd3ff37f2d76"
   integrity sha512-eWRSvs5/28KhU28iWjClfOryRN1IuycFcWEJrRtMOXyf44TTyzEC5PbH35eGh33MpWVJYM+8CUJQqNOxxDVjBw==
@@ -1728,6 +1728,31 @@
   dependencies:
     "@storybook/client-logger" "5.2.6"
     "@storybook/theming" "5.2.6"
+    "@types/react-syntax-highlighter" "10.1.0"
+    "@types/react-textarea-autosize" "^4.3.3"
+    core-js "^3.0.1"
+    global "^4.3.2"
+    markdown-to-jsx "^6.9.1"
+    memoizerific "^1.11.3"
+    polished "^3.3.1"
+    popper.js "^1.14.7"
+    prop-types "^15.7.2"
+    react "^16.8.3"
+    react-dom "^16.8.3"
+    react-focus-lock "^1.18.3"
+    react-helmet-async "^1.0.2"
+    react-popper-tooltip "^2.8.3"
+    react-syntax-highlighter "^8.0.1"
+    react-textarea-autosize "^7.1.0"
+    simplebar-react "^1.0.0-alpha.6"
+
+"@storybook/components@5.2.7":
+  version "5.2.7"
+  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-5.2.7.tgz#810327a517dc839293ef1d684f960a548e257689"
+  integrity sha512-BRmfSMXqiDDWwgYKTyq0XseCYhETvlBzljAqIeI+xuSPh4FzRY1uoXrD3yJJo/jtEfP+vtEV98/6g3pmZf3pBw==
+  dependencies:
+    "@storybook/client-logger" "5.2.7"
+    "@storybook/theming" "5.2.7"
     "@types/react-syntax-highlighter" "10.1.0"
     "@types/react-textarea-autosize" "^4.3.3"
     core-js "^3.0.1"
