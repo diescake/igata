@@ -92,7 +92,7 @@
     "json-loader": "^0.5.7",
     "license-checker": "^25.0.1",
     "lint-staged": "^9.5.0",
-    "mini-css-extract-plugin": "^0.8.0",
+    "mini-css-extract-plugin": "^0.8.1",
     "node-sass": "^4.13.0",
     "prettier": "1.19.1",
     "prettier-stylelint": "^0.4.2",
