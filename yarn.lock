@@ -1431,15 +1431,15 @@
     react-inspector "^4.0.0"
     uuid "^3.3.2"
 
-"@storybook/addon-info@^5.3.1":
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-5.3.1.tgz#bbeebab7fde9727cf2b0af24b02249a4fd5c052a"
-  integrity sha512-wUbuc8Uv03V211+2nQnYUpAD4mQAjGT86nffmkyZwAS9P/PQb6Rj4A4xmzhNd5IQ3d2VvPD/rznNAerB3+sLWw==
+"@storybook/addon-info@^5.3.2":
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-5.3.2.tgz#0a4e9c6daa8f010311cbd8927088c0f7c78d9d05"
+  integrity sha512-9vnV3rFfsBdOupVzzh/KSEwo+w9bQgN/URTYg6NuE3jCPO7/WtRStPCl1F3Z+It3KJTGEEuEbojf536Gd6nOpg==
   dependencies:
-    "@storybook/addons" "5.3.1"
-    "@storybook/client-logger" "5.3.1"
-    "@storybook/components" "5.3.1"
-    "@storybook/theming" "5.3.1"
+    "@storybook/addons" "5.3.2"
+    "@storybook/client-logger" "5.3.2"
+    "@storybook/components" "5.3.2"
+    "@storybook/theming" "5.3.2"
     core-js "^3.0.1"
     global "^4.3.2"
     marksy "^8.0.0"
@@ -1682,6 +1682,33 @@
   dependencies:
     "@storybook/client-logger" "5.3.1"
     "@storybook/theming" "5.3.1"
+    "@types/react-syntax-highlighter" "11.0.2"
+    "@types/react-textarea-autosize" "^4.3.3"
+    core-js "^3.0.1"
+    global "^4.3.2"
+    lodash "^4.17.15"
+    markdown-to-jsx "^6.9.1"
+    memoizerific "^1.11.3"
+    polished "^3.3.1"
+    popper.js "^1.14.7"
+    prop-types "^15.7.2"
+    react "^16.8.3"
+    react-dom "^16.8.3"
+    react-focus-lock "^2.1.0"
+    react-helmet-async "^1.0.2"
+    react-popper-tooltip "^2.8.3"
+    react-syntax-highlighter "^11.0.2"
+    react-textarea-autosize "^7.1.0"
+    simplebar-react "^1.0.0-alpha.6"
+    ts-dedent "^1.1.0"
+
+"@storybook/components@5.3.2":
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-5.3.2.tgz#bc0824e9fc3f096652c3ce30fc1aff9d82211b74"
+  integrity sha512-JtVPz03vVDI9/QqUbYitTQhLGxXHN0+49y97G527Xn3y6S71DkdQAVgYqUNnsUpPSyNLESgvAV39HRvzy/LSyw==
+  dependencies:
+    "@storybook/client-logger" "5.3.2"
+    "@storybook/theming" "5.3.2"
     "@types/react-syntax-highlighter" "11.0.2"
     "@types/react-textarea-autosize" "^4.3.3"
     core-js "^3.0.1"
