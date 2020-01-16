@@ -48,7 +48,7 @@
     "@storybook/addon-info": "^5.3.4",
     "@storybook/addon-knobs": "^5.3.4",
     "@storybook/addon-links": "^5.3.4",
-    "@storybook/addons": "^5.3.3",
+    "@storybook/addons": "^5.3.5",
     "@storybook/cli": "^5.3.5",
     "@storybook/react": "^5.3.4",
     "@types/history": "^4.7.4",
