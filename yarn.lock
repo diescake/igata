@@ -1476,7 +1476,7 @@
     react-lifecycles-compat "^3.0.4"
     react-select "^3.0.8"
 
-"@storybook/addon-links@^5.3.6":
+"@storybook/addon-links@*", "@storybook/addon-links@^5.3.6":
   version "5.3.6"
   resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-5.3.6.tgz#c74342e53df08ae250e25e8697b9e0e3e176c5bf"
   integrity sha512-oCXo6Tgb2sCwyjpkTGYRlmjFbCiqFozqCtxd7hQ1ON2wDns4Xr25Ik+F4Wv1a4d1xihGCb/g5KuOTaqXTf1TqA==
@@ -2452,12 +2452,12 @@
     "@storybook/react" "^5.2.0"
     "@types/react" "*"
 
-"@types/storybook__addon-links@^3.3.5":
-  version "3.3.5"
-  resolved "https://registry.yarnpkg.com/@types/storybook__addon-links/-/storybook__addon-links-3.3.5.tgz#38326426b3a83a237123bce0d348d9159451710f"
-  integrity sha512-h+8Kb+uZv4/uuWD+K5rku8aRxdl6yjDJrFzbcGwwdZt6IwYGK9G8PmkP+6Hv+N7HMOuyhrZPiLL//qVFWDL/0Q==
+"@types/storybook__addon-links@^5.2.1":
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/@types/storybook__addon-links/-/storybook__addon-links-5.2.1.tgz#10a731c1a09dff4a1f14e3f867a57b3ab9364c15"
+  integrity sha512-XnymXhgUKeissuS50+quxortJx3b7YkTCbKZ6PsoOSN7uq7c0iIRZUk0w4V4t0lfHRwSNBd8MECnEHIcD+AvVA==
   dependencies:
-    "@types/react" "*"
+    "@storybook/addon-links" "*"
 
 "@types/storybook__react@^4.0.2":
   version "4.0.2"
