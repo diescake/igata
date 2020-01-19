@@ -1,5 +1,5 @@
 import { Reducer } from 'redux'
-import uuid from 'uuidv4'
+import { uuid } from 'uuidv4'
 import { Type, TodoAction } from '@/app/actions/todo'
 import { TodoState, Todo } from '@/app/models/Todo'
 
