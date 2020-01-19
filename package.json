@@ -45,7 +45,7 @@
     "@fortawesome/fontawesome-free": "^5.12.0",
     "@storybook/addon-a11y": "^5.3.5",
     "@storybook/addon-actions": "^5.3.6",
-    "@storybook/addon-info": "^5.3.4",
+    "@storybook/addon-info": "^5.3.6",
     "@storybook/addon-knobs": "^5.3.6",
     "@storybook/addon-links": "^5.3.6",
     "@storybook/addons": "^5.3.6",
