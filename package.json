@@ -49,7 +49,7 @@
     "@storybook/addon-knobs": "^5.3.8",
     "@storybook/addon-links": "^5.3.8",
     "@storybook/addons": "^5.3.8",
-    "@storybook/cli": "^5.3.8",
+    "@storybook/cli": "^5.3.9",
     "@storybook/react": "^5.3.8",
     "@types/history": "^4.7.4",
     "@types/jest": "^24.9.1",
