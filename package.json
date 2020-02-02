@@ -50,7 +50,7 @@
     "@storybook/addon-links": "^5.3.9",
     "@storybook/addons": "^5.3.10",
     "@storybook/cli": "^5.3.10",
-    "@storybook/react": "^5.3.9",
+    "@storybook/react": "^5.3.10",
     "@types/history": "^4.7.5",
     "@types/jest": "^24.9.1",
     "@types/node": "^13.7.0",
