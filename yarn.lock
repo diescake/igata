@@ -1389,17 +1389,17 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
   integrity sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==
 
-"@storybook/addon-a11y@^5.3.9":
-  version "5.3.9"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-5.3.9.tgz#4b075bd25570ba1bbefee207aac2385984098a0b"
-  integrity sha512-4ba+hxOyhNQa07+87OTLdKvsK/aCRooGNPPMRlEy41dacyEJLNAWDh7PQHCn15NogS4Ie9YNlCnmNkfDpHWz7w==
+"@storybook/addon-a11y@^5.3.10":
+  version "5.3.10"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-5.3.10.tgz#356b93905cf1615476c7ec35461b965ea3f0617d"
+  integrity sha512-+KXtbpoutUuWZ6EMIT5eTvvXnUbrgYEQFDqQGh7ecOxzPwEKJ92gX8wogZ07VvMQ2Wyg98E+B12G+WN8ga/idw==
   dependencies:
-    "@storybook/addons" "5.3.9"
-    "@storybook/api" "5.3.9"
-    "@storybook/client-logger" "5.3.9"
-    "@storybook/components" "5.3.9"
-    "@storybook/core-events" "5.3.9"
-    "@storybook/theming" "5.3.9"
+    "@storybook/addons" "5.3.10"
+    "@storybook/api" "5.3.10"
+    "@storybook/client-logger" "5.3.10"
+    "@storybook/components" "5.3.10"
+    "@storybook/core-events" "5.3.10"
+    "@storybook/theming" "5.3.10"
     axe-core "^3.3.2"
     core-js "^3.0.1"
     global "^4.3.2"
