@@ -1538,17 +1538,17 @@
     react-lifecycles-compat "^3.0.4"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-knobs@^5.3.10":
-  version "5.3.10"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-knobs/-/addon-knobs-5.3.10.tgz#3dbb6046f2e625a9f6ef22e1b5660c9976f4f842"
-  integrity sha512-0mroTdXQItWOotswyo2e+P+Xmt4O+AyuVegRE3K5/2w/WMf2ku/YdRzH0uPgYS+y8PD0j3vDcTXt1UFnzjv8eg==
+"@storybook/addon-knobs@^5.3.11":
+  version "5.3.11"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-knobs/-/addon-knobs-5.3.11.tgz#fc20d646649be4b217b41fbb0ef886389363bea9"
+  integrity sha512-TeHSpGathjCwY8BajDgg9nSkNWbhhbgjPI+RFUAsZF6UWDJDPe2UG0y2D9XnONvvPVlnj7TVd49QlKXoXAOG/w==
   dependencies:
-    "@storybook/addons" "5.3.10"
-    "@storybook/api" "5.3.10"
-    "@storybook/client-api" "5.3.10"
-    "@storybook/components" "5.3.10"
-    "@storybook/core-events" "5.3.10"
-    "@storybook/theming" "5.3.10"
+    "@storybook/addons" "5.3.11"
+    "@storybook/api" "5.3.11"
+    "@storybook/client-api" "5.3.11"
+    "@storybook/components" "5.3.11"
+    "@storybook/core-events" "5.3.11"
+    "@storybook/theming" "5.3.11"
     "@types/react-color" "^3.0.1"
     copy-to-clipboard "^3.0.8"
     core-js "^3.0.1"
@@ -1656,17 +1656,6 @@
     telejson "^3.2.0"
     util-deprecate "^1.0.2"
 
-"@storybook/channel-postmessage@5.3.10":
-  version "5.3.10"
-  resolved "https://registry.yarnpkg.com/@storybook/channel-postmessage/-/channel-postmessage-5.3.10.tgz#0d5ede72e4057a20b5c2ad5d871134f3cba54b78"
-  integrity sha512-YHc6FCc9RSpDoYfa1LUGNwHXKx3KjW1m5Q86g86sV8Rnj+guy5atDRSmL2i/OKTONQO4Edp1er+UGFzyUd+a2Q==
-  dependencies:
-    "@storybook/channels" "5.3.10"
-    "@storybook/client-logger" "5.3.10"
-    core-js "^3.0.1"
-    global "^4.3.2"
-    telejson "^3.2.0"
-
 "@storybook/channel-postmessage@5.3.11":
   version "5.3.11"
   resolved "https://registry.yarnpkg.com/@storybook/channel-postmessage/-/channel-postmessage-5.3.11.tgz#ad5c633e93cfe2997e246b859936af205ed33c0e"
@@ -1717,29 +1706,6 @@
     shelljs "^0.8.3"
     strip-json-comments "^3.0.1"
     update-notifier "^3.0.0"
-
-"@storybook/client-api@5.3.10":
-  version "5.3.10"
-  resolved "https://registry.yarnpkg.com/@storybook/client-api/-/client-api-5.3.10.tgz#74c9c36a62d653f5eb29ceb84c3acbec19aad254"
-  integrity sha512-bYFgdzsaxdlWlZzNpDqWWLUaX31rc4xHdyy1MJ+dl65AnubPrLacvvqSCVYK+VdRAWHX+T7Bcvt2sRtwka7oEQ==
-  dependencies:
-    "@storybook/addons" "5.3.10"
-    "@storybook/channel-postmessage" "5.3.10"
-    "@storybook/channels" "5.3.10"
-    "@storybook/client-logger" "5.3.10"
-    "@storybook/core-events" "5.3.10"
-    "@storybook/csf" "0.0.1"
-    "@types/webpack-env" "^1.15.0"
-    core-js "^3.0.1"
-    eventemitter3 "^4.0.0"
-    global "^4.3.2"
-    is-plain-object "^3.0.0"
-    lodash "^4.17.15"
-    memoizerific "^1.11.3"
-    qs "^6.6.0"
-    stable "^0.1.8"
-    ts-dedent "^1.1.0"
-    util-deprecate "^1.0.2"
 
 "@storybook/client-api@5.3.11":
   version "5.3.11"
