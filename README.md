@@ -6,11 +6,10 @@
 
 [![CircleCI](https://circleci.com/gh/diescake/igata.svg?style=svg)](https://circleci.com/gh/diescake/igata)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/6dcaa70a-5921-49f5-83f9-01fdef7b54b4/deploy-status)](https://app.netlify.com/sites/igata-storybook/deploys)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&identifier=165770216)](https://dependabot.com)
 [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
 [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://igata-storybook.netlify.com/)
 
-`igata(鋳型)` is my boilerplate for Web Frontend. It should be maintained by me and my lovely dependabot as much as possible. By the way, `鋳型` is a Japanese word and it means a boilerplate or casting mold.
+`igata(鋳型)` is my boilerplate for Web Frontend. It should be maintained by me and my lovely Renovate bot as much as possible. By the way, `鋳型` is a Japanese word and it means a boilerplate or casting mold.
 
 ```exs
 'boilerplate'
@@ -87,7 +86,7 @@ $ yarn start # npm start
 - [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
 - [CircleCI](https://circleci.com/)
 - [netlify](https://www.netlify.com)
-- [Dependabot](https://dependabot.com/)
+- [Renovate](https://renovate.whitesourcesoftware.com/)
 
 ### Editors
 
