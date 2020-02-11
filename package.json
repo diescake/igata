@@ -120,7 +120,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@fortawesome/react-fontawesome": "^0.1.8",
     "axios": "^0.19.2",
-    "clsx": "^1.0.4",
+    "clsx": "^1.1.0",
     "connected-react-router": "^6.6.1",
     "dayjs": "^1.8.19",
     "formik": "^2.1.3",
