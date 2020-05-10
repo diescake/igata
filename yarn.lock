@@ -16207,17 +16207,29 @@ uuid@3.4.0, uuid@^3.0.1, uuid@^3.1.0, uuid@^3.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
+uuid@8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.0.0.tgz#bc6ccf91b5ff0ac07bbcdbf1c7c4e150db4dbb6c"
+  integrity sha512-jOXGuXZAWdsTH7eZLtyXMqUb9EcWMGZNbL9YcGBJl4MH4nrxHmZJhEHvyLFrkxo+28uLb/NYRcStH48fnD0Vzw==
+
 uuid@^7.0.3:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
   integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
 
-uuidv4@*, uuidv4@^6.0.2:
+uuidv4@*:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/uuidv4/-/uuidv4-6.0.2.tgz#c0154f2592420c523062def3a84fc1cd235259f3"
   integrity sha512-SHfZgAT2pz0TAXtclFMsTrT55U1/HTLg7xSZYDhX953sdcVIJ9lanIs8/BFSjxGmg4cEjc8P7HXPK7EPOD/nfA==
   dependencies:
     uuid "3.4.0"
+
+uuidv4@^6.0.8:
+  version "6.0.8"
+  resolved "https://registry.yarnpkg.com/uuidv4/-/uuidv4-6.0.8.tgz#4e0e698abdd62d5d43743837182dc42de1a7f9bb"
+  integrity sha512-d9nfWXtmCoAKVCEj5agRSyDa7S2rsHGtp/E9e/fJGrxoLKkXu6cFpXxJvWKHC5oBO69Jzwq/bXlK92JidXOcQQ==
+  dependencies:
+    uuid "8.0.0"
 
 v8-compile-cache@2.0.3:
   version "2.0.3"
