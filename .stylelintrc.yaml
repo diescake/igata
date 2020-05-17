@@ -18,6 +18,7 @@ extends:
   - stylelint-config-standard
   - ./node_modules/prettier-stylelint/config.js
   - stylelint-config-rational-order
+  - stylelint-config-styled-components
 
 ignoreFiles:
   - '**/node_modules/**'
@@ -31,6 +32,7 @@ rules:
   shorthand-property-no-redundant-values: true
   at-rule-no-unknown: null
   scss/at-rule-no-unknown: null
+  declaration-empty-line-before: never
 
   order/properties-order: []
   plugin/rational-order:
