@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
+import styled from 'styled-components'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons'
 import words from '@/assets/strings'
-import style from '@/app/components/Header/style.scss'
 
 interface Props {
   readonly title: string
@@ -13,10 +13,18 @@ interface Props {
 
 export const Header: FC<Props> = (props: Props) => (
   <div>
-    <h1 className={style.header}>
-      {props.icon && <FontAwesomeIcon className={style.icon} icon={props.icon} />}
+    <Heading>
+      {props.icon && <Icon icon={props.icon} />}
       {props.title}
-    </h1>
+    </Heading>
     {props.userId && <b>{words.todoApp.loginMessage(props.userId)}</b>}
   </div>
 )
+
+const Heading = styled.h1`
+  font-size: 4.6rem;
+`
+const Icon = styled(FontAwesomeIcon)`
+  margin-right: 12px;
+  font-size: 4.2rem;
+`
