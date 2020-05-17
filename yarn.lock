@@ -16478,10 +16478,10 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   dependencies:
     minimalistic-assert "^1.0.0"
 
-weak-key@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/weak-key/-/weak-key-1.0.1.tgz#a8f8faa4ba211ceb1e34dbd198da942245213f2b"
-  integrity sha512-HgISuSXCBGIDQf4Hzm7wkVoW6BPLzi1sJPoiiDSxERsbA0Ut8TJVDMbho+Q3RVGyCmW0MHKdcCnNVcPh0iJ0gA==
+weak-key@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/weak-key/-/weak-key-1.0.2.tgz#dd5f66648ffb7e83810ea0553a948c60b2b50588"
+  integrity sha512-x9y9moPEcom985nUdHxM+YWbMcP3Ru+fmYqVNHSb6djJGg7H6Ru2ohuzaVIXx1JNyp8E7GO7GsBnehRntaBlsg==
   dependencies:
     core-js "^2.4.0"
 
