@@ -42,6 +42,6 @@ function* login() {
   yield res ? putWithResponse(res) : putWithError(error)
 }
 
-export default function*() {
+export default function* () {
   yield takeLatest(Type.LOGIN, login)
 }
