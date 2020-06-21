@@ -114,7 +114,7 @@
     "ts-loader": "^7.0.5",
     "typescript": "^3.7.5",
     "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.11",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.10.3",
     "yaml-loader": "^0.6.0"
   },
