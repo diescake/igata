@@ -100,7 +100,7 @@
     "react-docgen-typescript-loader": "^3.6.0",
     "redux-devtools": "^3.5.0",
     "redux-immutable-state-invariant": "^2.1.0",
-    "sass-loader": "^8.0.2",
+    "sass-loader": "^9.0.3",
     "source-map-loader": "^0.2.4",
     "stylelint": "^13.1.0",
     "stylelint-config-prettier": "^8.0.2",
