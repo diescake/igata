@@ -2893,10 +2893,10 @@
   dependencies:
     "@storybook/addon-actions" "*"
 
-"@types/storybook__addon-info@^5.2.2":
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/@types/storybook__addon-info/-/storybook__addon-info-5.2.2.tgz#6ee1cc79e678e30ccf46b69659e6c6a50eda7d8f"
-  integrity sha512-BfSdUxwmkfqbi1XAEgLQT/DCeaizKoeJv+vApXtOoFzgSHx8xj/6G2yCJBMxRFCirAY7GS9YYaR6KAK4J1YjBQ==
+"@types/storybook__addon-info@^5.2.3":
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/@types/storybook__addon-info/-/storybook__addon-info-5.2.3.tgz#671f4616ae5b30602163d7385c3a0eaa627dfea8"
+  integrity sha512-3Q98gW7kvjRhN8sfriIW+ArVRQElvN0a4+GlbZABuuRMEW9N9lXKsuX01IRjkpWplk+gY5VUFLY67urwCn539w==
   dependencies:
     "@storybook/addons" "^5.2.0"
     "@storybook/react" "^5.2.0"
