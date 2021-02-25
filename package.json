@@ -122,7 +122,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "@fortawesome/react-fontawesome": "^0.1.8",
-    "axios": "^0.19.2",
+    "axios": "^0.21.0",
     "clsx": "^1.1.0",
     "connected-react-router": "^6.6.1",
     "dayjs": "^1.8.26",
