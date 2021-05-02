@@ -102,7 +102,7 @@
     "redux-immutable-state-invariant": "^2.1.0",
     "sass-loader": "^8.0.2",
     "source-map-loader": "^0.2.4",
-    "stylelint": "^13.1.0",
+    "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^20.0.0",
