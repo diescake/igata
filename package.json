@@ -57,7 +57,7 @@
     "@types/qs": "^6.9.1",
     "@types/react": "^16.9.56",
     "@types/react-dom": "^16.9.14",
-    "@types/react-redux": "^7.1.16",
+    "@types/react-redux": "^7.1.18",
     "@types/react-router": "^5.1.15",
     "@types/react-router-dom": "^5.1.7",
     "@types/redux-logger": "^3.0.8",
