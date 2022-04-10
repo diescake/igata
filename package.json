@@ -65,7 +65,7 @@
     "@types/storybook__addon-info": "^5.2.4",
     "@types/storybook__addon-links": "^5.2.1",
     "@types/storybook__react": "^5.2.1",
-    "@types/styled-components": "^5.1.24",
+    "@types/styled-components": "^5.1.25",
     "@types/uuidv4": "^5.0.0",
     "@types/webpack": "^4.41.32",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
