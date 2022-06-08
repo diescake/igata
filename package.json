@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
-    "@fortawesome/fontawesome-free": "^5.13.1",
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "@storybook/addon-a11y": "^5.3.22",
     "@storybook/addon-actions": "^5.3.21",
     "@storybook/addon-info": "^5.3.21",
