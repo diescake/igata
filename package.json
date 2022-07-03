@@ -59,7 +59,7 @@
     "@types/react-dom": "^16.9.16",
     "@types/react-redux": "^7.1.24",
     "@types/react-router": "^5.1.18",
-    "@types/react-router-dom": "^5.1.9",
+    "@types/react-router-dom": "^5.3.3",
     "@types/redux-logger": "^3.0.9",
     "@types/storybook__addon-actions": "^5.2.1",
     "@types/storybook__addon-info": "^5.2.4",
