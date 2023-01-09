@@ -1,4 +1,4 @@
-# igata
+# [deprecated] igata
 
 <p align="left">
   <img src="./data/igata_kawaii.png" alt="logo" width="300">
