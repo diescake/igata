@@ -124,7 +124,7 @@
     "@fortawesome/react-fontawesome": "^0.1.8",
     "axios": "^0.19.2",
     "clsx": "^1.1.0",
-    "connected-react-router": "^6.6.1",
+    "connected-react-router": "^6.9.3",
     "dayjs": "^1.8.26",
     "formik": "^2.1.4",
     "history": "^4.10.1",
