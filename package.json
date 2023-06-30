@@ -88,7 +88,7 @@
     "file-loader": "^6.0.0",
     "fork-ts-checker-webpack-plugin": "^4.1.6",
     "html-webpack-plugin": "^4.5.2",
-    "husky": "^4.2.5",
+    "husky": "^4.3.8",
     "jest": "^26.1.0",
     "json-loader": "^0.5.7",
     "license-checker": "^25.0.1",
